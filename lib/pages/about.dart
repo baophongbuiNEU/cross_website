@@ -16,13 +16,13 @@ class About extends StatelessComponent {
         li([
           h3([text('📖 Documentation')]),
           text('Jaspr\'s '),
-          a(href: 'https://docs.page/schultek/jaspr', [text('official documentation')]),
+          a(href: 'https://docs.jaspr.site', [text('official documentation')]),
           text(' provides you with all information you need to get started.'),
         ]),
         li([
           h3([text('💬 Community')]),
           text('Got stuck? Ask your question on the official '),
-          a(href: 'https://docs.page/schultek/jaspr', [text('Discord server')]),
+          a(href: 'https://discord.gg/XGXrGEk4c6', [text('Discord server')]),
           text(' for the Jaspr community.'),
         ]),
         li([
@@ -44,6 +44,6 @@ class About extends StatelessComponent {
 
   @css
   static final styles = [
-    css('ol').box(maxWidth: 500.px),
+    css('ol').styles(maxWidth: 500.px),
   ];
 }

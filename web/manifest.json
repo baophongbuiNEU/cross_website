@@ -1,6 +1,6 @@
 {
-    "name": "cross_website",
-    "short_name": "cross_website",
+    "name": "my_website",
+    "short_name": "my_website",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
