@@ -7,14 +7,10 @@ import 'package:my_website/components/home_page/cta_block.dart';
 import 'package:my_website/components/home_page/footer_block.dart';
 import 'package:my_website/components/home_page/group_of_card.dart';
 import 'package:my_website/components/home_page/header_home_page.dart';
-import 'package:my_website/components/home_page/item_services.dart';
 import 'package:my_website/components/home_page/list_logo.dart';
 import 'package:my_website/components/home_page/our_service.dart';
 import 'package:my_website/components/home_page/process_block.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
 
-import '../components/counter.dart';
 
 // By using the @client annotation this component will be automatically compiled to javascript and mounted
 // on the client. Therefore:
