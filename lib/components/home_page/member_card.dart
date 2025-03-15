@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/button_primary_black.dart';
 import 'package:my_website/components/common/size_box_component.dart';
 import 'package:my_website/constants/app_colors.dart';
+import 'package:my_website/constants/theme.dart';
 
 class MemberCard extends StatelessComponent {
   final String name;
@@ -24,10 +24,16 @@ class MemberCard extends StatelessComponent {
             width: 30.percent,
             height: 250.px,
             padding: Padding.symmetric(horizontal: 35.px, vertical: 40.px),
-            border: Border(color: AppColors.primaryColor, width: 1.px),
+            border: Border(
+                // color: AppColors.primaryColor,
+                color: AppColors.textBlack,
+                width: 1.px),
             radius: BorderRadius.circular(45.px),
             shadow: BoxShadow(
-                offsetX: 0.px, offsetY: 5.px, color: AppColors.primaryColor)),
+              offsetX: 0.px, offsetY: 5.px,
+              // color: AppColors.primaryColor
+              color: AppColors.textBlack,
+            )),
         [_nameAndPosition(), _line(), _content()]);
   }
 
@@ -56,13 +62,15 @@ class MemberCard extends StatelessComponent {
                       div(
                           styles: Styles(
                               width: 100.percent,
-                              color: AppColors.primaryColor,
+                              // color: AppColors.primaryColor,
+                              color: AppColors.textBlack,
                               fontSize: 20.px,
                               fontWeight: FontWeight.w500),
                           [Text(name)]),
                       div(
                           styles: Styles(
-                              color: AppColors.primaryColor,
+                              // color: AppColors.primaryColor,
+                              color: AppColors.textBlack,
                               fontSize: 18.px,
                               fontWeight: FontWeight.w400),
                           [Text(position)])
@@ -93,18 +101,18 @@ class MemberCard extends StatelessComponent {
         styles: Styles(
             height: 1.px,
             margin: Margin.symmetric(vertical: 28.px),
-            backgroundColor: AppColors.primaryColor),
+            // backgroundColor: AppColors.primaryColor
+            backgroundColor: AppColors.textBlack),
         []);
   }
 
   Component _content() {
     return div(
         styles: Styles(
+          color: AppColors.textBlack,
           fontSize: 18.px,
           fontWeight: FontWeight.w400,
         ),
         [Text(content)]);
   }
-
-
 }

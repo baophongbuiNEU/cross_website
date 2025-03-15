@@ -1,7 +1,10 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/common/button_primary_black.dart';
 import 'package:my_website/components/common/size_box_component.dart';
+import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
+import 'package:my_website/constants/theme.dart';
+import 'package:my_website/constants/theme_toogle.dart';
 
 class HeaderHomePage extends StatefulComponent {
   const HeaderHomePage({super.key});
@@ -25,7 +28,13 @@ class HeaderHomePageState extends State<HeaderHomePage> {
                 'We empower businesses with cutting-edge solutions to thrive in a digital world.')
           ]),
           SizeBoxComponent(height: 35),
-          ButtonPrimaryBlack(text: 'Discover Our Solutions'),
+          div(
+              styles:
+                  Styles(display: Display.flex, alignItems: AlignItems.center),
+              [
+                ButtonPrimaryBlack(text: 'Discover Our Solutions'),
+                ThemeToggle(),
+              ])
         ]),
         img(src: Images.imageHeader, styles: Styles(height: 515.px))
       ])
@@ -60,6 +69,7 @@ class HeaderHomePageState extends State<HeaderHomePage> {
     ]),
     css('.w500-60-custom', [
       css('&').styles(
+          color: AppColors.textBlack,
           fontFamily: FontFamily.list(
               [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
           fontSize: 60.px,
@@ -67,6 +77,7 @@ class HeaderHomePageState extends State<HeaderHomePage> {
     ]),
     css('.w400-20-custom', [
       css('&').styles(
+          color: AppColors.textBlack,
           fontFamily: FontFamily.list(
               [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
           fontSize: 20.px,

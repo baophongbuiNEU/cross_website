@@ -1,9 +1,7 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/home_page/member_card.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
 
-import '../common/button_primary_black.dart';
 import '../common/size_box_component.dart';
 
 class FooterBlock extends StatelessComponent {
@@ -49,7 +47,7 @@ class FooterBlock extends StatelessComponent {
                 SizeBoxComponent(width: 6),
                 div(
                     styles: Styles(
-                        color: AppColors.white,
+                        color: Colors.white,
                         fontSize: 30.px,
                         fontWeight: FontWeight.w500),
                     [Text("Positives")])
@@ -58,7 +56,7 @@ class FooterBlock extends StatelessComponent {
               styles: Styles(
                   display: Display.flex,
                   flexDirection: FlexDirection.row,
-                  color: AppColors.white,
+                  color: Colors.white,
                   fontSize: 18.px,
                   fontWeight: FontWeight.w400,
                   textDecoration:
@@ -106,7 +104,7 @@ class FooterBlock extends StatelessComponent {
             height: 100.percent,
             flexDirection: FlexDirection.column,
             justifyContent: JustifyContent.spaceBetween,
-            color: AppColors.white,
+            color: Colors.white,
             fontSize: 18.px,
             fontWeight: FontWeight.w400),
         [
@@ -138,7 +136,7 @@ class FooterBlock extends StatelessComponent {
                 width: 100.percent,
                 height: 22.px,
                 padding: Padding.symmetric(horizontal: 30.px, vertical: 22.px),
-                border: Border(color: AppColors.white, width: 2.px),
+                border: Border(color: Colors.white, width: 2.px),
                 radius: BorderRadius.circular(14.px),
                 alignItems: AlignItems.center,
                 color: Colors.white,
@@ -173,8 +171,8 @@ class FooterBlock extends StatelessComponent {
             display: Display.flex,
             padding: Padding.only(top: 50.px),
             border: Border.only(
-                top: BorderSide(width: 1.px, color: AppColors.white)),
-            color: AppColors.white),
+                top: BorderSide(width: 1.px, color: Colors.white)),
+            color: Colors.white),
         [
           Text("© 2024 Crosstech. All Rights Reserved."),
           SizeBoxComponent(width: 40),

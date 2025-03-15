@@ -1,4 +1,5 @@
 import 'package:jaspr/jaspr.dart';
+import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
 
 class ListLogo extends StatelessComponent {
@@ -24,6 +25,8 @@ class ListLogo extends StatelessComponent {
         display: Display.flex,
         width: 100.vw,
         height: 48.px,
+        padding: Padding.symmetric(vertical: 20.px),
+        backgroundColor: AppColors.listLogoBackground,
         overflow: Overflow.hidden),
     css('.list-logo-content').styles(
         display: Display.flex,
