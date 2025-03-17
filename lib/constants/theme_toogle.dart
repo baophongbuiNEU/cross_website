@@ -28,15 +28,26 @@ class ThemeToggleState extends State<ThemeToggle> {
         // ignore: prefer_html_methods
         DomComponent(id: 'theme-script', tag: 'script', children: [
           raw('''
-          let userTheme = window.localStorage.getItem('active-theme');
-          if (userTheme != null) {
-            document.documentElement.className = userTheme;
-          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.className = 'dark';
-          } else {
-            document.documentElement.className = 'light';
-          }
-        ''')
+  (function() {
+    // Load the saved theme or use system preference
+    let userTheme = window.localStorage.getItem('active-theme');
+
+    if (userTheme) {
+      document.documentElement.className = userTheme; // Apply stored theme
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.className = 'dark'; // Use system dark mode
+    } else {
+      document.documentElement.className = 'light'; // Default to light mode
+    }
+
+    // Function to toggle theme and save to localStorage
+    window.toggleTheme = function() {
+      let currentTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+      document.documentElement.className = currentTheme;
+      window.localStorage.setItem('active-theme', currentTheme);
+    };
+  })();
+  ''')
         ]),
       ]);
     }
