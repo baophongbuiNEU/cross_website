@@ -23,6 +23,7 @@ class MemberCard extends StatelessComponent {
         styles: Styles(
             width: 30.percent,
             height: 250.px,
+            backgroundColor: AppColors.white,
             padding: Padding.symmetric(horizontal: 35.px, vertical: 40.px),
             border: Border(
                 // color: AppColors.primaryColor,

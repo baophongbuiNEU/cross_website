@@ -24,7 +24,7 @@ class CaseStudiesBlock extends StatelessComponent {
                   padding:
                       Padding.symmetric(horizontal: 60.px, vertical: 70.px),
                   // padding: Padding.only(top: 70.px, right: 70.px, left: 70.px),
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppColors.textBlack,
                   radius: BorderRadius.circular(45.px)),
               [
                 _item(
@@ -51,9 +51,9 @@ class CaseStudiesBlock extends StatelessComponent {
         [
           div(
               styles: Styles(
+                  color: AppColors.white,
                   fontSize: 18.px,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.white),
+                  fontWeight: FontWeight.w400),
               [Text(content)]),
           SizeBoxComponent(height: 20),
           div(
@@ -62,9 +62,9 @@ class CaseStudiesBlock extends StatelessComponent {
               [
                 div(
                     styles: Styles(
+                        color: AppColors.greenPrimary,
                         fontSize: 20.px,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.greenPrimary),
+                        fontWeight: FontWeight.w400),
                     [
                       Text("Learn more"),
                     ]),
