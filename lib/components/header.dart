@@ -2,7 +2,6 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/constants/theme.dart';
 import 'package:my_website/constants/theme_toogle.dart';
 
 class Header extends StatefulComponent {

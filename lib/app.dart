@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
+import 'package:my_website/components/header.dart';
 
-import 'components/header.dart';
 import 'pages/about.dart';
 import 'pages/home.dart';
 
@@ -9,9 +9,15 @@ import 'pages/home.dart';
 //
 // By using multi-page routing, this component will only be built on the server during pre-rendering and
 // **not** executed on the client. Instead only the nested [Home] and [About] components will be mounted on the client.
-class App extends StatelessComponent {
+@client
+class App extends StatefulComponent {
   const App({super.key});
 
+  @override
+  State<App> createState() => AppState();
+}
+
+class AppState extends State<App> {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     // This method is rerun every time the component is rebuilt.
@@ -24,8 +30,14 @@ class App extends StatelessComponent {
     yield div(classes: 'main', [
       const Header(),
       Router(routes: [
-        Route(path: '/', title: 'Home', builder: (context, state) => const Home()),
-        Route(path: '/about', title: 'About', builder: (context, state) => const About()),
+        Route(
+            path: '/',
+            title: 'Home',
+            builder: (context, state) => const Home()),
+        Route(
+            path: '/about',
+            title: 'About',
+            builder: (context, state) => const About()),
       ]),
     ]);
   }
