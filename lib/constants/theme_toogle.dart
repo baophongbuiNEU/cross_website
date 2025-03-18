@@ -68,7 +68,7 @@ class ThemeToggleState extends State<ThemeToggle> {
       },
       // styles: !kIsWeb ? Styles(visibility: Visibility.hidden) : Styles(fontSize: 30.px),
       styles: Styles(fontSize: 30.px),
-      [text(isDark ? '🌑' : '☀️')],
+      [text(isDark ? '🌙' : '☀️')],
     );
   }
 

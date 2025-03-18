@@ -42,7 +42,9 @@ class HeaderState extends State<Header> {
             div(classes: "language-header", [
               Link(to: '/about', child: text("English")),
             ]),
-            ThemeToggle(),
+            div(styles: Styles(margin: Spacing.only(left: 10.px)), [
+              ThemeToggle(),
+            ]),
           ]),
         ])
       ]),
