@@ -1,48 +1,69 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/home_page/card_process_block.dart';
+import 'package:my_website/language/language_manager.dart';
 
 class ProcessBlock extends StatelessComponent {
   const ProcessBlock({super.key});
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-        styles: Styles(
+    yield ValueListenableBuilder<String>(
+      listenable:
+          LanguageManager.selectedLanguage, // Lắng nghe thay đổi ngôn ngữ
+      builder: (context, lang) sync* {
+        yield div(
+          styles: Styles(
             display: Display.flex,
-            gap: Gap(row: 30.px),
             margin: Margin.symmetric(horizontal: 100.px),
-            flexDirection: FlexDirection.column),
-        [
-          CardProcessBlock(
+            flexDirection: FlexDirection.column,
+            gap: Gap(row: 30.px),
+          ),
+          [
+            CardProcessBlock(
               index: "01",
-              title: 'Consultation',
-              content:
-                  "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-          CardProcessBlock(
+              title: LanguageManager.getTranslation(
+                  'process_block', 'consultation_title'),
+              content: LanguageManager.getTranslation(
+                  'process_block', 'consultation_content'),
+            ),
+            CardProcessBlock(
               index: "02",
-              title: 'Research and Strategy Development',
-              content:
-                  "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-          CardProcessBlock(
+              title: LanguageManager.getTranslation(
+                  'process_block', 'research_title'),
+              content: LanguageManager.getTranslation(
+                  'process_block', 'research_content'),
+            ),
+            CardProcessBlock(
               index: "03",
-              title: 'Implementation',
-              content:
-                  "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-          CardProcessBlock(
+              title: LanguageManager.getTranslation(
+                  'process_block', 'implementation_title'),
+              content: LanguageManager.getTranslation(
+                  'process_block', 'implementation_content'),
+            ),
+            CardProcessBlock(
               index: "04",
-              title: 'Monitoring and Optimization',
-              content:
-                  "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-          CardProcessBlock(
+              title: LanguageManager.getTranslation(
+                  'process_block', 'monitoring_title'),
+              content: LanguageManager.getTranslation(
+                  'process_block', 'monitoring_content'),
+            ),
+            CardProcessBlock(
               index: "05",
-              title: 'Reporting and Communication',
-              content:
-                  "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-          CardProcessBlock(
+              title: LanguageManager.getTranslation(
+                  'process_block', 'reporting_title'),
+              content: LanguageManager.getTranslation(
+                  'process_block', 'reporting_content'),
+            ),
+            CardProcessBlock(
               index: "06",
-              title: 'Continual Improvement',
-              content:
-                  "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-        ]);
+              title: LanguageManager.getTranslation(
+                  'process_block', 'improvement_title'),
+              content: LanguageManager.getTranslation(
+                  'process_block', 'improvement_content'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

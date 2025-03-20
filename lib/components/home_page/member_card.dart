@@ -1,5 +1,4 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/button_primary_black.dart';
 import 'package:my_website/components/common/size_box_component.dart';
 import 'package:my_website/constants/app_colors.dart';
 
@@ -105,6 +104,4 @@ class MemberCard extends StatelessComponent {
         ),
         [Text(content)]);
   }
-
-
 }

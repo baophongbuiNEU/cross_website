@@ -2,34 +2,39 @@ import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/common/button_primary_black.dart';
 import 'package:my_website/components/common/size_box_component.dart';
 import 'package:my_website/constants/image_constant.dart';
+import 'package:my_website/language/language_manager.dart';
 
-class HeaderHomePage extends StatefulComponent {
+class HeaderHomePage extends StatelessComponent {
   const HeaderHomePage({super.key});
 
   @override
-  State<HeaderHomePage> createState() => HeaderHomePageState();
-}
-
-class HeaderHomePageState extends State<HeaderHomePage> {
-  @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: 'header-web', [
-      div(classes: 'header-web-padding', [
-        div(classes: 'text-header-web', [
-          div(
-              classes: 'w500-60-custom',
-              [text('Innovating the Future of Cross Tech')]),
-          SizeBoxComponent(height: 35),
-          div(classes: 'w400-20-custom', [
-            text(
-                'We empower businesses with cutting-edge solutions to thrive in a digital world.')
+    yield ValueListenableBuilder<String>(
+      listenable: LanguageManager.selectedLanguage,
+      builder: (context, lang) sync* {
+        yield div(classes: 'header-web', [
+          div(classes: 'header-web-padding', [
+            div(classes: 'text-header-web', [
+              div(classes: 'w500-60-custom', [
+                text(LanguageManager.getTranslation('headerHomePage', 'title')),
+              ]),
+              SizeBoxComponent(height: 35),
+              div(classes: 'w400-20-custom', [
+                text(
+                  LanguageManager.getTranslation('headerHomePage', 'subtitle'),
+                ),
+              ]),
+              SizeBoxComponent(height: 35),
+              ButtonPrimaryBlack(
+                text:
+                    LanguageManager.getTranslation('headerHomePage', 'button'),
+              ),
+            ]),
+            img(src: Images.imageHeader, styles: Styles(height: 515.px)),
           ]),
-          SizeBoxComponent(height: 35),
-          ButtonPrimaryBlack(text: 'Discover Our Solutions'),
-        ]),
-        img(src: Images.imageHeader, styles: Styles(height: 515.px))
-      ])
-    ]);
+        ]);
+      },
+    );
   }
 
   @css
@@ -39,6 +44,7 @@ class HeaderHomePageState extends State<HeaderHomePage> {
     css('.header-web', [
       css('&').styles(
         display: Display.flex,
+        position: Position.relative(),
         width: 100.vw,
       ),
     ]),
@@ -54,23 +60,26 @@ class HeaderHomePageState extends State<HeaderHomePage> {
     ]),
     css('.text-header-web', [
       css('&').styles(
-          display: Display.flex,
-          width: 40.percent,
-          flexDirection: FlexDirection.column)
+        display: Display.flex,
+        width: 40.percent,
+        flexDirection: FlexDirection.column,
+      ),
     ]),
     css('.w500-60-custom', [
       css('&').styles(
-          fontFamily: FontFamily.list(
-              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-          fontSize: 60.px,
-          fontWeight: FontWeight.w500)
+        fontFamily: FontFamily.list(
+            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+        fontSize: 60.px,
+        fontWeight: FontWeight.w500,
+      ),
     ]),
     css('.w400-20-custom', [
       css('&').styles(
-          fontFamily: FontFamily.list(
-              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-          fontSize: 20.px,
-          fontWeight: FontWeight.w400)
+        fontFamily: FontFamily.list(
+            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+        fontSize: 20.px,
+        fontWeight: FontWeight.w400,
+      ),
     ]),
   ];
 }

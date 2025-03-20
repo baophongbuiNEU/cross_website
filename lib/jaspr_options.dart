@@ -5,8 +5,8 @@ import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/common/button_primary_black.dart' as prefix0;
 import 'package:my_website/components/home_page/header_home_page.dart' as prefix1;
 import 'package:my_website/components/home_page/list_logo.dart' as prefix2;
-import 'package:my_website/components/counter.dart' as prefix3;
-import 'package:my_website/components/header.dart' as prefix4;
+import 'package:my_website/components/header.dart' as prefix3;
+import 'package:my_website/language/language_manager.dart' as prefix4;
 import 'package:my_website/pages/about.dart' as prefix5;
 import 'package:my_website/pages/home.dart' as prefix6;
 import 'package:my_website/app.dart' as prefix7;
@@ -29,15 +29,16 @@ import 'package:my_website/app.dart' as prefix7;
 /// ```
 final defaultJasprOptions = JasprOptions(
   clients: {
+    prefix7.App: ClientTarget<prefix7.App>('app'),
     prefix5.About: ClientTarget<prefix5.About>('pages/about'),
     prefix6.Home: ClientTarget<prefix6.Home>('pages/home'),
   },
   styles: () => [
     ...prefix0.ButtonPrimaryBlack.styles,
-    ...prefix1.HeaderHomePageState.styles,
+    ...prefix1.HeaderHomePage.styles,
     ...prefix2.ListLogo.styles,
-    ...prefix3.CounterState.styles,
-    ...prefix4.Header.styles,
+    ...prefix3.Header.styles,
+    ...prefix4.LanguageManager.styles,
     ...prefix5.About.styles,
     ...prefix7.App.styles,
   ],

@@ -7,14 +7,10 @@ import 'package:my_website/components/home_page/cta_block.dart';
 import 'package:my_website/components/home_page/footer_block.dart';
 import 'package:my_website/components/home_page/group_of_card.dart';
 import 'package:my_website/components/home_page/header_home_page.dart';
-import 'package:my_website/components/home_page/item_services.dart';
 import 'package:my_website/components/home_page/list_logo.dart';
 import 'package:my_website/components/home_page/our_service.dart';
 import 'package:my_website/components/home_page/process_block.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
-
-import '../components/counter.dart';
+import 'package:my_website/language/language_manager.dart';
 
 // By using the @client annotation this component will be automatically compiled to javascript and mounted
 // on the client. Therefore:
@@ -33,52 +29,69 @@ class HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    // Run code depending on the rendering environment.
     if (kIsWeb) {
       print("Hello client");
-      // When using @client components there is no default `main()` function on the client where you would normally
-      // run any client-side initialization logic. Instead you can put it here, considering this component is only
-      // mounted once at the root of your client-side component tree.
     } else {
       print("Hello server");
     }
+    // No need to add listener here since ValueListenableBuilder will handle it
+  }
+
+  @override
+  void dispose() {
+    // No need to remove listener here since ValueListenableBuilder manages it
+    super.dispose();
   }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-        // classes: ,
-        [
-          HeaderHomePage(),
-          ListLogo(),
-          TitleIconHome(
-              title: "Service gg",
+    yield ValueListenableBuilder<String>(
+      listenable: LanguageManager.selectedLanguage,
+      builder: (context, lang) sync* {
+        yield div(
+          [
+            HeaderHomePage(),
+            ListLogo(),
+            TitleIconHome(
+              title:
+                  LanguageManager.getTranslation('home_page', 'service_title'),
+              content: LanguageManager.getTranslation(
+                  'home_page', 'service_content'),
+            ),
+            OurService(),
+            CtaBlock(),
+            TitleIconHome(
+              title: LanguageManager.getTranslation(
+                  'home_page', 'case_studies_title'),
+              content: LanguageManager.getTranslation(
+                  'home_page', 'case_studies_content'),
+            ),
+            CaseStudiesBlock(),
+            TitleIconHome(
+              title:
+                  LanguageManager.getTranslation('home_page', 'process_title'),
+              content: LanguageManager.getTranslation(
+                  'home_page', 'process_content'),
+            ),
+            ProcessBlock(),
+            TitleIconHome(
+              title: LanguageManager.getTranslation('home_page', 'team_title'),
               content:
-                  "Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies "),
-          OurService(),
-          CtaBlock(),
-          TitleIconHome(
-              title: 'Case Studies',
-              content:
-                  'Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies'),
-          CaseStudiesBlock(),
-          TitleIconHome(
-              title: 'Our Working Process ',
-              content: 'Step-by-Step Guide to Achieving Your Business Goals'),
-          ProcessBlock(),
-          TitleIconHome(
-              title: 'Team',
-              content: 'Meet the skilled and experienced team behind our successful digital marketing strategies'),
-          GroupOfCard(),
-          TitleIconHome(
-              title: 'Contact Us',
-              content: '''Connect with Us: Let's Discuss Your Digital Marketing Needs'''),
-          ContactUsBlock(),
-          SizeBoxComponent(height: 140),
-          FooterBlock(),
-
-
-
-        ]);
+                  LanguageManager.getTranslation('home_page', 'team_content'),
+            ),
+            GroupOfCard(),
+            TitleIconHome(
+              title: LanguageManager.getTranslation(
+                  'home_page', 'contact_us_title'),
+              content: LanguageManager.getTranslation(
+                  'home_page', 'contact_us_content'),
+            ),
+            ContactUsBlock(),
+            SizeBoxComponent(height: 140),
+            FooterBlock(),
+          ],
+        );
+      },
+    );
   }
 }
