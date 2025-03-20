@@ -1,10 +1,10 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/common/button_primary_black.dart';
+import 'package:my_website/components/common/menu_button.dart';
 import 'package:my_website/components/common/size_box_component.dart';
+import 'package:my_website/components/header.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/constants/theme.dart';
-import 'package:my_website/constants/theme_toogle.dart';
 
 class HeaderHomePage extends StatefulComponent {
   const HeaderHomePage({super.key});
@@ -33,10 +33,12 @@ class HeaderHomePageState extends State<HeaderHomePage> {
                   Styles(display: Display.flex, alignItems: AlignItems.center),
               [
                 ButtonPrimaryBlack(text: 'Discover Our Solutions'),
-                ThemeToggle(),
               ])
         ]),
-        img(src: Images.imageHeader, styles: Styles(height: 515.px))
+        img(
+          id: 'primary_image',
+          src: Images.imageHeader,
+        )
       ])
     ]);
   }
@@ -54,8 +56,8 @@ class HeaderHomePageState extends State<HeaderHomePage> {
     css('.header-web-padding', [
       css('&').styles(
         display: Display.flex,
-        width: 100.percent,
-        padding: Padding.symmetric(horizontal: 100.px, vertical: 70.px),
+        width: 100.vw,
+        padding: Padding.symmetric(horizontal: 5.percent, vertical: 70.px),
         flexDirection: FlexDirection.row,
         justifyContent: JustifyContent.spaceBetween,
         alignItems: AlignItems.start,
@@ -83,5 +85,47 @@ class HeaderHomePageState extends State<HeaderHomePage> {
           fontSize: 20.px,
           fontWeight: FontWeight.w400)
     ]),
+    css('#primary_image').styles(
+      // height: 515.px,
+      width: 550.px,
+    ),
+    css.media(MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
+      css('.header-web-padding').styles(
+        flexDirection: FlexDirection.column,
+        justifyContent: JustifyContent.center,
+        alignItems: AlignItems.center,
+      ),
+      css('.text-header-web', [
+        css('&').styles(
+            display: Display.flex,
+            width: 100.percent,
+            flexDirection: FlexDirection.column,
+            justifyContent: JustifyContent.center,
+            alignItems: AlignItems.center)
+      ]),
+      css('.w500-60-custom', [
+        css('&').styles(
+            color: AppColors.textBlack,
+            textAlign: TextAlign.center,
+            fontFamily: FontFamily.list(
+                [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+            fontSize: 60.px,
+            fontWeight: FontWeight.w500)
+      ]),
+      css('.w400-20-custom', [
+        css('&').styles(
+            color: AppColors.textBlack,
+            textAlign: TextAlign.center,
+            fontFamily: FontFamily.list(
+                [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+            fontSize: 20.px,
+            fontWeight: FontWeight.w400)
+      ]),
+      css('#primary_image').styles(
+          width: 350.px,
+          margin: Spacing.only(
+            top: 30.px,
+          )),
+    ])
   ];
 }

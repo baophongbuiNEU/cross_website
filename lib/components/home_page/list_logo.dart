@@ -24,20 +24,23 @@ class ListLogo extends StatelessComponent {
     css('.list-logo-container').styles(
         display: Display.flex,
         width: 100.vw,
-        height: 48.px,
+        // height: 48.px,
         padding: Padding.symmetric(vertical: 20.px),
-        backgroundColor: AppColors.listLogoBackground,
-        overflow: Overflow.hidden),
+        flexDirection: FlexDirection.row,
+        flexWrap: FlexWrap.wrap,
+        gap: Gap.all(0.4.rem),
+        backgroundColor: AppColors.listLogoBackground),
     css('.list-logo-content').styles(
         display: Display.flex,
         width: 100.percent,
-        height: 48.px,
+        // height: 48.px,
         padding: Padding.symmetric(horizontal: 100.px),
         flexDirection: FlexDirection.row,
+        flexWrap: FlexWrap.wrap,
         justifyContent: JustifyContent.spaceBetween),
     css('.list-logo-content img').styles(
       maxWidth: 100.px,
       maxHeight: 100.percent,
-    )
+    ),
   ];
 }

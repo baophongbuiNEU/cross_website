@@ -10,6 +10,8 @@ class AppColors {
   static const Color hoverOverlayColor = Color.variable('--hoverOverlayColor');
   static const Color listLogoBackground =
       Color.variable('--listLogoBackground');
+  static const Color backgroundFaded = Color.variable('--backgroundFaded');
+  static const Color backgroundTheme = Color.variable('--backgroundTheme');
 }
 
 final lightTheme = {
@@ -21,6 +23,8 @@ final lightTheme = {
   AppColors.textBlack: Color.hex('#222'),
   AppColors.hoverOverlayColor: Color.hex('#0001'),
   AppColors.listLogoBackground: Colors.transparent,
+  AppColors.backgroundFaded: Color.hex('#FFF9'),
+  AppColors.backgroundTheme: Colors.white,
 };
 
 final darkTheme = {
@@ -32,6 +36,8 @@ final darkTheme = {
   AppColors.textBlack: Color.hex('#F5F5F5'),
   AppColors.hoverOverlayColor: Color.hex('#FFF1'),
   AppColors.listLogoBackground: Color.hex('#FFFFFF'),
+  AppColors.backgroundFaded: Color.hex('#0d111799'),
+  AppColors.backgroundTheme: Colors.black,
 };
 
 const maxContentWidth = Unit.rem(70);
