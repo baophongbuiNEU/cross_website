@@ -90,7 +90,8 @@ class ItemServices extends StatelessComponent {
                           styles: Styles(
                               color: contentColor ?? AppColors.primaryColor,
                               fontSize: 20.px,
-                              fontWeight: FontWeight.w400),
+                              fontWeight: FontWeight.w400,
+                              textAlign: TextAlign.start),
                           [Text(content ?? "")])
                     ])
               ]),

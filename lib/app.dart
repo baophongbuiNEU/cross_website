@@ -37,8 +37,11 @@ class AppState extends State<App> {
     css('.main', [
       css('&').styles(
         display: Display.flex,
-        width: 100.vw,
+        width: 100.percent,
+        maxWidth: 100.vw,
+        boxSizing: BoxSizing.borderBox,
         // height: 100.vh,
+        overflow: Overflow.hidden,
         flexDirection: FlexDirection.column,
         flexWrap: FlexWrap.wrap,
         justifyContent: JustifyContent.center,

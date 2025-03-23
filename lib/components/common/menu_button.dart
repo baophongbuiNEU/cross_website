@@ -18,7 +18,7 @@ class MenuButton extends StatelessComponent {
         onClick: onClick,
         [
           img(
-              src: child != null ? Images.amazonIcon : Images.drawerIcon,
+              src: child != null ? Images.closeIcon : Images.drawerIcon,
               styles: Styles(width: 40.px, height: 40.px))
         ]);
     if (child != null) {
@@ -57,7 +57,7 @@ class MenuButton extends StatelessComponent {
         zIndex: ZIndex(100),
         padding: Padding.only(top: 7.rem),
         flexDirection: FlexDirection.columnReverse,
-        justifyContent: JustifyContent.start,
+        justifyContent: JustifyContent.center,
         alignItems: AlignItems.center,
         gap: Gap(row: 4.rem),
         backgroundColor: AppColors.backgroundFaded,

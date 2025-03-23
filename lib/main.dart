@@ -13,12 +13,13 @@ void main() {
           "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
       css.import('https://fonts.googleapis.com/css?family=Roboto'),
       css('html, body').styles(
-        width: 100.vw,
+        width: 100.percent,
         minHeight: 100.vh,
+        maxWidth: 100.vw,
         padding: Padding.zero,
         margin: Margin.zero,
-        fontFamily: const FontFamily.list(
-            [FontFamily('Space Grotesk'), FontFamilies.sansSerif]),
+        boxSizing: BoxSizing.borderBox,
+        fontFamily: const FontFamily.list([FontFamily('Space Grotesk'), FontFamilies.sansSerif]),
       ),
       css('h1').styles(
         margin: Margin.unset,

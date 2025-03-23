@@ -42,5 +42,10 @@ class ListLogo extends StatelessComponent {
       maxWidth: 100.px,
       maxHeight: 100.percent,
     ),
+    css.media(MediaQuery.screen(maxWidth: 600.px), [
+      css('.list-logo-content').styles(
+        padding: Padding.symmetric(horizontal: 10.px),
+      ),
+    ]),
   ];
 }

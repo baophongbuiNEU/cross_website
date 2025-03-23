@@ -66,7 +66,7 @@ class HeaderState extends State<Header> {
         div(classes: "language-header", [
           Link(to: '/about', child: text("English")),
         ]),
-        div(styles: Styles(margin: Spacing.only(left: 5.px, right: 2.rem)), [
+        div(classes: "theme_toggle", [
           ThemeToggle(),
         ]),
       ]),
@@ -168,6 +168,9 @@ class HeaderState extends State<Header> {
         css('&').styles(display: Display.flex, alignItems: AlignItems.center),
       ]),
     ]),
+    css('.theme_toggle').styles(
+      margin: Spacing.only(left: 5.px, right: 2.rem),
+    ),
     css.media(MediaQuery.screen(maxWidth: mobileBreakpoint.px), [
       css('header', [
         css('&').styles(
@@ -178,6 +181,9 @@ class HeaderState extends State<Header> {
         css('& > .nav-menu').styles(display: Display.none),
         css('& > nav').styles(display: Display.none),
       ]),
+      css('.theme_toggle').styles(
+        margin: Spacing.only(left: 0.px, right: 0.rem),
+      ),
     ]),
   ];
 }

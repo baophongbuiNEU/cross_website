@@ -50,13 +50,14 @@ class HeaderHomePageState extends State<HeaderHomePage> {
     css('.header-web', [
       css('&').styles(
         display: Display.flex,
-        width: 100.vw,
+        width: 100.percent,
+        maxWidth: 100.vw,
       ),
     ]),
     css('.header-web-padding', [
       css('&').styles(
         display: Display.flex,
-        width: 100.vw,
+        width: 100.percent,
         padding: Padding.symmetric(horizontal: 5.percent, vertical: 70.px),
         flexDirection: FlexDirection.row,
         justifyContent: JustifyContent.spaceBetween,
@@ -91,6 +92,9 @@ class HeaderHomePageState extends State<HeaderHomePage> {
     ),
     css.media(MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
       css('.header-web-padding').styles(
+        padding: Padding.symmetric(
+          horizontal: 0.percent,
+        ),
         flexDirection: FlexDirection.column,
         justifyContent: JustifyContent.center,
         alignItems: AlignItems.center,

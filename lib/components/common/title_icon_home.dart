@@ -13,21 +13,7 @@ class TitleIconHome extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'section_overall', [
       div(classes: 'section_title', [
-        h1(
-            styles: Styles(
-              padding: Padding.symmetric(horizontal: 10.px),
-              radius: BorderRadius.circular(8.px),
-              color: AppColors.primaryColor,
-              fontFamily: FontFamily.list(
-                  [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-              fontSize: 40.px,
-              fontWeight: FontWeight.w500,
-              whiteSpace:
-                  WhiteSpace.noWrap, // 👈 Thêm padding để title thoáng hơn
-              backgroundColor:
-                  AppColors.greenPrimary, // 👈 Giữ nguyên title trên 1 dòng
-            ),
-            [text(title)]),
+        h1(classes: 'title_section', [text(title)]),
         SizeBoxComponent(width: 40),
         div(classes: 'section_content', [text(content ?? "")])
       ])
@@ -62,6 +48,18 @@ class TitleIconHome extends StatelessComponent {
         fontWeight: FontWeight.w400,
       )
     ]),
+    css('.title_section').styles(
+      padding: Padding.symmetric(horizontal: 10.px),
+      radius: BorderRadius.circular(8.px),
+      color: AppColors.primaryColor,
+      fontFamily: FontFamily.list(
+          [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+      fontSize: 40.px,
+      whiteSpace: WhiteSpace.noWrap,
+      fontWeight: FontWeight.w500,
+      backgroundColor:
+          AppColors.greenPrimary, // 👈 Giữ nguyên title trên 1 dòng
+    ),
     css.media(MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
       css('.section_overall', [
         css('&').styles(
@@ -72,12 +70,17 @@ class TitleIconHome extends StatelessComponent {
         display: Display.flex,
         flexDirection: FlexDirection.column,
         justifyContent: JustifyContent.center,
+        padding: Padding.symmetric(vertical: 80.px, horizontal: 5.percent),
         alignItems: AlignItems.center,
       ),
       css('.section_content').styles(
         margin: Margin.only(top: 20.px),
         textAlign: TextAlign.center,
-      )
+      ),
+      css('.title_section').styles(
+        whiteSpace: WhiteSpace.unset,
+        textAlign: TextAlign.center,
+      ),
     ]),
   ];
 }
