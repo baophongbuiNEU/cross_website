@@ -4,7 +4,6 @@ import 'package:my_website/components/home_page/member_card.dart';
 import 'package:my_website/constants/image_constant.dart';
 
 import '../common/button_primary_black.dart';
-import '../common/size_box_component.dart';
 
 class GroupOfCard extends StatelessComponent {
   const GroupOfCard({

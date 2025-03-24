@@ -76,11 +76,13 @@ class HeaderState extends State<Header> {
       img(
         src: Images.imagePrimary,
         styles: Styles(
-          width: Unit.pixels(36),
-          height: Unit.pixels(36),
-          margin: Margin.only(left: 5.percent),
-          color: AppColors.textBlack,
-        ),
+            width: Unit.pixels(36),
+            height: Unit.pixels(36),
+            padding: Padding.all(.7.rem),
+            margin: Margin.only(left: 5.percent),
+            radius: BorderRadius.circular(8.px),
+            color: AppColors.textBlack,
+            backgroundColor: AppColors.listLogoBackground),
       ),
       if (!menuOpen) content,
       MenuButton(

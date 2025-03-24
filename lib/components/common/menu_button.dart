@@ -2,7 +2,6 @@ import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/header.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
-import 'icon.dart';
 
 class MenuButton extends StatelessComponent {
   const MenuButton({required this.onClick, required this.child, super.key});
@@ -41,10 +40,10 @@ class MenuButton extends StatelessComponent {
       alignItems: AlignItems.center,
       color: AppColors.textBlack,
       fontSize: 1.5.rem,
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.listLogoBackground,
     ),
     css('.menu-toggle:hover').styles(
-      backgroundColor: AppColors.hoverOverlayColor,
+      backgroundColor: AppColors.hoverOverlayMenuButton,
     ),
     css('.menu-overlay', [
       css('&').styles(

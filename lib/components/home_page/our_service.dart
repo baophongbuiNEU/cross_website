@@ -1,6 +1,5 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/common/custom_grid.dart';
-import 'package:my_website/components/common/size_box_component.dart';
 import 'package:my_website/components/home_page/item_services.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
