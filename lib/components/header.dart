@@ -1,14 +1,19 @@
+import 'dart:async' show scheduleMicrotask;
+import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
-import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/language/language_manager.dart';
 
 class Header extends StatelessComponent {
   const Header({super.key});
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    var activePath = context.url;
+    final currentUrl = context.url;
+    final currentHash = Uri.parse(currentUrl).fragment;
+    if (currentHash.isNotEmpty && kIsWeb) {
+      scheduleMicrotask(() {});
+    }
 
     yield header([
       div(classes: 'header-container', [
@@ -24,27 +29,34 @@ class Header extends StatelessComponent {
                 yield* [
                   for (var route in [
                     (
-                      label: LanguageManager.getTranslation('header', 'about'),
-                      path: '/'
+                      label: LanguageManager.translate('header_about'),
+                      path: '/about'
                     ),
                     (
-                      label:
-                          LanguageManager.getTranslation('header', 'services'),
-                      path: '/'
+                      label: LanguageManager.translate('header_services'),
+                      path: '/#services'
                     ),
                     (
-                      label:
-                          LanguageManager.getTranslation('header', 'contact'),
-                      path: '/'
+                      label: LanguageManager.translate('header_contact'),
+                      path: '/#contact'
                     ),
                     (
-                      label:
-                          LanguageManager.getTranslation('header', 'careers'),
-                      path: '/'
+                      label: LanguageManager.translate('header_careers'),
+                      path: '/#careers'
                     ),
                   ])
                     div([
-                      Link(to: route.path, child: text(route.label)),
+                      if (route.path == '/about')
+                        Link(
+                          to: route.path,
+                          children: [text(route.label)],
+                        )
+                      else
+                        a(href: route.path, events: {
+                          'click': (event) {},
+                        }, [
+                          text(route.label)
+                        ]),
                     ]),
                   LanguageManager.languageDropdown(),
                 ];

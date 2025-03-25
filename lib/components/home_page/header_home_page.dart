@@ -1,8 +1,8 @@
+import 'package:cross_website/components/common/button_primary_black.dart';
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/button_primary_black.dart';
-import 'package:my_website/components/common/size_box_component.dart';
-import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/language/language_manager.dart';
 
 class HeaderHomePage extends StatelessComponent {
   const HeaderHomePage({super.key});
@@ -16,18 +16,17 @@ class HeaderHomePage extends StatelessComponent {
           div(classes: 'header-web-padding', [
             div(classes: 'text-header-web', [
               div(classes: 'w500-60-custom', [
-                text(LanguageManager.getTranslation('headerHomePage', 'title')),
+                text(LanguageManager.translate('header_home_page_title')),
               ]),
               SizeBoxComponent(height: 35),
               div(classes: 'w400-20-custom', [
                 text(
-                  LanguageManager.getTranslation('headerHomePage', 'subtitle'),
+                  LanguageManager.translate('header_home_page_subtitle'),
                 ),
               ]),
               SizeBoxComponent(height: 35),
               ButtonPrimaryBlack(
-                text:
-                    LanguageManager.getTranslation('headerHomePage', 'button'),
+                text: LanguageManager.translate('header_home_page_button'),
               ),
             ]),
             img(src: Images.imageHeader, styles: Styles(height: 515.px)),

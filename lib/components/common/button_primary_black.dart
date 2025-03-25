@@ -1,5 +1,5 @@
+import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/constants/app_colors.dart';
 
 class ButtonPrimaryBlack extends StatelessComponent {
   final String text;

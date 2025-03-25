@@ -1,8 +1,8 @@
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/language/language_manager.dart';
-import '../common/size_box_component.dart';
 
 class FooterBlock extends StatelessComponent {
   const FooterBlock({super.key});
@@ -62,8 +62,7 @@ class FooterBlock extends StatelessComponent {
                 fontWeight: FontWeight.w500,
               ),
               [
-                text(LanguageManager.getTranslation(
-                    'footer_block', 'company_name')),
+                text(LanguageManager.translate('footer_company_name')),
               ],
             ),
           ],
@@ -78,13 +77,13 @@ class FooterBlock extends StatelessComponent {
             textDecoration: TextDecoration(line: TextDecorationLine.underline),
           ),
           [
-            text(LanguageManager.getTranslation('footer_block', 'about_us')),
+            text(LanguageManager.translate('footer_about_us')),
             SizeBoxComponent(width: 40),
-            text(LanguageManager.getTranslation('footer_block', 'services')),
+            text(LanguageManager.translate('footer_services')),
             SizeBoxComponent(width: 40),
-            text(LanguageManager.getTranslation('footer_block', 'user_case')),
+            text(LanguageManager.translate('footer_user_case')),
             SizeBoxComponent(width: 40),
-            text(LanguageManager.getTranslation('footer_block', 'pricing')),
+            text(LanguageManager.translate('footer_pricing')),
           ],
         ),
         div(
@@ -157,7 +156,7 @@ class FooterBlock extends StatelessComponent {
             backgroundColor: Colors.yellow,
           ),
           [
-            text(LanguageManager.getTranslation('footer_block', 'contact_us')),
+            text(LanguageManager.translate('footer_contact_us')),
           ],
         ),
         div([
@@ -168,8 +167,7 @@ class FooterBlock extends StatelessComponent {
               textDecoration: TextDecoration(line: TextDecorationLine.none),
             ),
             [
-              text(LanguageManager.getTranslation(
-                  'footer_block', 'email_label')),
+              text(LanguageManager.translate('footer_email_label')),
             ],
           ),
         ]),
@@ -181,8 +179,7 @@ class FooterBlock extends StatelessComponent {
               textDecoration: TextDecoration(line: TextDecorationLine.none),
             ),
             [
-              text(LanguageManager.getTranslation(
-                  'footer_block', 'phone_label')),
+              text(LanguageManager.translate('footer_phone_label')),
             ],
           ),
         ]),
@@ -195,8 +192,7 @@ class FooterBlock extends StatelessComponent {
               textDecoration: TextDecoration(line: TextDecorationLine.none),
             ),
             [
-              text(LanguageManager.getTranslation(
-                  'footer_block', 'address_label')),
+              text(LanguageManager.translate('footer_address_label')),
             ],
           ),
         ]),
@@ -254,8 +250,7 @@ class FooterBlock extends StatelessComponent {
             backgroundColor: AppColors.greenPrimary,
           ),
           [
-            text(LanguageManager.getTranslation(
-                'footer_block', 'subscribe_to_news')),
+            text(LanguageManager.translate('footer_subscribe_to_news')),
           ],
         ),
       ],
@@ -272,15 +267,14 @@ class FooterBlock extends StatelessComponent {
         color: AppColors.white,
       ),
       [
-        text(LanguageManager.getTranslation('footer_block', 'copyright')),
+        text(LanguageManager.translate('footer_copyright')),
         SizeBoxComponent(width: 40),
         div(
           styles: Styles(
             textDecoration: TextDecoration(line: TextDecorationLine.underline),
           ),
           [
-            text(LanguageManager.getTranslation(
-                'footer_block', 'privacy_policy')),
+            text(LanguageManager.translate('footer_privacy_policy')),
           ],
         ),
       ],

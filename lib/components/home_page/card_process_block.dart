@@ -1,6 +1,6 @@
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/size_box_component.dart';
-import 'package:my_website/constants/app_colors.dart';
 
 class CardProcessBlock extends StatefulComponent {
   final String index;

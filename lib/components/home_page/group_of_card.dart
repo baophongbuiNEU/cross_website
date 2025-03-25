@@ -1,9 +1,9 @@
+import 'package:cross_website/components/common/button_primary_black.dart';
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/components/home_page/member_card.dart';
+import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/home_page/member_card.dart';
-import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/language/language_manager.dart';
-import '../common/button_primary_black.dart';
-import '../common/size_box_component.dart';
 
 class GroupOfCard extends StatelessComponent {
   const GroupOfCard({super.key});
@@ -11,52 +11,40 @@ class GroupOfCard extends StatelessComponent {
   List<MemberCard> getListMemberCard() {
     return [
       MemberCard(
-        name: LanguageManager.getTranslation('group_of_card', 'member1_name'),
-        position:
-            LanguageManager.getTranslation('group_of_card', 'member1_position'),
+        name: LanguageManager.translate('team_member1_name'),
+        position: LanguageManager.translate('team_member1_position'),
         imagePath: Images.memberTeam,
-        content:
-            LanguageManager.getTranslation('group_of_card', 'member1_content'),
+        content: LanguageManager.translate('team_member1_content'),
       ),
       MemberCard(
-        name: LanguageManager.getTranslation('group_of_card', 'member2_name'),
-        position:
-            LanguageManager.getTranslation('group_of_card', 'member2_position'),
+        name: LanguageManager.translate('team_member2_name'),
+        position: LanguageManager.translate('team_member2_position'),
         imagePath: Images.memberTeam,
-        content:
-            LanguageManager.getTranslation('group_of_card', 'member2_content'),
+        content: LanguageManager.translate('team_member2_content'),
       ),
       MemberCard(
-        name: LanguageManager.getTranslation('group_of_card', 'member3_name'),
-        position:
-            LanguageManager.getTranslation('group_of_card', 'member3_position'),
+        name: LanguageManager.translate('team_member3_name'),
+        position: LanguageManager.translate('team_member3_position'),
         imagePath: Images.memberTeam,
-        content:
-            LanguageManager.getTranslation('group_of_card', 'member3_content'),
+        content: LanguageManager.translate('team_member3_content'),
       ),
       MemberCard(
-        name: LanguageManager.getTranslation('group_of_card', 'member4_name'),
-        position:
-            LanguageManager.getTranslation('group_of_card', 'member4_position'),
+        name: LanguageManager.translate('team_member4_name'),
+        position: LanguageManager.translate('team_member4_position'),
         imagePath: Images.memberTeam,
-        content:
-            LanguageManager.getTranslation('group_of_card', 'member4_content'),
+        content: LanguageManager.translate('team_member4_content'),
       ),
       MemberCard(
-        name: LanguageManager.getTranslation('group_of_card', 'member5_name'),
-        position:
-            LanguageManager.getTranslation('group_of_card', 'member5_position'),
+        name: LanguageManager.translate('team_member5_name'),
+        position: LanguageManager.translate('team_member5_position'),
         imagePath: Images.memberTeam,
-        content:
-            LanguageManager.getTranslation('group_of_card', 'member5_content'),
+        content: LanguageManager.translate('team_member5_content'),
       ),
       MemberCard(
-        name: LanguageManager.getTranslation('group_of_card', 'member6_name'),
-        position:
-            LanguageManager.getTranslation('group_of_card', 'member6_position'),
+        name: LanguageManager.translate('team_member6_name'),
+        position: LanguageManager.translate('team_member6_position'),
         imagePath: Images.memberTeam,
-        content:
-            LanguageManager.getTranslation('group_of_card', 'member6_content'),
+        content: LanguageManager.translate('team_member6_content'),
       ),
     ];
   }
@@ -114,7 +102,7 @@ class GroupOfCard extends StatelessComponent {
       ),
       [
         ButtonPrimaryBlack(
-          text: LanguageManager.getTranslation('group_of_card', 'see_all_team'),
+          text: LanguageManager.translate('team_see_all_team'),
         ),
       ],
     );

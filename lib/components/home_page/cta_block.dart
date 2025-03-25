@@ -1,8 +1,8 @@
+import 'package:cross_website/components/common/button_primary_black.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/button_primary_black.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/language/language_manager.dart';
 
 class CtaBlock extends StatelessComponent {
   const CtaBlock({super.key});
@@ -44,8 +44,7 @@ class CtaBlock extends StatelessComponent {
                         fontWeight: FontWeight.w500,
                       ),
                       [
-                        text(LanguageManager.getTranslation(
-                            'cta_block', 'title')),
+                        text(LanguageManager.translate('cta_title')),
                       ],
                     ),
                     div(
@@ -55,13 +54,11 @@ class CtaBlock extends StatelessComponent {
                         fontWeight: FontWeight.w400,
                       ),
                       [
-                        text(LanguageManager.getTranslation(
-                            'cta_block', 'description')),
+                        text(LanguageManager.translate('cta_description')),
                       ],
                     ),
                     ButtonPrimaryBlack(
-                      text: LanguageManager.getTranslation(
-                          'cta_block', 'button_text'),
+                      text: LanguageManager.translate('cta_button_text'),
                     ),
                   ],
                 ),

@@ -1,8 +1,8 @@
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/size_box_component.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/language/language_manager.dart';
 
 class CaseStudiesBlock extends StatelessComponent {
   const CaseStudiesBlock({super.key});
@@ -28,18 +28,18 @@ class CaseStudiesBlock extends StatelessComponent {
               ),
               [
                 _item(
-                  content: LanguageManager.getTranslation(
-                      'case_studies_block', 'case1_content'),
+                  content:
+                      LanguageManager.translate('case_studies_case1_content'),
                 ),
                 _line(),
                 _item(
-                  content: LanguageManager.getTranslation(
-                      'case_studies_block', 'case2_content'),
+                  content:
+                      LanguageManager.translate('case_studies_case2_content'),
                 ),
                 _line(),
                 _item(
-                  content: LanguageManager.getTranslation(
-                      'case_studies_block', 'case3_content'),
+                  content:
+                      LanguageManager.translate('case_studies_case3_content'),
                 ),
               ],
             ),
@@ -77,10 +77,7 @@ class CaseStudiesBlock extends StatelessComponent {
                 fontSize: 20.px,
                 fontWeight: FontWeight.w400,
               ),
-              [
-                Text(LanguageManager.getTranslation(
-                    'case_studies_block', 'learn_more'))
-              ],
+              [Text(LanguageManager.translate('case_studies_learn_more'))],
             ),
             SizeBoxComponent(width: 15),
             img(src: Images.learnMoreGreenIcon, width: 18, height: 18),

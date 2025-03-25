@@ -1,22 +1,17 @@
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/components/common/title_icon_home.dart';
+import 'package:cross_website/components/home_page/case_studies_block.dart';
+import 'package:cross_website/components/home_page/contact_us_block.dart';
+import 'package:cross_website/components/home_page/cta_block.dart';
+import 'package:cross_website/components/home_page/footer_block.dart';
+import 'package:cross_website/components/home_page/group_of_card.dart';
+import 'package:cross_website/components/home_page/header_home_page.dart';
+import 'package:cross_website/components/home_page/list_logo.dart';
+import 'package:cross_website/components/home_page/our_service.dart';
+import 'package:cross_website/components/home_page/process_block.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/size_box_component.dart';
-import 'package:my_website/components/common/title_icon_home.dart';
-import 'package:my_website/components/home_page/case_studies_block.dart';
-import 'package:my_website/components/home_page/contact_us_block.dart';
-import 'package:my_website/components/home_page/cta_block.dart';
-import 'package:my_website/components/home_page/footer_block.dart';
-import 'package:my_website/components/home_page/group_of_card.dart';
-import 'package:my_website/components/home_page/header_home_page.dart';
-import 'package:my_website/components/home_page/list_logo.dart';
-import 'package:my_website/components/home_page/our_service.dart';
-import 'package:my_website/components/home_page/process_block.dart';
-import 'package:my_website/language/language_manager.dart';
 
-// By using the @client annotation this component will be automatically compiled to javascript and mounted
-// on the client. Therefore:
-// - this file and any imported file must be compilable for both server and client environments.
-// - this component and any child components will be built once on the server during pre-rendering and then
-//   again on the client during normal rendering.
 @client
 class Home extends StatefulComponent {
   const Home({super.key});
@@ -34,12 +29,10 @@ class HomeState extends State<Home> {
     } else {
       print("Hello server");
     }
-    // No need to add listener here since ValueListenableBuilder will handle it
   }
 
   @override
   void dispose() {
-    // No need to remove listener here since ValueListenableBuilder manages it
     super.dispose();
   }
 
@@ -48,49 +41,48 @@ class HomeState extends State<Home> {
     yield ValueListenableBuilder<String>(
       listenable: LanguageManager.selectedLanguage,
       builder: (context, lang) sync* {
-        yield div(
-          [
-            HeaderHomePage(),
-            ListLogo(),
+        yield div([
+          HeaderHomePage(),
+          ListLogo(),
+          div(id: 'services', [
             TitleIconHome(
-              title:
-                  LanguageManager.getTranslation('home_page', 'service_title'),
-              content: LanguageManager.getTranslation(
-                  'home_page', 'service_content'),
+              title: LanguageManager.translate('home_service_title'),
+              content: LanguageManager.translate('home_service_content'),
             ),
             OurService(),
-            CtaBlock(),
+          ]),
+          CtaBlock(),
+          div(id: 'case-studies', [
             TitleIconHome(
-              title: LanguageManager.getTranslation(
-                  'home_page', 'case_studies_title'),
-              content: LanguageManager.getTranslation(
-                  'home_page', 'case_studies_content'),
+              title: LanguageManager.translate('home_case_studies_title'),
+              content: LanguageManager.translate('home_case_studies_content'),
             ),
             CaseStudiesBlock(),
+          ]),
+          div(id: 'process', [
             TitleIconHome(
-              title:
-                  LanguageManager.getTranslation('home_page', 'process_title'),
-              content: LanguageManager.getTranslation(
-                  'home_page', 'process_content'),
+              title: LanguageManager.translate('home_process_title'),
+              content: LanguageManager.translate('home_process_content'),
             ),
             ProcessBlock(),
+          ]),
+          div(id: 'careers', [
             TitleIconHome(
-              title: LanguageManager.getTranslation('home_page', 'team_title'),
-              content:
-                  LanguageManager.getTranslation('home_page', 'team_content'),
+              title: LanguageManager.translate('home_team_title'),
+              content: LanguageManager.translate('home_team_content'),
             ),
             GroupOfCard(),
+          ]),
+          div(id: 'contact', [
             TitleIconHome(
-              title: LanguageManager.getTranslation(
-                  'home_page', 'contact_us_title'),
-              content: LanguageManager.getTranslation(
-                  'home_page', 'contact_us_content'),
+              title: LanguageManager.translate('home_contact_us_title'),
+              content: LanguageManager.translate('home_contact_us_content'),
             ),
             ContactUsBlock(),
-            SizeBoxComponent(height: 140),
-            FooterBlock(),
-          ],
-        );
+          ]),
+          SizeBoxComponent(height: 140),
+          FooterBlock(),
+        ]);
       },
     );
   }

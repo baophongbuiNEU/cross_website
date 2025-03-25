@@ -1,8 +1,8 @@
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/size_box_component.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/language/language_manager.dart';
 
 class ContactUsBlock extends StatefulComponent {
   const ContactUsBlock({super.key});
@@ -56,7 +56,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
         justifyContent: JustifyContent.spaceBetween,
       ),
       [
-        text(LanguageManager.getTranslation('contact_us_block', 'name_label')),
+        text(LanguageManager.translate('contact_us_name_label')),
         input(
           type: InputType.text,
           value: textValue,
@@ -85,7 +85,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
         justifyContent: JustifyContent.spaceBetween,
       ),
       [
-        text(LanguageManager.getTranslation('contact_us_block', 'email_label')),
+        text(LanguageManager.translate('contact_us_email_label')),
         input(
           type: InputType.text,
           value: emailValue,
@@ -114,8 +114,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
         justifyContent: JustifyContent.spaceBetween,
       ),
       [
-        text(LanguageManager.getTranslation(
-            'contact_us_block', 'message_label')),
+        text(LanguageManager.translate('contact_us_message_label')),
         SizeBoxComponent(height: 6),
         textarea(
           onInput: (e) => setState(() => messageValue = e ?? ''),
@@ -153,14 +152,12 @@ class GenderSelectionState extends State<ContactUsBlock> {
           ),
           [
             _radioComponent(
-              value:
-                  LanguageManager.getTranslation('contact_us_block', 'say_hi'),
+              value: LanguageManager.translate('contact_us_say_hi'),
               intValue: 1,
             ),
             SizeBoxComponent(width: 35),
             _radioComponent(
-              value: LanguageManager.getTranslation(
-                  'contact_us_block', 'get_a_quote'),
+              value: LanguageManager.translate('contact_us_get_a_quote'),
               intValue: 2,
             ),
           ],

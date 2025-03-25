@@ -1,6 +1,6 @@
+import 'package:cross_website/components/home_page/card_process_block.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/home_page/card_process_block.dart';
-import 'package:my_website/language/language_manager.dart';
 
 class ProcessBlock extends StatelessComponent {
   const ProcessBlock({super.key});
@@ -8,8 +8,7 @@ class ProcessBlock extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield ValueListenableBuilder<String>(
-      listenable:
-          LanguageManager.selectedLanguage, // Lắng nghe thay đổi ngôn ngữ
+      listenable: LanguageManager.selectedLanguage,
       builder: (context, lang) sync* {
         yield div(
           styles: Styles(
@@ -21,45 +20,35 @@ class ProcessBlock extends StatelessComponent {
           [
             CardProcessBlock(
               index: "01",
-              title: LanguageManager.getTranslation(
-                  'process_block', 'consultation_title'),
-              content: LanguageManager.getTranslation(
-                  'process_block', 'consultation_content'),
+              title: LanguageManager.translate('process_consultation_title'),
+              content:
+                  LanguageManager.translate('process_consultation_content'),
             ),
             CardProcessBlock(
               index: "02",
-              title: LanguageManager.getTranslation(
-                  'process_block', 'research_title'),
-              content: LanguageManager.getTranslation(
-                  'process_block', 'research_content'),
+              title: LanguageManager.translate('process_research_title'),
+              content: LanguageManager.translate('process_research_content'),
             ),
             CardProcessBlock(
               index: "03",
-              title: LanguageManager.getTranslation(
-                  'process_block', 'implementation_title'),
-              content: LanguageManager.getTranslation(
-                  'process_block', 'implementation_content'),
+              title: LanguageManager.translate('process_implementation_title'),
+              content:
+                  LanguageManager.translate('process_implementation_content'),
             ),
             CardProcessBlock(
               index: "04",
-              title: LanguageManager.getTranslation(
-                  'process_block', 'monitoring_title'),
-              content: LanguageManager.getTranslation(
-                  'process_block', 'monitoring_content'),
+              title: LanguageManager.translate('process_monitoring_title'),
+              content: LanguageManager.translate('process_monitoring_content'),
             ),
             CardProcessBlock(
               index: "05",
-              title: LanguageManager.getTranslation(
-                  'process_block', 'reporting_title'),
-              content: LanguageManager.getTranslation(
-                  'process_block', 'reporting_content'),
+              title: LanguageManager.translate('process_reporting_title'),
+              content: LanguageManager.translate('process_reporting_content'),
             ),
             CardProcessBlock(
               index: "06",
-              title: LanguageManager.getTranslation(
-                  'process_block', 'improvement_title'),
-              content: LanguageManager.getTranslation(
-                  'process_block', 'improvement_content'),
+              title: LanguageManager.translate('process_improvement_title'),
+              content: LanguageManager.translate('process_improvement_content'),
             ),
           ],
         );
