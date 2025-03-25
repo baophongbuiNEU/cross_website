@@ -175,7 +175,6 @@ class GenderSelectionState extends State<ContactUsBlock> {
                         display: Display.flex,
                         width: 20.px,
                         height: 20.px,
-                        // padding: Padding.all(4.px),
                         border:
                             Border(color: AppColors.primaryColor, width: 1.px),
                         radius: BorderRadius.circular(20.px),
@@ -205,7 +204,6 @@ class GenderSelectionState extends State<ContactUsBlock> {
     css('.detail_text_field', [
       css('&').styles(
         width: 45.percent,
-        // height: 650.px,
         padding: Padding.only(top: 60.px, bottom: 60.px, left: 5.percent),
       ),
     ]),

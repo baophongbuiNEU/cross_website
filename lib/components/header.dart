@@ -22,37 +22,37 @@ class HeaderState extends State<Header> {
   final contentKey = GlobalKey();
   bool menuOpen = false;
 
-  StreamSubscription? sub;
+  StreamSubscription? screenSizeSub;
 
   @override
   void initState() {
     super.initState();
-
-    if (kIsWeb) {
-      captureVisit();
-      sub = web.EventStreamProviders.resizeEvent
-          .forTarget(web.window)
-          .listen((e) {
-        if (menuOpen && web.window.innerWidth > mobileBreakpoint) {
-          setState(() {
-            menuOpen = false;
-          });
-        }
-      });
-    }
+    resizedWebsite();
   }
 
   @override
   void dispose() {
-    sub?.cancel();
+    screenSizeSub?.cancel();
     super.dispose();
+  }
+
+  void resizedWebsite() {
+    if (!kIsWeb) return;
+    captureVisit();
+    screenSizeSub =
+        web.EventStreamProviders.resizeEvent.forTarget(web.window).listen((e) {
+      if (menuOpen && web.window.innerWidth > mobileBreakpoint) {
+        setState(() {
+          menuOpen = false;
+        });
+      }
+    });
   }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     var activePath = context.url;
     var content = Fragment(key: contentKey, children: [
-      // Navigation bên phải
       nav(classes: 'nav-menu', [
         for (var route in [
           (label: 'About us', path: '/'),
@@ -103,7 +103,6 @@ class HeaderState extends State<Header> {
     css('header', [
       css('&').styles(
         display: Display.flex,
-        // position: Position.absolute(left: Unit.zero, right: Unit.zero),
         zIndex: ZIndex(1),
         width: 100.vw,
         padding: Padding.only(
@@ -111,28 +110,11 @@ class HeaderState extends State<Header> {
         ),
         justifyContent: JustifyContent.spaceBetween,
         alignItems: AlignItems.center,
-        // gap: Gap(column: 2.rem),
       ),
       css('& > *').styles(
         display: Display.flex,
         alignItems: AlignItems.center,
       ),
-
-      // css('.header-container', [
-      //   css('&').styles(
-      //     width: Unit.vw(100),
-      //   ),
-      // ]),
-      // css('.head_padding').styles(
-      //   display: Display.flex,
-      //   height: 68.px,
-      //   // width: Unit.vw(100),
-      //   padding: Padding.only(top: 66.px, left: 100.px, right: 100.px),
-      //   flexDirection: FlexDirection.row,
-      //   justifyContent: JustifyContent.spaceBetween,
-      //   alignItems: AlignItems.center,
-      // ),
-      // Style cho menu
       css('.nav-menu a', [
         css('&').styles(
             margin: Margin.symmetric(horizontal: 20.px),

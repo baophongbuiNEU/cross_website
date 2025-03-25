@@ -52,13 +52,11 @@ class TitleIconHome extends StatelessComponent {
       padding: Padding.symmetric(horizontal: 10.px),
       radius: BorderRadius.circular(8.px),
       color: AppColors.primaryColor,
-      fontFamily: FontFamily.list(
-          [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+      fontFamily: FontFamily.list([FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
       fontSize: 40.px,
-      whiteSpace: WhiteSpace.noWrap,
       fontWeight: FontWeight.w500,
-      backgroundColor:
-          AppColors.greenPrimary, // 👈 Giữ nguyên title trên 1 dòng
+      whiteSpace: WhiteSpace.noWrap,
+      backgroundColor: AppColors.greenPrimary,
     ),
     css.media(MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
       css('.section_overall', [
@@ -68,9 +66,9 @@ class TitleIconHome extends StatelessComponent {
       ]),
       css('.section_title').styles(
         display: Display.flex,
+        padding: Padding.symmetric(vertical: 80.px, horizontal: 5.percent),
         flexDirection: FlexDirection.column,
         justifyContent: JustifyContent.center,
-        padding: Padding.symmetric(vertical: 80.px, horizontal: 5.percent),
         alignItems: AlignItems.center,
       ),
       css('.section_content').styles(
@@ -78,8 +76,8 @@ class TitleIconHome extends StatelessComponent {
         textAlign: TextAlign.center,
       ),
       css('.title_section').styles(
-        whiteSpace: WhiteSpace.unset,
         textAlign: TextAlign.center,
+        whiteSpace: WhiteSpace.unset,
       ),
     ]),
   ];

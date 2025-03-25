@@ -25,7 +25,6 @@ class CustomGrid extends StatelessComponent {
         css('&').styles(
           display: Display.flex,
           maxWidth: Unit.rem(100),
-          // padding: Padding.symmetric(horizontal: contentPadding),
           margin: Margin.only(
             bottom: 1.5.rem,
           ),

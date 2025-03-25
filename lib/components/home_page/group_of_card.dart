@@ -24,26 +24,9 @@ class GroupOfCard extends StatelessComponent {
                   flexDirection: FlexDirection.column),
               [
                 for (var i = 0; i < listMemberCard.length / 3; i++)
-                  // div([
-                  //   div(
-                  //       styles: Styles(
-                  //           display: Display.flex,
-                  //           flexDirection: FlexDirection.row,
-                  //           justifyContent: JustifyContent.spaceAround),
-                  //       [
-                  //         listMemberCard[i * 3],
-                  //         SizeBoxComponent(width: 20),
-                  //         listMemberCard[i * 3 + 1],
-                  //         SizeBoxComponent(width: 20),
-                  //         listMemberCard[i * 3 + 2],
-                  //       ]),
-                  //   SizeBoxComponent(height: 40)
-                  // ]),
                   CustomGrid(children: [
                     listMemberCard[i * 3],
-                    // SizeBoxComponent(width: 20),
                     listMemberCard[i * 3 + 1],
-                    // SizeBoxComponent(width: 20),
                     listMemberCard[i * 3 + 2],
                   ]),
                 _seeAll()

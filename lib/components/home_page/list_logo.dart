@@ -24,7 +24,6 @@ class ListLogo extends StatelessComponent {
     css('.list-logo-container').styles(
         display: Display.flex,
         width: 100.vw,
-        // height: 48.px,
         padding: Padding.symmetric(vertical: 20.px),
         flexDirection: FlexDirection.row,
         flexWrap: FlexWrap.wrap,
@@ -33,7 +32,6 @@ class ListLogo extends StatelessComponent {
     css('.list-logo-content').styles(
         display: Display.flex,
         width: 100.percent,
-        // height: 48.px,
         padding: Padding.symmetric(horizontal: 100.px),
         flexDirection: FlexDirection.row,
         flexWrap: FlexWrap.wrap,

@@ -20,8 +20,6 @@ class MemberCard extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
         styles: Styles(
-            // width: 250.px,
-            // height: 250.px,
             padding: Padding.symmetric(horizontal: 35.px, vertical: 40.px),
             border: Border(color: AppColors.textBlack, width: 1.px),
             radius: BorderRadius.circular(45.px),
@@ -64,7 +62,6 @@ class MemberCard extends StatelessComponent {
                       div(
                           styles: Styles(
                             width: 100.percent,
-                            // color: AppColors.primaryColor,
                             color: AppColors.textBlack,
                             textAlign: TextAlign.start,
                             fontSize: 20.px,
@@ -73,7 +70,6 @@ class MemberCard extends StatelessComponent {
                           [Text(name)]),
                       div(
                           styles: Styles(
-                              // color: AppColors.primaryColor,
                               color: AppColors.textBlack,
                               textAlign: TextAlign.start,
                               fontSize: 18.px,
@@ -96,7 +92,6 @@ class MemberCard extends StatelessComponent {
             color: AppColors.greenPrimary,
             fontSize: 20.px,
             fontWeight: FontWeight.bold,
-            // padding: Padding.all(8.px),
             backgroundColor: AppColors.primaryColor),
         [Text("in")]);
   }
@@ -106,7 +101,6 @@ class MemberCard extends StatelessComponent {
         styles: Styles(
             height: 1.px,
             margin: Margin.symmetric(vertical: 28.px),
-            // backgroundColor: AppColors.primaryColor
             backgroundColor: AppColors.textBlack),
         []);
   }
