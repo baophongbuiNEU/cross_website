@@ -1,5 +1,5 @@
 import 'package:jaspr/jaspr.dart';
-import '../constants/theme.dart';
+import 'package:my_website/constants/app_colors.dart';
 import 'embedded_counter.dart';
 
 class Counter extends StatefulComponent {
@@ -44,18 +44,20 @@ class CounterState extends State<Counter> {
       css('&').styles(
         display: Display.flex,
         padding: Padding.symmetric(vertical: 10.px),
-        border: Border.symmetric(vertical: BorderSide.solid(color: primaryColor, width: 2.px)),
+        border: Border.symmetric(
+            vertical:
+                BorderSide.solid(color: AppColors.primaryColor, width: 2.px)),
         alignItems: AlignItems.center,
       ),
       css('button', [
         css('&').styles(
           display: Display.flex,
           width: 2.em,
-          height: 2.em, 
-          border: Border.unset, 
+          height: 2.em,
+          border: Border.unset,
           radius: BorderRadius.all(Radius.circular(2.em)),
           cursor: Cursor.pointer,
-          justifyContent: JustifyContent.center, 
+          justifyContent: JustifyContent.center,
           alignItems: AlignItems.center,
           fontSize: 2.rem,
           backgroundColor: Colors.transparent,
@@ -67,8 +69,8 @@ class CounterState extends State<Counter> {
       css('span').styles(
         minWidth: 2.5.em,
         padding: Padding.symmetric(horizontal: 2.rem),
-        boxSizing: BoxSizing.borderBox, 
-        color: primaryColor, 
+        boxSizing: BoxSizing.borderBox,
+        color: AppColors.primaryColor,
         textAlign: TextAlign.center,
         fontSize: 4.rem,
       ),

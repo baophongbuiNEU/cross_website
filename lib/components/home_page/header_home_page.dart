@@ -3,17 +3,8 @@ import 'package:my_website/components/common/button_primary_black.dart';
 import 'package:my_website/components/common/size_box_component.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/constants/theme.dart';
-import 'package:my_website/constants/theme_toogle.dart';
 
-class HeaderHomePage extends StatefulComponent {
-  const HeaderHomePage({super.key});
-
-  @override
-  State<HeaderHomePage> createState() => HeaderHomePageState();
-}
-
-class HeaderHomePageState extends State<HeaderHomePage> {
+class HeaderHomePage extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'header-web', [
@@ -33,7 +24,6 @@ class HeaderHomePageState extends State<HeaderHomePage> {
                   Styles(display: Display.flex, alignItems: AlignItems.center),
               [
                 ButtonPrimaryBlack(text: 'Discover Our Solutions'),
-                ThemeToggle(),
               ])
         ]),
         img(src: Images.imageHeader, styles: Styles(height: 515.px))

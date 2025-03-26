@@ -1,7 +1,6 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/common/size_box_component.dart';
 import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/theme.dart';
 
 class MemberCard extends StatelessComponent {
   final String name;

@@ -10,14 +10,7 @@ import 'pages/home.dart';
 // By using multi-page routing, this component will only be built on the server during pre-rendering and
 // **not** executed on the client. Instead only the nested [Home] and [About] components will be mounted on the client.
 @client
-class App extends StatefulComponent {
-  const App({super.key});
-
-  @override
-  State<App> createState() => AppState();
-}
-
-class AppState extends State<App> {
+class App extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     // This method is rerun every time the component is rebuilt.
