@@ -7,14 +7,7 @@ import 'pages/about.dart';
 import 'pages/home.dart';
 
 @client
-class App extends StatefulComponent {
-  const App({super.key});
-
-  @override
-  State<App> createState() => AppState();
-}
-
-class AppState extends State<App> {
+class App extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'main', [
