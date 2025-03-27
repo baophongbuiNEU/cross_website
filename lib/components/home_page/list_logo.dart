@@ -1,5 +1,6 @@
-import 'package:cross_website/constants/image_constant.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
 
 class ListLogo extends StatelessComponent {
   const ListLogo({super.key});
@@ -23,18 +24,26 @@ class ListLogo extends StatelessComponent {
     css('.list-logo-container').styles(
         display: Display.flex,
         width: 100.vw,
-        height: 48.px,
-        overflow: Overflow.hidden),
+        padding: Padding.symmetric(vertical: 20.px),
+        flexDirection: FlexDirection.row,
+        flexWrap: FlexWrap.wrap,
+        gap: Gap.all(0.4.rem),
+        backgroundColor: AppColors.listLogoBackground),
     css('.list-logo-content').styles(
         display: Display.flex,
         width: 100.percent,
-        height: 48.px,
         padding: Padding.symmetric(horizontal: 100.px),
         flexDirection: FlexDirection.row,
+        flexWrap: FlexWrap.wrap,
         justifyContent: JustifyContent.spaceBetween),
     css('.list-logo-content img').styles(
       maxWidth: 100.px,
       maxHeight: 100.percent,
-    )
+    ),
+    css.media(MediaQuery.screen(maxWidth: 600.px), [
+      css('.list-logo-content').styles(
+        padding: Padding.symmetric(horizontal: 10.px),
+      ),
+    ]),
   ];
 }

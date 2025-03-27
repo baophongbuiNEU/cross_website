@@ -26,11 +26,13 @@ class ButtonPrimaryBlack extends StatelessComponent {
       css('&').styles(
         padding: Padding.symmetric(horizontal: 20.px, vertical: 20.px),
         radius: BorderRadius.circular(14.px),
-        color: AppColors.white,
+        alignItems: AlignItems.center,
+        color: AppColors.backgroundWhite,
+        textAlign: TextAlign.center,
         fontFamily: FontFamily.list(
             [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-        fontSize: 18.px,
-        backgroundColor: AppColors.primaryColor,
+        fontSize: 20.px,
+        backgroundColor: AppColors.textBlack,
       ),
     ])
   ];

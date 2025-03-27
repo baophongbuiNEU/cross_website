@@ -4,6 +4,10 @@ import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:cross_website/components/common/custom_grid.dart';
+import 'package:cross_website/components/home_page/item_services.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
 
 class OurService extends StatelessComponent {
   const OurService({super.key});
@@ -89,7 +93,11 @@ class OurService extends StatelessComponent {
         final services = getListService();
 
         yield div(
-          styles: Styles(width: 100.vw),
+          styles: Styles(width: 100.vw,
+          justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
+          alignSelf: AlignSelf.center,
+          ),
           [
             div(
               styles: Styles(
@@ -122,3 +130,4 @@ class OurService extends StatelessComponent {
     );
   }
 }
+

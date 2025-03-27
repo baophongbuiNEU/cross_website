@@ -3,7 +3,9 @@ import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
 class ContactUsBlock extends StatefulComponent {
   const ContactUsBlock({super.key});
 
@@ -23,26 +25,31 @@ class GenderSelectionState extends State<ContactUsBlock> {
       listenable: LanguageManager.selectedLanguage,
       builder: (context, lang) sync* {
         yield div(
-          styles: Styles(
-            display: Display.flex,
-            margin: Margin.symmetric(horizontal: 100.px),
-            radius: BorderRadius.circular(45.px),
-            flexDirection: FlexDirection.row,
-            justifyContent: JustifyContent.spaceBetween,
-            alignItems: AlignItems.center,
-            backgroundColor: AppColors.backgroundWhite,
-          ),
-          [
-            _detailComponent(),
-            img(
-              src: Images.imageContactUsCard,
-              height: 550,
-              attributes: {
-                'alt': 'Contact Us Image'
-              }, // Thêm alt cho accessibility
-            ),
-          ],
-        );
+        styles: Styles(
+          width: 100.vw,
+        ),
+        [
+          div(
+              styles: Styles(
+                display: Display.flex,
+                margin: Margin.symmetric(horizontal: 5.percent),
+                radius: BorderRadius.circular(45.px),
+                flexDirection: FlexDirection.row,
+                justifyContent: JustifyContent.spaceBetween,
+                alignItems: AlignItems.center,
+                backgroundColor: Color.hex('#F3F3F3'),
+              ),
+              [
+                _detailComponent(),
+                div([
+                  img(
+                    classes: 'contact_image',
+                    src: Images.imageContactUsCard,
+                    height: 550,
+                  ),
+                ])
+              ])
+        ]);
       },
     );
   }
@@ -133,7 +140,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
           required: true,
           [],
         ),
-      ],
+      ]
     );
   }
 
@@ -144,7 +151,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
         padding: Padding.only(top: 60.px, bottom: 60.px, left: 100.px),
       ),
       [
-        div(
+      div(
           styles: Styles(
             display: Display.flex,
             height: 28.px,
@@ -220,4 +227,30 @@ class GenderSelectionState extends State<ContactUsBlock> {
       ],
     );
   }
+
+  @css
+  static final style = [
+    css('.detail_text_field', [
+      css('&').styles(
+        width: 45.percent,
+        padding: Padding.only(top: 60.px, bottom: 60.px, left: 5.percent),
+      ),
+    ]),
+    css.media(MediaQuery.screen(maxWidth: 700.px), [
+      css('.contact_image', [
+        css('&').styles(
+          display: Display.none,
+          width: 0.px,
+          height: 0.px,
+        ),
+      ]),
+      css('.detail_text_field', [
+        css('&').styles(
+          width: 100.percent,
+          // height: 650.px,
+          padding: Spacing.symmetric(horizontal: 5.percent),
+        ),
+      ]),
+    ]),
+  ];
 }

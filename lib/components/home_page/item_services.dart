@@ -1,8 +1,7 @@
-// import 'package:flutter_svg/svg.dart';
+import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/components/common/size_box_component.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
-import 'package:jaspr/jaspr.dart';
 
 class ItemServices extends StatelessComponent {
   final Color? backgroundColor;
@@ -34,8 +33,7 @@ class ItemServices extends StatelessComponent {
     yield div(
         styles: Styles(
             display: Display.flex,
-            width: 500.px,
-            height: 210.px,
+            width: 100.percent,
             padding: Padding.all(50.px),
             border: Border(width: 1.px, color: AppColors.primaryColor),
             radius: BorderRadius.circular(45.px),
@@ -53,13 +51,7 @@ class ItemServices extends StatelessComponent {
                   justifyContent: JustifyContent.spaceBetween),
               [
                 div(
-                  styles: Styles(
-                    display: Display.flex,
-                    width: 100.percent,
-                    padding: Padding.symmetric(horizontal: 10.px),
-                    radius: BorderRadius.circular(8.px),
-                    flexWrap: FlexWrap.wrap,
-                  ),
+                  classes: 'service_word',
                   [
                     for (var word in (title ?? "").split(' '))
                       span(
@@ -91,19 +83,58 @@ class ItemServices extends StatelessComponent {
                               styles: Styles(
                                   padding: Padding.all(10.px),
                                   radius: BorderRadius.circular(20.px),
-                                  backgroundColor: AppColors.white)),
+                                  backgroundColor: Colors.white)),
                       SizeBoxComponent(width: 15),
                       div(
                           styles: Styles(
                               color: contentColor ?? AppColors.primaryColor,
+                              textAlign: TextAlign.start,
                               fontSize: 20.px,
                               fontWeight: FontWeight.w400),
                           [Text(content ?? "")])
                     ])
               ]),
           itemBig != null
-              ? img(src: itemBig!, height: 200, width: 200)
+              ? img(
+                  classes: 'service_image',
+                  src: itemBig!,
+                  height: 200,
+                  width: 200)
               : div([])
         ]);
   }
+
+  @css
+  static final styles = [
+    css('.service_word', [
+      css('&').styles(
+        display: Display.flex,
+        width: 230.px,
+        padding: Padding.symmetric(horizontal: 10.px),
+        radius: BorderRadius.circular(8.px),
+        flexWrap: FlexWrap.wrap,
+        textAlign: TextAlign.start,
+      )
+    ]),
+    css.media(MediaQuery.screen(maxWidth: 1254.px), [
+      css('.service_word', [
+        css('&').styles(
+          width: 100.percent,
+        )
+      ]),
+    ]),
+    css.media(MediaQuery.screen(maxWidth: 600.px), [
+      css('.service_word', [
+        css('&').styles(
+          width: 10.percent,
+        )
+      ]),
+      css('.service_image', [
+        css('&').styles(
+          width: 30.percent,
+          height: 80.percent,
+        )
+      ])
+    ]),
+  ];
 }

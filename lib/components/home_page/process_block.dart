@@ -1,6 +1,7 @@
 import 'package:cross_website/components/home_page/card_process_block.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:cross_website/components/home_page/card_process_block.dart';
 
 class ProcessBlock extends StatelessComponent {
   const ProcessBlock({super.key});
@@ -11,12 +12,20 @@ class ProcessBlock extends StatelessComponent {
       listenable: LanguageManager.selectedLanguage,
       builder: (context, lang) sync* {
         yield div(
-          styles: Styles(
-            display: Display.flex,
-            margin: Margin.symmetric(horizontal: 100.px),
-            flexDirection: FlexDirection.column,
-            gap: Gap(row: 30.px),
-          ),
+        styles: Styles(
+          width: 100.vw,
+          justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
+          alignSelf: AlignSelf.center,
+        ),
+        [
+          div(
+              styles: Styles(
+                display: Display.flex,
+                width: 100.percent,
+                flexDirection: FlexDirection.column,
+                gap: Gap(row: 30.px),
+              ),
           [
             CardProcessBlock(
               index: "01",
@@ -50,8 +59,8 @@ class ProcessBlock extends StatelessComponent {
               title: LanguageManager.translate('process_improvement_title'),
               content: LanguageManager.translate('process_improvement_content'),
             ),
-          ],
-        );
+          ]),
+        ]);
       },
     );
   }

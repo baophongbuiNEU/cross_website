@@ -3,6 +3,9 @@ import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
+import '../common/size_box_component.dart';
 
 class FooterBlock extends StatelessComponent {
   const FooterBlock({super.key});
@@ -280,4 +283,139 @@ class FooterBlock extends StatelessComponent {
       ],
     );
   }
+
+  @css
+  static final style = [
+    css('.footer_block', [
+      css('&').styles(
+          display: Display.flex,
+          padding: Padding.symmetric(horizontal: 5.percent, vertical: 50.px),
+          margin: Margin.symmetric(horizontal: 5.percent),
+          radius: BorderRadius.only(
+              topLeft: Radius.circular(45.px),
+              topRight: Radius.circular(45.px)),
+          flexDirection: FlexDirection.column,
+          justifyContent: JustifyContent.spaceBetween,
+          backgroundColor: AppColors.primaryColor)
+    ]),
+    css('.footer_header', [
+      css('&').styles(
+        display: Display.flex,
+        margin: Spacing.only(
+          bottom: 20.px,
+        ),
+        flexDirection: FlexDirection.row,
+        justifyContent: JustifyContent.spaceBetween,
+        alignItems: AlignItems.center,
+      ),
+    ]),
+    css('.footer_body', [
+      css('&').styles(
+        display: Display.flex,
+        flexDirection: FlexDirection.row,
+        justifyContent: JustifyContent.spaceBetween,
+        alignItems: AlignItems.center,
+      ),
+    ]),
+    css('.footer_content_us', [
+      css('&').styles(
+          display: Display.flex,
+          width: 30.percent,
+          height: 100.percent,
+          flexDirection: FlexDirection.column,
+          justifyContent: JustifyContent.spaceBetween,
+          color: Colors.white,
+          fontSize: 18.px,
+          fontWeight: FontWeight.w400)
+    ]),
+    css('.footer_input_email', [
+      css('&').styles(
+        display: Display.flex,
+        width: 60.percent,
+        height: 100.percent,
+        padding: Padding.symmetric(horizontal: 40.px, vertical: 5.percent),
+        radius: BorderRadius.circular(14.px),
+        flexDirection: FlexDirection.row,
+        justifyContent: JustifyContent.spaceBetween,
+        alignItems: AlignItems.center,
+        backgroundColor: AppColors.background292A32,
+      ),
+      css('.input_email').styles(
+        width: 90.percent,
+        height: 22.px,
+        padding: Padding.symmetric(horizontal: 30.px, vertical: 22.px),
+        border: Border(color: Colors.white, width: 2.px),
+        radius: BorderRadius.circular(14.px),
+        alignItems: AlignItems.center,
+        color: Colors.white,
+        fontSize: 18.px,
+        fontWeight: FontWeight.w400,
+        backgroundColor: Colors.transparent,
+        raw: {'resize': 'none', "white-space": "nowrap", "overflow": "hidden"},
+      ),
+      css('.footer_button').styles(
+          width: 40.percent,
+          padding: Padding.symmetric(vertical: 20.px, horizontal: 35.px),
+          radius: BorderRadius.circular(14.px),
+          justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
+          textAlign: TextAlign.center,
+          fontSize: 20.px,
+          fontWeight: FontWeight.w400,
+          backgroundColor: AppColors.greenPrimary),
+    ]),
+    css.media(MediaQuery.screen(maxWidth: 1000.px), [
+      css('.footer_block', [
+        css('&').styles(
+            flexDirection: FlexDirection.column,
+            justifyContent: JustifyContent.spaceBetween,
+            backgroundColor: AppColors.primaryColor)
+      ]),
+      css('.footer_header', [
+        css('&').styles(
+          flexDirection: FlexDirection.column,
+          gap: Gap.all(20.px),
+          textAlign: TextAlign.center,
+        ),
+      ]),
+      css('.footer_body', [
+        css('&').styles(
+          width: 100.percent,
+          flexDirection: FlexDirection.column,
+          justifyContent: JustifyContent.spaceBetween,
+        ),
+      ]),
+      css('.footer_content_us', [
+        css('&').styles(
+          width: 100.percent,
+          alignItems: AlignItems.center,
+          textAlign: TextAlign.center,
+        )
+      ]),
+      css('.footer_input_email', [
+        css('&').styles(
+          width: 100.percent,
+          padding:
+              Padding.symmetric(horizontal: 2.percent, vertical: 5.percent),
+          margin: Spacing.symmetric(vertical: 20.px),
+        )
+      ]),
+      css('.input_email').styles(
+        width: 0.percent,
+      ),
+      css.media(MediaQuery.screen(maxWidth: 600.px), [
+        css('.footer_input_email', [
+          css('&').styles(
+            display: Display.flex,
+            width: 100.percent,
+            flexDirection: FlexDirection.column,
+            gap: Gap.all(10.px),
+          ),
+          css('.input_email').styles(
+            width: 80.percent,
+          ),
+        ]),
+      ]),
+    ]),
+  ];
 }
