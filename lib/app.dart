@@ -1,25 +1,15 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:my_website/components/header.dart';
+import 'package:my_website/constants/app_colors.dart';
 
 import 'pages/about.dart';
 import 'pages/home.dart';
 
-// The main component of your application.
-//
-// By using multi-page routing, this component will only be built on the server during pre-rendering and
-// **not** executed on the client. Instead only the nested [Home] and [About] components will be mounted on the client.
 @client
 class App extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    // This method is rerun every time the component is rebuilt.
-    //
-    // Each build method can return multiple child components as an [Iterable]. The recommended approach
-    // is using the [sync* / yield] syntax for a streamlined control flow, but its also possible to simply
-    // create and return a [List] here.
-
-    // Renders a <div class="main"> html element with children.
     yield div(classes: 'main', [
       const Header(),
       Router(routes: [
@@ -35,19 +25,21 @@ class App extends StatelessComponent {
     ]);
   }
 
-  // Defines the css styles for elements of this component.
-  //
-  // By using the @css annotation, these will be rendered automatically to css inside the <head> of your page.
-  // Must be a variable or getter of type [List<StyleRule>].
   @css
   static final styles = [
     css('.main', [
-      // The '&' refers to the parent selector of a nested style rules.
       css('&').styles(
         display: Display.flex,
+        width: 100.percent,
+        maxWidth: 100.vw,
+        boxSizing: BoxSizing.borderBox,
         // height: 100.vh,
+        overflow: Overflow.hidden,
         flexDirection: FlexDirection.column,
         flexWrap: FlexWrap.wrap,
+        justifyContent: JustifyContent.center,
+        backgroundColor: AppColors.backgroundTheme,
+        // alignItems: AlignItems.center,
       ),
       css('section').styles(
         display: Display.flex,

@@ -20,19 +20,29 @@ class GenderSelectionState extends State<ContactUsBlock> {
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
         styles: Styles(
-            display: Display.flex,
-            margin: Margin.symmetric(horizontal: 100.px),
-            radius: BorderRadius.circular(45.px),
-            flexDirection: FlexDirection.row,
-            justifyContent: JustifyContent.spaceBetween,
-            alignItems: AlignItems.center,
-            backgroundColor:  Colors.white),
+          width: 100.vw,
+        ),
         [
-          _detailComponent(),
-          img(
-              // styles: Styles(height: 100.percent),
-              src: Images.imageContactUsCard,
-              height: 550)
+          div(
+              styles: Styles(
+                display: Display.flex,
+                margin: Margin.symmetric(horizontal: 5.percent),
+                radius: BorderRadius.circular(45.px),
+                flexDirection: FlexDirection.row,
+                justifyContent: JustifyContent.spaceBetween,
+                alignItems: AlignItems.center,
+                backgroundColor: Color.hex('#F3F3F3'),
+              ),
+              [
+                _detailComponent(),
+                div([
+                  img(
+                    classes: 'contact_image',
+                    src: Images.imageContactUsCard,
+                    height: 550,
+                  ),
+                ])
+              ])
         ]);
   }
 
@@ -119,35 +129,31 @@ class GenderSelectionState extends State<ContactUsBlock> {
   }
 
   Component _detailComponent() {
-    return div(
-        styles: Styles(
-            width: 45.percent,
-            // height: 650.px,
-            padding: Padding.only(top: 60.px, bottom: 60.px, left: 100.px)),
-        [
-          div(
-              styles: Styles(
-                  display: Display.flex,
-                  height: 28.px,
-                  flexDirection: FlexDirection.row),
-              [
-                _radioComponent(
-                  value: "Say Hi",
-                  intValue: 1,
-                ),
-                SizeBoxComponent(width: 35),
-                _radioComponent(
-                  value: "Get a Quote",
-                  intValue: 2,
-                ),
-              ]),
-          SizeBoxComponent(height: 40),
-          _nameInput(),
-          SizeBoxComponent(height: 25),
-          _emailInput(),
-          SizeBoxComponent(height: 25),
-          _messageInput(),
-        ]);
+    return div(classes: 'detail_text_field', [
+      div(
+          styles: Styles(
+            display: Display.flex,
+            height: 28.px,
+            flexDirection: FlexDirection.row,
+          ),
+          [
+            _radioComponent(
+              value: "Say Hi",
+              intValue: 1,
+            ),
+            SizeBoxComponent(width: 35),
+            _radioComponent(
+              value: "Get a Quote",
+              intValue: 2,
+            ),
+          ]),
+      SizeBoxComponent(height: 40),
+      _nameInput(),
+      SizeBoxComponent(height: 25),
+      _emailInput(),
+      SizeBoxComponent(height: 25),
+      _messageInput(),
+    ]);
   }
 
   Component _radioComponent({
@@ -169,7 +175,6 @@ class GenderSelectionState extends State<ContactUsBlock> {
                         display: Display.flex,
                         width: 20.px,
                         height: 20.px,
-                        // padding: Padding.all(4.px),
                         border:
                             Border(color: AppColors.primaryColor, width: 1.px),
                         radius: BorderRadius.circular(20.px),
@@ -193,4 +198,30 @@ class GenderSelectionState extends State<ContactUsBlock> {
           ])
         ]);
   }
+
+  @css
+  static final style = [
+    css('.detail_text_field', [
+      css('&').styles(
+        width: 45.percent,
+        padding: Padding.only(top: 60.px, bottom: 60.px, left: 5.percent),
+      ),
+    ]),
+    css.media(MediaQuery.screen(maxWidth: 700.px), [
+      css('.contact_image', [
+        css('&').styles(
+          display: Display.none,
+          width: 0.px,
+          height: 0.px,
+        ),
+      ]),
+      css('.detail_text_field', [
+        css('&').styles(
+          width: 100.percent,
+          // height: 650.px,
+          padding: Spacing.symmetric(horizontal: 5.percent),
+        ),
+      ]),
+    ]),
+  ];
 }

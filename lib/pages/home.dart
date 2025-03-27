@@ -11,7 +11,6 @@ import 'package:my_website/components/home_page/list_logo.dart';
 import 'package:my_website/components/home_page/our_service.dart';
 import 'package:my_website/components/home_page/process_block.dart';
 
-
 // By using the @client annotation this component will be automatically compiled to javascript and mounted
 // on the client. Therefore:
 // - this file and any imported file must be compilable for both server and client environments.
@@ -64,17 +63,16 @@ class HomeState extends State<Home> {
           ProcessBlock(),
           TitleIconHome(
               title: 'Team',
-              content: 'Meet the skilled and experienced team behind our successful digital marketing strategies'),
+              content:
+                  'Meet the skilled and experienced team behind our successful digital marketing strategies'),
           GroupOfCard(),
           TitleIconHome(
               title: 'Contact Us',
-              content: '''Connect with Us: Let's Discuss Your Digital Marketing Needs'''),
+              content:
+                  '''Connect with Us: Let's Discuss Your Digital Marketing Needs'''),
           ContactUsBlock(),
           SizeBoxComponent(height: 140),
           FooterBlock(),
-
-
-
         ]);
   }
 }

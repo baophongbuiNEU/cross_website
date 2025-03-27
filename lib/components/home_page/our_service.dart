@@ -1,5 +1,5 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/size_box_component.dart';
+import 'package:my_website/components/common/custom_grid.dart';
 import 'package:my_website/components/home_page/item_services.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
@@ -12,31 +12,26 @@ class OurService extends StatelessComponent {
     yield div(
         styles: Styles(
           width: 100.vw,
-          // padding: Padding.symmetric(horizontal: 100.px),
+          justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
+          alignSelf: AlignSelf.center,
         ),
         [
-          div(
-              styles: Styles(
-                  // width: 100.percent,
+          for (var i = 0; i < listService.length / 2; i++)
+            div(
+                styles: Styles(
                   display: Display.flex,
-                  padding: Padding.symmetric(horizontal: 100.px),
-                  flexDirection: FlexDirection.column),
-              [
-                for (var i = 0; i < listService.length / 2; i++)
-                  div([
-                    div(
-                      styles: Styles(
-                          display: Display.flex,
-                          flexDirection: FlexDirection.row,
-                          justifyContent: JustifyContent.spaceAround),
-                    [
-                        listService[i * 2],
-                        SizeBoxComponent(width: 20),
-                        listService[i * 2 + 1],
-                      ]),
-                    SizeBoxComponent(height: 40)
-                  ])
-              ])
+                  padding: Padding.symmetric(horizontal: 5.percent),
+                  justifyContent: JustifyContent.center,
+                  alignItems: AlignItems.center,
+                  alignSelf: AlignSelf.center,
+                ),
+                [
+                  CustomGrid(children: [
+                    listService[i * 2],
+                    listService[i * 2 + 1],
+                  ]),
+                ]),
         ]);
   }
 }
@@ -45,7 +40,7 @@ final listService = [
   ItemServices(
       title: "Search engine optimization",
       content: "Learn more",
-      backgroundColor:Color.hex('#F3F3F3'),
+      backgroundColor: Color.hex('#F3F3F3'),
       backgroundItem: AppColors.primaryColor,
       backgroundText: AppColors.greenPrimary,
       titleColor: AppColors.primaryColor,
@@ -75,7 +70,7 @@ final listService = [
   ItemServices(
       title: "Email Marketing",
       content: "Learn more",
-      backgroundColor:Color.hex('#F3F3F3'),
+      backgroundColor: Color.hex('#F3F3F3'),
       backgroundItem: AppColors.primaryColor,
       backgroundText: AppColors.greenPrimary,
       titleColor: AppColors.primaryColor,

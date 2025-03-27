@@ -1,5 +1,6 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/common/size_box_component.dart';
+import 'package:my_website/components/header.dart';
 import 'package:my_website/constants/app_colors.dart';
 
 class TitleIconHome extends StatelessComponent {
@@ -10,44 +11,74 @@ class TitleIconHome extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-        styles: Styles(
-          padding: Padding.symmetric(
-            vertical: 80.px,
-            horizontal: 100.px
-          )
-        ),
-        [
-      div(
-          styles: Styles(
-            display: Display.flex,
-            flexDirection: FlexDirection.row,
-            alignItems: AlignItems.center, // 👈 Căn giữa theo chiều dọc
-          ),
-          [
-            h1(
-                styles: Styles(
-                  padding: Padding.symmetric(horizontal: 10.px),
-                  radius: BorderRadius.circular(8.px),
-                  color: AppColors.primaryColor,
-                  fontFamily: FontFamily.list([FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-                  fontSize: 40.px,
-                  fontWeight: FontWeight.w500,
-                  whiteSpace: WhiteSpace.noWrap, // 👈 Thêm padding để title thoáng hơn
-                  backgroundColor: AppColors.greenPrimary, // 👈 Giữ nguyên title trên 1 dòng
-                ),
-                [text(title)]),
-            SizeBoxComponent(width: 40),
-            div(
-                styles: Styles(
-                  margin: EdgeInsets.only(left: 10.px),
-                  flex: Flex.auto,
-                  fontFamily: FontFamily.list([FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-                  fontSize: 18.px,
-                  fontWeight: FontWeight.w400,
-                ),
-                [text(content ?? "")])
-          ])
+    yield div(classes: 'section_overall', [
+      div(classes: 'section_title', [
+        h1(classes: 'title_section', [text(title)]),
+        SizeBoxComponent(width: 40),
+        div(classes: 'section_content', [text(content ?? "")])
+      ])
     ]);
   }
+
+  @css
+  static final List<StyleRule> styles = [
+    css('.section_overall', [
+      css('&').styles(
+          width: 100.vw,
+          justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
+          alignSelf: AlignSelf.center)
+    ]),
+    css('.section_title', [
+      css('&').styles(
+        display: Display.flex,
+        padding: Padding.symmetric(vertical: 80.px, horizontal: 100.px),
+        flexDirection: FlexDirection.row,
+        alignItems: AlignItems.center,
+      ),
+    ]),
+    css('.section_content', [
+      css('&').styles(
+        width: 80.vw,
+        flex: Flex.auto,
+        color: AppColors.textBlack,
+        fontFamily: FontFamily.list(
+            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+        fontSize: 18.px,
+        fontWeight: FontWeight.w400,
+      )
+    ]),
+    css('.title_section').styles(
+      padding: Padding.symmetric(horizontal: 10.px),
+      radius: BorderRadius.circular(8.px),
+      color: AppColors.primaryColor,
+      fontFamily: FontFamily.list([FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+      fontSize: 40.px,
+      fontWeight: FontWeight.w500,
+      whiteSpace: WhiteSpace.noWrap,
+      backgroundColor: AppColors.greenPrimary,
+    ),
+    css.media(MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
+      css('.section_overall', [
+        css('&').styles(
+          padding: Padding.symmetric(horizontal: 0.px),
+        )
+      ]),
+      css('.section_title').styles(
+        display: Display.flex,
+        padding: Padding.symmetric(vertical: 80.px, horizontal: 5.percent),
+        flexDirection: FlexDirection.column,
+        justifyContent: JustifyContent.center,
+        alignItems: AlignItems.center,
+      ),
+      css('.section_content').styles(
+        margin: Margin.only(top: 20.px),
+        textAlign: TextAlign.center,
+      ),
+      css('.title_section').styles(
+        textAlign: TextAlign.center,
+        whiteSpace: WhiteSpace.unset,
+      ),
+    ]),
+  ];
 }

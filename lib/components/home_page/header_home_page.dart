@@ -1,6 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:my_website/components/common/button_primary_black.dart';
 import 'package:my_website/components/common/size_box_component.dart';
+import 'package:my_website/components/header.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
 
@@ -26,7 +27,10 @@ class HeaderHomePage extends StatelessComponent {
                 ButtonPrimaryBlack(text: 'Discover Our Solutions'),
               ])
         ]),
-        img(src: Images.imageHeader, styles: Styles(height: 515.px))
+        img(
+          id: 'primary_image',
+          src: Images.imageHeader,
+        )
       ])
     ]);
   }
@@ -38,14 +42,15 @@ class HeaderHomePage extends StatelessComponent {
     css('.header-web', [
       css('&').styles(
         display: Display.flex,
-        width: 100.vw,
+        width: 100.percent,
+        maxWidth: 100.vw,
       ),
     ]),
     css('.header-web-padding', [
       css('&').styles(
         display: Display.flex,
         width: 100.percent,
-        padding: Padding.symmetric(horizontal: 100.px, vertical: 70.px),
+        padding: Padding.symmetric(horizontal: 5.percent, vertical: 70.px),
         flexDirection: FlexDirection.row,
         justifyContent: JustifyContent.spaceBetween,
         alignItems: AlignItems.start,
@@ -73,5 +78,50 @@ class HeaderHomePage extends StatelessComponent {
           fontSize: 20.px,
           fontWeight: FontWeight.w400)
     ]),
+    css('#primary_image').styles(
+      // height: 515.px,
+      width: 550.px,
+    ),
+    css.media(MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
+      css('.header-web-padding').styles(
+        padding: Padding.symmetric(
+          horizontal: 0.percent,
+        ),
+        flexDirection: FlexDirection.column,
+        justifyContent: JustifyContent.center,
+        alignItems: AlignItems.center,
+      ),
+      css('.text-header-web', [
+        css('&').styles(
+            display: Display.flex,
+            width: 100.percent,
+            flexDirection: FlexDirection.column,
+            justifyContent: JustifyContent.center,
+            alignItems: AlignItems.center)
+      ]),
+      css('.w500-60-custom', [
+        css('&').styles(
+            color: AppColors.textBlack,
+            textAlign: TextAlign.center,
+            fontFamily: FontFamily.list(
+                [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+            fontSize: 60.px,
+            fontWeight: FontWeight.w500)
+      ]),
+      css('.w400-20-custom', [
+        css('&').styles(
+            color: AppColors.textBlack,
+            textAlign: TextAlign.center,
+            fontFamily: FontFamily.list(
+                [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+            fontSize: 20.px,
+            fontWeight: FontWeight.w400)
+      ]),
+      css('#primary_image').styles(
+          width: 350.px,
+          margin: Spacing.only(
+            top: 30.px,
+          )),
+    ])
   ];
 }

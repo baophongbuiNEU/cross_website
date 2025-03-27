@@ -8,8 +8,12 @@ class AppColors {
   static const Color background292A32 = Color.variable('--background292A32');
   static const Color textBlack = Color.variable('--textBlack');
   static const Color hoverOverlayColor = Color.variable('--hoverOverlayColor');
+  static const Color hoverOverlayMenuButton =
+      Color.variable('--hoverOverlayMenuButton');
   static const Color listLogoBackground =
       Color.variable('--listLogoBackground');
+  static const Color backgroundFaded = Color.variable('--backgroundFaded');
+  static const Color backgroundTheme = Color.variable('--backgroundTheme');
 }
 
 final lightTheme = {
@@ -20,7 +24,10 @@ final lightTheme = {
   AppColors.background292A32: Color.hex('#292A32'),
   AppColors.textBlack: Color.hex('#222'),
   AppColors.hoverOverlayColor: Color.hex('#0001'),
+  AppColors.hoverOverlayMenuButton: Color.hex('#0001'),
   AppColors.listLogoBackground: Colors.transparent,
+  AppColors.backgroundFaded: Color.hex('#FFF9'),
+  AppColors.backgroundTheme: Colors.white,
 };
 
 final darkTheme = {
@@ -31,7 +38,10 @@ final darkTheme = {
   AppColors.background292A32: Color.hex('#292A32'),
   AppColors.textBlack: Color.hex('#F5F5F5'),
   AppColors.hoverOverlayColor: Color.hex('#FFF1'),
+  AppColors.hoverOverlayMenuButton: Colors.lightGrey,
   AppColors.listLogoBackground: Color.hex('#FFFFFF'),
+  AppColors.backgroundFaded: Color.hex('#0d111799'),
+  AppColors.backgroundTheme: Colors.black,
 };
 
 const maxContentWidth = Unit.rem(70);

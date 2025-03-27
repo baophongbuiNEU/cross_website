@@ -1,9 +1,9 @@
 import 'package:jaspr/jaspr.dart';
+import 'package:my_website/components/common/custom_grid.dart';
 import 'package:my_website/components/home_page/member_card.dart';
 import 'package:my_website/constants/image_constant.dart';
 
 import '../common/button_primary_black.dart';
-import '../common/size_box_component.dart';
 
 class GroupOfCard extends StatelessComponent {
   const GroupOfCard({
@@ -12,33 +12,26 @@ class GroupOfCard extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(styles: Styles(margin: Margin.symmetric(horizontal: 100.px)), [
-      div(
-          styles: Styles(
-              // width: 100.percent,
-              display: Display.flex,
-              // padding: Padding.symmetric(horizontal: 100.px),
-              flexDirection: FlexDirection.column),
-          [
-            for (var i = 0; i < listMemberCard.length / 3; i++)
-              div([
-                div(
-                    styles: Styles(
-                        display: Display.flex,
-                        flexDirection: FlexDirection.row,
-                        justifyContent: JustifyContent.spaceAround),
-                    [
-                      listMemberCard[i * 3],
-                      SizeBoxComponent(width: 20),
-                      listMemberCard[i * 3 + 1],
-                      SizeBoxComponent(width: 20),
-                      listMemberCard[i * 3 + 2],
-                    ]),
-                SizeBoxComponent(height: 40)
-              ]),
-            _seeAll()
-          ])
-    ]);
+    yield div(
+        styles: Styles(
+          width: 100.vw,
+        ),
+        [
+          div(
+              styles: Styles(
+                  display: Display.flex,
+                  margin: Margin.symmetric(horizontal: 5.percent),
+                  flexDirection: FlexDirection.column),
+              [
+                for (var i = 0; i < listMemberCard.length / 3; i++)
+                  CustomGrid(children: [
+                    listMemberCard[i * 3],
+                    listMemberCard[i * 3 + 1],
+                    listMemberCard[i * 3 + 2],
+                  ]),
+                _seeAll()
+              ])
+        ]);
   }
 
   Component _seeAll() {
