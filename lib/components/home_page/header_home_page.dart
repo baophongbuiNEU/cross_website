@@ -5,14 +5,7 @@ import 'package:my_website/components/header.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
 
-class HeaderHomePage extends StatefulComponent {
-  const HeaderHomePage({super.key});
-
-  @override
-  State<HeaderHomePage> createState() => HeaderHomePageState();
-}
-
-class HeaderHomePageState extends State<HeaderHomePage> {
+class HeaderHomePage extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'header-web', [
