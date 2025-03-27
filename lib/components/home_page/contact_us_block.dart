@@ -26,7 +26,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
             flexDirection: FlexDirection.row,
             justifyContent: JustifyContent.spaceBetween,
             alignItems: AlignItems.center,
-            backgroundColor: AppColors.backgroundWhite),
+            backgroundColor:  Colors.white),
         [
           _detailComponent(),
           img(
@@ -56,7 +56,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
                   color: AppColors.primaryColor,
                   fontSize: 18.px,
                   fontWeight: FontWeight.w400,
-                  backgroundColor: AppColors.white),
+                  backgroundColor: Colors.white),
               [Text("name")])
         ]);
   }
@@ -81,7 +81,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
                   color: AppColors.primaryColor,
                   fontSize: 18.px,
                   fontWeight: FontWeight.w400,
-                  backgroundColor: AppColors.white),
+                  backgroundColor: Colors.white),
               [Text("name")])
         ]);
   }
@@ -108,7 +108,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
               color: AppColors.primaryColor,
               fontSize: 18.px,
               fontWeight: FontWeight.w400,
-              backgroundColor: AppColors.white,
+              backgroundColor: Colors.white,
               raw: {'resize': 'none'},
             ),
             readonly: false,
@@ -183,7 +183,7 @@ class GenderSelectionState extends State<ContactUsBlock> {
                               radius: BorderRadius.circular(12.px),
                               backgroundColor: intValue == numSelected
                                   ? AppColors.greenPrimary
-                                  : AppColors.white),
+                                  : Colors.white),
                           [])
                     ]),
               ]),

@@ -25,7 +25,7 @@ class CardProcessBlockState extends State<CardProcessBlock> {
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
         styles: Styles(
-            backgroundColor: _isShowMoore ? AppColors.greenPrimary : AppColors.backgroundWhite,
+            backgroundColor: _isShowMoore ? AppColors.greenPrimary :  Colors.white,
             display: Display.flex,
             border: Border(
               color: AppColors.primaryColor,
@@ -98,7 +98,7 @@ class CardProcessBlockState extends State<CardProcessBlock> {
           radius: BorderRadius.circular(50.px),
           fontWeight: FontWeight.w600,
           color: AppColors.primaryColor,
-          backgroundColor: AppColors.backgroundWhite,
+          backgroundColor:  Colors.white,
         ),
         [  Text(_isShowMoore ? "-" : "+")]);
   }

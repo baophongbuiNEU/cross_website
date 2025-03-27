@@ -2,12 +2,16 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
+import 'package:my_website/constants/theme_toogle.dart';
 
-import '../constants/theme.dart';
-
-class Header extends StatelessComponent {
+class Header extends StatefulComponent {
   const Header({super.key});
 
+  @override
+  State<Header> createState() => HeaderState();
+}
+
+class HeaderState extends State<Header> {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     var activePath = context.url;
@@ -17,7 +21,11 @@ class Header extends StatelessComponent {
         div(classes: 'head_padding', [
           img(
             src: Images.imagePrimary,
-            styles: Styles(width: Unit.pixels(36), height: Unit.pixels(36)),
+            styles: Styles(
+              width: Unit.pixels(36),
+              height: Unit.pixels(36),
+              color: AppColors.textBlack,
+            ),
           ),
 
           // Navigation bên phải
@@ -33,6 +41,9 @@ class Header extends StatelessComponent {
               ]),
             div(classes: "language-header", [
               Link(to: '/about', child: text("English")),
+            ]),
+            div(styles: Styles(margin: Spacing.only(left: 10.px)), [
+              ThemeToggle(),
             ]),
           ]),
         ])
@@ -63,7 +74,7 @@ class Header extends StatelessComponent {
     css('.nav-menu a', [
       css('&').styles(
           margin: Margin.symmetric(horizontal: 20.px),
-          color: Colors.black,
+          color: AppColors.textBlack,
           fontFamily: FontFamily.list(
               [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
           fontSize: 20.px,
@@ -80,8 +91,7 @@ class Header extends StatelessComponent {
         display: Display.flex,
         height: 68.px,
         padding: Padding.symmetric(horizontal: 15.px),
-        border:
-            Border.all(BorderSide(color: AppColors.primaryColor, width: 1.px)),
+        border: Border.all(BorderSide(color: AppColors.textBlack, width: 1.px)),
         radius: BorderRadius.circular(14.px),
         alignItems: AlignItems.center,
         color: AppColors.primaryColor,

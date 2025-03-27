@@ -37,13 +37,13 @@ class CtaBlock extends StatelessComponent {
                           styles: Styles(
                               fontSize: 30.px,
                               fontWeight: FontWeight.w500,
-                              color: AppColors.primaryColor),
+                              color: AppColors.textBlack),
                           [Text('Let’s make things happen')]),
                       div(
                           styles: Styles(
                               fontSize: 18.px,
                               fontWeight: FontWeight.w400,
-                              color: AppColors.primaryColor),
+                              color: AppColors.textBlack),
                           [
                             Text(
                                 'Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.')

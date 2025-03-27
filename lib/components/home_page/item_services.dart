@@ -33,18 +33,17 @@ class ItemServices extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
         styles: Styles(
-          display: Display.flex,
-          width: 500.px,
-          height: 210.px,
-          padding: Padding.all(50.px),
-          border: Border(width: 1.px, color: AppColors.primaryColor),
-          radius: BorderRadius.circular(45.px),
-          shadow: BoxShadow(
-              offsetX: 0.px, offsetY: 5.px, color: AppColors.primaryColor),
-          flexDirection: FlexDirection.row,
-          justifyContent: JustifyContent.spaceBetween,
-          backgroundColor: backgroundColor ?? AppColors.backgroundWhite
-        ),
+            display: Display.flex,
+            width: 500.px,
+            height: 210.px,
+            padding: Padding.all(50.px),
+            border: Border(width: 1.px, color: AppColors.primaryColor),
+            radius: BorderRadius.circular(45.px),
+            shadow: BoxShadow(
+                offsetX: 0.px, offsetY: 5.px, color: AppColors.primaryColor),
+            flexDirection: FlexDirection.row,
+            justifyContent: JustifyContent.spaceBetween,
+            backgroundColor: backgroundColor ?? AppColors.backgroundWhite),
         [
           div(
               styles: Styles(
@@ -71,7 +70,8 @@ class ItemServices extends StatelessComponent {
                           color: titleColor ?? AppColors.primaryColor,
                           fontSize: 30.px,
                           fontWeight: FontWeight.w500,
-                          backgroundColor: backgroundText?? AppColors.greenPrimary,
+                          backgroundColor:
+                              backgroundText ?? AppColors.greenPrimary,
                         ),
                         [Text(word)],
                       ),
@@ -90,12 +90,14 @@ class ItemServices extends StatelessComponent {
                               src: Icons.upRightArrowIcon,
                               styles: Styles(
                                   padding: Padding.all(10.px),
-                                  backgroundColor: AppColors.white,
+                                  backgroundColor: Colors.white,
                                   radius: BorderRadius.circular(20.px))),
                       SizeBoxComponent(width: 15),
                       div(
                           styles: Styles(
-                              fontSize: 20.px, fontWeight: FontWeight.w400,color: contentColor ?? AppColors.primaryColor ),
+                              fontSize: 20.px,
+                              fontWeight: FontWeight.w400,
+                              color: contentColor ?? AppColors.primaryColor),
                           [Text(content ?? "")])
                     ])
               ]),

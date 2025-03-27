@@ -1,5 +1,4 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/button_primary_black.dart';
 import 'package:my_website/components/common/size_box_component.dart';
 import 'package:my_website/constants/app_colors.dart';
 import 'package:my_website/constants/image_constant.dart';
@@ -25,7 +24,7 @@ class CaseStudiesBlock extends StatelessComponent {
                   padding:
                       Padding.symmetric(horizontal: 60.px, vertical: 70.px),
                   // padding: Padding.only(top: 70.px, right: 70.px, left: 70.px),
-                  backgroundColor: AppColors.primaryColor,
+                  backgroundColor: AppColors.textBlack,
                   radius: BorderRadius.circular(45.px)),
               [
                 _item(
@@ -52,9 +51,9 @@ class CaseStudiesBlock extends StatelessComponent {
         [
           div(
               styles: Styles(
+                  color: AppColors.white,
                   fontSize: 18.px,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.white),
+                  fontWeight: FontWeight.w400),
               [Text(content)]),
           SizeBoxComponent(height: 20),
           div(
@@ -63,9 +62,9 @@ class CaseStudiesBlock extends StatelessComponent {
               [
                 div(
                     styles: Styles(
+                        color: AppColors.greenPrimary,
                         fontSize: 20.px,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.greenPrimary),
+                        fontWeight: FontWeight.w400),
                     [
                       Text("Learn more"),
                     ]),
