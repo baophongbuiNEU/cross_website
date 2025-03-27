@@ -1,5 +1,5 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/constants/app_colors.dart';
+import 'package:cross_website/constants/app_colors.dart';
 import 'embedded_counter.dart';
 
 class Counter extends StatefulComponent {

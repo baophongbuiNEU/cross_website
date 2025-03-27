@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/header.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
+import 'package:cross_website/components/header.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
 
 class MenuButton extends StatelessComponent {
   const MenuButton({required this.onClick, required this.child, super.key});

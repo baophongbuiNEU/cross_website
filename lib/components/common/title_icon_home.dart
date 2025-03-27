@@ -1,7 +1,7 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/size_box_component.dart';
-import 'package:my_website/components/header.dart';
-import 'package:my_website/constants/app_colors.dart';
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/components/header.dart';
+import 'package:cross_website/constants/app_colors.dart';
 
 class TitleIconHome extends StatelessComponent {
   final String title;

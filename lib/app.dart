@@ -1,7 +1,7 @@
+import 'package:cross_website/components/header.dart';
+import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
-import 'package:my_website/components/header.dart';
-import 'package:my_website/constants/app_colors.dart';
 
 import 'pages/about.dart';
 import 'pages/home.dart';
@@ -33,13 +33,11 @@ class App extends StatelessComponent {
         width: 100.percent,
         maxWidth: 100.vw,
         boxSizing: BoxSizing.borderBox,
-        // height: 100.vh,
         overflow: Overflow.hidden,
         flexDirection: FlexDirection.column,
         flexWrap: FlexWrap.wrap,
         justifyContent: JustifyContent.center,
         backgroundColor: AppColors.backgroundTheme,
-        // alignItems: AlignItems.center,
       ),
       css('section').styles(
         display: Display.flex,

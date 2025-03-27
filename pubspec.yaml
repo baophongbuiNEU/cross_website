@@ -1,14 +1,14 @@
-name: my_website
+name: cross_website
 description: A new jaspr project.
 version: 0.0.2
 
 environment:
-  sdk: '>=3.5.0 <4.0.0'
+  sdk: ">=3.5.0 <4.0.0"
 
 dependencies:
   audioplayers: ^6.3.0
   flutter:
-     sdk: flutter
+    sdk: flutter
   flutter_sound: ^9.25.4
   flutter_svg: ^2.0.17
   highlight: ^0.7.0

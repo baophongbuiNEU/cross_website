@@ -1,6 +1,6 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
 
 class ListLogo extends StatelessComponent {
   const ListLogo({super.key});

@@ -1,8 +1,8 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/custom_grid.dart';
-import 'package:my_website/components/home_page/item_services.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
+import 'package:cross_website/components/common/custom_grid.dart';
+import 'package:cross_website/components/home_page/item_services.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
 
 class OurService extends StatelessComponent {
   const OurService({super.key});

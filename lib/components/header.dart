@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
-import 'package:my_website/components/common/menu_button.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
-import 'package:my_website/constants/theme_toogle.dart';
-import 'package:my_website/utils/events.dart';
+import 'package:cross_website/components/common/menu_button.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/constants/theme_toogle.dart';
+import 'package:cross_website/utils/events.dart';
 import 'package:universal_web/web.dart' as web;
 
 class Header extends StatefulComponent {

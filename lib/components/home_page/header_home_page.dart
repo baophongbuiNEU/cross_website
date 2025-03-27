@@ -1,9 +1,9 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/button_primary_black.dart';
-import 'package:my_website/components/common/size_box_component.dart';
-import 'package:my_website/components/header.dart';
-import 'package:my_website/constants/app_colors.dart';
-import 'package:my_website/constants/image_constant.dart';
+import 'package:cross_website/components/common/button_primary_black.dart';
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/components/header.dart';
+import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/constants/image_constant.dart';
 
 class HeaderHomePage extends StatelessComponent {
   @override

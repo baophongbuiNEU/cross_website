@@ -1,15 +1,15 @@
 import 'package:jaspr/jaspr.dart';
-import 'package:my_website/components/common/size_box_component.dart';
-import 'package:my_website/components/common/title_icon_home.dart';
-import 'package:my_website/components/home_page/case_studies_block.dart';
-import 'package:my_website/components/home_page/contact_us_block.dart';
-import 'package:my_website/components/home_page/cta_block.dart';
-import 'package:my_website/components/home_page/footer_block.dart';
-import 'package:my_website/components/home_page/group_of_card.dart';
-import 'package:my_website/components/home_page/header_home_page.dart';
-import 'package:my_website/components/home_page/list_logo.dart';
-import 'package:my_website/components/home_page/our_service.dart';
-import 'package:my_website/components/home_page/process_block.dart';
+import 'package:cross_website/components/common/size_box_component.dart';
+import 'package:cross_website/components/common/title_icon_home.dart';
+import 'package:cross_website/components/home_page/case_studies_block.dart';
+import 'package:cross_website/components/home_page/contact_us_block.dart';
+import 'package:cross_website/components/home_page/cta_block.dart';
+import 'package:cross_website/components/home_page/footer_block.dart';
+import 'package:cross_website/components/home_page/group_of_card.dart';
+import 'package:cross_website/components/home_page/header_home_page.dart';
+import 'package:cross_website/components/home_page/list_logo.dart';
+import 'package:cross_website/components/home_page/our_service.dart';
+import 'package:cross_website/components/home_page/process_block.dart';
 
 // By using the @client annotation this component will be automatically compiled to javascript and mounted
 // on the client. Therefore:
