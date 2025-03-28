@@ -2,7 +2,6 @@ import 'package:cross_website/components/header.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
-
 import 'pages/about.dart';
 import 'pages/home.dart';
 
@@ -11,16 +10,18 @@ class App extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'main', [
-      const Header(),
+      Header(),
       Router(routes: [
         Route(
-            path: '/',
-            title: 'Home',
-            builder: (context, state) => const Home()),
+          path: '/',
+          title: 'Home',
+          builder: (context, state) => const Home(),
+        ),
         Route(
-            path: '/about',
-            title: 'About',
-            builder: (context, state) => const About()),
+          path: '/about',
+          title: 'About',
+          builder: (context, state) => const About(),
+        ),
       ]),
     ]);
   }

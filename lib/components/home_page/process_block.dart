@@ -1,3 +1,5 @@
+import 'package:cross_website/components/home_page/card_process_block.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/components/home_page/card_process_block.dart';
 
@@ -6,7 +8,10 @@ class ProcessBlock extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(
+    yield ValueListenableBuilder<String>(
+      listenable: LanguageManager.selectedLanguage,
+      builder: (context, lang) sync* {
+        yield div(
         styles: Styles(
           width: 100.vw,
           justifyContent: JustifyContent.center,
@@ -21,38 +26,42 @@ class ProcessBlock extends StatelessComponent {
                 flexDirection: FlexDirection.column,
                 gap: Gap(row: 30.px),
               ),
-              [
-                CardProcessBlock(
-                    index: "01",
-                    title: 'Consultation',
-                    content:
-                        "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-                CardProcessBlock(
-                    index: "02",
-                    title: 'Research and Strategy Development',
-                    content:
-                        "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-                CardProcessBlock(
-                    index: "03",
-                    title: 'Implementation',
-                    content:
-                        "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-                CardProcessBlock(
-                    index: "04",
-                    title: 'Monitoring and Optimization',
-                    content:
-                        "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-                CardProcessBlock(
-                    index: "05",
-                    title: 'Reporting and Communication',
-                    content:
-                        "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-                CardProcessBlock(
-                    index: "06",
-                    title: 'Continual Improvement',
-                    content:
-                        "During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements."),
-              ])
+          [
+            CardProcessBlock(
+              index: "01",
+              title: LanguageManager.translate('process_consultation_title'),
+              content:
+                  LanguageManager.translate('process_consultation_content'),
+            ),
+            CardProcessBlock(
+              index: "02",
+              title: LanguageManager.translate('process_research_title'),
+              content: LanguageManager.translate('process_research_content'),
+            ),
+            CardProcessBlock(
+              index: "03",
+              title: LanguageManager.translate('process_implementation_title'),
+              content:
+                  LanguageManager.translate('process_implementation_content'),
+            ),
+            CardProcessBlock(
+              index: "04",
+              title: LanguageManager.translate('process_monitoring_title'),
+              content: LanguageManager.translate('process_monitoring_content'),
+            ),
+            CardProcessBlock(
+              index: "05",
+              title: LanguageManager.translate('process_reporting_title'),
+              content: LanguageManager.translate('process_reporting_content'),
+            ),
+            CardProcessBlock(
+              index: "06",
+              title: LanguageManager.translate('process_improvement_title'),
+              content: LanguageManager.translate('process_improvement_content'),
+            ),
+          ]),
         ]);
+      },
+    );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/components/common/size_box_component.dart';
 import 'package:cross_website/components/common/title_icon_home.dart';
 import 'package:cross_website/components/home_page/case_studies_block.dart';
@@ -10,12 +9,9 @@ import 'package:cross_website/components/home_page/header_home_page.dart';
 import 'package:cross_website/components/home_page/list_logo.dart';
 import 'package:cross_website/components/home_page/our_service.dart';
 import 'package:cross_website/components/home_page/process_block.dart';
+import 'package:cross_website/language/language_manager.dart';
+import 'package:jaspr/jaspr.dart';
 
-// By using the @client annotation this component will be automatically compiled to javascript and mounted
-// on the client. Therefore:
-// - this file and any imported file must be compilable for both server and client environments.
-// - this component and any child components will be built once on the server during pre-rendering and then
-//   again on the client during normal rendering.
 @client
 class Home extends StatefulComponent {
   const Home({super.key});
@@ -28,51 +24,66 @@ class HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    // Run code depending on the rendering environment.
     if (kIsWeb) {
       print("Hello client");
-      // When using @client components there is no default `main()` function on the client where you would normally
-      // run any client-side initialization logic. Instead you can put it here, considering this component is only
-      // mounted once at the root of your client-side component tree.
     } else {
       print("Hello server");
     }
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-        // classes: ,
-        [
+    yield ValueListenableBuilder<String>(
+      listenable: LanguageManager.selectedLanguage,
+      builder: (context, lang) sync* {
+        yield div([
           HeaderHomePage(),
           ListLogo(),
-          TitleIconHome(
-              title: "Service gg",
-              content:
-                  "Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies "),
-          OurService(),
+          div(id: 'services', [
+            TitleIconHome(
+              title: LanguageManager.translate('home_service_title'),
+              content: LanguageManager.translate('home_service_content'),
+            ),
+            OurService(),
+          ]),
           CtaBlock(),
-          TitleIconHome(
-              title: 'Case Studies',
-              content:
-                  'Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies'),
-          CaseStudiesBlock(),
-          TitleIconHome(
-              title: 'Our Working Process ',
-              content: 'Step-by-Step Guide to Achieving Your Business Goals'),
-          ProcessBlock(),
-          TitleIconHome(
-              title: 'Team',
-              content:
-                  'Meet the skilled and experienced team behind our successful digital marketing strategies'),
-          GroupOfCard(),
-          TitleIconHome(
-              title: 'Contact Us',
-              content:
-                  '''Connect with Us: Let's Discuss Your Digital Marketing Needs'''),
-          ContactUsBlock(),
+          div(id: 'case-studies', [
+            TitleIconHome(
+              title: LanguageManager.translate('home_case_studies_title'),
+              content: LanguageManager.translate('home_case_studies_content'),
+            ),
+            CaseStudiesBlock(),
+          ]),
+          div(id: 'process', [
+            TitleIconHome(
+              title: LanguageManager.translate('home_process_title'),
+              content: LanguageManager.translate('home_process_content'),
+            ),
+            ProcessBlock(),
+          ]),
+          div(id: 'careers', [
+            TitleIconHome(
+              title: LanguageManager.translate('home_team_title'),
+              content: LanguageManager.translate('home_team_content'),
+            ),
+            GroupOfCard(),
+          ]),
+          div(id: 'contact', [
+            TitleIconHome(
+              title: LanguageManager.translate('home_contact_us_title'),
+              content: LanguageManager.translate('home_contact_us_content'),
+            ),
+            ContactUsBlock(),
+          ]),
           SizeBoxComponent(height: 140),
           FooterBlock(),
         ]);
+      },
+    );
   }
 }

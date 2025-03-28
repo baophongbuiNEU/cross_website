@@ -1,11 +1,12 @@
-import 'dart:async';
+import 'dart:async' show StreamSubscription, scheduleMicrotask;
 
+import 'package:cross_website/constants/theme_toogle.dart';
+import 'package:cross_website/langguage.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:cross_website/components/common/menu_button.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
-import 'package:cross_website/constants/theme_toogle.dart';
 import 'package:cross_website/utils/events.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -51,24 +52,55 @@ class HeaderState extends State<Header> {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    var activePath = context.url;
+    final currentUrl = context.url;
+    final currentHash = Uri.parse(currentUrl).fragment;
+    if (currentHash.isNotEmpty && kIsWeb) {
+      scheduleMicrotask(() {});
+    }
     var content = Fragment(key: contentKey, children: [
       nav(classes: 'nav-menu', [
-        for (var route in [
-          (label: 'About us', path: '/'),
-          (label: 'Services', path: '/'),
-          (label: 'Contact', path: '/'),
-          (label: 'Careers', path: '/'),
-        ])
-          div([
-            Link(to: route.path, child: text(route.label)),
-          ]),
-        div(classes: "language-header", [
-          Link(to: '/about', child: text("English")),
-        ]),
-        div(classes: "theme_toggle", [
-          ThemeToggle(),
-        ]),
+        ValueListenableBuilder<String>(
+          listenable: LanguageManager.selectedLanguage,
+          builder: (context, lang) sync* {
+            yield* [
+              for (var route in [
+                (
+                  label: LanguageManager.translate('header_about'),
+                  path: '/about'
+                ),
+                (
+                  label: LanguageManager.translate('header_services'),
+                  path: '/#services'
+                ),
+                (
+                  label: LanguageManager.translate('header_contact'),
+                  path: '/#contact'
+                ),
+                (
+                  label: LanguageManager.translate('header_careers'),
+                  path: '/#careers'
+                ),
+              ])
+                div([
+                  if (route.path == '/about')
+                    Link(
+                      to: route.path,
+                      children: [text(route.label)],
+                    )
+                  else
+                    a(href: route.path, events: {
+                      'click': (event) {},
+                    }, [
+                      text(route.label)
+                    ]),
+                ]),
+              LanguageManager.languageDropdown(),
+              div(classes: "theme_toggle", [
+                ThemeToggle(),
+              ]),
+            ];
+          },
+        ),
       ]),
     ]);
 
@@ -130,23 +162,6 @@ class HeaderState extends State<Header> {
           justifyContent: JustifyContent.center,
           alignItems: AlignItems.center,
         ),
-      ]),
-      css('.language-header', [
-        css('&').styles(
-          display: Display.flex,
-          height: 68.px,
-          padding: Padding.symmetric(horizontal: 15.px),
-          border:
-              Border.all(BorderSide(color: AppColors.textBlack, width: 1.px)),
-          radius: BorderRadius.circular(14.px),
-          alignItems: AlignItems.center,
-          color: AppColors.primaryColor,
-          fontFamily: FontFamily.list(
-              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-          fontSize: 20.px,
-          fontWeight: FontWeight.w400,
-          textDecoration: TextDecoration.none,
-        )
       ]),
       css('.nav-menu div', [
         css('&').styles(display: Display.flex, alignItems: AlignItems.center),

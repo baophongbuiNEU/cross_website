@@ -118,9 +118,9 @@ class CardProcessBlockState extends State<CardProcessBlock> {
       css('.card_process_title', [
         css('&').styles(
           width: 80.percent,
-          fontSize: 20.px,
           justifyContent: JustifyContent.center,
           textAlign: TextAlign.center,
+          fontSize: 20.px,
         ),
       ]),
       css('.card_process_index').styles(

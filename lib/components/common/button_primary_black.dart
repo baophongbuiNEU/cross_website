@@ -1,5 +1,5 @@
-import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/constants/app_colors.dart';
+import 'package:jaspr/jaspr.dart';
 
 class ButtonPrimaryBlack extends StatelessComponent {
   final String text;
@@ -24,12 +24,13 @@ class ButtonPrimaryBlack extends StatelessComponent {
     css('.btn-container').styles(display: Display.flex),
     css('.btn-primary-black', [
       css('&').styles(
-        padding: Padding.symmetric(horizontal: 35.px, vertical: 20.px),
+        padding: Padding.symmetric(horizontal: 20.px, vertical: 20.px),
         radius: BorderRadius.circular(14.px),
         alignItems: AlignItems.center,
         color: AppColors.backgroundWhite,
         textAlign: TextAlign.center,
-        fontFamily: FontFamily.list([FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+        fontFamily: FontFamily.list(
+            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
         fontSize: 20.px,
         backgroundColor: AppColors.textBlack,
       ),
