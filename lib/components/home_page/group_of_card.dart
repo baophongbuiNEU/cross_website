@@ -1,13 +1,10 @@
 import 'package:cross_website/components/common/button_primary_black.dart';
+import 'package:cross_website/components/common/custom_grid.dart';
 import 'package:cross_website/components/common/size_box_component.dart';
 import 'package:cross_website/components/home_page/member_card.dart';
 import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:cross_website/components/common/custom_grid.dart';
-import 'package:cross_website/components/home_page/member_card.dart';
-import 'package:cross_website/constants/image_constant.dart';
-import '../common/button_primary_black.dart';
 
 class GroupOfCard extends StatelessComponent {
   const GroupOfCard({super.key});
@@ -61,37 +58,25 @@ class GroupOfCard extends StatelessComponent {
         final members = getListMemberCard();
 
         yield div(
-          styles: Styles(margin: Margin.symmetric(horizontal: 100.px)),
-          [
-            div(
-              styles: Styles(
-                display: Display.flex,
-                flexDirection: FlexDirection.column,
-              ),
-              [
-                for (var i = 0; i < members.length / 3; i++)
-                  div([
-                    div(
-                      styles: Styles(
-                        display: Display.flex,
-                        flexDirection: FlexDirection.row,
-                        justifyContent: JustifyContent.spaceAround,
-                      ),
-                      [
-                        members[i * 3],
-                        SizeBoxComponent(width: 20),
-                        members[i * 3 + 1],
-                        SizeBoxComponent(width: 20),
-                        members[i * 3 + 2],
-                      ],
-                    ),
-                    SizeBoxComponent(height: 40),
-                  ]),
-                _seeAll(),
-              ],
+            styles: Styles(
+              width: 100.vw,
             ),
-          ],
-        );
+            [
+              div(
+                  styles: Styles(
+                      display: Display.flex,
+                      margin: Margin.symmetric(horizontal: 5.percent),
+                      flexDirection: FlexDirection.column),
+                  [
+                    for (var i = 0; i < members.length / 3; i++)
+                      CustomGrid(children: [
+                        members[i * 3],
+                        members[i * 3 + 1],
+                        members[i * 3 + 2],
+                      ]),
+                    _seeAll()
+                  ])
+            ]);
       },
     );
   }

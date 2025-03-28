@@ -16,22 +16,21 @@ class OurService extends StatelessComponent {
   List<ItemServices> getListService() {
     return [
       ItemServices(
-        title: LanguageManager.translate('our_service_seo_title'),
-        content: LanguageManager.translate('our_service_seo_content'),
-        backgroundColor: AppColors.backgroundWhite,
-        backgroundItem: AppColors.primaryColor,
-        backgroundText: AppColors.greenPrimary,
-        titleColor: AppColors.primaryColor,
-        contentColor: AppColors.primaryColor,
-        itemColor: AppColors.greenPrimary,
-        itemBig: Images.seoIcon,
-      ),
+          title: LanguageManager.translate('our_service_seo_title'),
+          content: LanguageManager.translate('our_service_seo_content'),
+          backgroundColor: Color.hex('#F3F3F3'),
+          backgroundItem: AppColors.primaryColor,
+          backgroundText: AppColors.greenPrimary,
+          titleColor: AppColors.primaryColor,
+          contentColor: AppColors.primaryColor,
+          itemColor: AppColors.greenPrimary,
+          itemBig: Images.seoIcon),
       ItemServices(
         title: LanguageManager.translate('our_service_ppc_title'),
         content: LanguageManager.translate('our_service_ppc_content'),
         backgroundColor: AppColors.greenPrimary,
         backgroundItem: AppColors.primaryColor,
-        backgroundText: AppColors.white,
+        backgroundText: Colors.white,
         titleColor: AppColors.primaryColor,
         contentColor: AppColors.primaryColor,
         itemColor: AppColors.greenPrimary,
@@ -41,17 +40,17 @@ class OurService extends StatelessComponent {
         title: LanguageManager.translate('our_service_smm_title'),
         content: LanguageManager.translate('our_service_smm_content'),
         backgroundColor: AppColors.primaryColor,
-        backgroundItem: AppColors.white,
-        backgroundText: AppColors.white,
+        backgroundItem: Colors.white,
+        backgroundText: Colors.white,
         titleColor: AppColors.primaryColor,
-        contentColor: AppColors.white,
+        contentColor: Colors.white,
         itemColor: AppColors.greenPrimary,
         itemBig: Images.socialMediaMarketingIcon,
       ),
       ItemServices(
         title: LanguageManager.translate('our_service_email_title'),
         content: LanguageManager.translate('our_service_email_content'),
-        backgroundColor: AppColors.backgroundWhite,
+        backgroundColor: Color.hex('#F3F3F3'),
         backgroundItem: AppColors.primaryColor,
         backgroundText: AppColors.greenPrimary,
         titleColor: AppColors.primaryColor,
@@ -64,7 +63,7 @@ class OurService extends StatelessComponent {
         content: LanguageManager.translate('our_service_content_content'),
         backgroundColor: AppColors.greenPrimary,
         backgroundItem: AppColors.primaryColor,
-        backgroundText: AppColors.white,
+        backgroundText: Colors.white,
         titleColor: AppColors.primaryColor,
         contentColor: AppColors.primaryColor,
         itemColor: AppColors.greenPrimary,
@@ -74,10 +73,10 @@ class OurService extends StatelessComponent {
         title: LanguageManager.translate('our_service_analytics_title'),
         content: LanguageManager.translate('our_service_analytics_content'),
         backgroundColor: AppColors.primaryColor,
-        backgroundItem: AppColors.white,
-        backgroundText: AppColors.white,
+        backgroundItem: Colors.white,
+        backgroundText: Colors.white,
         titleColor: AppColors.primaryColor,
-        contentColor: AppColors.white,
+        contentColor: Colors.white,
         itemColor: AppColors.greenPrimary,
         itemBig: Images.analyticsIcon,
       ),
@@ -93,41 +92,30 @@ class OurService extends StatelessComponent {
         final services = getListService();
 
         yield div(
-          styles: Styles(width: 100.vw,
-          justifyContent: JustifyContent.center,
-          alignItems: AlignItems.center,
-          alignSelf: AlignSelf.center,
-          ),
-          [
-            div(
-              styles: Styles(
-                display: Display.flex,
-                padding: Padding.symmetric(horizontal: 100.px),
-                flexDirection: FlexDirection.column,
-              ),
-              [
-                for (var i = 0; i < services.length / 2; i++)
-                  div([
-                    div(
-                      styles: Styles(
-                        display: Display.flex,
-                        flexDirection: FlexDirection.row,
-                        justifyContent: JustifyContent.spaceAround,
-                      ),
-                      [
-                        services[i * 2],
-                        SizeBoxComponent(width: 20),
-                        services[i * 2 + 1],
-                      ],
-                    ),
-                    SizeBoxComponent(height: 40),
-                  ]),
-              ],
+            styles: Styles(
+              width: 100.vw,
+              justifyContent: JustifyContent.center,
+              alignItems: AlignItems.center,
+              alignSelf: AlignSelf.center,
             ),
-          ],
-        );
+            [
+              for (var i = 0; i < services.length / 2; i++)
+                div(
+                    styles: Styles(
+                      display: Display.flex,
+                      padding: Padding.symmetric(horizontal: 5.percent),
+                      justifyContent: JustifyContent.center,
+                      alignItems: AlignItems.center,
+                      alignSelf: AlignSelf.center,
+                    ),
+                    [
+                      CustomGrid(children: [
+                        services[i * 2],
+                        services[i * 2 + 1],
+                      ]),
+                    ]),
+            ]);
       },
     );
   }
 }
-

@@ -5,7 +5,6 @@ import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/components/header.dart';
 import 'package:cross_website/constants/app_colors.dart';
-import 'package:cross_website/constants/image_constant.dart';
 
 class HeaderHomePage extends StatelessComponent {
   const HeaderHomePage({super.key});
@@ -31,7 +30,10 @@ class HeaderHomePage extends StatelessComponent {
                 text: LanguageManager.translate('header_home_page_button'),
               ),
             ]),
-            img(src: Images.imageHeader, styles: Styles(height: 515.px)),
+            img(
+              id: 'primary_image',
+              src: Images.imageHeader,
+            )
           ]),
         ]);
       },
@@ -45,9 +47,41 @@ class HeaderHomePage extends StatelessComponent {
     css('.header-web', [
       css('&').styles(
         display: Display.flex,
-        position: Position.relative(),
-        width: 100.vw,
+        width: 100.percent,
+        maxWidth: 100.vw,
       ),
+    ]),
+    css('.header-web-padding', [
+      css('&').styles(
+        display: Display.flex,
+        width: 100.percent,
+        padding: Padding.symmetric(horizontal: 5.percent, vertical: 70.px),
+        flexDirection: FlexDirection.row,
+        justifyContent: JustifyContent.spaceBetween,
+        alignItems: AlignItems.start,
+      ),
+    ]),
+    css('.text-header-web', [
+      css('&').styles(
+          display: Display.flex,
+          width: 40.percent,
+          flexDirection: FlexDirection.column)
+    ]),
+    css('.w500-60-custom', [
+      css('&').styles(
+          color: AppColors.textBlack,
+          fontFamily: FontFamily.list(
+              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+          fontSize: 60.px,
+          fontWeight: FontWeight.w500)
+    ]),
+    css('.w400-20-custom', [
+      css('&').styles(
+          color: AppColors.textBlack,
+          fontFamily: FontFamily.list(
+              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+          fontSize: 20.px,
+          fontWeight: FontWeight.w400)
     ]),
     css('#primary_image').styles(
       // height: 515.px,

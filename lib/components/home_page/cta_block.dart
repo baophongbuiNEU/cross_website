@@ -16,76 +16,42 @@ class CtaBlock extends StatelessComponent {
     yield ValueListenableBuilder<String>(
       listenable: LanguageManager.selectedLanguage,
       builder: (context, lang) sync* {
-        yield div(
-          styles: Styles(
-            height: 350.px,
-            padding: Padding.symmetric(vertical: 60.px, horizontal: 100.px),
-          ),
-          [
-            div(
-              styles: Styles(
-                display: Display.flex,
-                height: 108.percent,
-                radius: BorderRadius.circular(45.px),
-                flexDirection: FlexDirection.row,
-                justifyContent: JustifyContent.spaceBetween,
-                backgroundColor: AppColors.backgroundWhite,
+        yield div(classes: 'cta_overall', [
+          div(classes: 'cta_block', [
+            div(classes: 'cta_text', [
+              div(
+                  styles: Styles(
+                      color: AppColors.textBlack,
+                      fontSize: 30.px,
+                      fontWeight: FontWeight.w500),
+                  [
+                    text(LanguageManager.translate('cta_title')),
+                  ]),
+              SizeBoxComponent(height: 20),
+              div(
+                  styles: Styles(
+                      color: AppColors.textBlack,
+                      fontSize: 18.px,
+                      fontWeight: FontWeight.w400),
+                  [
+                    text(LanguageManager.translate('cta_description')),
+                  ]),
+              SizeBoxComponent(height: 20),
+              ButtonPrimaryBlack(
+                text: LanguageManager.translate('cta_button_text'),
               ),
-              [
-                div(
-                  styles: Styles(
-                    display: Display.flex,
-                    width: 40.percent,
-                    padding: Padding.all(60.px),
-                    flexDirection: FlexDirection.column,
-                    justifyContent: JustifyContent.spaceBetween,
-                  ),
-                  [
-                    div(
-                      styles: Styles(
-                        color: AppColors.primaryColor,
-                        fontSize: 30.px,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      [
-                        text(LanguageManager.translate('cta_title')),
-                      ],
-                    ),
-                    div(
-                      styles: Styles(
-                        color: AppColors.primaryColor,
-                        fontSize: 18.px,
-                        fontWeight: FontWeight.w400,
-                      ),
-                      [
-                        text(LanguageManager.translate('cta_description')),
-                      ],
-                    ),
-                    ButtonPrimaryBlack(
-                      text: LanguageManager.translate('cta_button_text'),
-                    ),
-                  ],
+            ]),
+            div(classes: 'cta_image', [
+              img(
+                src: Images.ctaBlockImage,
+                styles: Styles(
+                  width: 50.percent,
+                  height: 100.percent,
                 ),
-                div(
-                  styles: Styles(
-                    display: Display.flex,
-                    width: 55.percent,
-                    padding: Padding.only(right: 60.px),
-                    justifyContent: JustifyContent.center,
-                    alignItems: AlignItems.center,
-                  ),
-                  [
-                    img(
-                      src: Images.ctaBlockImage,
-                      height: 400,
-                      attributes: {'alt': 'CTA Image'},
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        );
+              )
+            ])
+          ])
+        ]);
       },
     );
   }

@@ -39,7 +39,7 @@ class LanguageManager {
 
     // Header Home Page
     'header_home_page_title': {
-      'en': 'Innovating the Future header Cross Tech',
+      'en': 'Innovating the Future of Cross Tech',
       'vi': 'Đổi mới tương lai cùng Cross Tech',
       'ko': '크로스 테크의 미래 혁신',
       'ja': 'クロステックの未来を革新する',

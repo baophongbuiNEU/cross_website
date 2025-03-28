@@ -43,57 +43,51 @@ class ItemServices extends StatelessComponent {
             justifyContent: JustifyContent.spaceBetween,
             backgroundColor: backgroundColor ?? AppColors.backgroundWhite),
         [
-          div(
-              styles: Styles(
-                  display: Display.flex,
-                  width: 45.percent,
-                  flexDirection: FlexDirection.column,
-                  justifyContent: JustifyContent.spaceBetween),
+          div(classes: 'service_content', [
+            div(
+              classes: 'service_word',
               [
-                div(
-                  classes: 'service_word',
-                  [
-                    for (var word in (title ?? "").split(' '))
-                      span(
-                        styles: Styles(
-                          padding: Padding.symmetric(
-                              horizontal: 6.px, vertical: 4.px),
-                          radius: BorderRadius.circular(4.px),
-                          color: titleColor ?? AppColors.primaryColor,
-                          fontSize: 30.px,
-                          fontWeight: FontWeight.w500,
-                          backgroundColor:
-                              backgroundText ?? AppColors.greenPrimary,
-                        ),
-                        [Text(word)],
-                      ),
-                  ],
-                ),
-                div(
+                for (var word in (title ?? "").split(' '))
+                  span(
                     styles: Styles(
-                        display: Display.flex,
-                        flexDirection: FlexDirection.row,
-                        alignItems: AlignItems.center),
-                    [
-                      iconComponent ??
-                          img(
-                              height: 20,
-                              width: 20,
-                              src: Icons.upRightArrowIcon,
-                              styles: Styles(
-                                  padding: Padding.all(10.px),
-                                  radius: BorderRadius.circular(20.px),
-                                  backgroundColor: Colors.white)),
-                      SizeBoxComponent(width: 15),
-                      div(
+                      padding:
+                          Padding.symmetric(horizontal: 6.px, vertical: 4.px),
+                      radius: BorderRadius.circular(4.px),
+                      color: titleColor ?? AppColors.primaryColor,
+                      fontSize: 30.px,
+                      fontWeight: FontWeight.w500,
+                      backgroundColor: backgroundText ?? AppColors.greenPrimary,
+                    ),
+                    [Text(word)],
+                  ),
+              ],
+            ),
+            SizeBoxComponent(height: 20),
+            div(
+                styles: Styles(
+                    display: Display.flex,
+                    flexDirection: FlexDirection.row,
+                    alignItems: AlignItems.center),
+                [
+                  iconComponent ??
+                      img(
+                          height: 20,
+                          width: 20,
+                          src: Icons.upRightArrowIcon,
                           styles: Styles(
-                              color: contentColor ?? AppColors.primaryColor,
-                              textAlign: TextAlign.start,
-                              fontSize: 20.px,
-                              fontWeight: FontWeight.w400),
-                          [Text(content ?? "")])
-                    ])
-              ]),
+                              padding: Padding.all(10.px),
+                              radius: BorderRadius.circular(20.px),
+                              backgroundColor: Colors.white)),
+                  SizeBoxComponent(width: 15),
+                  div(
+                      styles: Styles(
+                          color: contentColor ?? AppColors.primaryColor,
+                          textAlign: TextAlign.start,
+                          fontSize: 20.px,
+                          fontWeight: FontWeight.w400),
+                      [Text(content ?? "")])
+                ])
+          ]),
           itemBig != null
               ? img(
                   classes: 'service_image',
@@ -106,6 +100,13 @@ class ItemServices extends StatelessComponent {
 
   @css
   static final styles = [
+    css('.service_content', [
+      css('&').styles(
+          display: Display.flex,
+          width: 45.percent,
+          flexDirection: FlexDirection.column,
+          justifyContent: JustifyContent.spaceBetween),
+    ]),
     css('.service_word', [
       css('&').styles(
         display: Display.flex,
@@ -124,15 +125,25 @@ class ItemServices extends StatelessComponent {
       ]),
     ]),
     css.media(MediaQuery.screen(maxWidth: 600.px), [
+      css('.service_content', [
+        css('&').styles(
+          width: 100.percent,
+          alignItems: AlignItems.center,
+        ),
+      ]),
       css('.service_word', [
         css('&').styles(
-          width: 10.percent,
+          width: 100.percent,
+          justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
+          textAlign: TextAlign.center,
         )
       ]),
       css('.service_image', [
         css('&').styles(
-          width: 30.percent,
-          height: 80.percent,
+          display: Display.none,
+          width: 0.px,
+          height: 0.px,
         )
       ])
     ]),

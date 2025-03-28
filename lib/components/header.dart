@@ -1,7 +1,7 @@
 import 'dart:async' show StreamSubscription, scheduleMicrotask;
 
 import 'package:cross_website/constants/theme_toogle.dart';
-import 'package:cross_website/langguage.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 import 'package:cross_website/components/common/menu_button.dart';
