@@ -1,3 +1,4 @@
+import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
 
 class LanguageManager {
@@ -593,6 +594,10 @@ class LanguageManager {
   static Component languageDropdown() {
     return div(classes: "language-header", [
       select(
+        styles: Styles(
+          color: AppColors.textBlack,
+          backgroundColor: AppColors.backgroundTheme,
+        ),
         events: {
           'change': (dynamic event) {
             final value = event.target.value as String?;
@@ -604,6 +609,9 @@ class LanguageManager {
         [
           for (var lang in languages.entries)
             option(
+              styles: Styles(
+                color: AppColors.textBlack,
+              ),
               attributes: {
                 'value': lang.key,
                 if (lang.key == selectedLanguage.value) 'selected': ''
@@ -622,14 +630,14 @@ class LanguageManager {
         display: Display.flex,
         height: 48.px,
         padding: Padding.symmetric(horizontal: 15.px),
-        border: Border.all(BorderSide(color: Colors.black, width: 1.px)),
+        border: Border(color: AppColors.textBlack, width: 1.px),
         radius: BorderRadius.circular(14.px),
         alignItems: AlignItems.center,
       ),
       css('select').styles(
         border: Border.none,
         cursor: Cursor.pointer,
-        color: Colors.black,
+        color: AppColors.textBlack,
         textAlign: TextAlign.center,
         fontFamily: FontFamily.list(
             [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
