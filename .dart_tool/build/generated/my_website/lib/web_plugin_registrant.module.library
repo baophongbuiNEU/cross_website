@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["audio_session|lib/audio_session_web.dart","audioplayers_web|lib/audioplayers_web.dart","flutter_sound_web|lib/flutter_sound_web.dart","just_audio_web|lib/just_audio_web.dart","record_web|lib/record_web.dart","flutter_web_plugins|lib/flutter_web_plugins.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["audioplayers_platform_interface|lib/audioplayers_platform_interface.dart","flutter|lib/services.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async"],"hasMain":false}

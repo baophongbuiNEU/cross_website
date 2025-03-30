@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["plugin_platform_interface|lib/plugin_platform_interface.dart","just_audio_platform_interface|lib/method_channel_just_audio.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async"],"hasMain":false}

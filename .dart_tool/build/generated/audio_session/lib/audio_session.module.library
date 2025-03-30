@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["audio_session|lib/src/android.dart","audio_session|lib/src/core.dart","audio_session|lib/src/darwin.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

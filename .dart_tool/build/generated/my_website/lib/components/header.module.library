@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["jaspr|lib/jaspr.dart","jaspr_router|lib/jaspr_router.dart","my_website|lib/constants/app_colors.dart","my_website|lib/constants/image_constant.dart","my_website|lib/constants/theme_toogle.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

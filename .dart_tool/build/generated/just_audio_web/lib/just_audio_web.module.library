@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["flutter|lib/services.dart","flutter|lib/widgets.dart","flutter_web_plugins|lib/flutter_web_plugins.dart","just_audio_platform_interface|lib/just_audio_platform_interface.dart","web|lib/web.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async","js_interop","math"],"hasMain":false}

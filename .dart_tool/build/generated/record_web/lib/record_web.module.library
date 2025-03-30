@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["flutter|lib/services.dart","flutter_web_plugins|lib/flutter_web_plugins.dart","record_platform_interface|lib/record_platform_interface.dart","record_web|lib/recorder/recorder.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async"],"hasMain":false}

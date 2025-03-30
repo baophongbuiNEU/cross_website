@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["logger|lib/src/output_event.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async"],"hasMain":false}

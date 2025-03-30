@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["flutter_sound_platform_interface|lib/flutter_sound_platform_interface.dart","flutter_sound_platform_interface|lib/flutter_sound_recorder_platform_interface.dart","logger|lib/logger.dart","web|lib/web.dart","flutter_sound_web|lib/async_worklet_node.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async","typed_data","js_interop"],"hasMain":false}

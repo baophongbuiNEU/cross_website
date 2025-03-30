@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["my_website|web/main.clients.dart","my_website|lib/web_plugin_registrant.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":true}

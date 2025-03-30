@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":[],"parts":[],"conditionalDeps":[{"$default":"my_website|lib/generated/imports/_web.dart","dart.library.io":"my_website|lib/generated/imports/_stubs.dart"}],"sdkDeps":[],"hasMain":false}

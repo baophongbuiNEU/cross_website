@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/"/>
+    <meta charset="utf-8"/>
+    <style>
+      @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap);
+      @import url(https://fonts.googleapis.com/css?family=Roboto);
+      html, body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        min-height: 100vh;
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      h1 {
+        margin: unset;
+        font-size: 4rem;
+      }
+    </style>
+    <link href="manifest.json" rel="manifest"/>
+    <script async src="flutter_bootstrap.js"></script>
+    <!--$-->
+    <title>About</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script id="theme-script">
+        (function() {
+          // Load the saved theme or use system preference
+          let userTheme = window.localStorage.getItem('active-theme');
+      
+          if (userTheme) {
+            document.documentElement.className = userTheme; // Apply stored theme
+          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.className = 'dark'; // Use system dark mode
+          } else {
+            document.documentElement.className = 'light'; // Default to light mode
+          }
+      
+          // Function to toggle theme and save to localStorage
+          window.toggleTheme = function() {
+            let currentTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+            document.documentElement.className = currentTheme;
+            window.localStorage.setItem('active-theme', currentTheme);
+          };
+        })();
+        
+    </script>
+    <!--/-->
+    <script src="app.client.dart.js" defer></script>
+    <style>
+      @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap);
+      @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap);
+      @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap);
+      @import url(font/lucide/lucide.css);
+      .btn-container {
+        display: flex;
+      }
+      .btn-primary-black {
+        padding: 20px 35px;
+        border-radius: 14px;
+        color: var(--backgroundWhite);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 20px;
+        background-color: var(--textBlack);
+      }
+      .header-web {
+        display: flex;
+        width: 100vw;
+      }
+      .header-web-padding {
+        padding: 70px 100px;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+      }
+      .text-header-web {
+        display: flex;
+        width: 40%;
+        flex-direction: column;
+      }
+      .w500-60-custom {
+        color: var(--textBlack);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 60px;
+        font-weight: 500;
+      }
+      .w400-20-custom {
+        color: var(--textBlack);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 20px;
+        font-weight: 400;
+      }
+      .list-logo-container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        width: 100vw;
+        height: 48px;
+        overflow: hidden;
+        background-color: var(--listLogoBackground);
+      }
+      .list-logo-content {
+        padding-left: 100px;
+        padding-right: 100px;
+        display: flex;
+        width: 100%;
+        height: 48px;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .list-logo-content img {
+        max-width: 100px;
+        max-height: 100%;
+      }
+      .header-container {
+        width: 100vw;
+      }
+      .head_padding {
+        padding-top: 66px;
+        padding-left: 100px;
+        padding-right: 100px;
+        display: flex;
+        height: 68px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-menu a {
+        margin-left: 20px;
+        margin-right: 20px;
+        color: var(--textBlack);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 20px;
+        font-weight: 400;
+        text-decoration: none;
+      }
+      .nav-menu  {
+        display: flex;
+      }
+      .language-header {
+        padding-left: 15px;
+        padding-right: 15px;
+        display: flex;
+        height: 68px;
+        border: solid var(--textBlack) 1px;
+        border-radius: 14px;
+        color: var(--primaryColor);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 20px;
+        font-weight: 400;
+        text-decoration: none;
+        align-items: center;
+      }
+      .nav-menu div {
+        display: flex;
+        align-items: center;
+      }
+      html, body {
+        padding: 0;
+        margin: 0;
+      }
+      html {
+        background-color: var(--backgroundWhite);
+      }
+      :root {
+        --primaryColor: #191A23;
+        --white: #FFFFFF;
+        --greenPrimary: #B9FF66;
+        --backgroundWhite: #F3F3F3;
+        --background292A32: #292A32;
+        --textBlack: #222;
+        --hoverOverlayColor: #0001;
+        --listLogoBackground: transparent;
+        --contentPadding: 4rem;
+        --sectionPadding: 16rem;
+      }
+      :root.dark {
+        --primaryColor: #191A23;
+        --white: #222;
+        --greenPrimary: #B9FF66;
+        --backgroundWhite: #000000;
+        --background292A32: #292A32;
+        --textBlack: #F5F5F5;
+        --hoverOverlayColor: #FFF1;
+        --listLogoBackground: #FFFFFF;
+      }
+      @media all and (max-width: 40rem) {
+        :root {
+          --contentPadding: 2rem;
+          --sectionPadding: 8rem;
+        }
+      }
+      @media all and (max-width: 25rem) {
+        :root {
+          --contentPadding: 1rem;
+          --sectionPadding: 4rem;
+        }
+      }
+      .theme-toggle {
+        padding: 0.7rem;
+        display: flex;
+        border: unset;
+        outline: unset;
+        border-radius: 8px;
+        color: var(--textBlack);
+        background-color: transparent;
+        align-items: center;
+      }
+      .theme-toggle:hover {
+        background-color: var(--hoverOverlayColor);
+      }
+      ol {
+        max-width: 500px;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+      .main section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!--@app-->
+    <div class="main">
+      <header>
+        <div class="header-container">
+          <div class="head_padding">
+            <img style="width: 36px; height: 36px; color: var(--textBlack)" src="images/icon_primary_web.svg"/>
+            <nav class="nav-menu">
+              <div><a href="/">About us</a></div>
+              <div><a href="/">Services</a></div>
+              <div><a href="/">Contact</a></div>
+              <div><a href="/">Careers</a></div>
+              <div class="language-header"><a href="/about">English</a></div>
+              <div style="margin-left: 10px"><button class="theme-toggle" style="font-size: 30px" aria-label="Theme Toggle">☀️</button></div>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <section>
+        <ol>
+          <li>
+            <h3>📖 Documentation</h3>
+            Jaspr's 
+            <a href="https://docs.jaspr.site">official documentation</a>
+             provides you with all information you need to get started.
+          </li>
+          <li>
+            <h3>💬 Community</h3>
+            Got stuck? Ask your question on the official 
+            <a href="https://discord.gg/XGXrGEk4c6">Discord server</a>
+             for the Jaspr community.
+          </li>
+          <li>
+            <h3>📦 Ecosystem</h3>
+            Get official packages and integrations for your project like jaspr_router, jaspr_tailwind or jaspr_riverpod. Find packages built for Jaspr on pub.dev using the 
+            <a href="https://pub.dev/packages?q=topic%3Ajaspr">#jaspr</a>
+             topic, or publish your own.
+          </li>
+          <li>
+            <h3>💙 Support Jaspr</h3>
+            If you like Jaspr, consider starring us on 
+            <a href="https://github.com/schultek/jaspr">Github</a>
+             and tell your friends.
+          </li>
+        </ol>
+      </section>
+    </div>
+    <!--/@app-->
+  </body>
+</html>

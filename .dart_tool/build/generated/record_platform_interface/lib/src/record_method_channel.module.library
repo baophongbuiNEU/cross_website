@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["flutter|lib/services.dart","record_platform_interface|lib/record_platform_interface.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async"],"hasMain":false}

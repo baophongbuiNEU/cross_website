@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["plugin_platform_interface|lib/plugin_platform_interface.dart","record_platform_interface|lib/src/record_method_channel.dart","record_platform_interface|lib/record_platform_interface.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async","typed_data"],"hasMain":false}

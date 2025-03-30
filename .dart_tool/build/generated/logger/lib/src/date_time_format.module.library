@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["logger|lib/src/printers/pretty_printer.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

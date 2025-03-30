@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["flutter_sound_platform_interface|lib/flutter_sound_recorder_platform_interface.dart","flutter_web_plugins|lib/flutter_web_plugins.dart","flutter_sound_web|lib/flutter_sound_player_web.dart","flutter_sound_web|lib/flutter_sound_recorder_web.dart","flutter|lib/foundation.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async","html"],"hasMain":false}

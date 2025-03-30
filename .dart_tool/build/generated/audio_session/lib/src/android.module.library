@@ -1,0 +1,1 @@
+{"isEntrypoint":false,"deps":["audio_session|lib/src/util.dart","flutter|lib/services.dart","rxdart|lib/rxdart.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async"],"hasMain":false}

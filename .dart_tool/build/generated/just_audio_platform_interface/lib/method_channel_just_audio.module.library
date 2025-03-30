@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["flutter|lib/services.dart","just_audio_platform_interface|lib/just_audio_platform_interface.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["async"],"hasMain":false}

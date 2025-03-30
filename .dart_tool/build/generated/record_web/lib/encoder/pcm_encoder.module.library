@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["web|lib/web.dart","record_web|lib/encoder/encoder.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":["typed_data","js_interop"],"hasMain":false}

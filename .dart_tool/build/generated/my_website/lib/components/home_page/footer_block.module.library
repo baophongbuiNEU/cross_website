@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["jaspr|lib/jaspr.dart","my_website|lib/constants/app_colors.dart","my_website|lib/constants/image_constant.dart","my_website|lib/components/common/size_box_component.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["record_platform_interface|lib/src/record_platform_interface.dart","record_platform_interface|lib/src/types/types.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

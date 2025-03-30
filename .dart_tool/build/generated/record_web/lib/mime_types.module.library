@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["web|lib/web.dart","record_platform_interface|lib/record_platform_interface.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

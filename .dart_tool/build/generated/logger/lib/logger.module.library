@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["logger|lib/web.dart"],"parts":[],"conditionalDeps":[{"$default":"logger|lib/src/outputs/file_output_stub.dart","dart.library.io":"logger|lib/src/outputs/file_output.dart"},{"$default":"logger|lib/src/outputs/advanced_file_output_stub.dart","dart.library.io":"logger|lib/src/outputs/advanced_file_output.dart"}],"sdkDeps":[],"hasMain":false}
