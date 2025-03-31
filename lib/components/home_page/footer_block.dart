@@ -43,7 +43,7 @@ class FooterBlock extends StatelessComponent {
             SizeBoxComponent(width: 6),
             div(
               styles: Styles(
-                color: AppColors.white,
+                color: Colors.white,
                 fontSize: 30.px,
                 fontWeight: FontWeight.w500,
               ),
@@ -115,7 +115,7 @@ class FooterBlock extends StatelessComponent {
         a(
           href: "mailto:info@crosstech.com",
           styles: Styles(
-            color: AppColors.white,
+            color: Colors.white,
             textDecoration: TextDecoration(line: TextDecorationLine.none),
           ),
           [
@@ -128,7 +128,7 @@ class FooterBlock extends StatelessComponent {
         a(
           href: "tel:0338305895",
           styles: Styles(
-            color: AppColors.white,
+            color: Colors.white,
             textDecoration: TextDecoration(line: TextDecorationLine.none),
           ),
           [
@@ -142,7 +142,7 @@ class FooterBlock extends StatelessComponent {
           href: "https://maps.app.goo.gl/8RR39Ge1WESWiPcj6",
           target: Target.blank,
           styles: Styles(
-            color: AppColors.white,
+            color: Colors.white,
             textDecoration: TextDecoration(line: TextDecorationLine.none),
           ),
           [
