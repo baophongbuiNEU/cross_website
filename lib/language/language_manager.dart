@@ -596,7 +596,7 @@ class LanguageManager {
       select(
         styles: Styles(
           color: AppColors.textBlack,
-          backgroundColor: AppColors.backgroundTheme,
+          backgroundColor: Colors.transparent,
         ),
         events: {
           'change': (dynamic event) {
@@ -610,8 +610,8 @@ class LanguageManager {
           for (var lang in languages.entries)
             option(
               styles: Styles(
-                color: AppColors.textBlack,
-              ),
+                  color: AppColors.textBlack,
+                  backgroundColor: AppColors.backgroundTheme),
               attributes: {
                 'value': lang.key,
                 if (lang.key == selectedLanguage.value) 'selected': ''
