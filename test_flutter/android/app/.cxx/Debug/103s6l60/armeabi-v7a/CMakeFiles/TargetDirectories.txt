@@ -1,0 +1,2 @@
+C:/Users/Nitro/Desktop/Jaspr/test_flutter/android/app/.cxx/Debug/103s6l60/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Nitro/Desktop/Jaspr/test_flutter/android/app/.cxx/Debug/103s6l60/armeabi-v7a/CMakeFiles/rebuild_cache.dir
