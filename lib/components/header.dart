@@ -1,13 +1,14 @@
 import 'dart:async' show StreamSubscription, scheduleMicrotask;
 
-import 'package:cross_website/constants/theme_toogle.dart';
-import 'package:cross_website/language/language_manager.dart';
-import 'package:jaspr/jaspr.dart';
-import 'package:jaspr_router/jaspr_router.dart';
 import 'package:cross_website/components/common/menu_button.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/constants/theme_toogle.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:cross_website/utils/events.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:jaspr_router/jaspr_router.dart';
 import 'package:universal_web/web.dart' as web;
 
 class Header extends StatefulComponent {
@@ -52,6 +53,7 @@ class HeaderState extends State<Header> {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
+    final languageState = context.watch(langProvider);
     final currentUrl = context.url;
     final currentHash = Uri.parse(currentUrl).fragment;
     if (currentHash.isNotEmpty && kIsWeb) {
@@ -94,7 +96,38 @@ class HeaderState extends State<Header> {
                       text(route.label)
                     ]),
                 ]),
-              LanguageManager.languageDropdown(),
+              // LanguageManager.languageDropdown(),
+              div(classes: "language-header", [
+                select(
+                  styles: Styles(
+                    color: AppColors.textBlack,
+                    backgroundColor: AppColors.backgroundTheme,
+                  ),
+                  events: {
+                    'change': (dynamic event) {
+                      final value = event.target.value as String?;
+
+                      if (value != null) {
+                        context.read(langProvider.notifier).state = value;
+                      }
+                    }
+                  },
+                  [
+                    for (var lang in SupportLanguage.values)
+                      option(
+                        styles: Styles(
+                          color: AppColors.textBlack,
+                        ),
+                        attributes: {
+                          'value': lang.name,
+                          if (lang.name == languageState) 'selected': ''
+                        },
+                        [text(lang.name)],
+                      ),
+                  ],
+                )
+              ]),
+
               div(classes: "theme_toggle", [
                 ThemeToggle(),
               ]),
