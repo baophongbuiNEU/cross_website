@@ -2,10 +2,11 @@ import 'package:jaspr/server.dart';
 import 'app.dart';
 import 'jaspr_options.dart';
 
-void main() {
+void main() async {
   Jaspr.initializeApp(
     options: defaultJasprOptions,
   );
+
   runApp(Document(
     title: 'my_website',
     styles: [
@@ -19,7 +20,8 @@ void main() {
         padding: Padding.zero,
         margin: Margin.zero,
         boxSizing: BoxSizing.borderBox,
-        fontFamily: const FontFamily.list([FontFamily('Space Grotesk'), FontFamilies.sansSerif]),
+        fontFamily: const FontFamily.list(
+            [FontFamily('Space Grotesk'), FontFamilies.sansSerif]),
       ),
       css('h1').styles(
         margin: Margin.unset,

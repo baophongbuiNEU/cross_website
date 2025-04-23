@@ -3,9 +3,6 @@ import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:cross_website/components/common/size_box_component.dart';
-import 'package:cross_website/constants/app_colors.dart';
-import 'package:cross_website/constants/image_constant.dart';
 
 class ContactUsBlock extends StatefulComponent {
   const ContactUsBlock({super.key});

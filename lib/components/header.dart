@@ -57,52 +57,6 @@ class HeaderState extends State<Header> {
     if (currentHash.isNotEmpty && kIsWeb) {
       scheduleMicrotask(() {});
     }
-    var content = Fragment(key: contentKey, children: [
-      nav(classes: 'nav-menu', [
-        ValueListenableBuilder<String>(
-          listenable: LanguageManager.selectedLanguage,
-          builder: (context, lang) sync* {
-            yield* [
-              for (var route in [
-                (
-                  label: LanguageManager.translate('header_about'),
-                  path: '/about'
-                ),
-                (
-                  label: LanguageManager.translate('header_services'),
-                  path: '/#services'
-                ),
-                (
-                  label: LanguageManager.translate('header_contact'),
-                  path: '/#contact'
-                ),
-                (
-                  label: LanguageManager.translate('header_careers'),
-                  path: '/#careers'
-                ),
-              ])
-                div([
-                  if (route.path == '/about')
-                    Link(
-                      to: route.path,
-                      children: [text(route.label)],
-                    )
-                  else
-                    a(href: route.path, events: {
-                      'click': (event) {},
-                    }, [
-                      text(route.label)
-                    ]),
-                ]),
-              LanguageManager.languageDropdown(),
-              div(classes: "theme_toggle", [
-                ThemeToggle(),
-              ]),
-            ];
-          },
-        ),
-      ]),
-    ]);
 
     yield header([
       img(
@@ -116,14 +70,125 @@ class HeaderState extends State<Header> {
             color: AppColors.textBlack,
             backgroundColor: AppColors.listLogoBackground),
       ),
-      if (!menuOpen) content,
+      FutureBuilder<bool>(
+        future: LanguageManager.loadTranslations(),
+        builder: (context, snapshot) sync* {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            yield text('Loading...');
+          } else if (snapshot.hasError || !snapshot.data!) {
+            yield text('Error loading translations');
+          } else {
+            yield nav(classes: 'nav-menu', [
+              ValueListenableBuilder<String>(
+                listenable: LanguageManager.selectedLanguage,
+                builder: (context, lang) sync* {
+                  for (var route in [
+                    (
+                      label: LanguageManager.translate('header_about'),
+                      path: '/about'
+                    ),
+                    (
+                      label: LanguageManager.translate('header_services'),
+                      path: '/#services'
+                    ),
+                    (
+                      label: LanguageManager.translate('header_contact'),
+                      path: '/#contact'
+                    ),
+                    (
+                      label: LanguageManager.translate('header_careers'),
+                      path: '/#careers'
+                    ),
+                  ]) {
+                    yield div([
+                      if (route.path == '/about')
+                        Link(
+                          to: route.path,
+                          children: [text(route.label)],
+                        )
+                      else
+                        a(href: route.path, events: {
+                          'click': (event) {},
+                        }, [
+                          text(route.label)
+                        ]),
+                    ]);
+                  }
+                  yield LanguageManager.languageDropdown();
+                  yield div(classes: "theme_toggle", [
+                    ThemeToggle(),
+                  ]);
+                },
+              ),
+            ]);
+          }
+        },
+      ),
       MenuButton(
         onClick: () {
           setState(() {
             menuOpen = !menuOpen;
           });
         },
-        child: menuOpen ? content : null,
+        child: menuOpen
+            ? FutureBuilder<bool>(
+                future: LanguageManager.loadTranslations(),
+                builder: (context, snapshot) sync* {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    yield text('Loading...');
+                  } else if (snapshot.hasError || !snapshot.data!) {
+                    yield text('Error loading translations');
+                  } else {
+                    yield nav(classes: 'nav-menu', [
+                      ValueListenableBuilder<String>(
+                        listenable: LanguageManager.selectedLanguage,
+                        builder: (context, lang) sync* {
+                          for (var route in [
+                            (
+                              label: LanguageManager.translate('header_about'),
+                              path: '/about'
+                            ),
+                            (
+                              label:
+                                  LanguageManager.translate('header_services'),
+                              path: '/#services'
+                            ),
+                            (
+                              label:
+                                  LanguageManager.translate('header_contact'),
+                              path: '/#contact'
+                            ),
+                            (
+                              label:
+                                  LanguageManager.translate('header_careers'),
+                              path: '/#careers'
+                            ),
+                          ]) {
+                            yield div([
+                              if (route.path == '/about')
+                                Link(
+                                  to: route.path,
+                                  children: [text(route.label)],
+                                )
+                              else
+                                a(href: route.path, events: {
+                                  'click': (event) {},
+                                }, [
+                                  text(route.label)
+                                ]),
+                            ]);
+                          }
+                          yield LanguageManager.languageDropdown();
+                          yield div(classes: "theme_toggle", [
+                            ThemeToggle(),
+                          ]);
+                        },
+                      ),
+                    ]);
+                  }
+                },
+              )
+            : null,
       ),
     ]);
   }
