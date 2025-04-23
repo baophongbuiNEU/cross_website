@@ -1,28 +1,21 @@
-import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/constants/app_colors.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 import 'package:universal_web/web.dart' as web;
 
-class ThemeToggle extends StatefulComponent {
+final themeProvider = StateProvider<bool>((ref) {
+  final time = DateTime.now();
+  // web.document.documentElement?.className == 'dark'
+  return time.hour >= 18 || time.hour < 6;
+});
+
+class ThemeToggle extends StatelessComponent {
   const ThemeToggle({super.key});
 
   @override
-  State createState() => ThemeToggleState();
-}
-
-class ThemeToggleState extends State<ThemeToggle> {
-  bool isDark = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    if (!kIsWeb) return;
-
-    isDark = web.document.documentElement!.className == 'dark';
-  }
-
-  @override
   Iterable<Component> build(BuildContext context) sync* {
+    final isDark = context.watch(themeProvider);
+
     if (!kIsWeb) {
       yield Document.head(children: [
         // ignore: prefer_html_methods
@@ -60,15 +53,12 @@ class ThemeToggleState extends State<ThemeToggle> {
       classes: 'theme-toggle',
       attributes: {'aria-label': 'Theme Toggle'},
       onClick: () {
-        setState(() {
-          isDark = !isDark;
-        });
+        context.read(themeProvider.notifier).state = !isDark;
+
         web.window.localStorage
             .setItem('active-theme', isDark ? 'dark' : 'light');
       },
-      styles: !kIsWeb
-          ? Styles(visibility: Visibility.hidden)
-          : Styles(fontSize: 30.px),
+      styles: Styles(fontSize: 30.px),
       // styles: Styles(fontSize: 30.px),
       [text(isDark ? '🌙' : '☀️')],
     );

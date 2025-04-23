@@ -61,7 +61,7 @@ final defaultJasprOptions = JasprOptions(
     ...prefix11.ListLogo.styles,
     ...prefix12.HeaderState.styles,
     ...prefix13.root,
-    ...prefix14.ThemeToggleState.styles,
+    ...prefix14.ThemeToggle.styles,
     ...prefix15.LanguageManager.styles,
     ...prefix16.About.styles,
     ...prefix19.App.styles,
