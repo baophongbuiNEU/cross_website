@@ -9,7 +9,7 @@ enum SupportLanguage {
   ko,
 }
 
-final langProvider = StateProvider<String>((ref) => 'vi');
+final langProvider = StateProvider<String>((ref) => 'en');
 
 class LanguageManager {
   static Map<String, dynamic> langAssets = {};
