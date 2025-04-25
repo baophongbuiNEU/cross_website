@@ -5,39 +5,39 @@ import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/components/header.dart';
 import 'package:cross_website/constants/app_colors.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 
 class HeaderHomePage extends StatelessComponent {
   const HeaderHomePage({super.key});
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield ValueListenableBuilder<String>(
-      listenable: LanguageManager.selectedLanguage,
-      builder: (context, lang) sync* {
-        yield div(classes: 'header-web', [
-          div(classes: 'header-web-padding', [
-            div(classes: 'text-header-web', [
-              div(classes: 'w500-60-custom', [
-                text(LanguageManager.translate('header_home_page_title')),
-              ]),
-              SizeBoxComponent(height: 35),
-              div(classes: 'w400-20-custom', [
-                text(
-                  LanguageManager.translate('header_home_page_subtitle'),
-                ),
-              ]),
-              SizeBoxComponent(height: 35),
-              ButtonPrimaryBlack(
-                text: LanguageManager.translate('header_home_page_button'),
-              ),
-            ]),
-            img(
-              id: 'primary_image',
-              src: Images.imageHeader,
-            )
+    final selectedLang = context.watch(selectedLanguageProvider);
+
+    yield div(classes: 'header-web', [
+      div(classes: 'header-web-padding', [
+        div(classes: 'text-header-web', [
+          div(classes: 'w500-60-custom', [
+            text(LanguageManager.translate(
+                'header_home_page_title', selectedLang)),
           ]),
-        ]);
-      },
-    );
+          SizeBoxComponent(height: 35),
+          div(classes: 'w400-20-custom', [
+            text(LanguageManager.translate(
+                'header_home_page_subtitle', selectedLang)),
+          ]),
+          SizeBoxComponent(height: 35),
+          ButtonPrimaryBlack(
+            text: LanguageManager.translate(
+                'header_home_page_button', selectedLang),
+          ),
+        ]),
+        img(
+          id: 'primary_image',
+          src: Images.imageHeader,
+        ),
+      ]),
+    ]);
   }
 
   @css
@@ -63,28 +63,30 @@ class HeaderHomePage extends StatelessComponent {
     ]),
     css('.text-header-web', [
       css('&').styles(
-          display: Display.flex,
-          width: 40.percent,
-          flexDirection: FlexDirection.column)
+        display: Display.flex,
+        width: 40.percent,
+        flexDirection: FlexDirection.column,
+      ),
     ]),
     css('.w500-60-custom', [
       css('&').styles(
-          color: AppColors.textBlack,
-          fontFamily: FontFamily.list(
-              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-          fontSize: 60.px,
-          fontWeight: FontWeight.w500)
+        color: AppColors.textBlack,
+        fontFamily: FontFamily.list(
+            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+        fontSize: 60.px,
+        fontWeight: FontWeight.w500,
+      ),
     ]),
     css('.w400-20-custom', [
       css('&').styles(
-          color: AppColors.textBlack,
-          fontFamily: FontFamily.list(
-              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-          fontSize: 20.px,
-          fontWeight: FontWeight.w400)
+        color: AppColors.textBlack,
+        fontFamily: FontFamily.list(
+            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+        fontSize: 20.px,
+        fontWeight: FontWeight.w400,
+      ),
     ]),
     css('#primary_image').styles(
-      // height: 515.px,
       width: 550.px,
     ),
     css.media(MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
@@ -98,35 +100,39 @@ class HeaderHomePage extends StatelessComponent {
       ),
       css('.text-header-web', [
         css('&').styles(
-            display: Display.flex,
-            width: 100.percent,
-            flexDirection: FlexDirection.column,
-            justifyContent: JustifyContent.center,
-            alignItems: AlignItems.center)
+          display: Display.flex,
+          width: 100.percent,
+          flexDirection: FlexDirection.column,
+          justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
+        ),
       ]),
       css('.w500-60-custom', [
         css('&').styles(
-            color: AppColors.textBlack,
-            textAlign: TextAlign.center,
-            fontFamily: FontFamily.list(
-                [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-            fontSize: 60.px,
-            fontWeight: FontWeight.w500)
+          color: AppColors.textBlack,
+          textAlign: TextAlign.center,
+          fontFamily: FontFamily.list(
+              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+          fontSize: 60.px,
+          fontWeight: FontWeight.w500,
+        ),
       ]),
       css('.w400-20-custom', [
         css('&').styles(
-            color: AppColors.textBlack,
-            textAlign: TextAlign.center,
-            fontFamily: FontFamily.list(
-                [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-            fontSize: 20.px,
-            fontWeight: FontWeight.w400)
+          color: AppColors.textBlack,
+          textAlign: TextAlign.center,
+          fontFamily: FontFamily.list(
+              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+          fontSize: 20.px,
+          fontWeight: FontWeight.w400,
+        ),
       ]),
       css('#primary_image').styles(
-          width: 350.px,
-          margin: Spacing.only(
-            top: 30.px,
-          )),
-    ])
+        width: 350.px,
+        margin: Spacing.only(
+          top: 30.px,
+        ),
+      ),
+    ]),
   ];
 }

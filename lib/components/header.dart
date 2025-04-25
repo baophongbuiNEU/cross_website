@@ -53,87 +53,84 @@ class HeaderState extends State<Header> {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    final languageState = context.watch(langProvider);
+    final selectedLang = context.watch(selectedLanguageProvider);
+
     final currentUrl = context.url;
     final currentHash = Uri.parse(currentUrl).fragment;
     if (currentHash.isNotEmpty && kIsWeb) {
       scheduleMicrotask(() {});
     }
+
     var content = Fragment(key: contentKey, children: [
       nav(classes: 'nav-menu', [
-        ValueListenableBuilder<String>(
-          listenable: LanguageManager.selectedLanguage,
-          builder: (context, lang) sync* {
-            yield* [
-              for (var route in [
-                (
-                  label: LanguageManager.translate('header_about'),
-                  path: '/about'
-                ),
-                (
-                  label: LanguageManager.translate('header_services'),
-                  path: '/#services'
-                ),
-                (
-                  label: LanguageManager.translate('header_contact'),
-                  path: '/#contact'
-                ),
-                (
-                  label: LanguageManager.translate('header_careers'),
-                  path: '/#careers'
-                ),
-              ])
-                div([
-                  if (route.path == '/about')
-                    Link(
-                      to: route.path,
-                      children: [text(route.label)],
-                    )
-                  else
-                    a(href: route.path, events: {
-                      'click': (event) {},
-                    }, [
-                      text(route.label)
-                    ]),
-                ]),
-              // LanguageManager.languageDropdown(),
-              div(classes: "language-header", [
-                select(
-                  styles: Styles(
-                    color: AppColors.textBlack,
-                    backgroundColor: AppColors.backgroundTheme,
+        for (var route in [
+          (
+            label: LanguageManager.translate('header_about', selectedLang),
+            path: '/about'
+          ),
+          (
+            label: LanguageManager.translate('header_services', selectedLang),
+            path: '/#services'
+          ),
+          (
+            label: LanguageManager.translate('header_contact', selectedLang),
+            path: '/#contact'
+          ),
+          (
+            label: LanguageManager.translate('header_careers', selectedLang),
+            path: '/#careers'
+          ),
+        ])
+          div([
+            if (route.path == '/about')
+              Link(
+                to: route.path,
+                children: [text(route.label)],
+              )
+            else
+              a(href: route.path, events: {
+                'click': (event) {},
+              }, [
+                text(route.label)
+              ]),
+          ]),
+        Builder(builder: (context) sync* {
+          final selectedLang = context.watch(selectedLanguageProvider);
+          yield div(classes: "language-header", [
+            select(
+              styles: Styles(
+                color: AppColors.textBlack,
+                backgroundColor: AppColors.backgroundTheme,
+              ),
+              events: {
+                'change': (dynamic event) {
+                  final value = event.target.value as String?;
+                  if (value != null) {
+                    context.read(selectedLanguageProvider.notifier).state =
+                        value;
+                    // LanguageManager.saveLanguage(value);
+                  }
+                }
+              },
+              [
+                for (var lang in LanguageManager.languages.entries)
+                  option(
+                    styles: Styles(
+                      color: AppColors.textBlack,
+                    ),
+                    attributes: {
+                      'value': lang.key,
+                      if (lang.key == selectedLang) 'selected': ''
+                    },
+                    [text(lang.value)],
                   ),
-                  events: {
-                    'change': (dynamic event) {
-                      final value = event.target.value as String?;
-
-                      if (value != null) {
-                        context.read(langProvider.notifier).state = value;
-                      }
-                    }
-                  },
-                  [
-                    for (var lang in SupportLanguage.values)
-                      option(
-                        styles: Styles(
-                          color: AppColors.textBlack,
-                        ),
-                        attributes: {
-                          'value': lang.name,
-                          if (lang.name == languageState) 'selected': ''
-                        },
-                        [text(lang.name)],
-                      ),
-                  ],
-                )
-              ]),
-
-              div(classes: "theme_toggle", [
-                ThemeToggle(),
-              ]),
-            ];
-          },
-        ),
+              ],
+            ),
+          ]);
+        }),
+        div(classes: "theme_toggle", [
+          ThemeToggle(),
+        ]),
       ]),
     ]);
 
@@ -215,6 +212,28 @@ class HeaderState extends State<Header> {
       ]),
       css('.theme_toggle').styles(
         margin: Spacing.only(left: 0.px, right: 0.rem),
+      ),
+    ]),
+    css('.language-header', [
+      css('&').styles(
+        display: Display.flex,
+        height: 48.px,
+        padding: Padding.symmetric(horizontal: 15.px),
+        border: Border(color: AppColors.textBlack, width: 1.px),
+        radius: BorderRadius.circular(14.px),
+        alignItems: AlignItems.center,
+      ),
+      css('select').styles(
+        border: Border.none,
+        cursor: Cursor.pointer,
+        color: AppColors.textBlack,
+        textAlign: TextAlign.center,
+        fontFamily: FontFamily.list(
+            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+        fontSize: 18.px,
+        fontWeight: FontWeight.w400,
+        backgroundColor: Colors.transparent,
+        raw: {'-webkit-appearance': 'none', '-moz-appearance': 'none'},
       ),
     ]),
   ];

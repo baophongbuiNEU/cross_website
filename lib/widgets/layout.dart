@@ -4,7 +4,7 @@ import 'package:jaspr/jaspr.dart';
 class Layout extends StatelessComponent {
   final Component child;
 
-  Layout({required this.child});
+  const Layout({required this.child});
 
   @override
   Iterable<Component> build(BuildContext context) sync* {

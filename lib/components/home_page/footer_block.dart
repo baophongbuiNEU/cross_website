@@ -3,29 +3,27 @@ import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 
 class FooterBlock extends StatelessComponent {
   const FooterBlock({super.key});
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield ValueListenableBuilder<String>(
-      listenable: LanguageManager.selectedLanguage,
-      builder: (context, lang) sync* {
-        yield div(styles: Styles(width: 100.vw), [
-          div(classes: 'footer_block', [
-            _header(),
-            SizeBoxComponent(height: 20),
-            _body(),
-            SizeBoxComponent(height: 20),
-            _footer(),
-          ]),
-        ]);
-      },
-    );
+    final selectedLang = context.watch(selectedLanguageProvider);
+
+    yield div(styles: Styles(width: 100.vw), [
+      div(classes: 'footer_block', [
+        _header(selectedLang),
+        SizeBoxComponent(height: 20),
+        _body(selectedLang),
+        SizeBoxComponent(height: 20),
+        _footer(selectedLang),
+      ]),
+    ]);
   }
 
-  Component _header() {
+  Component _header(String lang) {
     return div(
       classes: 'footer_header',
       [
@@ -43,12 +41,12 @@ class FooterBlock extends StatelessComponent {
             SizeBoxComponent(width: 6),
             div(
               styles: Styles(
-                color: AppColors.white,
+                color: Colors.white,
                 fontSize: 30.px,
                 fontWeight: FontWeight.w500,
               ),
               [
-                text(LanguageManager.translate('footer_company_name')),
+                text(LanguageManager.translate('footer_company_name', lang)),
               ],
             ),
           ],
@@ -63,13 +61,15 @@ class FooterBlock extends StatelessComponent {
               textDecoration:
                   TextDecoration(line: TextDecorationLine.underline)),
           [
-            text(LanguageManager.translate('footer_about_us')),
+            text(
+              LanguageManager.translate('footer_about_us', lang),
+            ),
             SizeBoxComponent(width: 20),
-            text(LanguageManager.translate('footer_services')),
+            text(LanguageManager.translate('footer_services', lang)),
             SizeBoxComponent(width: 20),
-            text(LanguageManager.translate('footer_user_case')),
+            text(LanguageManager.translate('footer_user_case', lang)),
             SizeBoxComponent(width: 20),
-            text(LanguageManager.translate('footer_pricing')),
+            text(LanguageManager.translate('footer_pricing', lang)),
           ],
         ),
         div(
@@ -86,14 +86,14 @@ class FooterBlock extends StatelessComponent {
     );
   }
 
-  Component _body() {
+  Component _body(String lang) {
     return div(classes: 'footer_body', [
-      _contentUs(),
-      _inputEmail(),
+      _contentUs(lang),
+      _inputEmail(lang),
     ]);
   }
 
-  Component _contentUs() {
+  Component _contentUs(String lang) {
     return div(classes: 'footer_content_us', [
       div(
         styles: Styles(
@@ -107,7 +107,7 @@ class FooterBlock extends StatelessComponent {
             textAlign: TextAlign.center,
             backgroundColor: AppColors.greenPrimary),
         [
-          text(LanguageManager.translate('footer_contact_us')),
+          text(LanguageManager.translate('footer_contact_us', lang)),
         ],
       ),
       SizeBoxComponent(height: 20),
@@ -115,11 +115,11 @@ class FooterBlock extends StatelessComponent {
         a(
           href: "mailto:info@crosstech.com",
           styles: Styles(
-            color: AppColors.white,
+            color: Colors.white,
             textDecoration: TextDecoration(line: TextDecorationLine.none),
           ),
           [
-            text(LanguageManager.translate('footer_email_label')),
+            text(LanguageManager.translate('footer_email_label', lang)),
           ],
         ),
       ]),
@@ -128,11 +128,11 @@ class FooterBlock extends StatelessComponent {
         a(
           href: "tel:0338305895",
           styles: Styles(
-            color: AppColors.white,
+            color: Colors.white,
             textDecoration: TextDecoration(line: TextDecorationLine.none),
           ),
           [
-            text(LanguageManager.translate('footer_phone_label')),
+            text(LanguageManager.translate('footer_phone_label', lang)),
           ],
         ),
       ]),
@@ -142,28 +142,28 @@ class FooterBlock extends StatelessComponent {
           href: "https://maps.app.goo.gl/8RR39Ge1WESWiPcj6",
           target: Target.blank,
           styles: Styles(
-            color: AppColors.white,
+            color: Colors.white,
             textDecoration: TextDecoration(line: TextDecorationLine.none),
           ),
           [
-            text(LanguageManager.translate('footer_address_label')),
+            text(LanguageManager.translate('footer_address_label', lang)),
           ],
         ),
       ]),
     ]);
   }
 
-  Component _inputEmail() {
+  Component _inputEmail(String lang) {
     return div(classes: 'footer_input_email', [
       textarea(placeholder: "Email", classes: 'input_email', []),
       SizeBoxComponent(width: 20),
       div(
           classes: 'footer_button',
-          [Text(LanguageManager.translate('footer_subscribe_to_news'))])
+          [Text(LanguageManager.translate('footer_subscribe_to_news', lang))])
     ]);
   }
 
-  Component _footer() {
+  Component _footer(String lang) {
     return div(
       styles: Styles(
           display: Display.flex,
@@ -172,14 +172,14 @@ class FooterBlock extends StatelessComponent {
               Border.only(top: BorderSide(width: 1.px, color: Colors.white)),
           color: Colors.white),
       [
-        text(LanguageManager.translate('footer_copyright')),
+        text(LanguageManager.translate('footer_copyright', lang)),
         SizeBoxComponent(width: 40),
         div(
           styles: Styles(
             textDecoration: TextDecoration(line: TextDecorationLine.underline),
           ),
           [
-            text(LanguageManager.translate('footer_privacy_policy')),
+            text(LanguageManager.translate('footer_privacy_policy', lang)),
           ],
         ),
       ],

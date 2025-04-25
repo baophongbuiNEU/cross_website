@@ -4,12 +4,13 @@ import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 
 extension StringExtension on String {
   String translate(BuildContext context) {
-    return LanguageManager.tr(this, context.watch(langProvider));
+    return LanguageManager.translate(
+        this, context.watch(selectedLanguageProvider));
   }
 }
 
 extension ContextExtension on BuildContext {
   String translate(String key) {
-    return LanguageManager.tr(key, watch(langProvider));
+    return LanguageManager.translate(key, watch(selectedLanguageProvider));
   }
 }

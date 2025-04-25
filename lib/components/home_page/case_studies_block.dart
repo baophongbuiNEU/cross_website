@@ -3,65 +3,79 @@ import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 
 class CaseStudiesBlock extends StatelessComponent {
   const CaseStudiesBlock({super.key});
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield ValueListenableBuilder<String>(
-      listenable: LanguageManager.selectedLanguage,
-      builder: (context, lang) sync* {
-        yield div(classes: 'case_studies_block', [
-          div(classes: 'inner_block', [
-            _item(
-              content: LanguageManager.translate('case_studies_case1_content'),
-            ),
-            _line(),
-            _item(
-              content: LanguageManager.translate('case_studies_case2_content'),
-            ),
-            _line(),
-            _item(
-              content: LanguageManager.translate('case_studies_case3_content'),
-            ),
-          ])
-        ]);
-      },
-    );
+    final selectedLang = context.watch(selectedLanguageProvider);
+
+    yield div(classes: 'case_studies_block', [
+      div(classes: 'inner_block', [
+        _item(
+          content: LanguageManager.translate(
+              'case_studies_case1_content', selectedLang),
+        ),
+        _line(),
+        _item(
+          content: LanguageManager.translate(
+              'case_studies_case2_content', selectedLang),
+        ),
+        _line(),
+        _item(
+          content: LanguageManager.translate(
+              'case_studies_case3_content', selectedLang),
+        ),
+      ]),
+    ]);
   }
 
   Component _item({required String content}) {
-    return div(
+    return Builder(builder: (context) sync* {
+      final selectedLang = context.watch(selectedLanguageProvider);
+
+      yield div(
         styles: Styles(
           display: Display.flex,
           flexDirection: FlexDirection.column,
         ),
         [
           div(
-              styles: Styles(
-                  color: AppColors.white,
-                  fontSize: 18.px,
-                  fontWeight: FontWeight.w400),
-              [Text(content)]),
+            styles: Styles(
+              color: AppColors.white,
+              fontSize: 18.px,
+              fontWeight: FontWeight.w400,
+            ),
+            [Text(content)],
+          ),
           SizeBoxComponent(height: 20),
           div(
-              styles: Styles(
-                  display: Display.flex, flexDirection: FlexDirection.row),
-              [
-                div(
-                    styles: Styles(
-                        color: AppColors.greenPrimary,
-                        fontSize: 20.px,
-                        fontWeight: FontWeight.w400),
-                    [
-                      Text(LanguageManager.translate('case_studies_learn_more')),
-                    ]),
-                SizeBoxComponent(width: 15),
-                img(src: Images.learnMoreGreenIcon, width: 18, height: 18),
-              ]),
+            styles: Styles(
+              display: Display.flex,
+              flexDirection: FlexDirection.row,
+            ),
+            [
+              div(
+                styles: Styles(
+                  color: AppColors.greenPrimary,
+                  fontSize: 20.px,
+                  fontWeight: FontWeight.w400,
+                ),
+                [
+                  Text(LanguageManager.translate(
+                      'case_studies_learn_more', selectedLang)),
+                ],
+              ),
+              SizeBoxComponent(width: 15),
+              img(src: Images.learnMoreGreenIcon, width: 18, height: 18),
+            ],
+          ),
           SizeBoxComponent(height: 20),
-        ]);
+        ],
+      );
+    });
   }
 
   Component _line() {
@@ -95,7 +109,7 @@ class CaseStudiesBlock extends StatelessComponent {
         margin: Margin.symmetric(horizontal: 64.px),
         radius: BorderRadius.circular(2.px),
         backgroundColor: AppColors.white,
-      )
+      ),
     ]),
     css.media(MediaQuery.screen(maxWidth: 1000.px), [
       css('.inner_block', [
