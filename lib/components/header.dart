@@ -51,6 +51,21 @@ class HeaderState extends State<Header> {
     });
   }
 
+  static String getFlagEmoji(String langCode) {
+    switch (langCode) {
+      case 'en':
+        return '🇺🇸';
+      case 'vi':
+        return '🇻🇳';
+      case 'ja':
+        return '🇯🇵';
+      case 'ko':
+        return '🇰🇷';
+      default:
+        return '🏳️';
+    }
+  }
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
     final selectedLang = context.watch(selectedLanguageProvider);
@@ -116,13 +131,33 @@ class HeaderState extends State<Header> {
                 for (var lang in LanguageManager.languages.entries)
                   option(
                     styles: Styles(
+                      display: Display.flex,
+                      padding:
+                          Spacing.symmetric(vertical: 2.px, horizontal: 1.px),
+                      alignItems: AlignItems.center,
                       color: AppColors.textBlack,
                     ),
                     attributes: {
                       'value': lang.key,
                       if (lang.key == selectedLang) 'selected': ''
                     },
-                    [text(lang.value)],
+                    [
+                      span(
+                        styles: Styles(
+                          margin: Spacing.only(right: 12.px),
+                          fontSize: 14.px,
+                        ),
+                        [
+                          text(getFlagEmoji(lang.key)),
+                        ],
+                      ),
+                      span(
+                        styles: Styles(
+                          flex: Flex(grow: 1),
+                        ),
+                        [text(lang.value)],
+                      ),
+                    ],
                   ),
               ],
             ),
@@ -217,8 +252,8 @@ class HeaderState extends State<Header> {
     css('.language-header', [
       css('&').styles(
         display: Display.flex,
-        height: 48.px,
-        padding: Padding.symmetric(horizontal: 15.px),
+        height: 45.px,
+        padding: Padding.symmetric(horizontal: 10.px),
         border: Border(color: AppColors.textBlack, width: 1.px),
         radius: BorderRadius.circular(14.px),
         alignItems: AlignItems.center,
