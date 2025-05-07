@@ -1,7 +1,28 @@
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+
+enum SupportLanguage {
+  en,
+  vi,
+  ja,
+  ko,
+}
+
+final langProvider = StateProvider<String>((ref) => 'en');
 
 class LanguageManager {
+  static Map<String, dynamic> langAssets = {};
+  static BuildContext? context;
+
+  static Future<Map<String, dynamic>> loadAsset(String assetsPath) async {
+    throw UnimplementedError('Handle later');
+    // print('--- Parse json from: $assetsPath');
+    // return rootBundle
+    //     .loadString(assetsPath)
+    //     .then((jsonStr) => jsonDecode(jsonStr));
+  }
+
   static final ValueNotifier<String> selectedLanguage = ValueNotifier('en');
 
   static final languages = {
@@ -591,6 +612,11 @@ class LanguageManager {
         'Translation not found';
   }
 
+  static String tr(String key, String langCode) {
+    return translations[key]?[langCode] ?? 'unknown';
+  }
+
+  // TODO(tung): Remove UI code from service or business logic class
   static Component languageDropdown() {
     return div(classes: "language-header", [
       select(
