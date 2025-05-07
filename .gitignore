@@ -3,9 +3,6 @@
 .dart_tool/
 .packages
 
-# Conventional directory for build output.
-/build/
-
 # Miscellaneous
 *.class
 *.log
