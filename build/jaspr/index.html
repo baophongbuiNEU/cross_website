@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/"/>
+    <meta charset="utf-8"/>
+    <style>
+      @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap);
+      @import url(https://fonts.googleapis.com/css?family=Roboto);
+      html, body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100vw;
+        min-height: 100vh;
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      h1 {
+        margin: unset;
+        font-size: 4rem;
+      }
+    </style>
+    <link href="manifest.json" rel="manifest"/>
+    <script async src="flutter_bootstrap.js"></script>
+    <!--$-->
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script id="theme-script">
+        (function() {
+          // Load the saved theme or use system preference
+          let userTheme = window.localStorage.getItem('active-theme');
+      
+          if (userTheme) {
+            document.documentElement.className = userTheme; // Apply stored theme
+          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.className = 'dark'; // Use system dark mode
+          } else {
+            document.documentElement.className = 'light'; // Default to light mode
+          }
+      
+          // Function to toggle theme and save to localStorage
+          window.toggleTheme = function() {
+            let currentTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+            document.documentElement.className = currentTheme;
+            window.localStorage.setItem('active-theme', currentTheme);
+          };
+        })();
+        
+    </script>
+    <!--/-->
+    <script src="app.client.dart.js" defer></script>
+    <style>
+      @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap);
+      @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap);
+      @import url(https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap);
+      @import url(font/lucide/lucide.css);
+      .btn-container {
+        display: flex;
+      }
+      .btn-primary-black {
+        padding: 20px 20px;
+        border-radius: 14px;
+        color: var(--backgroundWhite);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 20px;
+        text-align: center;
+        background-color: var(--textBlack);
+        align-items: center;
+      }
+      #customs {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      #customs .custom-grid {
+        margin-bottom: 1.5rem;
+        display: flex;
+        max-width: 100rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      #customs .custom-grid > * {
+        box-sizing: border-box;
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 15rem;
+      }
+      .menu-toggle {
+        padding: 0.7rem;
+        margin-right: 5%;
+        display: none;
+        border: unset;
+        outline: unset;
+        border-radius: 8px;
+        color: var(--textBlack);
+        font-size: 1.5rem;
+        background-color: var(--listLogoBackground);
+        align-items: center;
+      }
+      .menu-toggle:hover {
+        background-color: var(--hoverOverlayMenuButton);
+      }
+      .menu-overlay {
+        padding-top: 7rem;
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 100;
+        background-color: var(--backgroundFaded);
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        row-gap: 4rem;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+      }
+      .menu-overlay nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2rem;
+        flex-grow: 0;
+      }
+      .menu-overlay nav a {
+        font-size: 2rem;
+      }
+      .menu-overlay .header-actions {
+        display: flex;
+        flex-direction: row;
+      }
+      @media screen and (max-width: 1000px) {
+        header .menu-toggle {
+          display: flex;
+          position: relative;
+          z-index: 101;
+        }
+      }
+      .section_overall {
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+      }
+      .section_title {
+        padding: 80px 100px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .section_content {
+        width: 80vw;
+        color: var(--textBlack);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 18px;
+        font-weight: 400;
+        flex: auto;
+      }
+      .title_section {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 8px;
+        color: var(--primaryColor);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 40px;
+        font-weight: 500;
+        white-space: nowrap;
+        background-color: var(--greenPrimary);
+      }
+      @media screen and (max-width: 1000px) {
+        .section_overall {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+        .section_title {
+          padding: 80px 5%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .section_content {
+          margin-top: 20px;
+          text-align: center;
+        }
+        .title_section {
+          text-align: center;
+          white-space: unset;
+        }
+      }
+      .card_process_title {
+        display: flex;
+        width: 100%;
+        color: var(--primaryColor);
+        font-size: 30px;
+        font-weight: 600;
+      }
+      .card_process_index {
+        width: 10%;
+        color: var(--primaryColor);
+        font-size: 60px;
+        font-weight: 600;
+      }
+      .icon-show-more {
+        width: 58px;
+        height: 58px;
+        border-radius: 50px;
+        color: var(--primaryColor);
+        font-size: 36px;
+        font-weight: 600;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+      }
+      @media screen and (max-width: 1000px) {
+        .card_process_title {
+          width: 80%;
+          font-size: 20px;
+          text-align: center;
+          justify-content: center;
+        }
+        .card_process_index {
+          font-size: 40px;
+        }
+        .icon-show-more {
+          width: 48px;
+          height: 48px;
+          font-size: 30px;
+        }
+      }
+      .case_studies_block {
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+      }
+      .inner_block {
+        padding: 70px 60px;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        border-radius: 45px;
+        background-color: var(--textBlack);
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .line {
+        margin-left: 64px;
+        margin-right: 64px;
+        width: 1px;
+        border-radius: 2px;
+        background-color: var(--white);
+      }
+      @media screen and (max-width: 1000px) {
+        .inner_block {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      .detail_text_field {
+        padding-top: 60px;
+        padding-left: 5%;
+        padding-bottom: 60px;
+        width: 45%;
+      }
+      @media screen and (max-width: 700px) {
+        .contact_image {
+          display: none;
+          width: 0px;
+          height: 0px;
+        }
+        .detail_text_field {
+          padding-left: 5%;
+          padding-right: 5%;
+          width: 100%;
+        }
+      }
+      .cta_overall {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+      }
+      .cta_block {
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        height: 100%;
+        border-radius: 45px;
+        background-color: var(--backgroundWhite);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .cta_text {
+        padding: 60px;
+        display: flex;
+        width: 40%;
+        flex-direction: column;
+      }
+      .cta_image {
+        display: flex;
+        width: 50%;
+        background-color: var(--listLogoBackground);
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+      }
+      @media screen and (max-width: 700px) {
+        .cta_block {
+          padding-left: 20px;
+          padding-right: 20px;
+          flex-direction: column;
+        }
+        .cta_text {
+          width: 100%;
+          text-align: center;
+          align-items: center;
+        }
+        .cta_image {
+          margin-bottom: 20px;
+          width: 100%;
+        }
+      }
+      .footer_block {
+        padding: 50px 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        border-top-left-radius: 45px;
+        border-top-right-radius: 45px;
+        background-color: var(--primaryColor);
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .footer_header {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer_body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer_content_us {
+        display: flex;
+        width: 30%;
+        height: 100%;
+        color: white;
+        font-size: 18px;
+        font-weight: 400;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .footer_input_email {
+        padding: 5% 40px;
+        display: flex;
+        width: 60%;
+        height: 100%;
+        border-radius: 14px;
+        background-color: var(--background292A32);
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer_input_email .input_email {
+        padding: 22px 30px;
+        width: 90%;
+        height: 22px;
+        border: solid white 2px;
+        border-radius: 14px;
+        color: white;
+        font-size: 18px;
+        font-weight: 400;
+        background-color: transparent;
+        align-items: center;
+        resize: none;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .footer_input_email .footer_button {
+        padding: 20px 35px;
+        width: 40%;
+        border-radius: 14px;
+        font-size: 20px;
+        font-weight: 400;
+        text-align: center;
+        background-color: var(--greenPrimary);
+        justify-content: center;
+        align-items: center;
+      }
+      @media screen and (max-width: 1000px) {
+        .footer_block {
+          background-color: var(--primaryColor);
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .footer_header {
+          text-align: center;
+          flex-direction: column;
+          gap: 20px;
+        }
+        .footer_body {
+          width: 100%;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .footer_content_us {
+          width: 100%;
+          text-align: center;
+          align-items: center;
+        }
+        .footer_input_email {
+          padding: 5% 2%;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          width: 100%;
+        }
+        .input_email {
+          width: 0%;
+        }
+        @media screen and (max-width: 600px) {
+          .footer_input_email {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            gap: 10px;
+          }
+          .footer_input_email .input_email {
+            width: 80%;
+          }
+        }
+      }
+      .header-web {
+        display: flex;
+        width: 100%;
+        max-width: 100vw;
+      }
+      .header-web-padding {
+        padding: 70px 5%;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+      }
+      .text-header-web {
+        display: flex;
+        width: 40%;
+        flex-direction: column;
+      }
+      .w500-60-custom {
+        color: var(--textBlack);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 60px;
+        font-weight: 500;
+      }
+      .w400-20-custom {
+        color: var(--textBlack);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 20px;
+        font-weight: 400;
+      }
+      #primary_image {
+        width: 550px;
+      }
+      @media screen and (max-width: 1000px) {
+        .header-web-padding {
+          padding-left: 0%;
+          padding-right: 0%;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .text-header-web {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .w500-60-custom {
+          color: var(--textBlack);
+          font-family: 'Space Grotesk', 'Andale Mono';
+          font-size: 60px;
+          font-weight: 500;
+          text-align: center;
+        }
+        .w400-20-custom {
+          color: var(--textBlack);
+          font-family: 'Space Grotesk', 'Andale Mono';
+          font-size: 20px;
+          font-weight: 400;
+          text-align: center;
+        }
+        #primary_image {
+          margin-top: 30px;
+          width: 350px;
+        }
+      }
+      .service_content {
+        display: flex;
+        width: 45%;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .service_word {
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        width: 230px;
+        border-radius: 8px;
+        text-align: start;
+        flex-wrap: wrap;
+      }
+      @media screen and (max-width: 1254px) {
+        .service_word {
+          width: 100%;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        .service_content {
+          width: 100%;
+          align-items: center;
+        }
+        .service_word {
+          width: 100%;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+        }
+        .service_image {
+          display: none;
+          width: 0px;
+          height: 0px;
+        }
+      }
+      .list-logo-container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        width: 100vw;
+        background-color: var(--listLogoBackground);
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .list-logo-content {
+        padding-left: 100px;
+        padding-right: 100px;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .list-logo-content img {
+        max-width: 100px;
+        max-height: 100%;
+      }
+      @media screen and (max-width: 600px) {
+        .list-logo-content {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
+      header {
+        padding-top: 2rem;
+        display: flex;
+        width: 100vw;
+        z-index: 1;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header > * {
+        display: flex;
+        align-items: center;
+      }
+      header .nav-menu a {
+        margin-left: 20px;
+        margin-right: 20px;
+        color: var(--textBlack);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 20px;
+        font-weight: 400;
+        text-decoration: none;
+      }
+      header .nav-menu {
+        justify-content: center;
+        align-items: center;
+      }
+      header .nav-menu div {
+        display: flex;
+        align-items: center;
+      }
+      .theme_toggle {
+        margin-left: 5px;
+        margin-right: 2rem;
+      }
+      @media screen and (max-width: 1000px) {
+        header {
+          display: flex;
+          width: 100vw;
+          justify-content: space-between;
+        }
+        header > .nav-menu {
+          display: none;
+        }
+        header > nav {
+          display: none;
+        }
+        .theme_toggle {
+          margin-left: 0px;
+          margin-right: 0rem;
+        }
+      }
+      html, body {
+        padding: 0;
+        margin: 0;
+      }
+      html {
+        background-color: var(--backgroundWhite);
+      }
+      :root {
+        --primaryColor: #191A23;
+        --white: #FFFFFF;
+        --greenPrimary: #B9FF66;
+        --backgroundWhite: #F3F3F3;
+        --background292A32: #292A32;
+        --textBlack: #222;
+        --hoverOverlayColor: #0001;
+        --hoverOverlayMenuButton: #0001;
+        --listLogoBackground: transparent;
+        --backgroundFaded: #FFF9;
+        --backgroundTheme: white;
+        --contentPadding: 4rem;
+        --sectionPadding: 16rem;
+      }
+      :root.dark {
+        --primaryColor: #191A23;
+        --white: #222;
+        --greenPrimary: #B9FF66;
+        --backgroundWhite: #000000;
+        --background292A32: #292A32;
+        --textBlack: #F5F5F5;
+        --hoverOverlayColor: #FFF1;
+        --hoverOverlayMenuButton: lightGrey;
+        --listLogoBackground: #FFFFFF;
+        --backgroundFaded: #0d111799;
+        --backgroundTheme: black;
+      }
+      @media all and (max-width: 40rem) {
+        :root {
+          --contentPadding: 2rem;
+          --sectionPadding: 8rem;
+        }
+      }
+      @media all and (max-width: 25rem) {
+        :root {
+          --contentPadding: 1rem;
+          --sectionPadding: 4rem;
+        }
+      }
+      .theme-toggle {
+        padding: 0.7rem;
+        display: flex;
+        border: unset;
+        outline: unset;
+        border-radius: 8px;
+        color: var(--textBlack);
+        background-color: transparent;
+        align-items: center;
+      }
+      .theme-toggle:hover {
+        background-color: var(--hoverOverlayColor);
+      }
+      .language-header {
+        padding-left: 15px;
+        padding-right: 15px;
+        display: flex;
+        height: 48px;
+        border: solid var(--textBlack) 1px;
+        border-radius: 14px;
+        align-items: center;
+      }
+      .language-header select {
+        border: none;
+        cursor: pointer;
+        color: var(--textBlack);
+        font-family: 'Space Grotesk', 'Andale Mono';
+        font-size: 18px;
+        font-weight: 400;
+        text-align: center;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+      ol {
+        max-width: 500px;
+      }
+      .main {
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
+        background-color: var(--backgroundTheme);
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .main section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!--@app-->
+    <!--${}-->
+    <div class="main">
+      <header>
+        <img style="padding: 0.7rem; margin-left: 5%; width: 36px; height: 36px; border-radius: 8px; color: var(--textBlack); background-color: var(--listLogoBackground)" src="images/icon_primary_web.svg"/>
+        <nav class="nav-menu">
+          <div><a href="/about">About us</a></div>
+          <div><a href="/#services">Services</a></div>
+          <div><a href="/#contact">Contact</a></div>
+          <div><a href="/#careers">Careers</a></div>
+          <div class="language-header">
+            <select style="color: var(--textBlack); background-color: var(--backgroundTheme)">
+              <option style="color: var(--textBlack)" value="en" selected>en</option>
+              <option style="color: var(--textBlack)" value="vi">vi</option>
+              <option style="color: var(--textBlack)" value="ja">ja</option>
+              <option style="color: var(--textBlack)" value="ko">ko</option>
+            </select>
+          </div>
+          <div class="theme_toggle"><button class="theme-toggle" style="font-size: 30px" aria-label="Theme Toggle">☀️</button></div>
+        </nav>
+        <button class="menu-toggle" aria-label="Menu Toggle"><img style="width: 40px; height: 40px" src="images/menu-svgrepo-com.svg"/></button>
+      </header>
+      <div>
+        <div class="header-web">
+          <div class="header-web-padding">
+            <div class="text-header-web">
+              <div class="w500-60-custom">Innovating the Future of Cross Tech</div>
+              <div style="height: 35px"></div>
+              <div class="w400-20-custom">We empower businesses with cutting-edge solutions to thrive in a digital world.</div>
+              <div style="height: 35px"></div>
+              <div class="btn-container"><div class="btn-primary-black">Discover Our Solutions</div></div>
+            </div>
+            <img id="primary_image" src="images/image_header.png"/>
+          </div>
+        </div>
+        <div class="list-logo-container">
+          <div class="list-logo-content">
+            <img src="images/amazon_icon.png"/>
+            <img src="images/drillble_icon.png"/>
+            <img src="images/hubspot_icon.png"/>
+            <img src="images/notion_icon.png"/>
+            <img src="images/netflix_icon.png"/>
+            <img src="images/zoom_icon.png"/>
+          </div>
+        </div>
+        <div id="services">
+          <div class="section_overall">
+            <div class="section_title">
+              <h1 class="title_section">Service gg</h1>
+              <div style="width: 40px"></div>
+              <div class="section_content">Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies</div>
+            </div>
+          </div>
+          <div style="width: 100vw; justify-content: center; align-items: center; align-self: center">
+            <div style="padding-left: 5%; padding-right: 5%; display: flex; justify-content: center; align-items: center; align-self: center">
+              <section id="customs">
+                <div class="custom-grid">
+                  <div style="padding: 50px; display: flex; width: 100%; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: #F3F3F3; flex-direction: row; justify-content: space-between">
+                    <div class="service_content">
+                      <div class="service_word">
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: var(--greenPrimary)">Search</span>
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: var(--greenPrimary)">engine</span>
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: var(--greenPrimary)">optimization</span>
+                      </div>
+                      <div style="height: 20px"></div>
+                      <div style="display: flex; flex-direction: row; align-items: center">
+                        <img style="padding: 10px; border-radius: 20px; background-color: white" width="20" height="20" src="images/arrow_up_right.svg"/>
+                        <div style="width: 15px"></div>
+                        <div style="color: var(--primaryColor); font-size: 20px; font-weight: 400; text-align: start">Learn more</div>
+                      </div>
+                    </div>
+                    <img class="service_image" width="200" height="200" src="images/search_engine_optimization.png"/>
+                  </div>
+                  <div style="padding: 50px; display: flex; width: 100%; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: var(--greenPrimary); flex-direction: row; justify-content: space-between">
+                    <div class="service_content">
+                      <div class="service_word">
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">Pay-per-click</span>
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">advertising</span>
+                      </div>
+                      <div style="height: 20px"></div>
+                      <div style="display: flex; flex-direction: row; align-items: center">
+                        <img style="padding: 10px; border-radius: 20px; background-color: white" width="20" height="20" src="images/arrow_up_right.svg"/>
+                        <div style="width: 15px"></div>
+                        <div style="color: var(--primaryColor); font-size: 20px; font-weight: 400; text-align: start">Learn more</div>
+                      </div>
+                    </div>
+                    <img class="service_image" width="200" height="200" src="images/pay_per_click_advertising.png"/>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div style="padding-left: 5%; padding-right: 5%; display: flex; justify-content: center; align-items: center; align-self: center">
+              <section id="customs">
+                <div class="custom-grid">
+                  <div style="padding: 50px; display: flex; width: 100%; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: var(--primaryColor); flex-direction: row; justify-content: space-between">
+                    <div class="service_content">
+                      <div class="service_word">
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">Social</span>
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">Media</span>
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">Marketing</span>
+                      </div>
+                      <div style="height: 20px"></div>
+                      <div style="display: flex; flex-direction: row; align-items: center">
+                        <img style="padding: 10px; border-radius: 20px; background-color: white" width="20" height="20" src="images/arrow_up_right.svg"/>
+                        <div style="width: 15px"></div>
+                        <div style="color: white; font-size: 20px; font-weight: 400; text-align: start">Learn more</div>
+                      </div>
+                    </div>
+                    <img class="service_image" width="200" height="200" src="images/social_media_marketing.png"/>
+                  </div>
+                  <div style="padding: 50px; display: flex; width: 100%; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: #F3F3F3; flex-direction: row; justify-content: space-between">
+                    <div class="service_content">
+                      <div class="service_word">
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: var(--greenPrimary)">Email</span>
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: var(--greenPrimary)">Marketing</span>
+                      </div>
+                      <div style="height: 20px"></div>
+                      <div style="display: flex; flex-direction: row; align-items: center">
+                        <img style="padding: 10px; border-radius: 20px; background-color: white" width="20" height="20" src="images/arrow_up_right.svg"/>
+                        <div style="width: 15px"></div>
+                        <div style="color: var(--primaryColor); font-size: 20px; font-weight: 400; text-align: start">Learn more</div>
+                      </div>
+                    </div>
+                    <img class="service_image" width="200" height="200" src="images/email_marketing.png"/>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div style="padding-left: 5%; padding-right: 5%; display: flex; justify-content: center; align-items: center; align-self: center">
+              <section id="customs">
+                <div class="custom-grid">
+                  <div style="padding: 50px; display: flex; width: 100%; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: var(--greenPrimary); flex-direction: row; justify-content: space-between">
+                    <div class="service_content">
+                      <div class="service_word">
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">Content</span>
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">Creation</span>
+                      </div>
+                      <div style="height: 20px"></div>
+                      <div style="display: flex; flex-direction: row; align-items: center">
+                        <img style="padding: 10px; border-radius: 20px; background-color: white" width="20" height="20" src="images/arrow_up_right.svg"/>
+                        <div style="width: 15px"></div>
+                        <div style="color: var(--primaryColor); font-size: 20px; font-weight: 400; text-align: start">Learn more</div>
+                      </div>
+                    </div>
+                    <img class="service_image" width="200" height="200" src="images/content_creation.png"/>
+                  </div>
+                  <div style="padding: 50px; display: flex; width: 100%; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: var(--primaryColor); flex-direction: row; justify-content: space-between">
+                    <div class="service_content">
+                      <div class="service_word">
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">Analytics</span>
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">and</span>
+                        <span style="padding: 4px 6px; border-radius: 4px; color: var(--primaryColor); font-size: 30px; font-weight: 500; background-color: white">Tracking</span>
+                      </div>
+                      <div style="height: 20px"></div>
+                      <div style="display: flex; flex-direction: row; align-items: center">
+                        <img style="padding: 10px; border-radius: 20px; background-color: white" width="20" height="20" src="images/arrow_up_right.svg"/>
+                        <div style="width: 15px"></div>
+                        <div style="color: white; font-size: 20px; font-weight: 400; text-align: start">Learn more</div>
+                      </div>
+                    </div>
+                    <img class="service_image" width="200" height="200" src="images/anylytics_and_tracking.png"/>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="cta_overall">
+          <div class="cta_block">
+            <div class="cta_text">
+              <div style="color: var(--textBlack); font-size: 30px; font-weight: 500">Let’s make things happen</div>
+              <div style="height: 20px"></div>
+              <div style="color: var(--textBlack); font-size: 18px; font-weight: 400">
+                Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.
+              </div>
+              <div style="height: 20px"></div>
+              <div class="btn-container"><div class="btn-primary-black">Get your free proposal</div></div>
+            </div>
+            <div class="cta_image"><img style="width: 50%; height: 100%" src="images/cta_block_image.png"/></div>
+          </div>
+        </div>
+        <div id="case-studies">
+          <div class="section_overall">
+            <div class="section_title">
+              <h1 class="title_section">Case Studies</h1>
+              <div style="width: 40px"></div>
+              <div class="section_content">Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies</div>
+            </div>
+          </div>
+          <div class="case_studies_block">
+            <div class="inner_block">
+              <div style="display: flex; flex-direction: column">
+                <div style="color: var(--white); font-size: 18px; font-weight: 400">
+                  For a local restaurant, we implemented a targeted PPC campaign that resulted in a 50% increase in website traffic and a 25% increase in sales.
+                </div>
+                <div style="height: 20px"></div>
+                <div style="display: flex; flex-direction: row">
+                  <div style="color: var(--greenPrimary); font-size: 20px; font-weight: 400">Learn more</div>
+                  <div style="width: 15px"></div>
+                  <img width="18" height="18" src="images/learn_more_green_icon.svg"/>
+                </div>
+                <div style="height: 20px"></div>
+              </div>
+              <div class="line"></div>
+              <div style="display: flex; flex-direction: column">
+                <div style="color: var(--white); font-size: 18px; font-weight: 400">
+                  For a B2B software company, we developed an SEO strategy that resulted in a first page ranking for key keywords and a 200% increase in organic traffic.
+                </div>
+                <div style="height: 20px"></div>
+                <div style="display: flex; flex-direction: row">
+                  <div style="color: var(--greenPrimary); font-size: 20px; font-weight: 400">Learn more</div>
+                  <div style="width: 15px"></div>
+                  <img width="18" height="18" src="images/learn_more_green_icon.svg"/>
+                </div>
+                <div style="height: 20px"></div>
+              </div>
+              <div class="line"></div>
+              <div style="display: flex; flex-direction: column">
+                <div style="color: var(--white); font-size: 18px; font-weight: 400">
+                  For a national retail chain, we created a social media marketing campaign that increased followers by 25% and generated a 20% increase in online sales.
+                </div>
+                <div style="height: 20px"></div>
+                <div style="display: flex; flex-direction: row">
+                  <div style="color: var(--greenPrimary); font-size: 20px; font-weight: 400">Learn more</div>
+                  <div style="width: 15px"></div>
+                  <img width="18" height="18" src="images/learn_more_green_icon.svg"/>
+                </div>
+                <div style="height: 20px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="process">
+          <div class="section_overall">
+            <div class="section_title">
+              <h1 class="title_section">Our Working Process</h1>
+              <div style="width: 40px"></div>
+              <div class="section_content">Step-by-Step Guide to Achieving Your Business Goals</div>
+            </div>
+          </div>
+          <div style="width: 100vw; justify-content: center; align-items: center; align-self: center">
+            <div style="display: flex; width: 100%; flex-direction: column; row-gap: 30px">
+              <div style="padding: 40px 5%; margin-left: 5%; margin-right: 5%; display: flex; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: white; flex-direction: column">
+                <div style="display: flex; flex-direction: row; align-items: center">
+                  <div class="card_process_index">01</div>
+                  <div style="width: 25px"></div>
+                  <div class="card_process_title">Consultation</div>
+                  <button class="icon-show-more">+</button>
+                </div>
+              </div>
+              <div style="padding: 40px 5%; margin-left: 5%; margin-right: 5%; display: flex; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: white; flex-direction: column">
+                <div style="display: flex; flex-direction: row; align-items: center">
+                  <div class="card_process_index">02</div>
+                  <div style="width: 25px"></div>
+                  <div class="card_process_title">Research and Strategy Development</div>
+                  <button class="icon-show-more">+</button>
+                </div>
+              </div>
+              <div style="padding: 40px 5%; margin-left: 5%; margin-right: 5%; display: flex; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: white; flex-direction: column">
+                <div style="display: flex; flex-direction: row; align-items: center">
+                  <div class="card_process_index">03</div>
+                  <div style="width: 25px"></div>
+                  <div class="card_process_title">Implementation</div>
+                  <button class="icon-show-more">+</button>
+                </div>
+              </div>
+              <div style="padding: 40px 5%; margin-left: 5%; margin-right: 5%; display: flex; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: white; flex-direction: column">
+                <div style="display: flex; flex-direction: row; align-items: center">
+                  <div class="card_process_index">04</div>
+                  <div style="width: 25px"></div>
+                  <div class="card_process_title">Monitoring and Optimization</div>
+                  <button class="icon-show-more">+</button>
+                </div>
+              </div>
+              <div style="padding: 40px 5%; margin-left: 5%; margin-right: 5%; display: flex; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: white; flex-direction: column">
+                <div style="display: flex; flex-direction: row; align-items: center">
+                  <div class="card_process_index">05</div>
+                  <div style="width: 25px"></div>
+                  <div class="card_process_title">Reporting and Communication</div>
+                  <button class="icon-show-more">+</button>
+                </div>
+              </div>
+              <div style="padding: 40px 5%; margin-left: 5%; margin-right: 5%; display: flex; border: solid var(--primaryColor) 1px; border-radius: 45px; box-shadow: 0px 5px var(--primaryColor); background-color: white; flex-direction: column">
+                <div style="display: flex; flex-direction: row; align-items: center">
+                  <div class="card_process_index">06</div>
+                  <div style="width: 25px"></div>
+                  <div class="card_process_title">Continual Improvement</div>
+                  <button class="icon-show-more">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="careers">
+          <div class="section_overall">
+            <div class="section_title">
+              <h1 class="title_section">Team</h1>
+              <div style="width: 40px"></div>
+              <div class="section_content">Meet the skilled and experienced team behind our successful digital marketing strategies</div>
+            </div>
+          </div>
+          <div style="width: 100vw">
+            <div style="margin-left: 5%; margin-right: 5%; display: flex; flex-direction: column">
+              <section id="customs">
+                <div class="custom-grid">
+                  <div style="padding: 40px 35px; border: solid var(--textBlack) 1px; border-radius: 45px; box-shadow: 0px 5px var(--textBlack); background-color: var(--white)">
+                    <div style="display: flex; flex-direction: row">
+                      <div><img width="100" height="100" src="images/member_team.png"/></div>
+                      <div style="width: 20px"></div>
+                      <div style="display: flex; width: 100%; flex-direction: column; justify-content: space-between; align-items: start">
+                        <div style="align-self: end">
+                          <div style="display: flex; width: 34px; height: 34px; border-radius: 30px; color: var(--greenPrimary); font-size: 20px; font-weight: bold; background-color: var(--primaryColor); justify-content: center; align-items: center">in</div>
+                        </div>
+                        <div style="width: 100%">
+                          <div style="width: 100%; color: var(--textBlack); font-size: 20px; font-weight: 500; text-align: start">John Smith</div>
+                          <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">CEO and Founder</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-top: 28px; margin-bottom: 28px; height: 1px; background-color: var(--textBlack)"></div>
+                    <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">10+ years of experience in digital marketing. Expertise in SEO, PPC, and content strategy</div>
+                  </div>
+                  <div style="padding: 40px 35px; border: solid var(--textBlack) 1px; border-radius: 45px; box-shadow: 0px 5px var(--textBlack); background-color: var(--white)">
+                    <div style="display: flex; flex-direction: row">
+                      <div><img width="100" height="100" src="images/member_team.png"/></div>
+                      <div style="width: 20px"></div>
+                      <div style="display: flex; width: 100%; flex-direction: column; justify-content: space-between; align-items: start">
+                        <div style="align-self: end">
+                          <div style="display: flex; width: 34px; height: 34px; border-radius: 30px; color: var(--greenPrimary); font-size: 20px; font-weight: bold; background-color: var(--primaryColor); justify-content: center; align-items: center">in</div>
+                        </div>
+                        <div style="width: 100%">
+                          <div style="width: 100%; color: var(--textBlack); font-size: 20px; font-weight: 500; text-align: start">Jane Doe</div>
+                          <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">Chief Marketing Officer</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-top: 28px; margin-bottom: 28px; height: 1px; background-color: var(--textBlack)"></div>
+                    <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">Expert in brand strategy and social media marketing with over 8 years of experience</div>
+                  </div>
+                  <div style="padding: 40px 35px; border: solid var(--textBlack) 1px; border-radius: 45px; box-shadow: 0px 5px var(--textBlack); background-color: var(--white)">
+                    <div style="display: flex; flex-direction: row">
+                      <div><img width="100" height="100" src="images/member_team.png"/></div>
+                      <div style="width: 20px"></div>
+                      <div style="display: flex; width: 100%; flex-direction: column; justify-content: space-between; align-items: start">
+                        <div style="align-self: end">
+                          <div style="display: flex; width: 34px; height: 34px; border-radius: 30px; color: var(--greenPrimary); font-size: 20px; font-weight: bold; background-color: var(--primaryColor); justify-content: center; align-items: center">in</div>
+                        </div>
+                        <div style="width: 100%">
+                          <div style="width: 100%; color: var(--textBlack); font-size: 20px; font-weight: 500; text-align: start">Michael Brown</div>
+                          <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">Lead Developer</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-top: 28px; margin-bottom: 28px; height: 1px; background-color: var(--textBlack)"></div>
+                    <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">Specializes in web development and analytics with 12 years of experience</div>
+                  </div>
+                </div>
+              </section>
+              <section id="customs">
+                <div class="custom-grid">
+                  <div style="padding: 40px 35px; border: solid var(--textBlack) 1px; border-radius: 45px; box-shadow: 0px 5px var(--textBlack); background-color: var(--white)">
+                    <div style="display: flex; flex-direction: row">
+                      <div><img width="100" height="100" src="images/member_team.png"/></div>
+                      <div style="width: 20px"></div>
+                      <div style="display: flex; width: 100%; flex-direction: column; justify-content: space-between; align-items: start">
+                        <div style="align-self: end">
+                          <div style="display: flex; width: 34px; height: 34px; border-radius: 30px; color: var(--greenPrimary); font-size: 20px; font-weight: bold; background-color: var(--primaryColor); justify-content: center; align-items: center">in</div>
+                        </div>
+                        <div style="width: 100%">
+                          <div style="width: 100%; color: var(--textBlack); font-size: 20px; font-weight: 500; text-align: start">Emily White</div>
+                          <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">Content Strategist</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-top: 28px; margin-bottom: 28px; height: 1px; background-color: var(--textBlack)"></div>
+                    <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">Creative writer with 7 years of experience in content creation</div>
+                  </div>
+                  <div style="padding: 40px 35px; border: solid var(--textBlack) 1px; border-radius: 45px; box-shadow: 0px 5px var(--textBlack); background-color: var(--white)">
+                    <div style="display: flex; flex-direction: row">
+                      <div><img width="100" height="100" src="images/member_team.png"/></div>
+                      <div style="width: 20px"></div>
+                      <div style="display: flex; width: 100%; flex-direction: column; justify-content: space-between; align-items: start">
+                        <div style="align-self: end">
+                          <div style="display: flex; width: 34px; height: 34px; border-radius: 30px; color: var(--greenPrimary); font-size: 20px; font-weight: bold; background-color: var(--primaryColor); justify-content: center; align-items: center">in</div>
+                        </div>
+                        <div style="width: 100%">
+                          <div style="width: 100%; color: var(--textBlack); font-size: 20px; font-weight: 500; text-align: start">David Lee</div>
+                          <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">PPC Specialist</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-top: 28px; margin-bottom: 28px; height: 1px; background-color: var(--textBlack)"></div>
+                    <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">Proven track record in managing pay-per-click campaigns for 9 years</div>
+                  </div>
+                  <div style="padding: 40px 35px; border: solid var(--textBlack) 1px; border-radius: 45px; box-shadow: 0px 5px var(--textBlack); background-color: var(--white)">
+                    <div style="display: flex; flex-direction: row">
+                      <div><img width="100" height="100" src="images/member_team.png"/></div>
+                      <div style="width: 20px"></div>
+                      <div style="display: flex; width: 100%; flex-direction: column; justify-content: space-between; align-items: start">
+                        <div style="align-self: end">
+                          <div style="display: flex; width: 34px; height: 34px; border-radius: 30px; color: var(--greenPrimary); font-size: 20px; font-weight: bold; background-color: var(--primaryColor); justify-content: center; align-items: center">in</div>
+                        </div>
+                        <div style="width: 100%">
+                          <div style="width: 100%; color: var(--textBlack); font-size: 20px; font-weight: 500; text-align: start">Sarah Green</div>
+                          <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">SEO Expert</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-top: 28px; margin-bottom: 28px; height: 1px; background-color: var(--textBlack)"></div>
+                    <div style="color: var(--textBlack); font-size: 18px; font-weight: 400; text-align: start">SEO guru with 10+ years optimizing websites for top rankings</div>
+                  </div>
+                </div>
+              </section>
+              <div style="display: flex; width: 100%; flex-direction: column; align-items: end"><div class="btn-container"><div class="btn-primary-black">See all team</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div id="contact">
+          <div class="section_overall">
+            <div class="section_title">
+              <h1 class="title_section">Contact Us</h1>
+              <div style="width: 40px"></div>
+              <div class="section_content">Connect with Us: Let's Discuss Your Digital Marketing Needs</div>
+            </div>
+          </div>
+          <div style="width: 100vw">
+            <div style="margin-left: 5%; margin-right: 5%; display: flex; border-radius: 45px; background-color: #F3F3F3; flex-direction: row; justify-content: space-between; align-items: center">
+              <div class="detail_text_field">
+                <div style="display: flex; height: 28px; flex-direction: row">
+                  <div style="display: flex; flex-direction: row">
+                    <button style="height: 28px; border: none">
+                      <div style="display: flex; width: 20px; height: 20px; border: solid var(--primaryColor) 1px; border-radius: 20px; justify-content: center; align-items: center">
+                        <div style="width: 14px; height: 14px; border-radius: 12px; background-color: var(--greenPrimary)"></div>
+                      </div>
+                    </button>
+                    <div style="width: 14px"></div>
+                    <div style="font-size: 18px; font-weight: 400">Say Hi</div>
+                  </div>
+                  <div style="width: 35px"></div>
+                  <div style="display: flex; flex-direction: row">
+                    <button style="height: 28px; border: none">
+                      <div style="display: flex; width: 20px; height: 20px; border: solid var(--primaryColor) 1px; border-radius: 20px; justify-content: center; align-items: center"><div style="width: 14px; height: 14px; border-radius: 12px; background-color: white"></div></div>
+                    </button>
+                    <div style="width: 14px"></div>
+                    <div style="font-size: 18px; font-weight: 400">Get a Quote</div>
+                  </div>
+                </div>
+                <div style="height: 40px"></div>
+                <div style="display: flex; height: 92px; flex-direction: column; justify-content: space-between">
+                  Name
+                  <input style="padding-left: 30px; padding-right: 30px; height: 58px; border-radius: 14px; color: var(--primaryColor); font-size: 18px; font-weight: 400; background-color: white" type="text" value/>
+                </div>
+                <div style="height: 25px"></div>
+                <div style="display: flex; height: 92px; flex-direction: column; justify-content: space-between">
+                  Email
+                  <input style="padding-left: 30px; padding-right: 30px; height: 58px; border-radius: 14px; color: var(--primaryColor); font-size: 18px; font-weight: 400; background-color: white" type="text" value/>
+                </div>
+                <div style="height: 25px"></div>
+                <div style="display: flex; height: 223px; flex-direction: column; justify-content: space-between">
+                  Message*
+                  <div style="height: 6px"></div>
+                  <textarea style="padding: 18px 30px; height: 170px; border: solid var(--primaryColor) 2px; border-radius: 14px; color: var(--primaryColor); font-size: 18px; font-weight: 400; background-color: white; resize: none" required></textarea>
+                </div>
+              </div>
+              <div><img class="contact_image" height="550" src="images/image_contact_us_card.png"/></div>
+            </div>
+          </div>
+        </div>
+        <div style="height: 140px"></div>
+        <div style="width: 100vw">
+          <div class="footer_block">
+            <div class="footer_header">
+              <div style="display: flex; flex-direction: row; align-items: center">
+                <img style="filter: invert(1)" width="30" height="30" src="images/icon_primary_web.svg"/>
+                <div style="width: 6px"></div>
+                <div style="color: white; font-size: 30px; font-weight: 500">Positives</div>
+              </div>
+              <div style="display: flex; color: white; font-size: 18px; font-weight: 400; text-decoration: underline; flex-direction: row">
+                About us
+                <div style="width: 20px"></div>
+                Services
+                <div style="width: 20px"></div>
+                User Case
+                <div style="width: 20px"></div>
+                Pricing
+              </div>
+              <div style="display: flex; flex-direction: row">
+                <img width="30" height="30" src="images/instagram_icon.png"/>
+                <div style="width: 20px"></div>
+                <img width="30" height="30" src="images/facebook_icon.png"/>
+                <div style="width: 20px"></div>
+                <img width="30" height="30" src="images/twitter_icon.png"/>
+              </div>
+            </div>
+            <div style="height: 20px"></div>
+            <div class="footer_body">
+              <div class="footer_content_us">
+                <div style="padding: 5px; display: flex; width: 120px; border-radius: 14px; color: black; text-align: center; background-color: var(--greenPrimary); flex-wrap: wrap; justify-content: center">Contact us:</div>
+                <div style="height: 20px"></div>
+                <div>
+                  <a style="color: white; text-decoration: none" href="mailto:info@crosstech.com">Email: info@crosstech.com</a>
+                </div>
+                <div style="height: 20px"></div>
+                <div><a style="color: white; text-decoration: none" href="tel:0338305895">Phone: 0338305895</a></div>
+                <div style="height: 20px"></div>
+                <div>
+                  <a style="color: white; text-decoration: none" href="https://maps.app.goo.gl/8RR39Ge1WESWiPcj6" target="_blank">Address: No. 24 - K7, Ciputra Urban Area, Phu Thuong Ward, Tay Ho District, Hanoi City, Vietnam</a>
+                </div>
+              </div>
+              <div class="footer_input_email">
+                <textarea class="input_email" placeholder="Email"></textarea>
+                <div style="width: 20px"></div>
+                <div class="footer_button">Subscribe to news</div>
+              </div>
+            </div>
+            <div style="height: 20px"></div>
+            <div style="padding-top: 50px; display: flex; border-top-style: solid; border-top-color: white; border-top-width: 1px; color: white">
+              © 2024 Crosstech. All Rights Reserved.
+              <div style="width: 40px"></div>
+              <div style="text-decoration: underline">Privacy Policy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/@app-->
+  </body>
+</html>
