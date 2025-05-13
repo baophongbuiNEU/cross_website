@@ -2,6 +2,7 @@
 
 import 'package:cross_website/components/header.dart';
 import 'package:cross_website/constants/app_colors.dart';
+import 'package:cross_website/pages/not_found_page.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 import 'package:jaspr_router/jaspr_router.dart';
@@ -45,19 +46,37 @@ class _App extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'main', [
-      Header(),
-      Router(routes: [
-        Route(
-          path: '/',
-          title: 'Home',
-          builder: (context, state) => const Home(),
-        ),
-        Route(
-          path: '/about',
-          title: 'About',
-          builder: (context, state) => const About(),
-        ),
-      ]),
+      // Header(),
+      Router(
+        routes: [
+          Route(
+            path: '/',
+            title: 'Home',
+            builder: (context, state) => div(classes: 'main', [
+              Header(),
+              const Home(),
+            ]),
+          ),
+          Route(
+            path: '/about',
+            title: 'About',
+            builder: (context, state) => div(classes: 'main', [
+              Header(),
+              const About(),
+            ]),
+          ),
+          Route(
+            path: '/:path',
+            builder: (context, state) {
+              final currentPath = state.path;
+              if (currentPath != '/' && currentPath != '/about') {
+                return const NotFoundPage();
+              }
+              return div([]);
+            },
+          ),
+        ],
+      ),
     ]);
   }
 }
