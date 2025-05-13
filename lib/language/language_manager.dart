@@ -1,6 +1,6 @@
-import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:universal_web/web.dart' as web;
 
 enum SupportLanguage {
   en,
@@ -9,11 +9,54 @@ enum SupportLanguage {
   ko,
 }
 
-final langProvider = StateProvider<String>((ref) => 'en');
-
 class LanguageManager {
   static Map<String, dynamic> langAssets = {};
   static BuildContext? context;
+  static const _languageKey = 'lang';
+
+  static bool get isClient => kIsWeb;
+
+  static String _getClientLanguage() {
+    if (!isClient) return 'en';
+    try {
+      final browserLang = web.window.navigator.language.toLowerCase();
+      if (browserLang.startsWith('vi')) return 'vi';
+      if (browserLang.startsWith('ja')) return 'ja';
+      if (browserLang.startsWith('ko')) return 'ko';
+      return 'en';
+    } catch (e) {
+      return 'en';
+    }
+  }
+
+  static void saveLanguage(String langCode) {
+    if (!isClient) return;
+    final expires = DateTime.now().add(Duration(days: 365)).toUtc();
+    final cookie =
+        '$_languageKey=$langCode; expires=${expires.toUtc().toIso8601String()}; path=/';
+    web.document.cookie = cookie;
+  }
+
+  static String? getStoredLanguage() {
+    if (!isClient) return null;
+    final cookies = web.document.cookie.split(';');
+    for (var cookie in cookies) {
+      final parts = cookie.trim().split('=');
+      if (parts[0] == _languageKey && parts.length > 1) {
+        return parts[1];
+      }
+    }
+    return null;
+  }
+
+  static final selectedLanguageProvider = StateProvider<String>((ref) {
+    final storedLang = getStoredLanguage();
+    if (storedLang != null && languages.containsKey(storedLang)) {
+      return storedLang;
+    }
+    final clientLang = _getClientLanguage();
+    return languages.containsKey(clientLang) ? clientLang : 'en';
+  });
 
   static Future<Map<String, dynamic>> loadAsset(String assetsPath) async {
     throw UnimplementedError('Handle later');
@@ -23,7 +66,7 @@ class LanguageManager {
     //     .then((jsonStr) => jsonDecode(jsonStr));
   }
 
-  static final ValueNotifier<String> selectedLanguage = ValueNotifier('en');
+  // static final ValueNotifier<String> selectedLanguage = ValueNotifier('en');
 
   static final languages = {
     'en': 'English',
@@ -33,7 +76,6 @@ class LanguageManager {
   };
 
   static final Map<String, Map<String, String>> translations = {
-    // Header
     'header_about': {
       'en': 'About us',
       'vi': 'Về chúng tôi',
@@ -58,8 +100,6 @@ class LanguageManager {
       'ko': '채용',
       'ja': '採用情報',
     },
-
-    // Header Home Page
     'header_home_page_title': {
       'en': 'Innovating the Future of Cross Tech',
       'vi': 'Đổi mới tương lai cùng Cross Tech',
@@ -80,8 +120,6 @@ class LanguageManager {
       'ko': '우리의 솔루션 알아보기',
       'ja': '私たちのソリューションをご覧ください',
     },
-
-    // Process Block
     'process_consultation_title': {
       'en': 'Consultation',
       'vi': 'Tư vấn',
@@ -169,8 +207,6 @@ class LanguageManager {
       'ko': '시간이 지나면서 전략을 세밀하게 조정하고 개선하여 귀사의 사업이 항상 앞서 나가도록 합니다.',
       'ja': '時間と共に戦略を洗練させ、改善することで、お客様のビジネスが常にリードし続けられるようにします。',
     },
-
-    // Our Services
     'our_service_seo_title': {
       'en': 'Search engine optimization',
       'vi': 'Tối ưu hóa công cụ tìm kiếm',
@@ -243,8 +279,6 @@ class LanguageManager {
       'ko': '더 알아보기',
       'ja': '詳細を見る',
     },
-
-    // Group of Cards (Team)
     'team_member1_name': {
       'en': 'John Smith',
       'vi': 'John Smith',
@@ -367,8 +401,6 @@ class LanguageManager {
       'ko': '전체 팀 보기',
       'ja': 'チーム全員を見る',
     },
-
-    // Footer Block
     'footer_company_name': {
       'en': 'Positives',
       'vi': 'Positives',
@@ -401,7 +433,7 @@ class LanguageManager {
     },
     'footer_contact_us': {
       'en': 'Contact us:',
-      'vi': 'Liên hệ với chúng tôi:',
+      'vi': 'Liên hệ:',
       'ko': '연락처:',
       'ja': 'お問い合わせ:',
     },
@@ -443,8 +475,6 @@ class LanguageManager {
       'ko': '개인정보 보호정책',
       'ja': 'プライバシーポリシー',
     },
-
-    // CTA Block
     'cta_title': {
       'en': 'Let’s make things happen',
       'vi': 'Hãy cùng tạo nên điều kỳ diệu',
@@ -467,8 +497,6 @@ class LanguageManager {
       'ko': '무료 제안서 받기',
       'ja': '無料提案書を受け取る',
     },
-
-    // Contact Us Block
     'contact_us_say_hi': {
       'en': 'Say Hi',
       'vi': 'Chào hỏi',
@@ -499,8 +527,6 @@ class LanguageManager {
       'ko': '메시지*',
       'ja': 'メッセージ*',
     },
-
-    // Case Studies Block
     'case_studies_case1_content': {
       'en':
           'For a local restaurant, we implemented a targeted PPC campaign that resulted in a 50% increase in website traffic and a 25% increase in sales.',
@@ -536,8 +562,6 @@ class LanguageManager {
       'ko': '더 알아보기',
       'ja': '詳細を見る',
     },
-
-    // Home Page
     'home_service_title': {
       'en': 'Service gg',
       'vi': 'Dịch vụ gg',
@@ -607,71 +631,12 @@ class LanguageManager {
     },
   };
 
-  static String translate(String key) {
-    return translations[key]?[selectedLanguage.value] ??
-        'Translation not found';
+  static String translate(String key, [String? langCode]) {
+    final language = langCode ?? 'en';
+    return translations[key]?[language] ?? 'Translation not found';
   }
 
   static String tr(String key, String langCode) {
     return translations[key]?[langCode] ?? 'unknown';
   }
-
-  // TODO(tung): Remove UI code from service or business logic class
-  static Component languageDropdown() {
-    return div(classes: "language-header", [
-      select(
-        styles: Styles(
-          color: AppColors.textBlack,
-          backgroundColor: Colors.transparent,
-        ),
-        events: {
-          'change': (dynamic event) {
-            final value = event.target.value as String?;
-            if (value != null) {
-              selectedLanguage.value = value;
-            }
-          }
-        },
-        [
-          for (var lang in languages.entries)
-            option(
-              styles: Styles(
-                  color: AppColors.textBlack,
-                  backgroundColor: AppColors.backgroundTheme),
-              attributes: {
-                'value': lang.key,
-                if (lang.key == selectedLanguage.value) 'selected': ''
-              },
-              [text(lang.value)],
-            ),
-        ],
-      ),
-    ]);
-  }
-
-  @css
-  static final styles = [
-    css('.language-header', [
-      css('&').styles(
-        display: Display.flex,
-        height: 48.px,
-        padding: Padding.symmetric(horizontal: 15.px),
-        border: Border(color: AppColors.textBlack, width: 1.px),
-        radius: BorderRadius.circular(14.px),
-        alignItems: AlignItems.center,
-      ),
-      css('select').styles(
-        border: Border.none,
-        cursor: Cursor.pointer,
-        color: AppColors.textBlack,
-        textAlign: TextAlign.center,
-        fontFamily: FontFamily.list(
-            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-        fontSize: 18.px,
-        fontWeight: FontWeight.w400,
-        backgroundColor: Colors.transparent,
-        raw: {'-webkit-appearance': 'none', '-moz-appearance': 'none'},
-      ),
-    ]),
-  ];
 }
