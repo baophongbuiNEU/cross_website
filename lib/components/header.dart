@@ -51,89 +51,145 @@ class HeaderState extends State<Header> {
     });
   }
 
+  static String getFlagEmoji(String langCode) {
+    switch (langCode) {
+      case 'en':
+        return '🇺🇸';
+      case 'vi':
+        return '🇻🇳';
+      case 'ja':
+        return '🇯🇵';
+      case 'ko':
+        return '🇰🇷';
+      default:
+        return '🏳️';
+    }
+  }
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    final languageState = context.watch(langProvider);
+    final selectedLang =
+        context.watch(LanguageManager.selectedLanguageProvider);
+
     final currentUrl = context.url;
     final currentHash = Uri.parse(currentUrl).fragment;
     if (currentHash.isNotEmpty && kIsWeb) {
       scheduleMicrotask(() {});
     }
+
     var content = Fragment(key: contentKey, children: [
       nav(classes: 'nav-menu', [
-        ValueListenableBuilder<String>(
-          listenable: LanguageManager.selectedLanguage,
-          builder: (context, lang) sync* {
-            yield* [
-              for (var route in [
-                (
-                  label: LanguageManager.translate('header_about'),
-                  path: '/about'
-                ),
-                (
-                  label: LanguageManager.translate('header_services'),
-                  path: '/#services'
-                ),
-                (
-                  label: LanguageManager.translate('header_contact'),
-                  path: '/#contact'
-                ),
-                (
-                  label: LanguageManager.translate('header_careers'),
-                  path: '/#careers'
-                ),
-              ])
-                div([
-                  if (route.path == '/about')
-                    Link(
-                      to: route.path,
-                      children: [text(route.label)],
-                    )
-                  else
-                    a(href: route.path, events: {
-                      'click': (event) {},
-                    }, [
-                      text(route.label)
-                    ]),
-                ]),
-              // LanguageManager.languageDropdown(),
-              div(classes: "language-header", [
-                select(
+        for (var route in [
+          (
+            label: LanguageManager.translate('header_about', selectedLang),
+            path: '/about'
+          ),
+          (
+            label: LanguageManager.translate('header_services', selectedLang),
+            path: '/#services'
+          ),
+          (
+            label: LanguageManager.translate('header_contact', selectedLang),
+            path: '/#contact'
+          ),
+          (
+            label: LanguageManager.translate('header_careers', selectedLang),
+            path: '/#careers'
+          ),
+        ])
+          div([
+            if (route.path == '/about')
+              Link(
+                to: route.path,
+                children: [text(route.label)],
+              )
+            else
+              a(href: route.path, events: {
+                'click': (event) {},
+              }, [
+                text(route.label)
+              ]),
+          ]),
+        Builder(builder: (context) sync* {
+          final selectedLang =
+              context.watch(LanguageManager.selectedLanguageProvider);
+
+          yield div(classes: "language-header", [
+            div(
+              classes: "custom-select-display",
+              styles: Styles(
+                display: Display.flex,
+                padding: Spacing.symmetric(horizontal: 8.px),
+                cursor: Cursor.pointer,
+                alignItems: AlignItems.center,
+                backgroundColor: AppColors.backgroundTheme,
+              ),
+              [
+                span(
                   styles: Styles(
-                    color: AppColors.textBlack,
-                    backgroundColor: AppColors.backgroundTheme,
+                    fontSize: 20.px,
                   ),
-                  events: {
-                    'change': (dynamic event) {
-                      final value = event.target.value as String?;
-
-                      if (value != null) {
-                        context.read(langProvider.notifier).state = value;
-                      }
-                    }
-                  },
-                  [
-                    for (var lang in SupportLanguage.values)
-                      option(
+                  [text(getFlagEmoji(selectedLang))],
+                ),
+              ],
+            ),
+            select(
+              styles: Styles(
+                position: Position.absolute(),
+                zIndex: ZIndex(1),
+                width: Unit.pixels(50),
+                height: Unit.pixels(30),
+                opacity: 0,
+                cursor: Cursor.pointer,
+              ),
+              events: {
+                'change': (dynamic event) {
+                  final value = event.target.value as String?;
+                  if (value != null) {
+                    context
+                        .read(LanguageManager.selectedLanguageProvider.notifier)
+                        .state = value;
+                    LanguageManager.saveLanguage(value);
+                  }
+                },
+              },
+              [
+                for (var lang in LanguageManager.languages.entries)
+                  option(
+                    styles: Styles(
+                      display: Display.flex,
+                      padding:
+                          Spacing.symmetric(vertical: 2.px, horizontal: 1.px),
+                      alignItems: AlignItems.center,
+                      color: AppColors.textBlack,
+                    ),
+                    attributes: {
+                      'value': lang.key,
+                      if (lang.key == selectedLang) 'selected': '',
+                    },
+                    [
+                      span(
                         styles: Styles(
-                          color: AppColors.textBlack,
+                          margin: Spacing.only(right: 12.px),
+                          fontSize: 14.px,
                         ),
-                        attributes: {
-                          'value': lang.name,
-                          if (lang.name == languageState) 'selected': ''
-                        },
-                        [text(lang.name)],
+                        [text(getFlagEmoji(lang.key))],
                       ),
-                  ],
-                )
-              ]),
-
-              div(classes: "theme_toggle", [
-                ThemeToggle(),
-              ]),
-            ];
-          },
-        ),
+                      span(
+                        styles: Styles(
+                          flex: Flex(grow: 1),
+                        ),
+                        [text(lang.value)],
+                      ),
+                    ],
+                  ),
+              ],
+            ),
+          ]);
+        }),
+        div(classes: "theme_toggle", [
+          ThemeToggle(),
+        ]),
       ]),
     ]);
 
@@ -215,6 +271,28 @@ class HeaderState extends State<Header> {
       ]),
       css('.theme_toggle').styles(
         margin: Spacing.only(left: 0.px, right: 0.rem),
+      ),
+    ]),
+    css('.language-header', [
+      css('&').styles(
+        display: Display.flex,
+        height: 45.px,
+        padding: Padding.symmetric(horizontal: 10.px),
+        border: Border(color: AppColors.textBlack, width: 1.px),
+        radius: BorderRadius.circular(14.px),
+        alignItems: AlignItems.center,
+      ),
+      css('select').styles(
+        border: Border.none,
+        cursor: Cursor.pointer,
+        color: AppColors.textBlack,
+        textAlign: TextAlign.center,
+        fontFamily: FontFamily.list(
+            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+        fontSize: 18.px,
+        fontWeight: FontWeight.w400,
+        backgroundColor: Colors.transparent,
+        raw: {'-webkit-appearance': 'none', '-moz-appearance': 'none'},
       ),
     ]),
   ];
