@@ -1,6 +1,6 @@
-import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/components/common/size_box_component.dart';
 import 'package:cross_website/constants/app_colors.dart';
+import 'package:jaspr/jaspr.dart';
 
 class CardProcessBlock extends StatefulComponent {
   final String index;
@@ -23,7 +23,10 @@ class CardProcessBlockState extends State<CardProcessBlock> {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(
+    yield button(
+        onClick: () => setState(
+              () => _isShowMoore = !_isShowMoore,
+            ),
         styles: Styles(
             display: Display.flex,
             // width: 100.vw,
@@ -51,10 +54,10 @@ class CardProcessBlockState extends State<CardProcessBlock> {
                 div(classes: 'card_process_title', [
                   Text(component.title),
                 ]),
-               _iconShowMore(),
+                _iconShowMore(),
               ]),
           if (_isShowMoore)
-            div([
+            div(classes: 'process_content', [
               _line(),
               div(
                   styles: Styles(
@@ -62,6 +65,7 @@ class CardProcessBlockState extends State<CardProcessBlock> {
                       fontSize: 18.px,
                       fontWeight: FontWeight.w400),
                   [
+                    // TODO(anyone): make content lign left
                     Text(component.content),
                   ])
             ])
@@ -69,12 +73,7 @@ class CardProcessBlockState extends State<CardProcessBlock> {
   }
 
   Component _iconShowMore() {
-    return button(
-        onClick: () => setState(
-              () => _isShowMoore = !_isShowMoore,
-            ),
-        classes: 'icon-show-more',
-        [Text(_isShowMoore ? "-" : "+")]);
+    return div(classes: 'icon-show-more', [Text(_isShowMoore ? "-" : "+")]);
   }
 
   Component _line() {

@@ -64,6 +64,6 @@ final defaultJasprOptions = JasprOptions(
     ...prefix14.ThemeToggleState.styles,
     ...prefix15.About.styles,
     ...prefix17.NotFoundPage.styles,
-    ...prefix19.App.styles,
+    ...prefix19.AppState.styles,
   ],
 );

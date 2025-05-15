@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cross_website/components/home_page/card_process_block.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
@@ -8,6 +10,7 @@ class ProcessBlock extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
+    log('the deo nao');
     final selectedLang =
         context.watch(LanguageManager.selectedLanguageProvider);
 
@@ -68,6 +71,16 @@ class ProcessBlock extends StatelessComponent {
                   'process_improvement_title', selectedLang),
               content: LanguageManager.translate(
                   'process_improvement_content', selectedLang),
+            ),
+            CardProcessBlock(
+              index: "07",
+              title: LanguageManager.translate('step7_label', selectedLang),
+              content: LanguageManager.translate('step7_content', selectedLang),
+            ),
+            CardProcessBlock(
+              index: "08",
+              title: LanguageManager.translate('step8_label', selectedLang),
+              content: LanguageManager.translate('step8_content', selectedLang),
             ),
           ],
         ),

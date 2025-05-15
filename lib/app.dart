@@ -56,6 +56,7 @@ class AppState extends State<App> {
             alignItems: AlignItems.center,
             backgroundColor: Colors.white,
           ),
+          // TODO(tung): change to loading indicator / animation
           [text('Loading...')]);
     } else if (_hasError) {
       yield div(classes: 'main', [text('Error loading translations')]);
