@@ -29,8 +29,25 @@ class ThemeToggleState extends State<ThemeToggle> {
         DomComponent(id: 'theme-script', tag: 'script', children: [
           raw('''
   (function() {
-    // Load the saved theme or use system preference
-    let userTheme = window.localStorage.getItem('active-theme');
+    // Function to get cookie by name
+    function getCookie(name) {
+      let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : null;
+    }
+    
+    // Function to set cookie
+    function setCookie(name, value, days) {
+      let expires = "";
+      if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    
+    // Load the saved theme from cookies or use system preference
+    let userTheme = getCookie('active-theme');
 
     if (userTheme) {
       document.documentElement.className = userTheme; // Apply stored theme
@@ -40,11 +57,11 @@ class ThemeToggleState extends State<ThemeToggle> {
       document.documentElement.className = 'light'; // Default to light mode
     }
 
-    // Function to toggle theme and save to localStorage
+    // Function to toggle theme and save to cookies
     window.toggleTheme = function() {
       let currentTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
       document.documentElement.className = currentTheme;
-      window.localStorage.setItem('active-theme', currentTheme);
+      setCookie('active-theme', currentTheme, 365); // Save for 1 year
     };
   })();
   ''')
@@ -63,8 +80,8 @@ class ThemeToggleState extends State<ThemeToggle> {
         setState(() {
           isDark = !isDark;
         });
-        web.window.localStorage
-            .setItem('active-theme', isDark ? 'dark' : 'light');
+        web.document.cookie =
+            'active-theme=${isDark ? 'dark' : 'light'}; path=/; max-age=${365 * 24 * 60 * 60}';
       },
       styles: !kIsWeb
           ? Styles(visibility: Visibility.hidden)

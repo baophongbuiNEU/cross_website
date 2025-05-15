@@ -1,8 +1,45 @@
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:universal_web/web.dart' as web;
 
 class LanguageManager {
-  static final ValueNotifier<String> selectedLanguage = ValueNotifier('en');
+  // Add a loading state tracker
+  static final ValueNotifier<bool> isLanguageLoading = ValueNotifier(true);
+  static final ValueNotifier<String> selectedLanguage =
+      ValueNotifier(_getInitialLanguage());
+
+// Method to get initial language from cookie or use 'en' as default
+  static String _getInitialLanguage() {
+    if (!kIsWeb) {
+      isLanguageLoading.value = false;
+      return 'en';
+    }
+
+    try {
+      final cookies = web.document.cookie.split(';');
+      for (var cookie in cookies) {
+        final parts = cookie.trim().split('=');
+        if (parts.length == 2 && parts[0] == 'selected-language') {
+          final lang = parts[1];
+          if (languages.containsKey(lang)) {
+            // Set loading to false after we've loaded the language
+            Future.delayed(Duration(milliseconds: 500), () {
+              isLanguageLoading.value = false;
+            });
+            return lang;
+          }
+        }
+      }
+    } catch (e) {
+      print('Error reading cookie: $e');
+    }
+
+    // Set loading to false after we've attempted to load the language
+    Future.delayed(Duration(milliseconds: 500), () {
+      isLanguageLoading.value = false;
+    });
+    return 'en'; // Default to English if no cookie or error
+  }
 
   static final languages = {
     'en': 'English',
@@ -593,6 +630,35 @@ class LanguageManager {
 
   static Component languageDropdown() {
     return div(classes: "language-header", [
+      // Add language script to handle cookies
+      Document.head(children: [
+        DomComponent(id: 'language-script', tag: 'script', children: [
+          raw('''
+        (function() {
+          // Function to get cookie by name
+          function getCookie(name) {
+            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+          }
+          
+          // Load the saved language from cookies
+          window.onload = function() {
+            let savedLanguage = getCookie('selected-language');
+            if (savedLanguage) {
+              // Find and select the option with the saved language
+              const selectElement = document.querySelector('.language-header select');
+              if (selectElement) {
+                selectElement.value = savedLanguage;
+                // Dispatch a change event to update the language
+                const event = new Event('change');
+                selectElement.dispatchEvent(event);
+              }
+            }
+          };
+        })();
+        ''')
+        ]),
+      ]),
       select(
         styles: Styles(
           color: AppColors.textBlack,
@@ -603,6 +669,13 @@ class LanguageManager {
             final value = event.target.value as String?;
             if (value != null) {
               selectedLanguage.value = value;
+
+              // Save language preference to cookie when changed
+              if (kIsWeb) {
+                // Set cookie for 1 year (similar to theme cookie)
+                web.document.cookie =
+                    'selected-language=$value; path=/; max-age=${365 * 24 * 60 * 60}';
+              }
             }
           }
         },

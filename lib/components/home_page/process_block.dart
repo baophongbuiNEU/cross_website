@@ -1,7 +1,6 @@
 import 'package:cross_website/components/home_page/card_process_block.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:cross_website/components/home_page/card_process_block.dart';
 
 class ProcessBlock extends StatelessComponent {
   const ProcessBlock({super.key});
