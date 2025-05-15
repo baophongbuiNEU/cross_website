@@ -35,10 +35,10 @@ class FooterBlock extends StatelessComponent {
               alignItems: AlignItems.center),
           [
             img(
-                width: 30,
-                height: 30,
-                styles: Styles(raw: {"filter": "invert(1)"}),
-                src: Images.imagePrimary),
+                width: 40,
+                height: 40,
+                // styles: Styles(raw: {"filter": "invert(1)"}),
+                src: Images.crossLogo),
             SizeBoxComponent(width: 6),
             div(
               styles: Styles(
@@ -112,7 +112,7 @@ class FooterBlock extends StatelessComponent {
       SizeBoxComponent(height: 20),
       div([
         a(
-          href: "mailto:info@crosstech.com",
+          href: "mailto:crosstechedu@gmail.com",
           styles: Styles(
             color: Colors.white,
             textDecoration: TextDecoration(line: TextDecorationLine.none),
