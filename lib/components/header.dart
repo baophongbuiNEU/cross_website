@@ -122,12 +122,11 @@ class HeaderState extends State<Header> {
                 padding: Spacing.symmetric(horizontal: 8.px),
                 cursor: Cursor.pointer,
                 alignItems: AlignItems.center,
-                backgroundColor: AppColors.backgroundTheme,
               ),
               [
                 span(
                   styles: Styles(
-                    fontSize: 20.px,
+                    fontSize: 30.px,
                   ),
                   [text(getFlagEmoji(selectedLang))],
                 ),
@@ -195,16 +194,15 @@ class HeaderState extends State<Header> {
 
     yield header([
       img(
-        src: Images.crossLogo,
+        src: Images.imagePrimary,
         styles: Styles(
-          width: Unit.pixels(50),
-          height: Unit.pixels(50),
-          // padding: Padding.all(.7.rem),
-          margin: Margin.only(left: 4.percent),
-          // radius: BorderRadius.circular(8.px),
-          // color: AppColors.textBlack,
-          // backgroundColor: AppColors.listLogoBackground
-        ),
+            width: Unit.pixels(36),
+            height: Unit.pixels(36),
+            padding: Padding.all(.7.rem),
+            margin: Margin.only(left: 5.percent),
+            radius: BorderRadius.circular(8.px),
+            color: AppColors.textBlack,
+            backgroundColor: AppColors.listLogoBackground),
       ),
       if (!menuOpen) content,
       MenuButton(
@@ -279,9 +277,12 @@ class HeaderState extends State<Header> {
         display: Display.flex,
         height: 45.px,
         padding: Padding.symmetric(horizontal: 10.px),
-        border: Border(color: AppColors.textBlack, width: 1.px),
+        // border: Border(color: AppColors.textBlack, width: 1.px),
         radius: BorderRadius.circular(14.px),
         alignItems: AlignItems.center,
+      ),
+      css('&:hover').styles(
+        backgroundColor: AppColors.hoverOverlayColor,
       ),
       css('select').styles(
         border: Border.none,
