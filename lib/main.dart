@@ -33,6 +33,7 @@ void main() async {
       // The generated flutter manifest and bootstrap script.
       link(rel: 'manifest', href: 'manifest.json'),
       script(src: "flutter_bootstrap.js", async: true, []),
+      link(href: 'images/x_cross.png', rel: 'icon', type: 'image/png'),
     ],
     body: App(),
   ));

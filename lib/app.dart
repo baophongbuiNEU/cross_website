@@ -25,7 +25,6 @@ class App extends StatelessComponent {
         width: 100.percent,
         maxWidth: 100.vw,
         boxSizing: BoxSizing.borderBox,
-        overflow: Overflow.hidden,
         flexDirection: FlexDirection.column,
         flexWrap: FlexWrap.wrap,
         justifyContent: JustifyContent.center,

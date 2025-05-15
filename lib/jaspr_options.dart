@@ -17,9 +17,9 @@ import 'package:cross_website/components/home_page/list_logo.dart' as prefix11;
 import 'package:cross_website/components/header.dart' as prefix12;
 import 'package:cross_website/constants/app_colors.dart' as prefix13;
 import 'package:cross_website/constants/theme_toogle.dart' as prefix14;
-import 'package:cross_website/language/language_manager.dart' as prefix15;
-import 'package:cross_website/pages/about.dart' as prefix16;
-import 'package:cross_website/pages/home.dart' as prefix17;
+import 'package:cross_website/pages/about.dart' as prefix15;
+import 'package:cross_website/pages/home.dart' as prefix16;
+import 'package:cross_website/pages/not_found_page.dart' as prefix17;
 import 'package:cross_website/pages/services.dart' as prefix18;
 import 'package:cross_website/app.dart' as prefix19;
 
@@ -42,8 +42,8 @@ import 'package:cross_website/app.dart' as prefix19;
 final defaultJasprOptions = JasprOptions(
   clients: {
     prefix19.App: ClientTarget<prefix19.App>('app'),
-    prefix16.About: ClientTarget<prefix16.About>('pages/about'),
-    prefix17.Home: ClientTarget<prefix17.Home>('pages/home'),
+    prefix15.About: ClientTarget<prefix15.About>('pages/about'),
+    prefix16.Home: ClientTarget<prefix16.Home>('pages/home'),
     prefix18.Services: ClientTarget<prefix18.Services>('pages/services'),
   },
   styles: () => [
@@ -53,7 +53,7 @@ final defaultJasprOptions = JasprOptions(
     ...prefix3.TitleIconHome.styles,
     ...prefix4.CardProcessBlockState.style,
     ...prefix5.CaseStudiesBlock.style,
-    ...prefix6.GenderSelectionState.style,
+    ...prefix6.ContactUsBlockState.style,
     ...prefix7.CtaBlock.style,
     ...prefix8.FooterBlock.style,
     ...prefix9.HeaderHomePage.styles,
@@ -61,9 +61,9 @@ final defaultJasprOptions = JasprOptions(
     ...prefix11.ListLogo.styles,
     ...prefix12.HeaderState.styles,
     ...prefix13.root,
-    ...prefix14.ThemeToggle.styles,
-    ...prefix15.LanguageManager.styles,
-    ...prefix16.About.styles,
+    ...prefix14.ThemeToggleState.styles,
+    ...prefix15.About.styles,
+    ...prefix17.NotFoundPage.styles,
     ...prefix19.App.styles,
   ],
 );

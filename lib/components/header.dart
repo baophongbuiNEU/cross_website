@@ -195,15 +195,16 @@ class HeaderState extends State<Header> {
 
     yield header([
       img(
-        src: Images.imagePrimary,
+        src: Images.crossLogo,
         styles: Styles(
-            width: Unit.pixels(36),
-            height: Unit.pixels(36),
-            padding: Padding.all(.7.rem),
-            margin: Margin.only(left: 5.percent),
-            radius: BorderRadius.circular(8.px),
-            color: AppColors.textBlack,
-            backgroundColor: AppColors.listLogoBackground),
+          width: Unit.pixels(50),
+          height: Unit.pixels(50),
+          // padding: Padding.all(.7.rem),
+          margin: Margin.only(left: 4.percent),
+          // radius: BorderRadius.circular(8.px),
+          // color: AppColors.textBlack,
+          // backgroundColor: AppColors.listLogoBackground
+        ),
       ),
       if (!menuOpen) content,
       MenuButton(
