@@ -46,6 +46,8 @@ class Services extends StatelessComponent {
 
   @css
   static final styles = [
-    css('ol').box(maxWidth: 500.px),
+    css('ol').styles(
+      maxWidth: 500.px,
+    ),
   ];
 }

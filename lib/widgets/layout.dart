@@ -4,7 +4,7 @@ import 'package:jaspr/jaspr.dart';
 class Layout extends StatelessComponent {
   final Component child;
 
-  Layout({required this.child});
+  const Layout({required this.child});
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
@@ -12,9 +12,9 @@ class Layout extends StatelessComponent {
       Navigation(),
       div(
           classes: 'content',
-          styles: const Styles.raw({
-            'padding': '20px',
-          }),
+          styles: Styles(
+            padding: Spacing.all(20.px),
+          ),
           [child]),
     ]);
   }

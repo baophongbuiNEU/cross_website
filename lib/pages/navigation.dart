@@ -10,13 +10,13 @@ class Navigation extends StatelessComponent {
 
     yield div(
         classes: 'navigation',
-        styles: const Styles.raw({
-          'display': 'flex',
-          'justify-content': 'space-between',
-          'align-items': 'center',
-          'padding': '10px 20px',
-          'background-color': '#f0f0f0',
-        }),
+        styles: Styles(
+          display: Display.flex,
+          padding: Padding.symmetric(horizontal: 20.px, vertical: 10.px),
+          justifyContent: JustifyContent.spaceBetween,
+          alignItems: AlignItems.center,
+          backgroundColor: Color.hex('#f0f0f0'),
+        ),
         [
           div(classes: 'nav-links', [
             a(href: '/about', [text('About Us')]),
