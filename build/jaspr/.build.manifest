@@ -1,6 +1,7 @@
 .dart_tool/package_config.json
 app.client.dart.js
 favicon.ico
+favicon.png
 flutter_bootstrap.js
 icons/Icon-192.png
 icons/Icon-512.png
@@ -30,6 +31,7 @@ images/pay_per_click_advertising.png
 images/search_engine_optimization.png
 images/social_media_marketing.png
 images/twitter_icon.png
+images/x_cross.png
 images/zoom_icon.png
 index.html
 main.clients.dart.js
@@ -74,10 +76,10 @@ packages/cross_website/components/home_page/item_services.styles.json
 packages/cross_website/components/home_page/list_logo.styles.json
 packages/cross_website/constants/app_colors.styles.json
 packages/cross_website/constants/theme_toogle.styles.json
-packages/cross_website/language/language_manager.styles.json
 packages/cross_website/pages/about.client.json
 packages/cross_website/pages/about.styles.json
 packages/cross_website/pages/home.client.json
+packages/cross_website/pages/not_found_page.styles.json
 packages/cross_website/pages/services.client.json
 packages/cross_website/pages/services.styles.json
 packages/cross_website/styles.bundle.json
