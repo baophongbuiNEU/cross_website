@@ -1,6 +1,6 @@
 name: cross_website
 description: A new jaspr project.
-version: 0.0.2
+version: 1.0.0
 
 environment:
   sdk: ">=3.5.0 <4.0.0"
