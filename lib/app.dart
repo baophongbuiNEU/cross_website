@@ -54,7 +54,7 @@ class AppState extends State<App> {
             height: 100.vh,
             justifyContent: JustifyContent.center,
             alignItems: AlignItems.center,
-            backgroundColor: Colors.white,
+            backgroundColor: AppColors.backgroundTheme,
           ),
           // TODO(tung): change to loading indicator / animation
           [text('Loading...')]);
@@ -106,7 +106,6 @@ class AppState extends State<App> {
         width: 100.percent,
         maxWidth: 100.vw,
         boxSizing: BoxSizing.borderBox,
-        overflow: Overflow.hidden,
         flexDirection: FlexDirection.column,
         flexWrap: FlexWrap.wrap,
         justifyContent: JustifyContent.center,

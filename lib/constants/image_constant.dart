@@ -21,6 +21,7 @@ class Images {
   static const String imageContactUsCard = "images/image_contact_us_card.png";
   static const String drawerIcon = "images/menu-svgrepo-com.svg";
   static const String closeIcon = "images/close-svgrepo-com.svg";
+  static const String crossTeambuilding = "images/cross_teambuilding.jpg";
 
   //fb,tw,in
   static const String twitterIcon = "images/twitter_icon.png";
