@@ -39,9 +39,9 @@ class Blog extends StatelessComponent {
     yield div(
         styles: Styles(
           display: Display.flex,
-          flexDirection: FlexDirection.row,
           width: 100.vw,
           minHeight: 100.vh,
+          flexDirection: FlexDirection.row,
           backgroundColor: Color.rgb(255, 255, 255),
         ),
         [
@@ -49,12 +49,11 @@ class Blog extends StatelessComponent {
           div(
               styles: Styles(
                 width: 220.px,
-                padding:
-                    EdgeInsets.symmetric(vertical: 40.px, horizontal: 10.px),
-                backgroundColor: Color.rgb(255, 255, 255),
+                padding: Spacing.symmetric(vertical: 40.px, horizontal: 10.px),
                 border: Border.only(
                     right: BorderSide(
                         color: Color.rgb(240, 240, 240), width: 2.px)),
+                backgroundColor: Color.rgb(255, 255, 255),
               ),
               [
                 button([text('All tags')],
@@ -65,8 +64,8 @@ class Blog extends StatelessComponent {
                       fontWeight: FontWeight.bold,
                       fontSize: 20.px,
                       radius: BorderRadius.circular(8.px),
-                      margin: EdgeInsets.only(bottom: 12.px),
-                      padding: EdgeInsets.symmetric(vertical: 10.px),
+                      margin: Spacing.only(bottom: 12.px),
+                      padding: Spacing.symmetric(vertical: 10.px),
                     )),
                 ...tags.map((tag) => button([text(tag)],
                     styles: Styles(
@@ -76,29 +75,29 @@ class Blog extends StatelessComponent {
                       fontWeight: FontWeight.bold,
                       fontSize: 18.px,
                       radius: BorderRadius.circular(8.px),
-                      margin: EdgeInsets.only(bottom: 10.px),
-                      padding: EdgeInsets.symmetric(vertical: 8.px),
+                      margin: Spacing.only(bottom: 10.px),
+                      padding: Spacing.symmetric(vertical: 8.px),
                     ))),
               ]),
           // Main content
           div(
               styles: Styles(
-                flex: Flex(grow: 1),
                 display: Display.flex,
+                padding: Spacing.all(40.px),
                 flexDirection: FlexDirection.row,
                 flexWrap: FlexWrap.wrap,
                 justifyContent: JustifyContent.start,
                 alignItems: AlignItems.start,
-                padding: EdgeInsets.all(40.px),
                 gap: Gap.all(40.px),
+                flex: Flex(grow: 1),
               ),
               [
                 ...posts.map((post) => div(
                         styles: Styles(
                           width: 420.px,
-                          backgroundColor: Color.rgb(255, 255, 255),
-                          radius: BorderRadius.circular(16.px),
                           margin: Margin.only(bottom: 40.px),
+                          radius: BorderRadius.circular(16.px),
+                          backgroundColor: Color.rgb(255, 255, 255),
                         ),
                         [
                           img(
@@ -111,7 +110,7 @@ class Blog extends StatelessComponent {
                                   topRight: Radius.circular(16.px),
                                 ),
                               )),
-                          div(styles: Styles(padding: EdgeInsets.all(24.px)), [
+                          div(styles: Styles(padding: Spacing.all(24.px)), [
                             a([text(post['title']!)],
                                 href: '#',
                                 styles: Styles(
@@ -120,7 +119,7 @@ class Blog extends StatelessComponent {
                                   fontSize: 32.px,
                                   lineHeight: 1.2.em,
                                   textDecoration: TextDecoration.none,
-                                  margin: EdgeInsets.only(bottom: 16.px),
+                                  margin: Spacing.only(bottom: 16.px),
                                 )),
                             div([
                               span([
@@ -136,8 +135,8 @@ class Blog extends StatelessComponent {
                                       color: Color.rgb(180, 180, 180),
                                       fontSize: 16.px)),
                             ],
-                                styles: Styles(
-                                    margin: EdgeInsets.only(top: 12.px))),
+                                styles:
+                                    Styles(margin: Spacing.only(top: 12.px))),
                           ]),
                         ])),
               ]),

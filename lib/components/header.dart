@@ -148,7 +148,7 @@ class HeaderState extends State<Header> {
                     context
                         .read(LanguageManager.selectedLanguageProvider.notifier)
                         .state = value;
-                    LanguageManager.saveLanguage(value);
+                    LanguageManager.saveLanguage(value, context);
                   }
                 },
               },
