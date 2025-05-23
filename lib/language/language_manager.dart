@@ -23,8 +23,16 @@ class LanguageManager {
   static bool _hasCookieConsent = getCookieConsent();
   static bool get hasCookieConsent => _hasCookieConsent;
 
-  static final cookieConsentProvider = StateProvider<bool>((ref) {
-    return getCookieConsent();
+  static final cookieConsentProvider = StateProvider<bool?>((ref) {
+    if (!isClient) return null;
+    final cookies = web.document.cookie.split(';');
+    for (var cookie in cookies) {
+      final parts = cookie.trim().split('=');
+      if (parts[0] == 'cookie_consent' && parts.length > 1) {
+        return parts[1] == 'true' ? true : false;
+      }
+    }
+    return null;
   });
 
   static const csvUrl =
@@ -89,37 +97,29 @@ class LanguageManager {
     _hasCookieConsent = consent;
     context.read(cookieConsentProvider.notifier).state = consent;
 
-    if (!consent && isClient) {
-      try {
-        print('Clearing cookies due to Decline');
-        web.document.cookie =
-            '$_languageKey=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-        web.document.cookie =
-            'cookie_consent=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-      } catch (e) {
-        print('Error removing cookies: $e');
-      }
-      context.read(selectedLanguageProvider.notifier).state = 'en';
-      return; // Exit early if declined
-    }
-
-    if (consent && isClient) {
+    if (isClient) {
       try {
         final expires = DateTime.now().add(Duration(days: 365)).toUtc();
         final consentCookie =
-            'cookie_consent=true; expires=${expires.toIso8601String()}; path=/';
+            'cookie_consent=$consent; expires=${expires.toIso8601String()}; path=/';
         web.document.cookie = consentCookie;
-        final langCode = _getClientLanguage();
-        saveLanguage(langCode, context);
-        context.read(selectedLanguageProvider.notifier).state = langCode;
+
+        if (!consent) {
+          print('Clearing language cookie due to Decline');
+          web.document.cookie =
+              '$_languageKey=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+          context.read(selectedLanguageProvider.notifier).state = 'en';
+        } else {
+          final langCode = _getClientLanguage();
+          saveLanguage(langCode, context);
+          context.read(selectedLanguageProvider.notifier).state = langCode;
+        }
       } catch (e) {
         print('Error saving cookie consent or language: $e');
       }
-    } else if (consent) {
-      final langCode = _getClientLanguage();
-      context.read(selectedLanguageProvider.notifier).state = langCode;
     } else {
-      context.read(selectedLanguageProvider.notifier).state = 'en';
+      final langCode = consent ? _getClientLanguage() : 'en';
+      context.read(selectedLanguageProvider.notifier).state = langCode;
     }
   }
 
@@ -141,8 +141,12 @@ class LanguageManager {
 
   static final selectedLanguageProvider = StateProvider<String>((ref) {
     final hasConsent = ref.watch(cookieConsentProvider);
+    if (hasConsent == null) {
+      print('No cookie consent decision, defaulting to English');
+      return 'en';
+    }
     if (!hasConsent) {
-      print('No cookie consent, defaulting to English');
+      print('Cookie consent declined, defaulting to English');
       return 'en';
     }
     final storedLang = getStoredLanguage();

@@ -14,9 +14,10 @@ class CookieConsentBanner extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    final hasConsent =
-        context.watch<bool>(LanguageManager.cookieConsentProvider);
-    if (hasConsent) return;
+    final consent = context.watch<bool?>(LanguageManager.cookieConsentProvider);
+    if (consent != null) {
+      return;
+    }
 
     final isDark = isDarkMode;
     final backgroundColor =
@@ -98,7 +99,6 @@ class CookieConsentBanner extends StatelessComponent {
               ),
               events: {
                 'click': (_) {
-                  print('Decline button clicked');
                   LanguageManager.setCookieConsent(false, context);
                   return;
                 },
@@ -119,7 +119,6 @@ class CookieConsentBanner extends StatelessComponent {
               ),
               events: {
                 'click': (_) {
-                  print('Accept button clicked');
                   LanguageManager.setCookieConsent(true, context);
                   return;
                 },
