@@ -3,16 +3,9 @@ import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
-import 'package:universal_web/web.dart' as web;
 
 class CookieConsentBanner extends StatelessComponent {
   const CookieConsentBanner({super.key});
-
-  bool get isDarkMode {
-    if (!kIsWeb) return false;
-    final className = web.document.documentElement?.className ?? '';
-    return className.split(' ').contains('dark');
-  }
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
@@ -21,11 +14,6 @@ class CookieConsentBanner extends StatelessComponent {
       return;
     }
 
-    final isDark = isDarkMode;
-    final backgroundColor =
-        isDark ? Color.hex('#FFFFFF') : Color.hex('#000000');
-    final textColor = isDark ? Color.hex('#000000') : Color.hex('#FFFFFF');
-    final borderColor = isDark ? Color.hex('#333333') : Color.hex('#e0e0e0');
     final accentColor = Color.hex('#f5a623');
     final shadowColor = 'rgba(0, 0, 0, 0.3)';
 
@@ -51,7 +39,7 @@ class CookieConsentBanner extends StatelessComponent {
           'z-index': '1000',
           'max-width': '800px',
           'gap': '20px',
-          'border': '1px solid ${borderColor.value}',
+          // 'border': '1px solid ${borderColor.value}',
         },
       ),
       [
