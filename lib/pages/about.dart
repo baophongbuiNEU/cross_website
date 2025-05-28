@@ -3,7 +3,9 @@ import 'package:cross_website/components/common/size_box_component.dart';
 import 'package:cross_website/components/home_page/footer_block.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
+import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 
 @client
 class About extends StatelessComponent {
@@ -11,6 +13,9 @@ class About extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
+    final selectedLang =
+        context.watch(LanguageManager.selectedLanguageProvider);
+
     yield section(
         styles: Styles(
             width: 100.vw,
@@ -22,35 +27,41 @@ class About extends StatelessComponent {
             h1(
                 classes: 'about_title',
                 styles: Styles(color: AppColors.textBlack),
-                [text('Chúng tôi là ai?')]),
-            SizeBoxComponent(width: 20),
+                [
+                  text(LanguageManager.translate('about_title', selectedLang)),
+                ]),
+            SizeBoxComponent(width: 50, height: 200),
             p(
                 classes: 'about_description',
                 styles: Styles(width: 95.vw, color: AppColors.textBlack),
                 [
-                  text(
-                      'GMO-Z.com RUNSYSTEM, tiền thân là Công ty RUNSYSTEM, hoạt động trong ngành phát triển phần mềm, cung cấp các giải pháp và dịch vụ CNTT cho thị trường Việt Nam và Nhật Bản. Với phương châm “Chúng tôi làm việc vì nụ cười của bạn”, chúng tôi luôn cố gắng hết mình để cải thiện môi trường làm việc, công nghệ và quy trình nhằm tối đa hóa năng suất, cung cấp các sản phẩm chất lượng cao đạt tiêu chuẩn toàn cầu, mang lại giá trị lớn cho khách hàng và các thành viên của GMO-Z.com RUNSYSTEM.')
+                  text(LanguageManager.translate(
+                      'about_description', selectedLang)),
                 ]),
           ]),
           img(
               styles: Styles(width: 90.percent, height: 80.percent),
               src: Images.crossTeambuilding),
-          SizeBoxComponent(height: 20),
+          SizeBoxComponent(height: 30),
           div(classes: 'goal_div', [
             GoalComponent(
                 icon: '🏆',
-                title: 'Ước mơ',
-                description: 'Trở thành số 1 trong ngành công nghiệp Internet'),
+                title: LanguageManager.translate(
+                    'about_goal_vision_title', selectedLang),
+                description: LanguageManager.translate(
+                    'about_goal_vision_description', selectedLang)),
             GoalComponent(
                 icon: '💡',
-                title: 'Sứ mệnh',
-                description:
-                    'Cung cấp các giải pháp và dịch vụ CNTT chất lượng cao, đáp ứng nhu cầu của khách hàng và thị trường.'),
+                title: LanguageManager.translate(
+                    'about_goal_mission_title', selectedLang),
+                description: LanguageManager.translate(
+                    'about_goal_mission_description', selectedLang)),
             GoalComponent(
                 icon: '🤝',
-                title: 'Triết lý',
-                description:
-                    'Mang đến trải nghiệm Internet phong phú, kiến tạo ra các nền văn hóa, ngành công nghệ số mới và cống hiến cho xã hội.'),
+                title: LanguageManager.translate(
+                    'about_goal_philosophy_title', selectedLang),
+                description: LanguageManager.translate(
+                    'about_goal_philosophy_description', selectedLang)),
           ]),
           SizeBoxComponent(height: 40),
           Divider(),
@@ -63,27 +74,85 @@ class About extends StatelessComponent {
                     flexWrap: FlexWrap.wrap,
                     color: AppColors.textBlack,
                   ),
-                  [text('Giá trị cốt lõi')]),
+                  [
+                    text(LanguageManager.translate(
+                        'about_key_value_title', selectedLang)),
+                  ]),
             ]),
             div(classes: 'key_value_div', [
               KeyValueComponent(
-                  title: 'Honest',
-                  description:
-                      'Luôn đối xử chân thành với đồng nghiệp và khách hàng'),
+                  title: LanguageManager.translate(
+                      'about_key_value_honesty_title', selectedLang),
+                  description: LanguageManager.translate(
+                      'about_key_value_honesty_description', selectedLang)),
               KeyValueComponent(
-                  title: 'Accountable',
-                  description:
-                      'Luôn làm việc với tinh thần trách nhiệm cao, thực hiện đúng cam kết với khách hàng'),
+                  title: LanguageManager.translate(
+                      'about_key_value_responsibility_title', selectedLang),
+                  description: LanguageManager.translate(
+                      'about_key_value_responsibility_description',
+                      selectedLang)),
               KeyValueComponent(
-                  title: 'Passionate',
-                  description:
-                      'Nhiệt huyết với ước mơ đạt mục tiêu trở thành No.1 trong lĩnh vực của mình'),
+                  title: LanguageManager.translate(
+                      'about_key_value_passion_title', selectedLang),
+                  description: LanguageManager.translate(
+                      'about_key_value_passion_description', selectedLang)),
               KeyValueComponent(
-                  title: 'Professional',
-                  description:
-                      'Học hỏi và cải tiến liên tục, hướng tới một doanh nghiệp toàn cầu, được khách hàng đánh giá cao'),
+                  title: LanguageManager.translate(
+                      'about_key_value_professionalism_title', selectedLang),
+                  description: LanguageManager.translate(
+                      'about_key_value_professionalism_description',
+                      selectedLang)),
+              KeyValueComponent(
+                  title: LanguageManager.translate(
+                      'about_key_value_smile_title', selectedLang),
+                  description: LanguageManager.translate(
+                      'about_key_value_smile_description', selectedLang)),
             ]),
           ]),
+          Divider(),
+          div(
+            classes: 'culture-section',
+            styles: Styles(
+              display: Display.flex,
+              width: 95.percent,
+              flexDirection: FlexDirection.row,
+              justifyContent: JustifyContent.start,
+              alignItems: AlignItems.stretch,
+              gap: Gap(column: 1.rem),
+            ),
+            [
+              div(classes: 'culture_title', [
+                h1(
+                  styles: Styles(
+                    display: Display.flex,
+                    width: 150.percent,
+                    justifyContent: JustifyContent.start,
+                    alignItems: AlignItems.start,
+                    alignSelf: AlignSelf.start,
+                    color: AppColors.textBlack,
+                  ),
+                  [
+                    text(LanguageManager.translate(
+                        'about_culture_title', selectedLang)),
+                  ],
+                ),
+              ]),
+              div(classes: 'culture_content', [
+                p(
+                  styles: Styles(
+                    display: Display.flex,
+                    justifyContent: JustifyContent.center,
+                    alignItems: AlignItems.center,
+                    color: AppColors.textBlack,
+                  ),
+                  [
+                    text(LanguageManager.translate(
+                        'about_culture_description', selectedLang)),
+                  ],
+                ),
+              ]),
+            ],
+          ),
           FooterBlock(),
         ]);
   }
@@ -106,7 +175,7 @@ class About extends StatelessComponent {
         flexWrap: FlexWrap.wrap,
         justifyContent: JustifyContent.center,
         alignItems: AlignItems.stretch,
-        gap: Gap(column: 1.rem), // Enables wrapping on smaller screens
+        gap: Gap(column: 1.rem),
       ),
     ]),
     css('.key_value_overall', [
@@ -120,7 +189,7 @@ class About extends StatelessComponent {
       css('.key_value_title', [
         css('&').styles(
           display: Display.flex,
-          width: 33.percent,
+          width: 150.percent,
           justifyContent: JustifyContent.start,
           alignItems: AlignItems.start,
           alignSelf: AlignSelf.start,
@@ -133,6 +202,31 @@ class About extends StatelessComponent {
         justifyContent: JustifyContent.center,
         alignItems: AlignItems.center,
       ),
+    ]),
+    css('.culture-section', [
+      css('&').styles(
+        display: Display.flex,
+        width: 95.percent,
+        flexDirection: FlexDirection.row,
+        justifyContent: JustifyContent.start,
+        alignItems: AlignItems.stretch,
+        gap: Gap(column: 1.rem),
+      ),
+      css('.culture_title', [
+        css('&').styles(
+          display: Display.flex,
+          width: 265.percent,
+          justifyContent: JustifyContent.start,
+          alignItems: AlignItems.start,
+          alignSelf: AlignSelf.start,
+        ),
+      ]),
+      css('.culture_content', [
+        css('&').styles(
+          justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
+        ),
+      ]),
     ]),
   ];
 }
