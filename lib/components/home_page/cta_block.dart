@@ -57,7 +57,7 @@ class CtaBlock extends StatelessComponent {
   }
 
   @css
-  static final style = [
+  static List<StyleRule> get style => [
     css('.cta_overall', [
       css('&').styles(
         width: 100.vw,

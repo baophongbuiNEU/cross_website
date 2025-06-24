@@ -85,7 +85,7 @@ class CaseStudiesBlock extends StatelessComponent {
   }
 
   @css
-  static final style = [
+  static List<StyleRule> get style => [
     css('.case_studies_block', [
       css('&').styles(
         width: 100.vw,

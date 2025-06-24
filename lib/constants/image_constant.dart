@@ -27,6 +27,10 @@ class Images {
   static const String facebookIcon = "images/facebook_icon.png";
   static const String instagramIcon = "images/instagram_icon.png";
   static const String crossLogo = "images/x_cross.png";
+
+  //company
+  static const String vfastLogo = "images/vfast.png";
+  static const String itedLogo = "images/ited.jpg";
 }
 
 class Icons {

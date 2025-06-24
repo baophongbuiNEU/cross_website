@@ -199,7 +199,7 @@ class FooterBlock extends StatelessComponent {
   }
 
   @css
-  static final style = [
+  static List<StyleRule> get style => [
     css('.footer_block', [
       css('&').styles(
           display: Display.flex,

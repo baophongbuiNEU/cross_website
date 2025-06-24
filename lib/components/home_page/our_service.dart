@@ -14,7 +14,7 @@ class OurService extends StatelessComponent {
       ItemServices(
         title: LanguageManager.translate('our_service_seo_title', lang),
         content: LanguageManager.translate('our_service_seo_content', lang),
-        backgroundColor: Color.hex('#F3F3F3'),
+        backgroundColor: Color('#F3F3F3'),
         backgroundItem: AppColors.primaryColor,
         backgroundText: AppColors.greenPrimary,
         titleColor: AppColors.primaryColor,
@@ -47,7 +47,7 @@ class OurService extends StatelessComponent {
       ItemServices(
         title: LanguageManager.translate('our_service_email_title', lang),
         content: LanguageManager.translate('our_service_email_content', lang),
-        backgroundColor: Color.hex('#F3F3F3'),
+        backgroundColor: Color('#F3F3F3'),
         backgroundItem: AppColors.primaryColor,
         backgroundText: AppColors.greenPrimary,
         titleColor: AppColors.primaryColor,

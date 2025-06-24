@@ -218,7 +218,7 @@ class HeaderState extends State<Header> {
   }
 
   @css
-  static final styles = [
+  static List<StyleRule> get styles => [
     css.import(
         "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
     css('header', [

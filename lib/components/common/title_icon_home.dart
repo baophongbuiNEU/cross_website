@@ -21,7 +21,7 @@ class TitleIconHome extends StatelessComponent {
   }
 
   @css
-  static final List<StyleRule> styles = [
+  static List<StyleRule> get styles => [
     css('.section_overall', [
       css('&').styles(
           width: 100.vw,

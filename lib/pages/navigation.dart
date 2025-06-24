@@ -15,7 +15,7 @@ class Navigation extends StatelessComponent {
           padding: Padding.symmetric(horizontal: 20.px, vertical: 10.px),
           justifyContent: JustifyContent.spaceBetween,
           alignItems: AlignItems.center,
-          backgroundColor: Color.hex('#f0f0f0'),
+          backgroundColor: Color('#f0f0f0'),
         ),
         [
           div(classes: 'nav-links', [

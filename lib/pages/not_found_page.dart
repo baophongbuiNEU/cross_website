@@ -16,7 +16,7 @@ class NotFoundPage extends StatelessComponent {
   }
 
   @css
-  static final styles = [
+  static List<StyleRule> get styles => [
     css('.not-found', [
       css('&').styles(
         display: Display.flex,

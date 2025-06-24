@@ -88,7 +88,7 @@ class CardProcessBlockState extends State<CardProcessBlock> {
   }
 
   @css
-  static final style = [
+  static List<StyleRule> get style => [
     css('.card_process_title', [
       css('&').styles(
           display: Display.flex,

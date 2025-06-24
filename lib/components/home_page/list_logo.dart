@@ -9,18 +9,14 @@ class ListLogo extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'list-logo-container', [
       div(classes: 'list-logo-content', [
-        img(src: Images.amazonIcon),
-        img(src: Images.drillbleIcon),
-        img(src: Images.hubspotIcon),
-        img(src: Images.notionIcon),
-        img(src: Images.netflixIcon),
-        img(src: Images.zoomIcon),
+        img(src: Images.vfastLogo),
+        img(src: Images.itedLogo),
       ])
     ]);
   }
 
   @css
-  static final styles = [
+  static List<StyleRule> get styles => [
     css('.list-logo-container').styles(
         display: Display.flex,
         width: 100.vw,

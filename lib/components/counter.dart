@@ -39,7 +39,7 @@ class CounterState extends State<Counter> {
   }
 
   @css
-  static final styles = [
+  static List<StyleRule> get styles => [
     css('.counter', [
       css('&').styles(
         display: Display.flex,

@@ -36,7 +36,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
             flexDirection: FlexDirection.row,
             justifyContent: JustifyContent.spaceBetween,
             alignItems: AlignItems.center,
-            backgroundColor: Color.hex('#F3F3F3'),
+            backgroundColor: Color('#F3F3F3'),
           ),
           [
             _detailComponent(selectedLang),
@@ -221,7 +221,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
   }
 
   @css
-  static final style = [
+  static List<StyleRule> get style => [
     css('.detail_text_field', [
       css('&').styles(
         width: 45.percent,

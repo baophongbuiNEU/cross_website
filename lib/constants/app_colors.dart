@@ -17,30 +17,30 @@ class AppColors {
 }
 
 final lightTheme = {
-  AppColors.primaryColor: Color.hex('#191A23'),
-  AppColors.white: Color.hex('#FFFFFF'),
-  AppColors.greenPrimary: Color.hex('#B9FF66'),
-  AppColors.backgroundWhite: Color.hex('#F3F3F3'),
-  AppColors.background292A32: Color.hex('#292A32'),
-  AppColors.textBlack: Color.hex('#222'),
-  AppColors.hoverOverlayColor: Color.hex('#0001'),
-  AppColors.hoverOverlayMenuButton: Color.hex('#0001'),
+  AppColors.primaryColor: Color('#191A23'),
+  AppColors.white: Color('#FFFFFF'),
+  AppColors.greenPrimary: Color('#B9FF66'),
+  AppColors.backgroundWhite: Color('#F3F3F3'),
+  AppColors.background292A32: Color('#292A32'),
+  AppColors.textBlack: Color('#222'),
+  AppColors.hoverOverlayColor: Color('#0001'),
+  AppColors.hoverOverlayMenuButton: Color('#0001'),
   AppColors.listLogoBackground: Colors.transparent,
-  AppColors.backgroundFaded: Color.hex('#FFF9'),
+  AppColors.backgroundFaded: Color('#FFF9'),
   AppColors.backgroundTheme: Colors.white,
 };
 
 final darkTheme = {
-  AppColors.primaryColor: Color.hex('#191A23'),
-  AppColors.white: Color.hex('#222'),
-  AppColors.greenPrimary: Color.hex('#B9FF66'),
-  AppColors.backgroundWhite: Color.hex('#000000'),
-  AppColors.background292A32: Color.hex('#292A32'),
-  AppColors.textBlack: Color.hex('#F5F5F5'),
-  AppColors.hoverOverlayColor: Color.hex('#FFF1'),
+  AppColors.primaryColor: Color('#191A23'),
+  AppColors.white: Color('#222'),
+  AppColors.greenPrimary: Color('#B9FF66'),
+  AppColors.backgroundWhite: Color('#000000'),
+  AppColors.background292A32: Color('#292A32'),
+  AppColors.textBlack: Color('#F5F5F5'),
+  AppColors.hoverOverlayColor: Color('#FFF1'),
   AppColors.hoverOverlayMenuButton: Colors.lightGrey,
-  AppColors.listLogoBackground: Color.hex('#FFFFFF'),
-  AppColors.backgroundFaded: Color.hex('#0d111799'),
+  AppColors.listLogoBackground: Color('#FFFFFF'),
+  AppColors.backgroundFaded: Color('#0d111799'),
   AppColors.backgroundTheme: Colors.black,
 };
 
@@ -49,7 +49,7 @@ const mobileBreakpoint = Unit.rem(40);
 const smallMobileBreakpoint = Unit.rem(25);
 
 @css
-final root = [
+List<StyleRule> get root => [
   css.import('font/lucide/lucide.css'),
 
   // Global
