@@ -103,13 +103,8 @@ class AppState extends State<App> {
         css('.main', [
           css('&').styles(
             display: Display.flex,
-            width: 100.percent,
-            maxWidth: 100.vw,
-            boxSizing: BoxSizing.borderBox,
-            overflow: Overflow.hidden,
+            maxWidth: 100.percent,
             flexDirection: FlexDirection.column,
-            flexWrap: FlexWrap.wrap,
-            justifyContent: JustifyContent.center,
             backgroundColor: AppColors.backgroundTheme,
           ),
           css('section').styles(

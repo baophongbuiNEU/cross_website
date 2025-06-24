@@ -31,6 +31,7 @@ class Images {
   //company
   static const String vfastLogo = "images/vfast.png";
   static const String itedLogo = "images/ited.jpg";
+  static const String laiXeVanXuanLogo = "images/LaiXeVanXuan.jpg";
 }
 
 class Icons {

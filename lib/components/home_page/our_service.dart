@@ -55,29 +55,6 @@ class OurService extends StatelessComponent {
         itemColor: AppColors.greenPrimary,
         itemBig: Images.emailMarketingIcon,
       ),
-      ItemServices(
-        title: LanguageManager.translate('our_service_content_title', lang),
-        content: LanguageManager.translate('our_service_content_content', lang),
-        backgroundColor: AppColors.greenPrimary,
-        backgroundItem: AppColors.primaryColor,
-        backgroundText: Colors.white,
-        titleColor: AppColors.primaryColor,
-        contentColor: AppColors.primaryColor,
-        itemColor: AppColors.greenPrimary,
-        itemBig: Images.contentCreationIcon,
-      ),
-      ItemServices(
-        title: LanguageManager.translate('our_service_analytics_title', lang),
-        content:
-            LanguageManager.translate('our_service_analytics_content', lang),
-        backgroundColor: AppColors.primaryColor,
-        backgroundItem: Colors.white,
-        backgroundText: Colors.white,
-        titleColor: AppColors.primaryColor,
-        contentColor: Colors.white,
-        itemColor: AppColors.greenPrimary,
-        itemBig: Images.analyticsIcon,
-      ),
     ];
   }
 
@@ -90,7 +67,7 @@ class OurService extends StatelessComponent {
 
     yield div(
       styles: Styles(
-        width: 100.vw,
+        maxWidth: 100.percent,
         justifyContent: JustifyContent.center,
         alignItems: AlignItems.center,
         alignSelf: AlignSelf.center,

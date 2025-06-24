@@ -17,10 +17,8 @@ void main() async {
       css('html, body').styles(
         width: 100.percent,
         minHeight: 100.vh,
-        maxWidth: 100.vw,
         padding: Padding.zero,
         margin: Margin.zero,
-        boxSizing: BoxSizing.borderBox,
         fontFamily: const FontFamily.list(
             [FontFamily('Space Grotesk'), FontFamilies.sansSerif]),
       ),

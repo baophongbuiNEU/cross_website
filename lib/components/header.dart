@@ -193,18 +193,19 @@ class HeaderState extends State<Header> {
     ]);
 
     yield header([
-      img(
-        src: Images.crossLogo,
-        styles: Styles(
-          width: Unit.pixels(80),
-          height: Unit.pixels(80),
-          padding: Padding.all(.7.rem),
-          margin: Margin.only(left: 5.percent),
-          radius: BorderRadius.circular(8.px),
-          color: AppColors.textBlack,
-          // backgroundColor: AppColors.listLogoBackground,
+      a(href: '/', [
+        img(
+          src: Images.crossLogo,
+          styles: Styles(
+            width: Unit.pixels(80),
+            height: Unit.pixels(80),
+            padding: Padding.all(.7.rem),
+            margin: Margin.only(left: 5.percent),
+            radius: BorderRadius.circular(8.px),
+            color: AppColors.textBlack,
+          ),
         ),
-      ),
+      ]),
       if (!menuOpen) content,
       MenuButton(
         onClick: () {
@@ -219,84 +220,85 @@ class HeaderState extends State<Header> {
 
   @css
   static List<StyleRule> get styles => [
-    css.import(
-        "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
-    css('header', [
-      css('&').styles(
-        display: Display.flex,
-        zIndex: ZIndex(1),
-        width: 100.vw,
-        padding: Padding.only(
-          top: 2.rem,
+        css.import(
+            "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
+        css('header', [
+          css('&').styles(
+            display: Display.flex,
+            zIndex: ZIndex(1),
+            maxWidth: 100.percent,
+            padding: Padding.only(
+              top: 2.rem,
+              left: 2.rem,
+              right: 2.rem,
+            ),
+            justifyContent: JustifyContent.spaceBetween,
+            alignItems: AlignItems.center,
+          ),
+          css('& > *').styles(
+            display: Display.flex,
+            alignItems: AlignItems.center,
+          ),
+          css('.nav-menu a', [
+            css('&').styles(
+                margin: Margin.symmetric(horizontal: 20.px),
+                color: AppColors.textBlack,
+                fontFamily: FontFamily.list(
+                    [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+                fontSize: 20.px,
+                fontWeight: FontWeight.w400,
+                textDecoration: TextDecoration.none),
+          ]),
+          css('.nav-menu', [
+            css('&').styles(
+              justifyContent: JustifyContent.center,
+              alignItems: AlignItems.center,
+            ),
+          ]),
+          css('.nav-menu div', [
+            css('&')
+                .styles(display: Display.flex, alignItems: AlignItems.center),
+          ]),
+        ]),
+        css('.theme_toggle').styles(
+          margin: Spacing.only(left: 5.px),
         ),
-        justifyContent: JustifyContent.spaceBetween,
-        alignItems: AlignItems.center,
-      ),
-      css('& > *').styles(
-        display: Display.flex,
-        alignItems: AlignItems.center,
-      ),
-      css('.nav-menu a', [
-        css('&').styles(
-            margin: Margin.symmetric(horizontal: 20.px),
+        css.media(MediaQuery.screen(maxWidth: mobileBreakpoint.px), [
+          css('header', [
+            css('&').styles(
+              display: Display.flex,
+              justifyContent: JustifyContent.spaceBetween,
+            ),
+            css('& > .nav-menu').styles(display: Display.none),
+            css('& > nav').styles(display: Display.none),
+          ]),
+          css('.theme_toggle').styles(
+            margin: Spacing.only(left: 0.px, right: 0.rem),
+          ),
+        ]),
+        css('.language-header', [
+          css('&').styles(
+            display: Display.flex,
+            height: 45.px,
+            padding: Padding.symmetric(horizontal: 10.px),
+            radius: BorderRadius.circular(14.px),
+            alignItems: AlignItems.center,
+          ),
+          css('&:hover').styles(
+            backgroundColor: AppColors.hoverOverlayColor,
+          ),
+          css('select').styles(
+            border: Border.none,
+            cursor: Cursor.pointer,
             color: AppColors.textBlack,
+            textAlign: TextAlign.center,
             fontFamily: FontFamily.list(
                 [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-            fontSize: 20.px,
+            fontSize: 18.px,
             fontWeight: FontWeight.w400,
-            textDecoration: TextDecoration.none),
-      ]),
-      css('.nav-menu', [
-        css('&').styles(
-          justifyContent: JustifyContent.center,
-          alignItems: AlignItems.center,
-        ),
-      ]),
-      css('.nav-menu div', [
-        css('&').styles(display: Display.flex, alignItems: AlignItems.center),
-      ]),
-    ]),
-    css('.theme_toggle').styles(
-      margin: Spacing.only(left: 5.px, right: 2.rem),
-    ),
-    css.media(MediaQuery.screen(maxWidth: mobileBreakpoint.px), [
-      css('header', [
-        css('&').styles(
-          display: Display.flex,
-          width: 100.vw,
-          justifyContent: JustifyContent.spaceBetween,
-        ),
-        css('& > .nav-menu').styles(display: Display.none),
-        css('& > nav').styles(display: Display.none),
-      ]),
-      css('.theme_toggle').styles(
-        margin: Spacing.only(left: 0.px, right: 0.rem),
-      ),
-    ]),
-    css('.language-header', [
-      css('&').styles(
-        display: Display.flex,
-        height: 45.px,
-        padding: Padding.symmetric(horizontal: 10.px),
-        // border: Border(color: AppColors.textBlack, width: 1.px),
-        radius: BorderRadius.circular(14.px),
-        alignItems: AlignItems.center,
-      ),
-      css('&:hover').styles(
-        backgroundColor: AppColors.hoverOverlayColor,
-      ),
-      css('select').styles(
-        border: Border.none,
-        cursor: Cursor.pointer,
-        color: AppColors.textBlack,
-        textAlign: TextAlign.center,
-        fontFamily: FontFamily.list(
-            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-        fontSize: 18.px,
-        fontWeight: FontWeight.w400,
-        backgroundColor: Colors.transparent,
-        raw: {'-webkit-appearance': 'none', '-moz-appearance': 'none'},
-      ),
-    ]),
-  ];
+            backgroundColor: Colors.transparent,
+            raw: {'-webkit-appearance': 'none', '-moz-appearance': 'none'},
+          ),
+        ]),
+      ];
 }

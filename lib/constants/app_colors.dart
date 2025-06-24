@@ -19,7 +19,7 @@ class AppColors {
 final lightTheme = {
   AppColors.primaryColor: Color('#191A23'),
   AppColors.white: Color('#FFFFFF'),
-  AppColors.greenPrimary: Color('#B9FF66'),
+  AppColors.greenPrimary: Color('#35DAFF'),
   AppColors.backgroundWhite: Color('#F3F3F3'),
   AppColors.background292A32: Color('#292A32'),
   AppColors.textBlack: Color('#222'),
@@ -49,7 +49,7 @@ const mobileBreakpoint = Unit.rem(40);
 const smallMobileBreakpoint = Unit.rem(25);
 
 @css
-List<StyleRule> get root => [
+final root = [
   css.import('font/lucide/lucide.css'),
 
   // Global

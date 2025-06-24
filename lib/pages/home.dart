@@ -12,7 +12,6 @@ import 'package:cross_website/components/home_page/process_block.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
-import 'package:logger/logger.dart';
 
 @client
 class Home extends StatefulComponent {
@@ -23,15 +22,15 @@ class Home extends StatefulComponent {
 }
 
 class HomeState extends State<Home> {
-  final logger = Logger();
+  // final logger = Logger();
 
   @override
   void initState() {
     super.initState();
     if (kIsWeb) {
-      logger.i("Hello client");
+      // logger.i("Hello client");
     } else {
-      logger.i("Hello server");
+      // logger.i("Hello server");
     }
   }
 
