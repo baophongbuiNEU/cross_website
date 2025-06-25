@@ -35,7 +35,7 @@ class HeaderHomePage extends StatelessComponent {
         ]),
         img(
           id: 'primary_image',
-          src: Images.imageHeader,
+          src: 'images/demo_primary_iamge.png',
         ),
       ]),
     ]);
@@ -55,10 +55,11 @@ class HeaderHomePage extends StatelessComponent {
           css('&').styles(
             display: Display.flex,
             width: 100.percent,
-            padding: Padding.symmetric(horizontal: 5.percent, vertical: 70.px),
+            padding: Padding.only(
+                left: 5.percent, right: 5.percent, bottom: 70.px, top: 20.px),
             flexDirection: FlexDirection.row,
             justifyContent: JustifyContent.spaceBetween,
-            alignItems: AlignItems.start,
+            alignItems: AlignItems.center,
           ),
         ]),
         css('.text-header-web', [

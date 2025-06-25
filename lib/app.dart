@@ -69,7 +69,7 @@ class AppState extends State<App> {
                 path: '/',
                 title: 'Home',
                 builder: (context, state) => div(classes: 'main', [
-                  Header(),
+                  // Header(),
                   const Home(),
                 ]),
               ),

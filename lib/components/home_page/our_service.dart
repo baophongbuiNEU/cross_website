@@ -20,7 +20,7 @@ class OurService extends StatelessComponent {
         titleColor: AppColors.primaryColor,
         contentColor: AppColors.primaryColor,
         itemColor: AppColors.greenPrimary,
-        itemBig: Images.seoIcon,
+        itemBig: Images.mobileImage,
       ),
       ItemServices(
         title: LanguageManager.translate('our_service_ppc_title', lang),
@@ -31,7 +31,7 @@ class OurService extends StatelessComponent {
         titleColor: AppColors.primaryColor,
         contentColor: AppColors.primaryColor,
         itemColor: AppColors.greenPrimary,
-        itemBig: Images.payPerClickIcon,
+        itemBig: Images.webImage,
       ),
       ItemServices(
         title: LanguageManager.translate('our_service_smm_title', lang),
@@ -42,7 +42,7 @@ class OurService extends StatelessComponent {
         titleColor: AppColors.primaryColor,
         contentColor: Colors.white,
         itemColor: AppColors.greenPrimary,
-        itemBig: Images.socialMediaMarketingIcon,
+        itemBig: Images.employeeSupplyImage,
       ),
       ItemServices(
         title: LanguageManager.translate('our_service_email_title', lang),
@@ -53,7 +53,7 @@ class OurService extends StatelessComponent {
         titleColor: AppColors.primaryColor,
         contentColor: AppColors.primaryColor,
         itemColor: AppColors.greenPrimary,
-        itemBig: Images.emailMarketingIcon,
+        itemBig: Images.programmingImage,
       ),
     ];
   }

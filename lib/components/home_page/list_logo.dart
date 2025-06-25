@@ -23,13 +23,13 @@ class ListLogo extends StatelessComponent {
   @css
   static List<StyleRule> get styles => [
         css('.list-logo-container').styles(
-            display: Display.flex,
-            maxWidth: 100.percent,
-            padding: Padding.symmetric(vertical: 20.px),
-            flexDirection: FlexDirection.row,
-            flexWrap: FlexWrap.wrap,
-            gap: Gap.all(0.4.rem),
-            backgroundColor: AppColors.listLogoBackground),
+          display: Display.flex,
+          maxWidth: 100.percent,
+          padding: Padding.symmetric(vertical: 20.px),
+          flexDirection: FlexDirection.row,
+          flexWrap: FlexWrap.wrap,
+          gap: Gap.all(0.4.rem),
+        ),
         css('.list-logo-content').styles(
             display: Display.flex,
             width: 100.percent,

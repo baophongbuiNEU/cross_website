@@ -45,7 +45,7 @@ class CtaBlock extends StatelessComponent {
         ]),
         div(classes: 'cta_image', [
           img(
-            src: Images.ctaBlockImage,
+            src: Images.inTheOfficeImage,
             styles: Styles(
               width: 50.percent,
               height: 100.percent,
