@@ -1,11 +1,11 @@
 import 'package:cross_website/components/common/button_primary_black.dart';
 import 'package:cross_website/components/common/size_box_component.dart';
-import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/components/header.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:universal_web/web.dart' as web;
 
 class HeaderHomePage extends StatelessComponent {
   const HeaderHomePage({super.key});
@@ -29,13 +29,19 @@ class HeaderHomePage extends StatelessComponent {
           ]),
           SizeBoxComponent(height: 35),
           ButtonPrimaryBlack(
+            onClick: () {
+              var el =
+                  web.document.querySelector('#services') as web.HTMLElement;
+              web.window.scrollTo(
+                  web.ScrollToOptions(top: el.offsetTop, behavior: 'smooth'));
+            },
             text: LanguageManager.translate(
                 'header_home_page_button', selectedLang),
           ),
         ]),
         img(
           id: 'primary_image',
-          src: 'images/demo_primary_iamge.png',
+          src: 'images/demo_primary_image.png',
         ),
       ]),
     ]);

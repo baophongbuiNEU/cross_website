@@ -77,6 +77,12 @@ class HeaderState extends State<Header> {
       scheduleMicrotask(() {});
     }
 
+    void scrollToMeet(String destination) {
+      var el = web.document.querySelector(destination) as web.HTMLElement;
+      web.window
+          .scrollTo(web.ScrollToOptions(top: el.offsetTop, behavior: 'smooth'));
+    }
+
     var content = Fragment(key: contentKey, children: [
       nav(classes: 'nav-menu', [
         for (var route in [
@@ -86,29 +92,36 @@ class HeaderState extends State<Header> {
           ),
           (
             label: LanguageManager.translate('header_services', selectedLang),
-            path: '/#services'
+            path: '#services'
           ),
           (
             label: LanguageManager.translate('header_contact', selectedLang),
-            path: '/#contact'
+            path: '#contact'
           ),
           (
             label: LanguageManager.translate('header_careers', selectedLang),
-            path: '/#careers'
+            path: '#careers'
           ),
         ])
-          div([
+          div(classes: 'nav-item', [
             if (route.path == '/about')
               Link(
                 to: route.path,
                 children: [text(route.label)],
               )
             else
-              a(href: route.path, events: {
-                'click': (event) {},
-              }, [
-                text(route.label)
-              ]),
+              div(
+                  styles: Styles(
+                      textDecoration: TextDecoration.none,
+                      cursor: Cursor.pointer),
+                  events: {
+                    'click': (event) {
+                      scrollToMeet(route.path);
+                    },
+                  },
+                  [
+                    text(route.label)
+                  ]),
           ]),
         Builder(builder: (context) sync* {
           final selectedLang =
@@ -240,6 +253,15 @@ class HeaderState extends State<Header> {
             alignItems: AlignItems.center,
           ),
           css('.nav-menu a', [
+            css('&').styles(
+                color: AppColors.textBlack,
+                fontFamily: FontFamily.list(
+                    [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+                fontSize: 20.px,
+                fontWeight: FontWeight.w400,
+                textDecoration: TextDecoration.none),
+          ]),
+          css('.nav-item', [
             css('&').styles(
                 margin: Margin.symmetric(horizontal: 20.px),
                 color: AppColors.textBlack,

@@ -45,12 +45,6 @@ class ContactUsBlockState extends State<ContactUsBlock> {
       successMessage = null;
     });
 
-    log('_sendEmail called with:');
-    log('Name: $nameValue');
-    log('Email: $emailValue');
-    log('Title: $titleValue');
-    log('Message: $messageValue');
-
     final serviceID = 'service_mne3r5y';
     final templateID = 'template_pit433e';
     final userID = '62KVCj5RnTx0gL3xO';
@@ -117,6 +111,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
         context.watch(LanguageManager.selectedLanguageProvider);
 
     yield div(
+      id: 'contact',
       styles: Styles(
         maxWidth: 100.percent,
       ),
