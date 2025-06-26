@@ -210,8 +210,8 @@ class HeaderState extends State<Header> {
         img(
           src: Images.crossLogo,
           styles: Styles(
-            width: Unit.pixels(80),
-            height: Unit.pixels(80),
+            width: Unit.pixels(120),
+            height: Unit.pixels(120),
             padding: Padding.all(.7.rem),
             margin: Margin.only(left: 5.percent),
             radius: BorderRadius.circular(8.px),
