@@ -67,7 +67,9 @@ class OurService extends StatelessComponent {
 
     yield div(
       styles: Styles(
+        display: Display.flex,
         maxWidth: 100.percent,
+        flexDirection: FlexDirection.column,
         justifyContent: JustifyContent.center,
         alignItems: AlignItems.center,
         alignSelf: AlignSelf.center,
@@ -77,7 +79,8 @@ class OurService extends StatelessComponent {
           div(
             styles: Styles(
               display: Display.flex,
-              padding: Padding.symmetric(horizontal: 5.percent),
+              maxWidth: 100.percent,
+              padding: Padding.symmetric(horizontal: 10.percent),
               justifyContent: JustifyContent.center,
               alignItems: AlignItems.center,
               alignSelf: AlignSelf.center,

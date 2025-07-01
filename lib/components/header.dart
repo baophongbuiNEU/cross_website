@@ -241,7 +241,7 @@ class HeaderState extends State<Header> {
             zIndex: ZIndex(1),
             maxWidth: 100.percent,
             padding: Padding.only(
-              top: 2.rem,
+              top: 1.rem,
               left: 2.rem,
               right: 2.rem,
             ),

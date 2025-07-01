@@ -2,12 +2,12 @@ import 'package:cross_website/components/cookie_consent_banner.dart';
 import 'package:cross_website/components/header.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/language/language_manager.dart';
+import 'package:cross_website/pages/about_new.dart';
 import 'package:cross_website/pages/not_found_page.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
-import 'pages/about.dart';
 import 'pages/home.dart';
 
 @client
@@ -80,7 +80,7 @@ class AppState extends State<App> {
                 title: 'About',
                 builder: (context, state) => div(classes: 'main', [
                   Header(),
-                  const About(),
+                  const AboutNew(),
                 ]),
               ),
               Route(

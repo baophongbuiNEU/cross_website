@@ -20,7 +20,7 @@ void main() async {
         padding: Padding.zero,
         margin: Margin.zero,
         fontFamily: const FontFamily.list(
-            [FontFamily('Space Grotesk'), FontFamilies.sansSerif]),
+            [FontFamily('Space Grotesk'), FontFamilies.andaleMono]),
       ),
       css('h1').styles(
         margin: Margin.unset,

@@ -59,21 +59,36 @@ List<StyleRule> get root => [
       ),
       // Theme
       css(':root').styles(raw: {
-        for (final color in lightTheme.keys)
-          color.value.substring(4, color.value.length - 1):
-              lightTheme[color]!.value,
+        ...{
+          for (final color in lightTheme.keys)
+            color.value.substring(4, color.value.length - 1):
+                lightTheme[color]!.value,
+        },
         '--contentPadding': '4rem',
         '--sectionPadding': '16rem',
         '--gradientBackground':
             'linear-gradient(to top right, #ffffff 0%, #f8f9ff 30%, #e6ebff 70%, #93c5fd 100%)',
+        '--sectionAltBackground':
+            'linear-gradient(135deg, #f9fafb, #f0fdff, #eff6ff)',
+        '--cardBackground': 'rgba(255, 255, 255, 0.8)',
+        '--cardBorder': 'rgba(255, 255, 255, 0.2)',
+        '--cardDescriptionColor': '#6b7280',
+        '--cultureSubtitleColor': '#35daff',
+        '--quoteTextColor': '#1f2937',
       }),
-
       css(':root.dark').styles(raw: {
         for (final color in darkTheme.keys)
           color.value.substring(4, color.value.length - 1):
               darkTheme[color]!.value,
         '--gradientBackground':
             'linear-gradient(to top right, #000000 0%, #1a1a2e 30%, #16213e 70%, #0f3460 100%)',
+        '--sectionAltBackground':
+            'linear-gradient(135deg, #1f2937, #111827, #0f172a)',
+        '--cardBackground': 'transparent',
+        '--cardBorder': '#64B6F7',
+        '--cardDescriptionColor': '#ffffff',
+        '--cultureSubtitleColor': '#ffffff',
+        '--quoteTextColor': '#ffffff',
       }),
 
       css.media(MediaQuery.all(maxWidth: mobileBreakpoint), [
