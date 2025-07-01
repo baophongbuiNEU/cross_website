@@ -65,6 +65,7 @@ class ItemServices extends StatelessComponent {
             SizeBoxComponent(height: 20),
             div(
                 styles: Styles(
+                    width: 230.px,
                     display: Display.flex,
                     flexDirection: FlexDirection.row,
                     alignItems: AlignItems.center),
