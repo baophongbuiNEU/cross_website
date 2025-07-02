@@ -42,98 +42,107 @@ class HeaderHomePage extends StatelessComponent {
   }
 
   @css
-  static final styles = [
-    css.import(
-        "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
-    css('.header-web', [
-      css('&').styles(
-        display: Display.flex,
-        width: 100.percent,
-        maxWidth: 100.vw,
-      ),
-    ]),
-    css('.header-web-padding', [
-      css('&').styles(
-        display: Display.flex,
-        width: 100.percent,
-        padding: Padding.symmetric(horizontal: 5.percent, vertical: 70.px),
-        flexDirection: FlexDirection.row,
-        justifyContent: JustifyContent.spaceBetween,
-        alignItems: AlignItems.start,
-      ),
-    ]),
-    css('.text-header-web', [
-      css('&').styles(
-        display: Display.flex,
-        width: 40.percent,
-        flexDirection: FlexDirection.column,
-      ),
-    ]),
-    css('.w500-60-custom', [
-      css('&').styles(
-        color: AppColors.textBlack,
-        fontFamily: FontFamily.list(
-            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-        fontSize: 60.px,
-        fontWeight: FontWeight.w500,
-      ),
-    ]),
-    css('.w400-20-custom', [
-      css('&').styles(
-        color: AppColors.textBlack,
-        fontFamily: FontFamily.list(
-            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-        fontSize: 20.px,
-        fontWeight: FontWeight.w400,
-      ),
-    ]),
-    css('#primary_image').styles(
-      width: 550.px,
-    ),
-    css.media(MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
-      css('.header-web-padding').styles(
-        padding: Padding.symmetric(
-          horizontal: 0.percent,
+  static List<StyleRule> get styles => [
+        css.import(
+            "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
+        css('.header-web', [
+          css('&').styles(
+            display: Display.flex,
+            maxWidth: 100.percent,
+          ),
+        ]),
+        css('.header-web-padding', [
+          css('&').styles(
+            display: Display.flex,
+            width: 100.percent,
+            padding: Padding.symmetric(horizontal: 5.percent, vertical: 70.px),
+            flexDirection: FlexDirection.row,
+            justifyContent: JustifyContent.spaceBetween,
+            alignItems: AlignItems.start,
+          ),
+        ]),
+        css('.text-header-web', [
+          css('&').styles(
+            display: Display.flex,
+            width: 40.percent,
+            flexDirection: FlexDirection.column,
+          ),
+        ]),
+        css('.w500-60-custom', [
+          css('&').styles(
+            color: AppColors.textBlack,
+            fontFamily: FontFamily.list(
+                [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+            fontSize: 60.px,
+            fontWeight: FontWeight.w500,
+          ),
+        ]),
+        css('.w400-20-custom', [
+          css('&').styles(
+            color: AppColors.textBlack,
+            fontFamily: FontFamily.list(
+                [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+            fontSize: 20.px,
+            fontWeight: FontWeight.w400,
+          ),
+        ]),
+        css('#primary_image').styles(
+          width: 550.px,
         ),
-        flexDirection: FlexDirection.column,
-        justifyContent: JustifyContent.center,
-        alignItems: AlignItems.center,
-      ),
-      css('.text-header-web', [
-        css('&').styles(
-          display: Display.flex,
-          width: 100.percent,
-          flexDirection: FlexDirection.column,
-          justifyContent: JustifyContent.center,
-          alignItems: AlignItems.center,
-        ),
-      ]),
-      css('.w500-60-custom', [
-        css('&').styles(
-          color: AppColors.textBlack,
-          textAlign: TextAlign.center,
-          fontFamily: FontFamily.list(
-              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-          fontSize: 60.px,
-          fontWeight: FontWeight.w500,
-        ),
-      ]),
-      css('.w400-20-custom', [
-        css('&').styles(
-          color: AppColors.textBlack,
-          textAlign: TextAlign.center,
-          fontFamily: FontFamily.list(
-              [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-          fontSize: 20.px,
-          fontWeight: FontWeight.w400,
-        ),
-      ]),
-      css('#primary_image').styles(
-        width: 350.px,
-        margin: Spacing.only(
-          top: 30.px,
-        ),
-      ),
-    ]),
-  ];
+        css.media(
+            MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
+          css('.header-web-padding').styles(
+            padding: Padding.symmetric(
+              horizontal: 0.percent,
+            ),
+            flexDirection: FlexDirection.column,
+            justifyContent: JustifyContent.center,
+            alignItems: AlignItems.center,
+          ),
+          css('.text-header-web', [
+            css('&').styles(
+              display: Display.flex,
+              width: 100.percent,
+              flexDirection: FlexDirection.column,
+              justifyContent: JustifyContent.center,
+              alignItems: AlignItems.center,
+            ),
+          ]),
+          css('.w500-60-custom', [
+            css('&').styles(
+              color: AppColors.textBlack,
+              textAlign: TextAlign.center,
+              fontFamily: FontFamily.list(
+                  [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+              fontSize: 60.px,
+              fontWeight: FontWeight.w500,
+            ),
+          ]),
+          css('.w400-20-custom', [
+            css('&').styles(
+              color: AppColors.textBlack,
+              textAlign: TextAlign.center,
+              fontFamily: FontFamily.list(
+                  [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+              fontSize: 20.px,
+              fontWeight: FontWeight.w400,
+            ),
+          ]),
+          css('#primary_image').styles(
+            width: 350.px,
+            margin: Spacing.only(
+              top: 30.px,
+            ),
+          ),
+          css.media(MediaQuery.screen(maxWidth: 1000.px), [
+            css('.header-web', [
+              css('&').styles(
+                padding: Padding.symmetric(
+                  horizontal: 3.percent,
+                ),
+              ),
+            ]),
+          ])
+        ]),
+      ];
 }

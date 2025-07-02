@@ -49,35 +49,39 @@ class Blog extends StatelessComponent {
           div(
               styles: Styles(
                 width: 220.px,
-                padding: Spacing.symmetric(vertical: 40.px, horizontal: 10.px),
+                padding: Padding.symmetric(vertical: 40.px, horizontal: 10.px),
                 border: Border.only(
                     right: BorderSide(
                         color: Color.rgb(240, 240, 240), width: 2.px)),
                 backgroundColor: Color.rgb(255, 255, 255),
               ),
               [
-                button([text('All tags')],
-                    styles: Styles(
-                      width: 120.percent,
-                      backgroundColor: Color.rgb(18, 32, 63),
-                      color: Color.rgb(255, 255, 255),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.px,
-                      radius: BorderRadius.circular(8.px),
-                      margin: Spacing.only(bottom: 12.px),
-                      padding: Spacing.symmetric(vertical: 10.px),
+                button(
+                  styles: Styles(
+                    width: 120.percent,
+                    padding: Spacing.symmetric(vertical: 10.px),
+                    margin: Spacing.only(bottom: 12.px),
+                    radius: BorderRadius.circular(8.px),
+                    color: Color.rgb(255, 255, 255),
+                    fontSize: 20.px,
+                    fontWeight: FontWeight.bold,
+                    backgroundColor: Color.rgb(18, 32, 63),
+                  ),
+                  [text('All tags')],
+                ),
+                ...tags.map((tag) => button(
+                      styles: Styles(
+                        width: 120.percent,
+                        padding: Spacing.symmetric(vertical: 8.px),
+                        margin: Spacing.only(bottom: 10.px),
+                        radius: BorderRadius.circular(8.px),
+                        color: Color.rgb(255, 255, 255),
+                        fontSize: 18.px,
+                        fontWeight: FontWeight.bold,
+                        backgroundColor: Color.rgb(51, 102, 255),
+                      ),
+                      [text(tag)],
                     )),
-                ...tags.map((tag) => button([text(tag)],
-                    styles: Styles(
-                      width: 120.percent,
-                      backgroundColor: Color.rgb(51, 102, 255),
-                      color: Color.rgb(255, 255, 255),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.px,
-                      radius: BorderRadius.circular(8.px),
-                      margin: Spacing.only(bottom: 10.px),
-                      padding: Spacing.symmetric(vertical: 8.px),
-                    ))),
               ]),
           // Main content
           div(
@@ -111,32 +115,39 @@ class Blog extends StatelessComponent {
                                 ),
                               )),
                           div(styles: Styles(padding: Spacing.all(24.px)), [
-                            a([text(post['title']!)],
-                                href: '#',
-                                styles: Styles(
-                                  color: Color.rgb(51, 102, 255),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 32.px,
-                                  lineHeight: 1.2.em,
-                                  textDecoration: TextDecoration.none,
-                                  margin: Spacing.only(bottom: 16.px),
-                                )),
-                            div([
-                              span([
-                                text('👤  ${post['author']}'),
-                              ],
+                            a(
+                              styles: Styles(
+                                margin: Spacing.only(bottom: 16.px),
+                                color: Color.rgb(51, 102, 255),
+                                fontSize: 32.px,
+                                fontWeight: FontWeight.bold,
+                                textDecoration: TextDecoration.none,
+                                lineHeight: 1.2.em,
+                              ),
+                              href: '#',
+                              [text(post['title']!)],
+                            ),
+                            div(
+                              styles: Styles(margin: Spacing.only(top: 12.px)),
+                              [
+                                span(
                                   styles: Styles(
                                       color: Color.rgb(100, 100, 100),
-                                      fontSize: 16.px)),
-                              span([
-                                text('  •  ${post['date']}'),
-                              ],
+                                      fontSize: 16.px),
+                                  [
+                                    text('👤  ${post['author']}'),
+                                  ],
+                                ),
+                                span(
                                   styles: Styles(
                                       color: Color.rgb(180, 180, 180),
-                                      fontSize: 16.px)),
-                            ],
-                                styles:
-                                    Styles(margin: Spacing.only(top: 12.px))),
+                                      fontSize: 16.px),
+                                  [
+                                    text('  •  ${post['date']}'),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ]),
                         ])),
               ]),

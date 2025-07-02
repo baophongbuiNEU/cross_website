@@ -59,7 +59,7 @@ class GroupOfCard extends StatelessComponent {
 
     yield div(
       styles: Styles(
-        width: 100.vw,
+        maxWidth: 100.percent,
       ),
       [
         div(

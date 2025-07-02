@@ -16,7 +16,7 @@ class ProcessBlock extends StatelessComponent {
 
     yield div(
       styles: Styles(
-        width: 100.vw,
+        maxWidth: 100.percent,
         justifyContent: JustifyContent.center,
         alignItems: AlignItems.center,
         alignSelf: AlignSelf.center,

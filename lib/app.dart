@@ -108,25 +108,21 @@ class AppState extends State<App> {
   }
 
   @css
-  static final styles = [
-    css('.main', [
-      css('&').styles(
-        display: Display.flex,
-        width: 100.percent,
-        maxWidth: 100.vw,
-        boxSizing: BoxSizing.borderBox,
-        flexDirection: FlexDirection.column,
-        flexWrap: FlexWrap.wrap,
-        justifyContent: JustifyContent.center,
-        backgroundColor: AppColors.backgroundTheme,
-      ),
-      css('section').styles(
-        display: Display.flex,
-        flexDirection: FlexDirection.column,
-        justifyContent: JustifyContent.center,
-        alignItems: AlignItems.center,
-        flex: Flex(grow: 1),
-      ),
-    ]),
-  ];
+  static List<StyleRule> get styles => [
+        css('.main', [
+          css('&').styles(
+            display: Display.flex,
+            maxWidth: 100.percent,
+            flexDirection: FlexDirection.column,
+            backgroundColor: AppColors.backgroundTheme,
+          ),
+          css('section').styles(
+            display: Display.flex,
+            flexDirection: FlexDirection.column,
+            justifyContent: JustifyContent.center,
+            alignItems: AlignItems.center,
+            flex: Flex(grow: 1),
+          ),
+        ]),
+      ];
 }

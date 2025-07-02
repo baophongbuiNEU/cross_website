@@ -1,10 +1,15 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:cross_website/components/common/size_box_component.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:http/http.dart' as http;
 
+@client
 class ContactUsBlock extends StatefulComponent {
   const ContactUsBlock({super.key});
 
@@ -18,6 +23,38 @@ class ContactUsBlockState extends State<ContactUsBlock> {
   String emailValue = '';
   String messageValue = '';
 
+  Future<void> _sendEmail(
+    String textValue,
+    String emailValue,
+    String messageValue,
+  ) async {
+    final serviceID = 'service_mne3r5y';
+    final templateID = 'template_pit433e';
+    final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+    final response = await http.post(url,
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode(
+          {
+            'service_id': serviceID,
+            'template_id': templateID,
+            'user_id': '62KVCj5RnTx0gL3xO',
+            'template_params': {
+              'email': textValue,
+              'from_email': emailValue,
+              'message': messageValue,
+            },
+          },
+        ));
+
+    if (response.statusCode == 200) {
+      // Handle success
+      log('Email sent successfully');
+    } else {
+      // Handle error
+      log('Failed to send email: ${response.body}');
+    }
+  }
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
     final selectedLang =
@@ -25,7 +62,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
 
     yield div(
       styles: Styles(
-        width: 100.vw,
+        maxWidth: 100.percent,
       ),
       [
         div(
@@ -36,7 +73,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
             flexDirection: FlexDirection.row,
             justifyContent: JustifyContent.spaceBetween,
             alignItems: AlignItems.center,
-            backgroundColor: Color.hex('#F3F3F3'),
+            backgroundColor: Color('#F3F3F3'),
           ),
           [
             _detailComponent(selectedLang),
@@ -123,7 +160,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
         text(LanguageManager.translate('contact_us_message_label', lang)),
         SizeBoxComponent(height: 6),
         textarea(
-          onInput: (e) => setState(() => messageValue = e),
+          onInput: (value) => setState(() => messageValue = value),
           styles: Styles(
             height: 170.px,
             padding: Padding.symmetric(horizontal: 30.px, vertical: 18.px),
@@ -137,7 +174,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
           ),
           readonly: false,
           required: true,
-          [],
+          [text(messageValue)],
         ),
       ],
     );
@@ -169,6 +206,24 @@ class ContactUsBlockState extends State<ContactUsBlock> {
       _emailInput(lang),
       SizeBoxComponent(height: 25),
       _messageInput(lang),
+      SizeBoxComponent(height: 40),
+      button(
+        styles: Styles(
+          width: 100.percent,
+          height: 58.px,
+          radius: BorderRadius.circular(14.px),
+          backgroundColor: AppColors.greenPrimary,
+          color: Colors.white,
+          fontSize: 18.px,
+          fontWeight: FontWeight.w500,
+        ),
+        onClick: () {
+          _sendEmail(textValue, emailValue, messageValue);
+        },
+        [
+          text('Submit'),
+        ],
+      ),
     ]);
   }
 
@@ -221,27 +276,27 @@ class ContactUsBlockState extends State<ContactUsBlock> {
   }
 
   @css
-  static final style = [
-    css('.detail_text_field', [
-      css('&').styles(
-        width: 45.percent,
-        padding: Padding.only(top: 60.px, bottom: 60.px, left: 5.percent),
-      ),
-    ]),
-    css.media(MediaQuery.screen(maxWidth: 700.px), [
-      css('.contact_image', [
-        css('&').styles(
-          display: Display.none,
-          width: 0.px,
-          height: 0.px,
-        ),
-      ]),
-      css('.detail_text_field', [
-        css('&').styles(
-          width: 100.percent,
-          padding: Spacing.symmetric(horizontal: 5.percent),
-        ),
-      ]),
-    ]),
-  ];
+  static List<StyleRule> get style => [
+        css('.detail_text_field', [
+          css('&').styles(
+            width: 45.percent,
+            padding: Padding.only(top: 60.px, bottom: 60.px, left: 5.percent),
+          ),
+        ]),
+        css.media(MediaQuery.screen(maxWidth: 700.px), [
+          css('.contact_image', [
+            css('&').styles(
+              display: Display.none,
+              width: 0.px,
+              height: 0.px,
+            ),
+          ]),
+          css('.detail_text_field', [
+            css('&').styles(
+              width: 100.percent,
+              padding: Spacing.symmetric(horizontal: 5.percent),
+            ),
+          ]),
+        ]),
+      ];
 }

@@ -99,7 +99,7 @@ class ItemServices extends StatelessComponent {
   }
 
   @css
-  static final styles = [
+  static List<StyleRule> get styles => [
     css('.service_content', [
       css('&').styles(
           display: Display.flex,
