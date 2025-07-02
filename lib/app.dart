@@ -10,6 +10,13 @@ import 'package:jaspr_router/jaspr_router.dart';
 
 import 'pages/home.dart';
 
+final translationsProvider = FutureProvider<bool>((ref) async {
+  final start = DateTime.now();
+  final success = await LanguageManager.loadTranslations();
+  print('Translations loaded in ${DateTime.now().difference(start)}');
+  return success;
+});
+
 @client
 class App extends StatefulComponent {
   @override
@@ -55,7 +62,7 @@ class AppState extends State<App> {
             height: 100.vh,
             justifyContent: JustifyContent.center,
             alignItems: AlignItems.center,
-            backgroundColor: Colors.white,
+            backgroundColor: AppColors.backgroundTheme,
           ),
           // TODO(tung): change to loading indicator / animation
           [text('Loading...')]);
