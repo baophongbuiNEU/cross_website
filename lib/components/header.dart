@@ -51,18 +51,18 @@ class HeaderState extends State<Header> {
     });
   }
 
-  static String getFlagEmoji(String langCode) {
+  static String getFlagAsset(String langCode) {
     switch (langCode) {
       case 'en':
-        return '🇺🇸';
+        return 'images/flags/us.svg';
       case 'vi':
-        return '🇻🇳';
+        return 'images/flags/vn.svg';
       case 'ja':
-        return '🇯🇵';
+        return 'images/flags/jp.svg';
       case 'ko':
-        return '🇰🇷';
+        return 'images/flags/kr.svg';
       default:
-        return '🏳️';
+        return 'images/flags/default.svg';
     }
   }
 
@@ -112,8 +112,8 @@ class HeaderState extends State<Header> {
             else
               div(
                   styles: Styles(
-                      textDecoration: TextDecoration.none,
-                      cursor: Cursor.pointer),
+                      cursor: Cursor.pointer,
+                      textDecoration: TextDecoration.none),
                   events: {
                     'click': (event) {
                       scrollToMeet(route.path);
@@ -137,11 +137,12 @@ class HeaderState extends State<Header> {
                 alignItems: AlignItems.center,
               ),
               [
-                span(
+                img(
+                  src: getFlagAsset(selectedLang),
                   styles: Styles(
-                    fontSize: 30.px,
+                    width: 35.px,
+                    height: 25.px,
                   ),
-                  [text(getFlagEmoji(selectedLang))],
                 ),
               ],
             ),
@@ -180,12 +181,13 @@ class HeaderState extends State<Header> {
                       if (lang.key == selectedLang) 'selected': '',
                     },
                     [
-                      span(
+                      img(
+                        src: getFlagAsset(lang.key),
                         styles: Styles(
+                          width: 20.px,
+                          height: 15.px,
                           margin: Spacing.only(right: 12.px),
-                          fontSize: 14.px,
                         ),
-                        [text(getFlagEmoji(lang.key))],
                       ),
                       span(
                         styles: Styles(

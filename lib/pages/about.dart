@@ -126,26 +126,24 @@ class About extends StatelessComponent {
   static List<StyleRule> get styles => [
         // Global reset
         css('*').styles(
-          margin: Spacing.zero,
           padding: Spacing.zero,
-          raw: {
-            'box-sizing': 'border-box',
-          },
+          margin: Spacing.zero,
+          raw: {'box-sizing': 'border-box'},
         ), // Main page wrapper
         css('.runsystem-page').styles(
+          color: Color('#333333'),
           fontFamily: const FontFamily.list(
               [FontFamily('Space Grotesk'), FontFamilies.andaleMono]),
-          fontSize: 14.px,
           //
-          color: Color('#333333'),
+          fontSize: 14.px,
           backgroundColor: Color('#ffffff'),
         ),
 
         // Container
         css('.container').styles(
           maxWidth: 100.percent,
-          margin: Spacing.symmetric(horizontal: Unit.auto),
           padding: Spacing.symmetric(horizontal: 15.px),
+          margin: Spacing.symmetric(horizontal: Unit.auto),
         ),
 
         // Page title
@@ -155,10 +153,10 @@ class About extends StatelessComponent {
         ),
 
         css('.page-title').styles(
+          margin: Spacing.zero,
+          color: Color('#333333'),
           fontSize: 60.px,
           fontWeight: FontWeight.bold,
-          color: Color('#333333'),
-          margin: Spacing.zero,
         ),
 
         // Company intro section
@@ -170,8 +168,8 @@ class About extends StatelessComponent {
         css('.company-content').styles(
           display: Display.flex,
           flexDirection: FlexDirection.row,
-          alignItems: AlignItems.center,
           justifyContent: JustifyContent.spaceEvenly,
+          alignItems: AlignItems.center,
           gap: Gap.all(40.px),
         ),
 
@@ -181,25 +179,23 @@ class About extends StatelessComponent {
         ),
 
         css('.company-description').styles(
-          fontSize: 18.px,
-          color: Color('#555555'),
           margin: Spacing.only(bottom: 25.px),
+          color: Color('#555555'),
+          fontSize: 18.px,
         ),
 
         css('.company-profile-btn').styles(
           margin: Spacing.only(top: 20.px),
         ),
         css('.profile-button').styles(
-          backgroundColor: Color('#007bff'),
-          color: Colors.white,
-          border: Border.none,
           padding: Spacing.symmetric(horizontal: 20.px, vertical: 10.px),
+          border: Border.none,
           radius: BorderRadius.circular(4.px),
-          fontSize: 14.px,
           cursor: Cursor.pointer,
-          raw: {
-            'transition': 'background-color 0.3s ease',
-          },
+          color: Colors.white,
+          fontSize: 14.px,
+          backgroundColor: Color('#007bff'),
+          raw: {'transition': 'background-color 0.3s ease'},
         ),
 
         css('.profile-button:hover').styles(
@@ -207,8 +203,8 @@ class About extends StatelessComponent {
         ),
 
         css('.company-banner').styles(
-          flex: Flex(shrink: 0),
           width: 400.px,
+          flex: Flex(shrink: 0),
         ),
 
         css('.banner-image').styles(
@@ -232,13 +228,11 @@ class About extends StatelessComponent {
         ),
 
         css('.vision-card').styles(
-          backgroundColor: Colors.white,
           padding: Spacing.all(30.px),
           radius: BorderRadius.circular(8.px),
           textAlign: TextAlign.center,
-          raw: {
-            'box-shadow': '0 2px 10px rgba(0,0,0,0.1)',
-          },
+          backgroundColor: Colors.white,
+          raw: {'box-shadow': '0 2px 10px rgba(0,0,0,0.1)'},
         ),
 
         css('.vision-icon').styles(
@@ -251,15 +245,15 @@ class About extends StatelessComponent {
         ),
 
         css('.vision-title').styles(
+          margin: Spacing.only(bottom: 15.px),
+          color: Color('#333333'),
           fontSize: 20.px,
           fontWeight: FontWeight.bold,
-          color: Color('#333333'),
-          margin: Spacing.only(bottom: 15.px),
         ),
 
         css('.vision-description').styles(
-          fontSize: 15.px,
           color: Color('#666666'),
+          fontSize: 15.px,
         ),
 
         // Core Values section
@@ -269,11 +263,11 @@ class About extends StatelessComponent {
         ),
 
         css('.section-title').styles(
-          fontSize: 28.px,
-          fontWeight: FontWeight.bold,
+          margin: Spacing.only(bottom: 40.px),
           color: Color('#333333'),
           textAlign: TextAlign.center,
-          margin: Spacing.only(bottom: 40.px),
+          fontSize: 28.px,
+          fontWeight: FontWeight.bold,
         ),
 
         css('.values-grid').styles(
@@ -289,16 +283,16 @@ class About extends StatelessComponent {
         ),
 
         css('.value-title').styles(
+          margin: Spacing.only(bottom: 10.px),
+          color: Color('#007bff'),
           fontSize: 18.px,
           fontWeight: FontWeight.bold,
-          color: Color('#007bff'),
-          margin: Spacing.only(bottom: 10.px),
         ),
 
         css('.value-description').styles(
-          fontSize: 15.px,
-          //
           color: Color('#555555'),
+          //
+          fontSize: 15.px,
         ),
 
         // Culture section
@@ -308,12 +302,12 @@ class About extends StatelessComponent {
         ),
 
         css('.culture-text').styles(
-          fontSize: 16.px,
+          maxWidth: 800.px,
           //
+          margin: Spacing.symmetric(horizontal: Unit.auto),
           color: Color('#555555'),
           textAlign: TextAlign.center,
-          maxWidth: 800.px,
-          margin: Spacing.symmetric(horizontal: Unit.auto),
+          fontSize: 16.px,
         ),
 
         // Responsive design
