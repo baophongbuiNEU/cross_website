@@ -17,11 +17,18 @@ class Images {
   static const String seoIcon = "images/search_engine_optimization.png";
   static const String ctaBlockImage = "images/cta_block_image.png";
   static const String learnMoreGreenIcon = "images/learn_more_green_icon.svg";
+  static const String learnMoreBlueIcon = "images/learn_more_blue_icon.svg";
   static const String memberTeam = "images/member_team.png";
   static const String imageContactUsCard = "images/image_contact_us_card.png";
   static const String drawerIcon = "images/menu-svgrepo-com.svg";
   static const String closeIcon = "images/close-svgrepo-com.svg";
-  static const String crossTeambuilding = "images/cross_teambuilding.jpg";
+  static const String mobileImage = "images/mobile_image.svg";
+  static const String webImage = "images/web_image.svg";
+  static const String employeeSupplyImage = "images/employee_supply_image.svg";
+  static const String educationImage = "images/education_image.svg";
+  static const String collabImage = "images/collab_image.svg";
+  static const String inTheOfficeImage = "images/intheoffice_image.svg";
+  static const String programmingImage = "images/programing_image.svg";
 
   //fb,tw,in
   static const String twitterIcon = "images/twitter_icon.png";
@@ -33,6 +40,13 @@ class Images {
   static const String vfastLogo = "images/vfast.png";
   static const String itedLogo = "images/ited.jpg";
   static const String laiXeVanXuanLogo = "images/LaiXeVanXuan.jpg";
+
+  //employees
+  static const String quyenAnh = "images/NguyenQuyenAnh.png";
+  static const String vietTran = "images/viettran.png";
+  static const String quangHuy = "images/Phùng Quang Huy.JPG";
+  static const String baoPhong = "images/Bùi Bảo Phong.JPG";
+  static const String dangTung = "images/dangtung.png";
 }
 
 class Icons {

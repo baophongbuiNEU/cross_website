@@ -51,18 +51,18 @@ class HeaderState extends State<Header> {
     });
   }
 
-  static String getFlagEmoji(String langCode) {
+  static String getFlagAsset(String langCode) {
     switch (langCode) {
       case 'en':
-        return '🇺🇸';
+        return 'images/flags/us.svg';
       case 'vi':
-        return '🇻🇳';
+        return 'images/flags/vn.svg';
       case 'ja':
-        return '🇯🇵';
+        return 'images/flags/jp.svg';
       case 'ko':
-        return '🇰🇷';
+        return 'images/flags/kr.svg';
       default:
-        return '🏳️';
+        return 'images/flags/default.svg';
     }
   }
 
@@ -77,6 +77,12 @@ class HeaderState extends State<Header> {
       scheduleMicrotask(() {});
     }
 
+    void scrollToMeet(String destination) {
+      var el = web.document.querySelector(destination) as web.HTMLElement;
+      web.window
+          .scrollTo(web.ScrollToOptions(top: el.offsetTop, behavior: 'smooth'));
+    }
+
     var content = Fragment(key: contentKey, children: [
       nav(classes: 'nav-menu', [
         for (var route in [
@@ -86,29 +92,36 @@ class HeaderState extends State<Header> {
           ),
           (
             label: LanguageManager.translate('header_services', selectedLang),
-            path: '/#services'
+            path: '#services'
           ),
           (
             label: LanguageManager.translate('header_contact', selectedLang),
-            path: '/#contact'
+            path: '#contact'
           ),
           (
             label: LanguageManager.translate('header_careers', selectedLang),
-            path: '/#careers'
+            path: '#careers'
           ),
         ])
-          div([
+          div(classes: 'nav-item', [
             if (route.path == '/about')
               Link(
                 to: route.path,
                 children: [text(route.label)],
               )
             else
-              a(href: route.path, events: {
-                'click': (event) {},
-              }, [
-                text(route.label)
-              ]),
+              div(
+                  styles: Styles(
+                      cursor: Cursor.pointer,
+                      textDecoration: TextDecoration.none),
+                  events: {
+                    'click': (event) {
+                      scrollToMeet(route.path);
+                    },
+                  },
+                  [
+                    text(route.label)
+                  ]),
           ]),
         Builder(builder: (context) sync* {
           final selectedLang =
@@ -124,11 +137,12 @@ class HeaderState extends State<Header> {
                 alignItems: AlignItems.center,
               ),
               [
-                span(
+                img(
+                  src: getFlagAsset(selectedLang),
                   styles: Styles(
-                    fontSize: 30.px,
+                    width: 35.px,
+                    height: 25.px,
                   ),
-                  [text(getFlagEmoji(selectedLang))],
                 ),
               ],
             ),
@@ -167,12 +181,13 @@ class HeaderState extends State<Header> {
                       if (lang.key == selectedLang) 'selected': '',
                     },
                     [
-                      span(
+                      img(
+                        src: getFlagAsset(lang.key),
                         styles: Styles(
+                          width: 20.px,
+                          height: 15.px,
                           margin: Spacing.only(right: 12.px),
-                          fontSize: 14.px,
                         ),
-                        [text(getFlagEmoji(lang.key))],
                       ),
                       span(
                         styles: Styles(
@@ -197,8 +212,8 @@ class HeaderState extends State<Header> {
         img(
           src: Images.crossLogo,
           styles: Styles(
-            width: Unit.pixels(80),
-            height: Unit.pixels(80),
+            width: Unit.pixels(120),
+            height: Unit.pixels(120),
             padding: Padding.all(.7.rem),
             margin: Margin.only(left: 5.percent),
             radius: BorderRadius.circular(8.px),
@@ -228,7 +243,7 @@ class HeaderState extends State<Header> {
             zIndex: ZIndex(1),
             maxWidth: 100.percent,
             padding: Padding.only(
-              top: 2.rem,
+              top: 1.rem,
               left: 2.rem,
               right: 2.rem,
             ),
@@ -240,6 +255,15 @@ class HeaderState extends State<Header> {
             alignItems: AlignItems.center,
           ),
           css('.nav-menu a', [
+            css('&').styles(
+                color: AppColors.textBlack,
+                fontFamily: FontFamily.list(
+                    [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+                fontSize: 20.px,
+                fontWeight: FontWeight.w400,
+                textDecoration: TextDecoration.none),
+          ]),
+          css('.nav-item', [
             css('&').styles(
                 margin: Margin.symmetric(horizontal: 20.px),
                 color: AppColors.textBlack,

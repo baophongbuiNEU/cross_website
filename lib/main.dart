@@ -1,4 +1,3 @@
-import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/server.dart';
 
 import 'app.dart';
@@ -21,15 +20,11 @@ void main() async {
         padding: Padding.zero,
         margin: Margin.zero,
         fontFamily: const FontFamily.list(
-            [FontFamily('Space Grotesk'), FontFamilies.sansSerif]),
-        backgroundColor: AppColors.backgroundTheme,
+            [FontFamily('Space Grotesk'), FontFamilies.andaleMono]),
       ),
       css('h1').styles(
         margin: Margin.unset,
         fontSize: 4.rem,
-      ),
-      css('text').styles(
-        color: Colors.black,
       ),
     ],
     head: [

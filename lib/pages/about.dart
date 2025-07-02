@@ -1,11 +1,4 @@
-import 'package:cross_website/components/common/divider.dart';
-import 'package:cross_website/components/common/size_box_component.dart';
-import 'package:cross_website/components/home_page/footer_block.dart';
-import 'package:cross_website/constants/app_colors.dart';
-import 'package:cross_website/constants/image_constant.dart';
-import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
-import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 
 @client
 class About extends StatelessComponent {
@@ -13,330 +6,353 @@ class About extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    final selectedLang =
-        context.watch(LanguageManager.selectedLanguageProvider);
+    yield div(classes: 'runsystem-page', [
+      // Main content container
+      div(classes: 'main-container', [
+        // Company introduction with banner
+        _buildCompanyIntro(),
 
-    yield section(
-        styles: Styles(
-            width: 100.vw,
-            height: 100.percent,
-            alignItems: AlignItems.center,
-            color: AppColors.backgroundTheme),
-        [
-          div(classes: 'about_title_div', [
-            h1(
-                classes: 'about_title',
-                styles: Styles(color: AppColors.textBlack),
-                [
-                  text(LanguageManager.translate('about_title', selectedLang)),
-                ]),
-            SizeBoxComponent(width: 50, height: 200),
-            p(
-                classes: 'about_description',
-                styles: Styles(width: 95.vw, color: AppColors.textBlack),
-                [
-                  text(LanguageManager.translate(
-                      'about_description', selectedLang)),
-                ]),
-          ]),
-          img(
-              styles: Styles(width: 90.percent, height: 80.percent),
-              src: Images.crossTeambuilding),
-          SizeBoxComponent(height: 30),
-          div(classes: 'goal_div', [
-            GoalComponent(
-                icon: '🏆',
-                title: LanguageManager.translate(
-                    'about_goal_vision_title', selectedLang),
-                description: LanguageManager.translate(
-                    'about_goal_vision_description', selectedLang)),
-            GoalComponent(
-                icon: '💡',
-                title: LanguageManager.translate(
-                    'about_goal_mission_title', selectedLang),
-                description: LanguageManager.translate(
-                    'about_goal_mission_description', selectedLang)),
-            GoalComponent(
-                icon: '🤝',
-                title: LanguageManager.translate(
-                    'about_goal_philosophy_title', selectedLang),
-                description: LanguageManager.translate(
-                    'about_goal_philosophy_description', selectedLang)),
-          ]),
-          SizeBoxComponent(height: 40),
-          Divider(),
-          SizeBoxComponent(height: 20),
-          div(classes: 'key_value_overall', [
-            div(classes: 'key_value_title', [
-              h1(
-                  styles: Styles(
-                    display: Display.flex,
-                    flexWrap: FlexWrap.wrap,
-                    color: AppColors.textBlack,
-                  ),
-                  [
-                    text(LanguageManager.translate(
-                        'about_key_value_title', selectedLang)),
-                  ]),
+        // Three icon sections (Vision, Mission, Philosophy)
+        _buildVisionMissionPhilosophy(),
+
+        // Core Values section
+        _buildCoreValues(),
+
+        // Culture section
+        _buildCultureSection(),
+      ])
+    ]);
+  }
+
+  Component _buildCompanyIntro() {
+    return section(classes: 'company-intro-section', [
+      div(classes: 'container', [
+        div(classes: 'company-content', [
+          h1(classes: 'page-title', [text('Chúng Tôi Là Ai?')]),
+          div(classes: 'company-text', [
+            p(classes: 'company-description', [
+              text(
+                  'GMO-Z.com RUNSYSTEM, tiền thân là Công ty RUNSYSTEM, hoạt động trong ngành phát triển phần mềm, cung cấp các giải pháp và dịch vụ CNTT cho thị trường Việt Nam và Nhật Bản. Với phương châm "Chúng tôi làm việc vì nụ cười của bạn", chúng tôi luôn cố gắng hết mình để cải thiện môi trường làm việc, công nghệ và quy trình nhằm tối đa hóa năng suất, cung cấp các sản phẩm chất lượng cao đạt tiêu chuẩn toàn cầu, mang lại giá trị lớn cho khách hàng và các thành viên của GMO-Z.com RUNSYSTEM.')
             ]),
-            div(classes: 'key_value_div', [
-              KeyValueComponent(
-                  title: LanguageManager.translate(
-                      'about_key_value_honesty_title', selectedLang),
-                  description: LanguageManager.translate(
-                      'about_key_value_honesty_description', selectedLang)),
-              KeyValueComponent(
-                  title: LanguageManager.translate(
-                      'about_key_value_responsibility_title', selectedLang),
-                  description: LanguageManager.translate(
-                      'about_key_value_responsibility_description',
-                      selectedLang)),
-              KeyValueComponent(
-                  title: LanguageManager.translate(
-                      'about_key_value_passion_title', selectedLang),
-                  description: LanguageManager.translate(
-                      'about_key_value_passion_description', selectedLang)),
-              KeyValueComponent(
-                  title: LanguageManager.translate(
-                      'about_key_value_professionalism_title', selectedLang),
-                  description: LanguageManager.translate(
-                      'about_key_value_professionalism_description',
-                      selectedLang)),
-              KeyValueComponent(
-                  title: LanguageManager.translate(
-                      'about_key_value_smile_title', selectedLang),
-                  description: LanguageManager.translate(
-                      'about_key_value_smile_description', selectedLang)),
-            ]),
+            div(classes: 'company-profile-btn', [
+              button(classes: 'profile-button', [text('Hồ sơ công ty')])
+            ])
           ]),
-          Divider(),
-          div(
-            classes: 'culture-section',
-            styles: Styles(
-              display: Display.flex,
-              width: 95.percent,
-              flexDirection: FlexDirection.row,
-              justifyContent: JustifyContent.start,
-              alignItems: AlignItems.stretch,
-              gap: Gap(column: 1.rem),
-            ),
-            [
-              div(classes: 'culture_title', [
-                h1(
-                  styles: Styles(
-                    display: Display.flex,
-                    width: 150.percent,
-                    justifyContent: JustifyContent.start,
-                    alignItems: AlignItems.start,
-                    alignSelf: AlignSelf.start,
-                    color: AppColors.textBlack,
-                  ),
-                  [
-                    text(LanguageManager.translate(
-                        'about_culture_title', selectedLang)),
-                  ],
-                ),
-              ]),
-              div(classes: 'culture_content', [
-                p(
-                  styles: Styles(
-                    display: Display.flex,
-                    justifyContent: JustifyContent.center,
-                    alignItems: AlignItems.center,
-                    color: AppColors.textBlack,
-                  ),
-                  [
-                    text(LanguageManager.translate(
-                        'about_culture_description', selectedLang)),
-                  ],
-                ),
-              ]),
-            ],
-          ),
-          FooterBlock(),
-        ]);
+          // div(classes: 'company-banner', [
+          //   img(
+          //       src:
+          //           'https://runsystem.net/themes/custom/runsystem/images/banner.png',
+          //       alt: 'Company Banner',
+          //       classes: 'banner-image')
+          // ])
+        ])
+      ])
+    ]);
+  }
+
+  Component _buildVisionMissionPhilosophy() {
+    return section(classes: 'vision-mission-section', [
+      div(classes: 'container', [
+        div(classes: 'vision-grid', [
+          _buildVisionCard(
+              'https://runsystem.net/themes/custom/runsystem/images/service_icon1.svg',
+              'Ước mơ',
+              'Trở thành số 1 trong ngành công nghiệp Internet'),
+          _buildVisionCard(
+              'https://runsystem.net/themes/custom/runsystem/images/service_icon2.svg',
+              'Sứ mệnh',
+              'Tập trung nguồn lực phát triển công nghệ và cơ sở hạ tầng Internet để nâng cao chất lượng sản phẩm, dịch vụ và mang lại nụ cười, sự cảm kích cho khách hàng'),
+          _buildVisionCard(
+              'https://runsystem.net/themes/custom/runsystem/images/service_icon3.svg',
+              'Triết lý',
+              'Mang đến trải nghiệm Internet phong phú, kiến tạo ra các nền văn hóa, ngành công nghệ số mới và cống hiến cho xã hội'),
+        ])
+      ])
+    ]);
+  }
+
+  Component _buildVisionCard(String iconUrl, String title, String description) {
+    return div(classes: 'vision-card', [
+      div(
+          classes: 'vision-icon',
+          [img(src: iconUrl, alt: title, classes: 'icon-image')]),
+      h3(classes: 'vision-title', [text(title)]),
+      p(classes: 'vision-description', [text(description)])
+    ]);
+  }
+
+  Component _buildCoreValues() {
+    return section(classes: 'core-values-section', [
+      div(classes: 'container', [
+        h2(classes: 'section-title', [text('Giá trị cốt lõi')]),
+        div(classes: 'values-grid', [
+          _buildValueItem(
+              'Honest', 'Luôn đối xử chân thành với đồng nghiệp và khách hàng'),
+          _buildValueItem('Accountable',
+              'Luôn làm việc với tinh thần trách nhiệm cao, thực hiện đúng cam kết với khách hàng'),
+          _buildValueItem('Passionate',
+              'Nhiệt huyết với ước mơ đạt mục tiêu trở thành No.1 trong lĩnh vực của mình'),
+          _buildValueItem('Professional',
+              'Học hỏi và cải tiến liên tục, hướng tới một doanh nghiệp toàn cầu, được khách hàng đánh giá cao'),
+          _buildValueItem('Work for your smile',
+              '"Bạn" bao gồm đồng nghiệp, khách hàng và các bên liên quan. Mục đích hoạt động của công ty là mang lại nụ cười cho khách hàng, nhận được sự đánh giá cao của họ và mang lại hạnh phúc cho nhân viên. Đây là một trong những giá trị tinh thần cốt lõi mà công ty luôn muốn tạo dựng, bởi chúng tôi hiểu rằng chỉ có tinh thần vui vẻ, lạc quan và nhiệt huyết thì chúng ta mới có thể sống và làm việc hiệu quả.'),
+        ])
+      ])
+    ]);
+  }
+
+  Component _buildValueItem(String title, String description) {
+    return div(classes: 'value-item', [
+      h4(classes: 'value-title', [text(title)]),
+      p(classes: 'value-description', [text(description)])
+    ]);
+  }
+
+  Component _buildCultureSection() {
+    return section(classes: 'culture-section', [
+      div(classes: 'container', [
+        h2(classes: 'section-title', [text('Văn hóa')]),
+        div(classes: 'culture-content', [
+          p(classes: 'culture-text', [
+            text(
+                'GMO-Z.com RUNSYSTEM luôn nỗ lực kiến tạo môi trường làm việc Nhật – Việt, trẻ trung, thân thiện, năng động, giàu văn hóa căn cước. GMO-Z.com RUNSYSTEM tôn trọng giá trị của con người và coi con người là tài sản quý giá nhất, vì vậy công ty luôn cố gắng tạo ra và mang lại những chính sách thuận lợi nhất cho hội viên.')
+          ])
+        ])
+      ])
+    ]);
   }
 
   @css
-  static final styles = [
-    css('.about_title_div', [
-      css('&').styles(
-        display: Display.flex,
-        width: 90.percent,
-        flexDirection: FlexDirection.row,
-        justifyContent: JustifyContent.center,
-        alignItems: AlignItems.center,
-      ),
-    ]),
-    css('.goal_div', [
-      css('&').styles(
-        display: Display.flex,
-        width: 95.percent,
-        flexWrap: FlexWrap.wrap,
-        justifyContent: JustifyContent.center,
-        alignItems: AlignItems.stretch,
-        gap: Gap(column: 1.rem),
-      ),
-    ]),
-    css('.key_value_overall', [
-      css('&').styles(
+  static List<StyleRule> get styles => [
+        // Global reset
+        css('*').styles(
+          padding: Spacing.zero,
+          margin: Spacing.zero,
+          raw: {'box-sizing': 'border-box'},
+        ), // Main page wrapper
+        css('.runsystem-page').styles(
+          color: Color('#333333'),
+          fontFamily: const FontFamily.list(
+              [FontFamily('Space Grotesk'), FontFamilies.andaleMono]),
+          //
+          fontSize: 14.px,
+          backgroundColor: Color('#ffffff'),
+        ),
+
+        // Container
+        css('.container').styles(
+          maxWidth: 100.percent,
+          padding: Spacing.symmetric(horizontal: 15.px),
+          margin: Spacing.symmetric(horizontal: Unit.auto),
+        ),
+
+        // Page title
+        css('.page-title-section').styles(
+          padding: Spacing.symmetric(vertical: 30.px),
+          textAlign: TextAlign.center,
+        ),
+
+        css('.page-title').styles(
+          margin: Spacing.zero,
+          color: Color('#333333'),
+          fontSize: 60.px,
+          fontWeight: FontWeight.bold,
+        ),
+
+        // Company intro section
+        css('.company-intro-section').styles(
+          padding: Spacing.symmetric(vertical: 40.px, horizontal: 100.px),
+          backgroundColor: Color('#ffffff'),
+        ),
+
+        css('.company-content').styles(
           display: Display.flex,
-          width: 95.percent,
           flexDirection: FlexDirection.row,
-          justifyContent: JustifyContent.start,
-          alignItems: AlignItems.stretch,
-          gap: Gap(column: 1.rem)),
-      css('.key_value_title', [
-        css('&').styles(
-          display: Display.flex,
-          width: 150.percent,
-          justifyContent: JustifyContent.start,
-          alignItems: AlignItems.start,
-          alignSelf: AlignSelf.start,
-        ),
-      ]),
-    ]),
-    css('.key_value_div', [
-      css('&').styles(
-        // width: 70.percent,
-        justifyContent: JustifyContent.center,
-        alignItems: AlignItems.center,
-      ),
-    ]),
-    css('.culture-section', [
-      css('&').styles(
-        display: Display.flex,
-        width: 95.percent,
-        flexDirection: FlexDirection.row,
-        justifyContent: JustifyContent.start,
-        alignItems: AlignItems.stretch,
-        gap: Gap(column: 1.rem),
-      ),
-      css('.culture_title', [
-        css('&').styles(
-          display: Display.flex,
-          width: 265.percent,
-          justifyContent: JustifyContent.start,
-          alignItems: AlignItems.start,
-          alignSelf: AlignSelf.start,
-        ),
-      ]),
-      css('.culture_content', [
-        css('&').styles(
-          justifyContent: JustifyContent.center,
+          justifyContent: JustifyContent.spaceEvenly,
           alignItems: AlignItems.center,
+          gap: Gap.all(40.px),
         ),
-      ]),
-    ]),
-  ];
-}
 
-class GoalComponent extends StatelessComponent {
-  final String icon;
-  final String title;
-  final String description;
-  const GoalComponent(
-      {required this.icon,
-      required this.title,
-      required this.description,
-      super.key});
+        css('.company-text').styles(
+          maxWidth: 60.percent,
+          flex: Flex(grow: 1),
+        ),
 
-  @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-        classes: 'goal-component',
-        styles: Styles(
+        css('.company-description').styles(
+          margin: Spacing.only(bottom: 25.px),
+          color: Color('#555555'),
+          fontSize: 18.px,
+        ),
+
+        css('.company-profile-btn').styles(
+          margin: Spacing.only(top: 20.px),
+        ),
+        css('.profile-button').styles(
+          padding: Spacing.symmetric(horizontal: 20.px, vertical: 10.px),
+          border: Border.none,
+          radius: BorderRadius.circular(4.px),
+          cursor: Cursor.pointer,
+          color: Colors.white,
+          fontSize: 14.px,
+          backgroundColor: Color('#007bff'),
+          raw: {'transition': 'background-color 0.3s ease'},
+        ),
+
+        css('.profile-button:hover').styles(
+          backgroundColor: Color('#0056b3'),
+        ),
+
+        css('.company-banner').styles(
+          width: 400.px,
+          flex: Flex(shrink: 0),
+        ),
+
+        css('.banner-image').styles(
+          width: 100.percent,
+          height: Unit.auto,
+          radius: BorderRadius.circular(8.px),
+        ),
+
+        // Vision Mission Philosophy section
+        css('.vision-mission-section').styles(
+          padding: Spacing.symmetric(vertical: 50.px),
+          backgroundColor: Color('#f8f9fa'),
+        ),
+
+        css('.vision-grid').styles(
+          display: Display.grid,
+          gap: Gap.all(30.px),
+          raw: {
+            'grid-template-columns': 'repeat(auto-fit, minmax(300px, 1fr))',
+          },
+        ),
+
+        css('.vision-card').styles(
+          padding: Spacing.all(30.px),
+          radius: BorderRadius.circular(8.px),
+          textAlign: TextAlign.center,
+          backgroundColor: Colors.white,
+          raw: {'box-shadow': '0 2px 10px rgba(0,0,0,0.1)'},
+        ),
+
+        css('.vision-icon').styles(
+          margin: Spacing.only(bottom: 20.px),
+        ),
+
+        css('.icon-image').styles(
+          width: 60.px,
+          height: 60.px,
+        ),
+
+        css('.vision-title').styles(
+          margin: Spacing.only(bottom: 15.px),
+          color: Color('#333333'),
+          fontSize: 20.px,
+          fontWeight: FontWeight.bold,
+        ),
+
+        css('.vision-description').styles(
+          color: Color('#666666'),
+          fontSize: 15.px,
+        ),
+
+        // Core Values section
+        css('.core-values-section').styles(
+          padding: Spacing.symmetric(vertical: 50.px),
+          backgroundColor: Colors.white,
+        ),
+
+        css('.section-title').styles(
+          margin: Spacing.only(bottom: 40.px),
+          color: Color('#333333'),
+          textAlign: TextAlign.center,
+          fontSize: 28.px,
+          fontWeight: FontWeight.bold,
+        ),
+
+        css('.values-grid').styles(
           display: Display.flex,
           flexDirection: FlexDirection.column,
-          flexWrap: FlexWrap.wrap,
-          alignItems: AlignItems.start,
-          flex: Flex(grow: 1, basis: FlexBasis(300.px)),
+          gap: Gap.all(25.px),
         ),
-        [
-          h2(classes: 'icon', [
-            text(icon),
-          ]),
-          h2(
-              classes: 'title',
-              styles: Styles(color: AppColors.textBlack),
-              [text(title)]),
-          p(
-              classes: 'description',
-              styles: Styles(color: AppColors.textBlack),
-              [text(description)]),
-        ]);
-  }
+        css('.value-item').styles(
+          padding: Spacing.only(bottom: 20.px),
+          raw: {
+            'border-bottom': '1px solid #e9ecef',
+          },
+        ),
 
-  @css
-  static final styles = [
-    css('.icon', [
-      css('&').styles(
-        padding: Spacing.all(0.px),
-        margin: Spacing.all(0.px),
-        fontSize: 30.px,
-      ),
-    ]),
-    css('.title', [
-      css('&').styles(
-        padding: Spacing.all(0.px),
-        margin: Spacing.only(bottom: 0.px),
-      ),
-    ]),
-    css('.description', [
-      css('&').styles(
-        padding: Spacing.all(0.px),
-        margin: Spacing.only(bottom: 0.px),
-      ),
-    ]),
-  ];
-}
+        css('.value-title').styles(
+          margin: Spacing.only(bottom: 10.px),
+          color: Color('#007bff'),
+          fontSize: 18.px,
+          fontWeight: FontWeight.bold,
+        ),
 
-class KeyValueComponent extends StatelessComponent {
-  final String title;
-  final String description;
-  const KeyValueComponent(
-      {required this.title, required this.description, super.key});
+        css('.value-description').styles(
+          color: Color('#555555'),
+          //
+          fontSize: 15.px,
+        ),
 
-  @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-        styles: Styles(
-            display: Display.flex,
-            margin: Spacing.only(bottom: 1.rem),
+        // Culture section
+        css('.culture-section').styles(
+          padding: Spacing.symmetric(vertical: 50.px),
+          backgroundColor: Color('#f8f9fa'),
+        ),
+
+        css('.culture-text').styles(
+          maxWidth: 800.px,
+          //
+          margin: Spacing.symmetric(horizontal: Unit.auto),
+          color: Color('#555555'),
+          textAlign: TextAlign.center,
+          fontSize: 16.px,
+        ),
+
+        // Responsive design
+        css.media(MediaQuery.screen(maxWidth: 768.px), [
+          css('.company-content').styles(
             flexDirection: FlexDirection.column,
-            alignItems: AlignItems.start),
-        [
-          h2(
-              classes: 'title',
-              styles: Styles(color: AppColors.textBlack),
-              [text(title)]),
-          p(
-              classes: 'description',
-              styles: Styles(color: AppColors.textBlack),
-              [text(description)]),
-        ]);
-  }
+          ),
+          // Company intro section
+          css('.company-intro-section').styles(
+            padding: Spacing.symmetric(horizontal: 10.px),
+          ),
+          css('.company-text').styles(
+            maxWidth: 100.percent,
+          ),
+          css('.company-banner').styles(
+            width: 100.percent,
+          ),
+          css('.vision-grid').styles(
+            raw: {
+              'grid-template-columns': '1fr',
+            },
+          ),
+          css('.office-grid').styles(
+            raw: {
+              'grid-template-columns': '1fr',
+            },
+          ),
+          css('.page-title').styles(
+            fontSize: 28.px,
+          ),
+          css('.section-title').styles(
+            fontSize: 24.px,
+          ),
+        ]),
 
-  @css
-  static final styles = [
-    css('.icon', [
-      css('&').styles(
-        padding: Spacing.all(0.px),
-        margin: Spacing.all(0.px),
-        fontSize: 30.px,
-      ),
-    ]),
-    css('.title', [
-      css('&').styles(
-        padding: Spacing.all(0.px),
-        margin: Spacing.only(bottom: 0.px),
-      ),
-    ]),
-    css('.description', [
-      css('&').styles(
-        padding: Spacing.all(0.px),
-        margin: Spacing.only(bottom: 0.px),
-      ),
-    ]),
-  ];
+        css.media(MediaQuery.screen(maxWidth: 480.px), [
+          css('.container').styles(
+            padding: Spacing.symmetric(horizontal: 10.px),
+          ),
+          css('.vision-card').styles(
+            padding: Spacing.all(20.px),
+          ),
+          css('.office-info').styles(
+            padding: Spacing.all(15.px),
+          ),
+        ]),
+      ];
 }

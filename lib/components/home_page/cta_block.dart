@@ -5,6 +5,7 @@ import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:universal_web/web.dart' as web;
 
 class CtaBlock extends StatelessComponent {
   const CtaBlock({super.key});
@@ -40,12 +41,18 @@ class CtaBlock extends StatelessComponent {
           ),
           SizeBoxComponent(height: 20),
           ButtonPrimaryBlack(
+            onClick: () {
+              var el =
+                  web.document.querySelector('#contact') as web.HTMLElement;
+              web.window.scrollTo(
+                  web.ScrollToOptions(top: el.offsetTop, behavior: 'smooth'));
+            },
             text: LanguageManager.translate('cta_button_text', selectedLang),
           ),
         ]),
         div(classes: 'cta_image', [
           img(
-            src: Images.ctaBlockImage,
+            src: Images.inTheOfficeImage,
             styles: Styles(
               width: 50.percent,
               height: 100.percent,

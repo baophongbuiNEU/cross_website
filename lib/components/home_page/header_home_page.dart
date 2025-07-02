@@ -1,11 +1,11 @@
 import 'package:cross_website/components/common/button_primary_black.dart';
 import 'package:cross_website/components/common/size_box_component.dart';
-import 'package:cross_website/constants/image_constant.dart';
 import 'package:cross_website/language/language_manager.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:cross_website/components/header.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
+import 'package:universal_web/web.dart' as web;
 
 class HeaderHomePage extends StatelessComponent {
   const HeaderHomePage({super.key});
@@ -29,13 +29,19 @@ class HeaderHomePage extends StatelessComponent {
           ]),
           SizeBoxComponent(height: 35),
           ButtonPrimaryBlack(
+            onClick: () {
+              var el =
+                  web.document.querySelector('#services') as web.HTMLElement;
+              web.window.scrollTo(
+                  web.ScrollToOptions(top: el.offsetTop, behavior: 'smooth'));
+            },
             text: LanguageManager.translate(
                 'header_home_page_button', selectedLang),
           ),
         ]),
         img(
           id: 'primary_image',
-          src: Images.imageHeader,
+          src: 'images/demo_primary_image.png',
         ),
       ]),
     ]);
@@ -55,10 +61,11 @@ class HeaderHomePage extends StatelessComponent {
           css('&').styles(
             display: Display.flex,
             width: 100.percent,
-            padding: Padding.symmetric(horizontal: 5.percent, vertical: 70.px),
+            padding: Padding.only(
+                left: 5.percent, right: 5.percent, bottom: 70.px, top: 20.px),
             flexDirection: FlexDirection.row,
             justifyContent: JustifyContent.spaceBetween,
-            alignItems: AlignItems.start,
+            alignItems: AlignItems.center,
           ),
         ]),
         css('.text-header-web', [

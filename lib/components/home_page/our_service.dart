@@ -20,7 +20,7 @@ class OurService extends StatelessComponent {
         titleColor: AppColors.primaryColor,
         contentColor: AppColors.primaryColor,
         itemColor: AppColors.greenPrimary,
-        itemBig: Images.seoIcon,
+        itemBig: Images.mobileImage,
       ),
       ItemServices(
         title: LanguageManager.translate('our_service_ppc_title', lang),
@@ -31,7 +31,7 @@ class OurService extends StatelessComponent {
         titleColor: AppColors.primaryColor,
         contentColor: AppColors.primaryColor,
         itemColor: AppColors.greenPrimary,
-        itemBig: Images.payPerClickIcon,
+        itemBig: Images.webImage,
       ),
       ItemServices(
         title: LanguageManager.translate('our_service_smm_title', lang),
@@ -42,7 +42,7 @@ class OurService extends StatelessComponent {
         titleColor: AppColors.primaryColor,
         contentColor: Colors.white,
         itemColor: AppColors.greenPrimary,
-        itemBig: Images.socialMediaMarketingIcon,
+        itemBig: Images.employeeSupplyImage,
       ),
       ItemServices(
         title: LanguageManager.translate('our_service_email_title', lang),
@@ -53,7 +53,7 @@ class OurService extends StatelessComponent {
         titleColor: AppColors.primaryColor,
         contentColor: AppColors.primaryColor,
         itemColor: AppColors.greenPrimary,
-        itemBig: Images.emailMarketingIcon,
+        itemBig: Images.programmingImage,
       ),
     ];
   }
@@ -67,7 +67,9 @@ class OurService extends StatelessComponent {
 
     yield div(
       styles: Styles(
+        display: Display.flex,
         maxWidth: 100.percent,
+        flexDirection: FlexDirection.column,
         justifyContent: JustifyContent.center,
         alignItems: AlignItems.center,
         alignSelf: AlignSelf.center,
@@ -77,7 +79,8 @@ class OurService extends StatelessComponent {
           div(
             styles: Styles(
               display: Display.flex,
-              padding: Padding.symmetric(horizontal: 5.percent),
+              maxWidth: 100.percent,
+              padding: Padding.symmetric(horizontal: 10.percent),
               justifyContent: JustifyContent.center,
               alignItems: AlignItems.center,
               alignSelf: AlignSelf.center,

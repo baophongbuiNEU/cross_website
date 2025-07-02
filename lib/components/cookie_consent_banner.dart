@@ -14,13 +14,13 @@ class CookieConsentBanner extends StatelessComponent {
       return;
     }
 
-    final accentColor = Color.hex('#f5a623');
+    final accentColor = Color('#f5a623');
     final shadowColor = 'rgba(0, 0, 0, 0.3)';
 
     yield div(
       styles: Styles(
         shadow: BoxShadow(
-            color: Color.hex(shadowColor),
+            color: Color(shadowColor),
             blur: 12.px,
             offsetX: 0.px,
             offsetY: 4.px),
