@@ -361,7 +361,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
                 }
               },
         [
-          text(isSubmitting ? 'Đang gửi...' : 'Submit'),
+          text(LanguageManager.translate('contact_us_issubmit', lang)),
         ],
       ),
     ]);

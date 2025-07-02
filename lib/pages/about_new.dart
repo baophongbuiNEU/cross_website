@@ -30,48 +30,42 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('*').styles(
-          margin: Spacing.zero,
           padding: Spacing.zero,
-          raw: {
-            'box-sizing': 'border-box',
-          },
+          margin: Spacing.zero,
+          raw: {'box-sizing': 'border-box'},
         ),
         css('.about-new-page').styles(
-          fontFamily: FontFamily.list([
-            FontFamily('Space Grotesk'),
-            FontFamilies.sansSerif,
-          ]),
-          // lineHeight: 1.6,
           color: AppColors.textBlack,
+          // lineHeight: 1.6,
+          fontFamily: FontFamily.list(
+              [FontFamily('Space Grotesk'), FontFamilies.sansSerif]),
           backgroundColor: AppColors.backgroundTheme,
         ),
 
         css('.container').styles(
           maxWidth: 1200.px,
-          margin: Spacing.symmetric(horizontal: Unit.auto),
           padding: Spacing.symmetric(horizontal: 16.px),
-          alignItems: AlignItems.center,
+          margin: Spacing.symmetric(horizontal: Unit.auto),
           justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
           alignSelf: AlignSelf.center,
         ),
 
         // Hero Section
         css('.hero').styles(
           padding: Spacing.symmetric(vertical: 80.px),
-          alignItems: AlignItems.center,
           justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
           textAlign: TextAlign.center,
           // raw: {
           //   'background': 'linear-gradient(135deg, #f0fdff, #eff6ff, #faf5ff)',
           // },
-          raw: {
-            'background': 'var(--gradientBackground)',
-          },
+          raw: {'background': 'var(--gradientBackground)'},
         ),
 
         css('.hero-title').styles(
-          fontWeight: FontWeight.w800,
           margin: Spacing.only(bottom: 24.px),
+          fontWeight: FontWeight.w800,
           // lineHeight: 1.2,
           raw: {
             'font-size': 'clamp(2.5rem, 5vw, 4rem)',
@@ -79,25 +73,23 @@ class AboutNew extends StatefulComponent {
                 'linear-gradient(135deg, var(--primary-cyan), var(--primary-blue), var(--primary-purple))',
             '-webkit-background-clip': 'text',
             'background-clip': 'text',
-            '-webkit-text-fill-color': 'transparent',
+            '-webkit-text-fill-color': 'transparent'
           },
         ),
 
         css('.hero-subtitle').styles(
-          color: Color('var(--gray-700)'),
           maxWidth: 768.px,
           margin:
               Spacing.only(left: Unit.auto, right: Unit.auto, bottom: 16.px),
-          raw: {
-            'font-size': 'clamp(1.25rem, 3vw, 1.5rem)',
-          },
+          color: Color('var(--gray-700)'),
+          raw: {'font-size': 'clamp(1.25rem, 3vw, 1.5rem)'},
         ),
         css('.hero-description').styles(
-          fontSize: 18.px,
-          color: Color('var(--gray-600)'),
           maxWidth: 512.px,
           margin:
               Spacing.only(left: Unit.auto, right: Unit.auto, bottom: 32.px),
+          color: Color('var(--gray-600)'),
+          fontSize: 18.px,
         ),
 
         // Section Styles
@@ -111,19 +103,19 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.section-header').styles(
-          textAlign: TextAlign.center,
           margin: Spacing.only(bottom: 64.px),
+          textAlign: TextAlign.center,
         ),
         css('.section-title').styles(
-          fontSize: 40.px,
-          fontWeight: FontWeight.w800,
           margin: Spacing.only(bottom: 16.px),
           color: AppColors.textBlack,
+          fontSize: 40.px,
+          fontWeight: FontWeight.w800,
         ),
 
         css('.section-subtitle').styles(
-          fontSize: 20.px,
           color: Color('var(--gray-600)'),
+          fontSize: 20.px,
         ),
 
         // Grid Layouts
@@ -146,11 +138,11 @@ class AboutNew extends StatefulComponent {
 
         // Description Text
         css('.description-text').styles(
-          fontSize: 18.px,
+          margin: Spacing.only(bottom: 24.px),
           // color: Color('var(--gray-600)'),
           color: AppColors.textBlack,
           // lineHeight: 1.8,
-          margin: Spacing.only(bottom: 24.px),
+          fontSize: 18.px,
         ),
 
         css('.space-y').styles(
@@ -198,28 +190,28 @@ class AboutNew extends StatefulComponent {
         // Stats Grid
         css('.stats-grid').styles(
           display: Display.grid,
-          gap: Gap.all(32.px),
           margin: Spacing.only(top: 32.px),
+          gap: Gap.all(32.px),
           raw: {
-            'grid-template-columns': 'repeat(auto-fit, minmax(200px, 1fr))',
+            'grid-template-columns': 'repeat(auto-fit, minmax(200px, 1fr))'
           },
         ),
 
         css('.stat-card').styles(
-          textAlign: TextAlign.center,
           padding: Spacing.all(24.px),
+          textAlign: TextAlign.center,
         ),
 
         css('.stat-icon').styles(
-          fontSize: 48.px,
           margin: Spacing.only(bottom: 16.px),
+          fontSize: 48.px,
         ),
 
         css('.stat-number').styles(
+          margin: Spacing.only(bottom: 8.px),
+          color: Color('var(--primary-cyan)'),
           fontSize: 40.px,
           fontWeight: FontWeight.w800,
-          color: Color('var(--primary-cyan)'),
-          margin: Spacing.only(bottom: 8.px),
         ),
 
         css('.stat-label').styles(
@@ -252,14 +244,14 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.card-icon').styles(
+          display: Display.flex,
           width: 64.px,
           height: 64.px,
-          radius: BorderRadius.circular(50.px),
-          display: Display.flex,
-          alignItems: AlignItems.center,
-          justifyContent: JustifyContent.center,
           margin:
               Spacing.only(bottom: 24.px, left: Unit.auto, right: Unit.auto),
+          radius: BorderRadius.circular(50.px),
+          justifyContent: JustifyContent.center,
+          alignItems: AlignItems.center,
           fontSize: 32.px,
         ),
 
@@ -292,10 +284,10 @@ class AboutNew extends StatefulComponent {
           },
         ),
         css('.card-title').styles(
-          fontSize: 20.px,
-          fontWeight: FontWeight.w700,
           margin: Spacing.only(bottom: 16.px),
           color: AppColors.textBlack,
+          fontSize: 20.px,
+          fontWeight: FontWeight.w700,
         ),
 
         css('.cyan-text').styles(
@@ -340,14 +332,14 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.quote-icon').styles(
-          fontSize: 64.px,
           margin: Spacing.only(bottom: 16.px),
+          fontSize: 64.px,
         ),
         css('.quote-text').styles(
+          margin: Spacing.only(bottom: 16.px),
+          color: Color('var(--quoteTextColor)'),
           fontSize: 20.px,
           fontStyle: FontStyle.italic,
-          color: Color('var(--quoteTextColor)'),
-          margin: Spacing.only(bottom: 16.px),
           // lineHeight: 1.6,
         ),
 
@@ -358,11 +350,11 @@ class AboutNew extends StatefulComponent {
         ), // Vision/Mission Cards
         css('.vision-card').styles(
           // backgroundColor: Colors.white,
+          maxWidth: 1024.px,
           padding: Spacing.all(48.px),
+          margin: Spacing.symmetric(horizontal: Unit.auto),
           radius: BorderRadius.circular(16.px),
           textAlign: TextAlign.center,
-          maxWidth: 1024.px,
-          margin: Spacing.symmetric(horizontal: Unit.auto),
           // raw: {
           //   'box-shadow': '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
           // },
@@ -371,7 +363,7 @@ class AboutNew extends StatefulComponent {
             'border': '1px solid var(--cardBorder)',
             'backdrop-filter': 'blur(10px)',
             'box-shadow': '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-            'transition': 'all 0.3s ease',
+            'transition': 'all 0.3s ease'
           },
         ),
 
@@ -394,27 +386,27 @@ class AboutNew extends StatefulComponent {
           color: Color('var(--primary-purple)'),
         ),
         css('.vision-title').styles(
-          fontSize: 40.px,
-          fontWeight: FontWeight.w800,
           margin: Spacing.only(bottom: 24.px),
           color: AppColors.textBlack,
+          fontSize: 40.px,
+          fontWeight: FontWeight.w800,
         ),
         css('.vision-text').styles(
-          fontSize: 24.px,
           color: AppColors.textBlack,
+          fontSize: 24.px,
           // lineHeight: 1.6,
         ),
 
         // Culture Section
         css('.culture-main').styles(
-          alignItems: AlignItems.center,
           margin: Spacing.only(bottom: 48.px),
+          alignItems: AlignItems.center,
         ),
         css('.culture-subtitle').styles(
-          fontSize: 32.px,
-          fontWeight: FontWeight.w700,
           margin: Spacing.only(bottom: 24.px),
           color: Color('var(--cultureSubtitleColor)'),
+          fontSize: 32.px,
+          fontWeight: FontWeight.w700,
         ),
         css('.culture-features').styles(
           display: Display.flex,
@@ -428,15 +420,13 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.feature-icon-container').styles(
+          display: Display.flex,
           width: 48.px,
           height: 48.px,
           radius: BorderRadius.circular(8.px),
-          display: Display.flex,
-          alignItems: AlignItems.center,
           justifyContent: JustifyContent.center,
-          raw: {
-            'flex-shrink': '0',
-          },
+          alignItems: AlignItems.center,
+          raw: {'flex-shrink': '0'},
         ),
 
         css('.feature-icon').styles(
@@ -444,8 +434,8 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.feature-title').styles(
-          fontWeight: FontWeight.w600,
           fontSize: 20.px,
+          fontWeight: FontWeight.w600,
         ),
 
         css('.feature-description').styles(
@@ -454,17 +444,17 @@ class AboutNew extends StatefulComponent {
 
         // Footer
         css('.footer').styles(
-          backgroundColor: Color('var(--gray-900)'),
-          color: Colors.white,
           padding: Spacing.only(top: 64.px, bottom: 32.px),
+          color: Colors.white,
+          backgroundColor: Color('var(--gray-900)'),
         ),
 
         css('.footer-content').styles(
           display: Display.grid,
-          gap: Gap.all(32.px),
           margin: Spacing.only(bottom: 32.px),
+          gap: Gap.all(32.px),
           raw: {
-            'grid-template-columns': 'repeat(auto-fit, minmax(250px, 1fr))',
+            'grid-template-columns': 'repeat(auto-fit, minmax(250px, 1fr))'
           },
         ),
 
@@ -478,8 +468,8 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.footer-title').styles(
-          fontWeight: FontWeight.w600,
           margin: Spacing.only(bottom: 16.px),
+          fontWeight: FontWeight.w600,
         ),
 
         css('.footer-links').styles(
@@ -516,11 +506,11 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.footer-bottom').styles(
+          padding: Spacing.only(top: 32.px),
           border: Border.only(
               top: BorderSide(width: 1.px, color: Color('var(--gray-800)'))),
-          padding: Spacing.only(top: 32.px),
-          textAlign: TextAlign.center,
           color: Color('var(--gray-400)'),
+          textAlign: TextAlign.center,
         ),
 
         // Animations
@@ -640,8 +630,7 @@ class _AboutNewState extends State<AboutNew> {
           ]),
           div(classes: 'image-container', [
             img(
-              src:
-                  'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop&crop=faces',
+              src: 'images/office1.jpg',
               alt: 'Đội ngũ Cross Tech',
               classes: 'team-image',
             ),
@@ -673,11 +662,7 @@ class _AboutNewState extends State<AboutNew> {
       div(classes: 'container', [
         div(classes: 'vision-card', [
           div(classes: 'vision-icon', [
-            // SVG compass icon
-            raw('<svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'
-                '<circle cx="12" cy="12" r="10"/>'
-                '<polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88 16.24,7.76"/>'
-                '</svg>'),
+            img(src: 'images/vision.png', width: 80, height: 80),
           ]),
           h2(
               classes: 'vision-title',
@@ -695,10 +680,7 @@ class _AboutNewState extends State<AboutNew> {
       div(classes: 'container', [
         div(classes: 'vision-card', [
           div(classes: 'vision-icon purple-icon', [
-            // SVG heart icon
-            raw('<svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'
-                '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>'
-                '</svg>'),
+            img(src: 'images/mission.png', width: 80, height: 80),
           ]),
           h2(classes: 'vision-title', [
             text(getLanguageText('about_goal_mission_title', selectedLang))
@@ -712,7 +694,7 @@ class _AboutNewState extends State<AboutNew> {
     ]);
   }
 
-  Component _buildPhilosophySection(String selectedLang) {
+  Component _buildPhilosophySection(selectedLang) {
     return section(classes: 'section section-alt', [
       div(classes: 'container', [
         div(classes: 'section-header', [
@@ -722,7 +704,7 @@ class _AboutNewState extends State<AboutNew> {
         ]),
         div(classes: 'grid grid-2', [
           _buildQuoteCard(
-              '💡',
+              'images/philosophy.png',
               getLanguageText(
                   'about_goal_philosophy_description', selectedLang),
               getLanguageText(
@@ -744,10 +726,12 @@ class _AboutNewState extends State<AboutNew> {
     ]);
   }
 
-  Component _buildQuoteCard(String icon, String quote, String author) {
+  Component _buildQuoteCard(String imagePath, String quote, String author) {
     return div(classes: 'quote-card', [
-      div(classes: 'quote-icon', [text(icon)]),
-      blockquote(classes: 'quote-text', [text('"$quote"')]),
+      div(classes: 'quote-icon', [
+        img(src: imagePath, alt: 'Philosophy Icon', width: 90, height: 70),
+      ]),
+      blockquote(classes: 'quote-text', [text("$quote")]),
       p(classes: 'quote-author', [text('$author')]),
     ]);
   }
@@ -834,8 +818,7 @@ class _AboutNewState extends State<AboutNew> {
           ]),
           div(classes: 'image-container', [
             img(
-              src:
-                  'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&h=400&fit=crop',
+              src: 'images/office.jpg',
               alt: 'Văn hóa công ty',
               classes: 'culture-image',
             ),
@@ -843,12 +826,21 @@ class _AboutNewState extends State<AboutNew> {
           ]),
         ]),
         div(classes: 'grid grid-3', [
-          _buildCultureCard('🎉', 'Hoạt động vui chơi',
-              'Team building, du lịch công ty, các hoạt động thể thao và giải trí định kỳ.'),
-          _buildCultureCard('🏆', 'Ghi nhận thành tích',
-              'Chương trình khen thưởng và ghi nhận đóng góp của nhân viên một cách công bằng và kịp thời.'),
-          _buildCultureCard('💪', 'Sức khỏe & Phúc lợi',
-              'Chế độ bảo hiểm toàn diện, khám sức khỏe định kỳ và các chương trình chăm sóc sức khỏe.'),
+          _buildCultureCard(
+            '🎉',
+            getLanguageText('about_culture_card_fun_title', selectedLang),
+            getLanguageText('about_culture_card_fun_content', selectedLang),
+          ),
+          _buildCultureCard(
+            '🏆',
+            getLanguageText('about_culture_card_award_title', selectedLang),
+            getLanguageText('about_culture_card_award_content', selectedLang),
+          ),
+          _buildCultureCard(
+            '💪',
+            getLanguageText('about_culture_card_welfare_title', selectedLang),
+            getLanguageText('about_culture_card_welfare_content', selectedLang),
+          ),
         ]),
       ]),
     ]);

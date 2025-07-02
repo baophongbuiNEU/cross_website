@@ -87,26 +87,26 @@ class ThemeToggleState extends State<ThemeToggle> {
           ? Styles(visibility: Visibility.hidden)
           : Styles(fontSize: 30.px),
       // styles: Styles(fontSize: 30.px),
-      [text(isDark ? '🌙' : '☀️')],
+      [img(src: isDark ? 'images/moon.svg' : 'images/sun.svg')],
     );
   }
 
   @css
   static List<StyleRule> get styles => [
-    css('.theme-toggle', [
-      css('&').styles(
-        display: Display.flex,
-        padding: Padding.all(.7.rem),
-        border: Border.unset,
-        radius: BorderRadius.circular(8.px),
-        outline: Outline.unset,
-        alignItems: AlignItems.center,
-        color: AppColors.textBlack,
-        backgroundColor: Colors.transparent,
-      ),
-      css('&:hover').styles(
-        backgroundColor: AppColors.hoverOverlayColor,
-      ),
-    ]),
-  ];
+        css('.theme-toggle', [
+          css('&').styles(
+            display: Display.flex,
+            padding: Padding.all(.7.rem),
+            border: Border.unset,
+            radius: BorderRadius.circular(8.px),
+            outline: Outline.unset,
+            alignItems: AlignItems.center,
+            color: AppColors.textBlack,
+            backgroundColor: Colors.transparent,
+          ),
+          css('&:hover').styles(
+            backgroundColor: AppColors.hoverOverlayColor,
+          ),
+        ]),
+      ];
 }
