@@ -49,8 +49,8 @@ class GroupOfCard extends StatelessComponent {
       MemberCard(
         name: LanguageManager.translate('team_member6_name', lang),
         position: LanguageManager.translate('team_member6_position', lang),
-        imagePath: Images.memberTeam,
-        alt: 'Nguyễn Văn A',
+        imagePath: Images.vietHung,
+        alt: 'Lê Việt Hùng',
         content: LanguageManager.translate('team_member6_content', lang),
       ),
     ];

@@ -9,7 +9,7 @@ void main() async {
   );
 
   runApp(Document(
-    title: 'my_website',
+    title: 'Cross Website',
     styles: [
       css.import(
           "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
