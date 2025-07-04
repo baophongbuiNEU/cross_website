@@ -114,7 +114,7 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.section-subtitle').styles(
-          color: Color('var(--gray-600)'),
+          color: Color('var(--cultureSubtitleColor)'),
           fontSize: 20.px,
         ),
 
@@ -154,6 +154,8 @@ class AboutNew extends StatefulComponent {
         // Image Styles
         css('.image-container').styles(
           position: Position.relative(),
+          height: 400.px,
+          width: 100.percent,
         ),
 
         css('.team-image, .culture-image').styles(
@@ -167,6 +169,8 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.image-overlay').styles(
+          height: 400.px,
+          width: 100.percent,
           position: Position.absolute(
             top: 0.px,
             left: 0.px,
@@ -227,6 +231,7 @@ class AboutNew extends StatefulComponent {
             'background': 'var(--cardBackground)',
             'border': '1px solid var(--cardBorder)',
             'backdrop-filter': 'blur(10px)',
+            '-webkit-backdrop-filter': 'blur(10px)',
             'box-shadow': '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
             'transition': 'all 0.3s ease',
           },
@@ -402,7 +407,7 @@ class AboutNew extends StatefulComponent {
           margin: Spacing.only(bottom: 48.px),
           alignItems: AlignItems.center,
         ),
-        css('.culture-subtitle').styles(
+        css('.about_culture_sub_title').styles(
           margin: Spacing.only(bottom: 24.px),
           color: Color('var(--cultureSubtitleColor)'),
           fontSize: 32.px,
@@ -595,7 +600,13 @@ class _AboutNewState extends State<AboutNew> {
 
       // Culture Section
       _buildCultureSection(selectedLang),
-      FooterBlock(),
+      div(
+          styles: Styles(
+            raw: {
+              'background': 'var(--footerAltBackground)',
+            },
+          ),
+          [FooterBlock()])
     ]);
   }
 
