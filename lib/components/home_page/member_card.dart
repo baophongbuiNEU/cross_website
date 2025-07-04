@@ -1,6 +1,5 @@
 import 'package:cross_website/components/common/size_box_component.dart';
 import 'package:cross_website/constants/app_colors.dart';
-import 'package:cross_website/constants/image_constant.dart';
 import 'package:jaspr/jaspr.dart';
 
 class MemberCard extends StatelessComponent {
