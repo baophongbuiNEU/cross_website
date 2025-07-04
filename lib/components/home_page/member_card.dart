@@ -81,21 +81,11 @@ class MemberCard extends StatelessComponent {
                 display: Display.flex,
                 width: 100.percent,
                 flexDirection: FlexDirection.column,
-                justifyContent: JustifyContent.spaceBetween,
+                justifyContent: JustifyContent.center,
                 alignItems: AlignItems.start,
               ),
               [
-                div(
-                    styles: Styles(
-                      alignSelf: AlignSelf.end,
-                    ),
-                    [
-                      img(
-                          src: Images.crossLogo,
-                          width: 50,
-                          height: 50,
-                          alt: 'Cross Logo')
-                    ]),
+               
                 div(
                     styles: Styles(
                       width: 100.percent,

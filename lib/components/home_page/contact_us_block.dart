@@ -123,7 +123,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
             margin: Margin.symmetric(horizontal: 5.percent),
             radius: BorderRadius.circular(45.px),
             flexDirection: FlexDirection.row,
-            justifyContent: JustifyContent.spaceEvenly,
+            justifyContent: JustifyContent.spaceAround,
             alignItems: AlignItems.center,
             backgroundColor: Color('#F3F3F3'),
           ),
@@ -132,7 +132,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
             div(styles: Styles(), [
               img(
                 classes: 'contact_image',
-                src: Images.collabImage,
+                src: Images.shakeHandsImage,
                 height: 300,
               ),
             ]),

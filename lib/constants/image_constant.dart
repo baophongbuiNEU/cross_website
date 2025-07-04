@@ -29,6 +29,7 @@ class Images {
   static const String collabImage = "images/collab_image.svg";
   static const String inTheOfficeImage = "images/intheoffice_image.svg";
   static const String programmingImage = "images/programing_image.svg";
+  static const String shakeHandsImage = "images/undraw_business-deal_nx2n.svg";
 
   //fb,tw,in
   static const String twitterIcon = "images/twitter_icon.png";

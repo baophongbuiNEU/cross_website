@@ -100,7 +100,6 @@ class CtaBlock extends StatelessComponent {
           justifyContent: JustifyContent.center,
           alignItems: AlignItems.center,
           alignSelf: AlignSelf.center,
-          backgroundColor: AppColors.listLogoBackground,
         ),
         css.media(MediaQuery.screen(maxWidth: 700.px), [
           css('.cta_block', [
