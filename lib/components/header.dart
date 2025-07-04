@@ -76,12 +76,20 @@ class HeaderState extends State<Header> {
     if (currentHash.isNotEmpty && kIsWeb) {
       scheduleMicrotask(() {});
     }
+    void closeMenu() {
+      if (menuOpen) {
+        setState(() {
+          menuOpen = false;
+        });
+      }
+    } // Get current path without query parameters or fragments
 
     void scrollToMeet(String destination) {
       var el = web.document.querySelector(destination) as web.HTMLElement;
       web.window
           .scrollTo(web.ScrollToOptions(top: el.offsetTop, behavior: 'smooth'));
-    } // Get current path without query parameters or fragments
+      closeMenu();
+    }
 
     final currentPath = Uri.parse(currentUrl).path;
 
@@ -129,6 +137,7 @@ class HeaderState extends State<Header> {
                   events: {
                     'click': (event) {
                       scrollToMeet(route.path);
+                      closeMenu();
                     },
                   },
                   [
