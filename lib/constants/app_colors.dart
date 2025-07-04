@@ -70,10 +70,11 @@ List<StyleRule> get root => [
             'linear-gradient(to top right, #ffffff 0%, #f8f9ff 30%, #e6ebff 70%, #93c5fd 100%)',
         '--sectionAltBackground':
             'linear-gradient(135deg, #f9fafb, #f0fdff, #eff6ff)',
+        '--footerAltBackground': '#eff6ff',
         '--cardBackground': 'rgba(255, 255, 255, 0.8)',
         '--cardBorder': 'rgba(255, 255, 255, 0.2)',
         '--cardDescriptionColor': '#6b7280',
-        '--cultureSubtitleColor': '#35daff',
+        '--cultureSubtitleColor': '#4b5563',
         '--quoteTextColor': '#1f2937',
       }),
       css(':root.dark').styles(raw: {
@@ -84,6 +85,7 @@ List<StyleRule> get root => [
             'linear-gradient(to top right, #000000 0%, #1a1a2e 30%, #16213e 70%, #0f3460 100%)',
         '--sectionAltBackground':
             'linear-gradient(135deg, #1f2937, #111827, #0f172a)',
+        '--footerAltBackground': '#0f172a',
         '--cardBackground': 'transparent',
         '--cardBorder': '#64B6F7',
         '--cardDescriptionColor': '#ffffff',

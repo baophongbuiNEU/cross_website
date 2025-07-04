@@ -81,30 +81,42 @@ class HeaderState extends State<Header> {
       var el = web.document.querySelector(destination) as web.HTMLElement;
       web.window
           .scrollTo(web.ScrollToOptions(top: el.offsetTop, behavior: 'smooth'));
-    }
+    } // Get current path without query parameters or fragments
+
+    final currentPath = Uri.parse(currentUrl).path;
 
     var content = Fragment(key: contentKey, children: [
       nav(classes: 'nav-menu', [
         for (var route in [
+          if (currentPath != '/') ...[
+            (
+              label: LanguageManager.translate('header_home', selectedLang),
+              path: '/'
+            ),
+          ],
           (
             label: LanguageManager.translate('header_about', selectedLang),
             path: '/about'
           ),
-          (
-            label: LanguageManager.translate('header_services', selectedLang),
-            path: '#services'
-          ),
-          (
-            label: LanguageManager.translate('header_contact', selectedLang),
-            path: '#contact'
-          ),
-          (
-            label: LanguageManager.translate('header_careers', selectedLang),
-            path: '#careers'
-          ),
+
+          // Only show anchor links when on home page
+          if (currentPath == '/') ...[
+            (
+              label: LanguageManager.translate('header_services', selectedLang),
+              path: '#services'
+            ),
+            (
+              label: LanguageManager.translate('header_contact', selectedLang),
+              path: '#contact'
+            ),
+            (
+              label: LanguageManager.translate('header_careers', selectedLang),
+              path: '#careers'
+            ),
+          ],
         ])
           div(classes: 'nav-item', [
-            if (route.path == '/about')
+            if (route.path == '/about' || route.path == '/')
               Link(
                 to: route.path,
                 children: [text(route.label)],

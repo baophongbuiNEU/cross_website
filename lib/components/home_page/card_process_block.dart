@@ -1,4 +1,3 @@
-import 'package:cross_website/components/common/size_box_component.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
 
@@ -42,15 +41,15 @@ class CardProcessBlockState extends State<CardProcessBlock> {
         [
           div(
               styles: Styles(
-                  display: Display.flex,
-                  flexDirection: FlexDirection.row,
-                  // justifyContent: JustifyContent.spaceBetween,
-                  alignItems: AlignItems.center),
+                display: Display.flex,
+                alignItems: AlignItems.center,
+                justifyContent: JustifyContent.spaceBetween,
+                width: 100.percent,
+              ),
               [
                 div(classes: 'card_process_index', [
                   Text(component.index),
                 ]),
-                SizeBoxComponent(width: 25),
                 div(classes: 'card_process_title', [
                   Text(component.title),
                 ]),
@@ -73,7 +72,7 @@ class CardProcessBlockState extends State<CardProcessBlock> {
   }
 
   Component _iconShowMore() {
-    return div(classes: 'icon-show-more', [Text(_isShowMoore ? "-" : "+")]);
+    return div(classes: 'icon-show-more', [text(_isShowMoore ? "-" : "+")]);
   }
 
   Component _line() {
@@ -89,30 +88,38 @@ class CardProcessBlockState extends State<CardProcessBlock> {
 
   @css
   static List<StyleRule> get style => [
-        css('.card_process_title', [
-          css('&').styles(
-              display: Display.flex,
-              width: 100.percent,
-              color: AppColors.primaryColor,
-              fontSize: 30.px,
-              fontWeight: FontWeight.w600),
-        ]),
+// số thứ tự
         css('.card_process_index').styles(
-            width: 10.percent,
-            color: AppColors.primaryColor,
-            fontSize: 60.px,
-            fontWeight: FontWeight.w600),
+          fontSize: 60.px,
+          fontWeight: FontWeight.w600,
+          flex: Flex(shrink: 0),
+          color: AppColors.primaryColor,
+        ),
+
+// tiêu đề
+        css('.card_process_title').styles(
+          fontSize: 30.px,
+          fontWeight: FontWeight.w600,
+          color: AppColors.primaryColor,
+          flex: Flex(grow: 1), // chiếm phần còn lại
+        ),
+
+// nút “+”
         css('.icon-show-more').styles(
           width: 58.px,
           height: 58.px,
           radius: BorderRadius.circular(50.px),
+          display: Display.flex,
           justifyContent: JustifyContent.center,
           alignItems: AlignItems.center,
-          color: AppColors.primaryColor,
           fontSize: 36.px,
           fontWeight: FontWeight.w600,
+          color: AppColors.primaryColor,
           backgroundColor: Colors.white,
+          margin: Spacing.only(left: Unit.auto),
+          flex: Flex(shrink: 0),
         ),
+
         css.media(MediaQuery.screen(maxWidth: 1000.px), [
           css('.card_process_title', [
             css('&').styles(
