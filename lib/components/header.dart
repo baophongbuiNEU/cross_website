@@ -342,7 +342,6 @@ class HeaderState extends State<Header> {
             fontSize: 18.px,
             fontWeight: FontWeight.w400,
             backgroundColor: Colors.transparent,
-            raw: {'-webkit-appearance': 'none', '-moz-appearance': 'none'},
           ),
         ]),
       ];

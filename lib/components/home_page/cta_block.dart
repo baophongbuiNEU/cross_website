@@ -89,7 +89,7 @@ class CtaBlock extends StatelessComponent {
         css('.cta_text', [
           css('&').styles(
             display: Display.flex,
-            width: 40.percent,
+            width: 50.percent,
             padding: Spacing.all(60.px),
             flexDirection: FlexDirection.column,
           ),
@@ -110,14 +110,14 @@ class CtaBlock extends StatelessComponent {
           ]),
           css('.cta_text', [
             css('&').styles(
-              width: 80.percent,
+              width: 100.percent,
               alignItems: AlignItems.center,
               textAlign: TextAlign.center,
             ),
           ]),
           css('.cta_image', [
             css('&').styles(
-              width: 80.percent,
+              width: 100.percent,
               margin: Spacing.only(bottom: 20.px),
             ),
           ]),

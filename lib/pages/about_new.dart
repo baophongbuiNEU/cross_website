@@ -145,17 +145,15 @@ class AboutNew extends StatefulComponent {
           fontSize: 18.px,
         ),
 
-        css('.space-y').styles(
-          raw: {
-            '> * + *': 'margin-top: 1.5rem',
-          },
+        css('.space-y > * + *').styles(
+          margin: Spacing.only(top: 1.5.rem),
         ),
 
         // Image Styles
         css('.image-container').styles(
           position: Position.relative(),
-          height: 400.px,
           width: 100.percent,
+          height: 400.px,
         ),
 
         css('.team-image, .culture-image').styles(
@@ -169,18 +167,14 @@ class AboutNew extends StatefulComponent {
         ),
 
         css('.image-overlay').styles(
-          height: 400.px,
-          width: 100.percent,
           position: Position.absolute(
-            top: 0.px,
-            left: 0.px,
-            right: 0.px,
-            bottom: 0.px,
-          ),
+              top: 0.px, left: 0.px, right: 0.px, bottom: 0.px),
+          width: 100.percent,
+          height: 400.px,
           radius: BorderRadius.circular(16.px),
           raw: {
             'background':
-                'linear-gradient(135deg, rgba(53, 218, 255, 0.2), rgba(59, 130, 246, 0.2))',
+                'linear-gradient(135deg, rgba(53, 218, 255, 0.2), rgba(59, 130, 246, 0.2))'
           },
         ),
 
@@ -518,22 +512,6 @@ class AboutNew extends StatefulComponent {
           textAlign: TextAlign.center,
         ),
 
-        // Animations
-        css('@keyframes fadeInUp', [
-          css('from').styles(
-            opacity: 0,
-            raw: {
-              'transform': 'translateY(30px)',
-            },
-          ),
-          css('to').styles(
-            opacity: 1,
-            raw: {
-              'transform': 'translateY(0)',
-            },
-          ),
-        ]),
-
         // Responsive Design
         css.media(MediaQuery.screen(maxWidth: 768.px), [
           css('.nav').styles(
@@ -578,7 +556,6 @@ class _AboutNewState extends State<AboutNew> {
   Iterable<Component> build(BuildContext context) sync* {
     final selectedLang =
         context.watch(LanguageManager.selectedLanguageProvider);
-
     yield div(classes: 'about-new-page', [
       // Hero Section
       _buildHeroSection(),

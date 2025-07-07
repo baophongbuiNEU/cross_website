@@ -39,10 +39,14 @@ class HeaderHomePage extends StatelessComponent {
                 'header_home_page_button', selectedLang),
           ),
         ]),
-        img(
-          id: 'primary_image',
-          src: 'images/demo_primary_image.png',
-        ),
+        // img(
+        //   id: 'primary_image',
+        //   src: 'images/demo_primary_image.png',
+        // ),
+        iframe([],
+            classes: 'primary_image',
+            src:
+                "https://lottie.host/embed/3a7f8b85-040f-422b-a652-b0cb1561e655/AnFjBAGkJL.lottie")
       ]),
     ]);
   }
@@ -71,7 +75,7 @@ class HeaderHomePage extends StatelessComponent {
         css('.text-header-web', [
           css('&').styles(
             display: Display.flex,
-            width: 40.percent,
+            width: 45.percent,
             flexDirection: FlexDirection.column,
           ),
         ]),
@@ -93,15 +97,16 @@ class HeaderHomePage extends StatelessComponent {
             fontWeight: FontWeight.w400,
           ),
         ]),
-        css('#primary_image').styles(
-          width: 550.px,
+        css('.primary_image').styles(
+          border: Border(style: BorderStyle.none),
+          width: 50.percent,
+          height: 700.px,
         ),
         css.media(
             MediaQuery.screen(maxWidth: HeaderState.mobileBreakpoint.px), [
           css('.header-web-padding').styles(
-            padding: Padding.symmetric(
-              horizontal: 0.percent,
-            ),
+            padding: Padding.only(
+                left: 0.percent, right: 0.percent, bottom: 0.percent),
             flexDirection: FlexDirection.column,
             justifyContent: JustifyContent.center,
             alignItems: AlignItems.center,
@@ -135,11 +140,9 @@ class HeaderHomePage extends StatelessComponent {
               fontWeight: FontWeight.w400,
             ),
           ]),
-          css('#primary_image').styles(
-            width: 350.px,
-            margin: Spacing.only(
-              top: 30.px,
-            ),
+          css('.primary_image').styles(
+            width: 100.percent,
+            height: 500.px,
           ),
           css.media(MediaQuery.screen(maxWidth: 1000.px), [
             css('.header-web', [

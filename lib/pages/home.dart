@@ -103,4 +103,7 @@ class HomeState extends State<Home> {
           FooterBlock(),
         ]);
   }
+
+  @css
+  static List<StyleRule> get styles => [];
 }

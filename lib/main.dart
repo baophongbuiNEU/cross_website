@@ -32,6 +32,15 @@ void main() async {
       link(rel: 'manifest', href: 'manifest.json'),
       script(src: "flutter_bootstrap.js", async: true, []),
       link(href: 'images/x_cross.png', rel: 'icon', type: 'image/png'),
+      script(
+          src:
+              "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js",
+          []),
+      script(
+          src:
+              "https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs",
+          attributes: {'type': 'module'},
+          []),
     ],
     body: App(),
   ));
