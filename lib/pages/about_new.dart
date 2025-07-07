@@ -1,4 +1,5 @@
 import 'package:cross_website/components/common/custom_grid.dart';
+import 'package:cross_website/components/header.dart';
 import 'package:cross_website/components/home_page/footer_block.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:jaspr/jaspr.dart';
@@ -71,9 +72,7 @@ class AboutNew extends StatefulComponent {
             'font-size': 'clamp(2.5rem, 5vw, 4rem)',
             'background':
                 'linear-gradient(135deg, var(--primary-cyan), var(--primary-blue), var(--primary-purple))',
-            '-webkit-background-clip': 'text',
             'background-clip': 'text',
-            '-webkit-text-fill-color': 'transparent'
           },
         ),
 
@@ -557,6 +556,7 @@ class _AboutNewState extends State<AboutNew> {
     final selectedLang =
         context.watch(LanguageManager.selectedLanguageProvider);
     yield div(classes: 'about-new-page', [
+      const Header(),
       // Hero Section
       _buildHeroSection(),
 

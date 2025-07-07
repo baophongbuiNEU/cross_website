@@ -9,7 +9,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 import 'package:http/http.dart' as http;
 
-@client
+// @client
 class ContactUsBlock extends StatefulComponent {
   const ContactUsBlock({super.key});
 
