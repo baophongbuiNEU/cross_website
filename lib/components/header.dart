@@ -51,18 +51,18 @@ class HeaderState extends State<Header> {
     });
   }
 
-  static String getFlagEmoji(String langCode) {
+  static String getFlagAsset(String langCode) {
     switch (langCode) {
       case 'en':
-        return '🇺🇸';
+        return 'images/flags/us.svg';
       case 'vi':
-        return '🇻🇳';
+        return 'images/flags/vn.svg';
       case 'ja':
-        return '🇯🇵';
+        return 'images/flags/jp.svg';
       case 'ko':
-        return '🇰🇷';
+        return 'images/flags/kr.svg';
       default:
-        return '🏳️';
+        return 'images/flags/default.svg';
     }
   }
 
@@ -76,39 +76,73 @@ class HeaderState extends State<Header> {
     if (currentHash.isNotEmpty && kIsWeb) {
       scheduleMicrotask(() {});
     }
+    void closeMenu() {
+      if (menuOpen) {
+        setState(() {
+          menuOpen = false;
+        });
+      }
+    } // Get current path without query parameters or fragments
+
+    void scrollToMeet(String destination) {
+      var el = web.document.querySelector(destination) as web.HTMLElement;
+      web.window
+          .scrollTo(web.ScrollToOptions(top: el.offsetTop, behavior: 'smooth'));
+      closeMenu();
+    }
+
+    final currentPath = Uri.parse(currentUrl).path;
 
     var content = Fragment(key: contentKey, children: [
       nav(classes: 'nav-menu', [
         for (var route in [
+          if (currentPath != '/') ...[
+            (
+              label: LanguageManager.translate('header_home', selectedLang),
+              path: '/'
+            ),
+          ],
           (
             label: LanguageManager.translate('header_about', selectedLang),
             path: '/about'
           ),
-          (
-            label: LanguageManager.translate('header_services', selectedLang),
-            path: '/#services'
-          ),
-          (
-            label: LanguageManager.translate('header_contact', selectedLang),
-            path: '/#contact'
-          ),
-          (
-            label: LanguageManager.translate('header_careers', selectedLang),
-            path: '/#careers'
-          ),
+
+          // Only show anchor links when on home page
+          if (currentPath == '/') ...[
+            (
+              label: LanguageManager.translate('header_services', selectedLang),
+              path: '#services'
+            ),
+            (
+              label: LanguageManager.translate('header_contact', selectedLang),
+              path: '#contact'
+            ),
+            (
+              label: LanguageManager.translate('header_careers', selectedLang),
+              path: '#careers'
+            ),
+          ],
         ])
-          div([
-            if (route.path == '/about')
+          div(classes: 'nav-item', [
+            if (route.path == '/about' || route.path == '/')
               Link(
                 to: route.path,
-                children: [text(route.label)],
+                child: text(route.label),
               )
             else
-              a(href: route.path, events: {
-                'click': (event) {},
-              }, [
-                text(route.label)
-              ]),
+              div(
+                  styles: Styles(
+                      cursor: Cursor.pointer,
+                      textDecoration: TextDecoration.none),
+                  events: {
+                    'click': (event) {
+                      scrollToMeet(route.path);
+                      closeMenu();
+                    },
+                  },
+                  [
+                    text(route.label)
+                  ]),
           ]),
         Builder(builder: (context) sync* {
           final selectedLang =
@@ -128,7 +162,15 @@ class HeaderState extends State<Header> {
                   styles: Styles(
                     fontSize: 30.px,
                   ),
-                  [text(getFlagEmoji(selectedLang))],
+                  [
+                    img(
+                      src: getFlagAsset(selectedLang),
+                      styles: Styles(
+                        width: 35.px,
+                        height: 25.px,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -172,7 +214,16 @@ class HeaderState extends State<Header> {
                           margin: Spacing.only(right: 12.px),
                           fontSize: 14.px,
                         ),
-                        [text(getFlagEmoji(lang.key))],
+                        [
+                          img(
+                            src: getFlagAsset(lang.key),
+                            styles: Styles(
+                              width: 20.px,
+                              height: 15.px,
+                              margin: Spacing.only(right: 12.px),
+                            ),
+                          ),
+                        ],
                       ),
                       span(
                         styles: Styles(
@@ -193,18 +244,19 @@ class HeaderState extends State<Header> {
     ]);
 
     yield header([
-      img(
-        src: Images.crossLogo,
-        styles: Styles(
-          width: Unit.pixels(80),
-          height: Unit.pixels(80),
-          padding: Padding.all(.7.rem),
-          margin: Margin.only(left: 5.percent),
-          radius: BorderRadius.circular(8.px),
-          color: AppColors.textBlack,
-          // backgroundColor: AppColors.listLogoBackground,
+      a(href: '/', [
+        img(
+          src: Images.crossLogo,
+          styles: Styles(
+            width: Unit.pixels(120),
+            height: Unit.pixels(120),
+            padding: Padding.all(.7.rem),
+            margin: Margin.only(left: 5.percent),
+            radius: BorderRadius.circular(8.px),
+            color: AppColors.textBlack,
+          ),
         ),
-      ),
+      ]),
       if (!menuOpen) content,
       MenuButton(
         onClick: () {
@@ -218,85 +270,94 @@ class HeaderState extends State<Header> {
   }
 
   @css
-  static final styles = [
-    css.import(
-        "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
-    css('header', [
-      css('&').styles(
-        display: Display.flex,
-        zIndex: ZIndex(1),
-        width: 100.vw,
-        padding: Padding.only(
-          top: 2.rem,
+  static List<StyleRule> get styles => [
+        css.import(
+            "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
+        css('header', [
+          css('&').styles(
+            display: Display.flex,
+            zIndex: ZIndex(1),
+            maxWidth: 100.percent,
+            padding: Padding.only(
+              top: 1.rem,
+              left: 2.rem,
+              right: 2.rem,
+            ),
+            justifyContent: JustifyContent.spaceBetween,
+            alignItems: AlignItems.center,
+          ),
+          css('& > *').styles(
+            display: Display.flex,
+            alignItems: AlignItems.center,
+          ),
+          css('.nav-menu a', [
+            css('&').styles(
+                color: AppColors.textBlack,
+                fontFamily: FontFamily.list(
+                    [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+                fontSize: 20.px,
+                fontWeight: FontWeight.w400,
+                textDecoration: TextDecoration.none),
+          ]),
+          css('.nav-item', [
+            css('&').styles(
+                margin: Margin.symmetric(horizontal: 20.px),
+                color: AppColors.textBlack,
+                fontFamily: FontFamily.list(
+                    [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
+                fontSize: 20.px,
+                fontWeight: FontWeight.w400,
+                textDecoration: TextDecoration.none),
+          ]),
+          css('.nav-menu', [
+            css('&').styles(
+              justifyContent: JustifyContent.center,
+              alignItems: AlignItems.center,
+            ),
+          ]),
+          css('.nav-menu div', [
+            css('&')
+                .styles(display: Display.flex, alignItems: AlignItems.center),
+          ]),
+        ]),
+        css('.theme_toggle').styles(
+          margin: Spacing.only(left: 5.px),
         ),
-        justifyContent: JustifyContent.spaceBetween,
-        alignItems: AlignItems.center,
-      ),
-      css('& > *').styles(
-        display: Display.flex,
-        alignItems: AlignItems.center,
-      ),
-      css('.nav-menu a', [
-        css('&').styles(
-            margin: Margin.symmetric(horizontal: 20.px),
+        css.media(MediaQuery.screen(maxWidth: mobileBreakpoint.px), [
+          css('header', [
+            css('&').styles(
+              display: Display.flex,
+              justifyContent: JustifyContent.spaceBetween,
+            ),
+            css('& > .nav-menu').styles(display: Display.none),
+            css('& > nav').styles(display: Display.none),
+          ]),
+          css('.theme_toggle').styles(
+            margin: Spacing.only(left: 0.px, right: 0.rem),
+          ),
+        ]),
+        css('.language-header', [
+          css('&').styles(
+            display: Display.flex,
+            height: 45.px,
+            padding: Padding.symmetric(horizontal: 10.px),
+            radius: BorderRadius.circular(14.px),
+            alignItems: AlignItems.center,
+          ),
+          css('&:hover').styles(
+            backgroundColor: AppColors.hoverOverlayColor,
+          ),
+          css('select').styles(
+            border: Border.none,
+            cursor: Cursor.pointer,
             color: AppColors.textBlack,
+            textAlign: TextAlign.center,
             fontFamily: FontFamily.list(
                 [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-            fontSize: 20.px,
+            fontSize: 18.px,
             fontWeight: FontWeight.w400,
-            textDecoration: TextDecoration.none),
-      ]),
-      css('.nav-menu', [
-        css('&').styles(
-          justifyContent: JustifyContent.center,
-          alignItems: AlignItems.center,
-        ),
-      ]),
-      css('.nav-menu div', [
-        css('&').styles(display: Display.flex, alignItems: AlignItems.center),
-      ]),
-    ]),
-    css('.theme_toggle').styles(
-      margin: Spacing.only(left: 5.px, right: 2.rem),
-    ),
-    css.media(MediaQuery.screen(maxWidth: mobileBreakpoint.px), [
-      css('header', [
-        css('&').styles(
-          display: Display.flex,
-          width: 100.vw,
-          justifyContent: JustifyContent.spaceBetween,
-        ),
-        css('& > .nav-menu').styles(display: Display.none),
-        css('& > nav').styles(display: Display.none),
-      ]),
-      css('.theme_toggle').styles(
-        margin: Spacing.only(left: 0.px, right: 0.rem),
-      ),
-    ]),
-    css('.language-header', [
-      css('&').styles(
-        display: Display.flex,
-        height: 45.px,
-        padding: Padding.symmetric(horizontal: 10.px),
-        // border: Border(color: AppColors.textBlack, width: 1.px),
-        radius: BorderRadius.circular(14.px),
-        alignItems: AlignItems.center,
-      ),
-      css('&:hover').styles(
-        backgroundColor: AppColors.hoverOverlayColor,
-      ),
-      css('select').styles(
-        border: Border.none,
-        cursor: Cursor.pointer,
-        color: AppColors.textBlack,
-        textAlign: TextAlign.center,
-        fontFamily: FontFamily.list(
-            [FontFamily("Space Grotesk"), FontFamilies.andaleMono]),
-        fontSize: 18.px,
-        fontWeight: FontWeight.w400,
-        backgroundColor: Colors.transparent,
-        raw: {'-webkit-appearance': 'none', '-moz-appearance': 'none'},
-      ),
-    ]),
-  ];
+            backgroundColor: Colors.transparent,
+          ),
+        ]),
+      ];
 }

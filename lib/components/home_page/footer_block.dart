@@ -13,15 +13,19 @@ class FooterBlock extends StatelessComponent {
     final selectedLang =
         context.watch(LanguageManager.selectedLanguageProvider);
 
-    yield div(styles: Styles(width: 100.vw), [
-      div(classes: 'footer_block', [
-        _header(selectedLang),
-        SizeBoxComponent(height: 20),
-        _body(selectedLang),
-        SizeBoxComponent(height: 20),
-        _footer(selectedLang),
-      ]),
-    ]);
+    yield div(
+        styles: Styles(
+          maxWidth: 100.percent,
+        ),
+        [
+          div(classes: 'footer_block', [
+            _header(selectedLang),
+            SizeBoxComponent(height: 20),
+            _body(selectedLang),
+            SizeBoxComponent(height: 20),
+            _footer(selectedLang),
+          ]),
+        ]);
   }
 
   Component _header(String lang) {
@@ -199,121 +203,122 @@ class FooterBlock extends StatelessComponent {
   }
 
   @css
-  static final style = [
-    css('.footer_block', [
-      css('&').styles(
-          display: Display.flex,
-          padding: Padding.symmetric(horizontal: 5.percent, vertical: 50.px),
-          margin: Margin.symmetric(horizontal: 5.percent),
-          radius: BorderRadius.only(
-              topLeft: Radius.circular(45.px),
-              topRight: Radius.circular(45.px)),
-          flexDirection: FlexDirection.column,
-          justifyContent: JustifyContent.spaceBetween,
-          backgroundColor: AppColors.primaryColor)
-    ]),
-    css('.footer_header', [
-      css('&').styles(
-        display: Display.flex,
-        margin: Spacing.only(bottom: 20.px),
-        flexDirection: FlexDirection.row,
-        justifyContent: JustifyContent.spaceBetween,
-        alignItems: AlignItems.center,
-      ),
-    ]),
-    css('.footer_body', [
-      css('&').styles(
-        display: Display.flex,
-        flexDirection: FlexDirection.row,
-        justifyContent: JustifyContent.spaceBetween,
-        alignItems: AlignItems.start,
-      ),
-    ]),
-    css('.footer_content_us', [
-      css('&').styles(
-          display: Display.flex,
-          width: 30.percent,
-          height: 100.percent,
-          flexDirection: FlexDirection.column,
-          justifyContent: JustifyContent.spaceBetween,
-          color: Colors.white,
-          fontSize: 18.px,
-          fontWeight: FontWeight.w400)
-    ]),
-    css('.footer_map', [
-      css('&').styles(
-        display: Display.flex,
-        width: 65.percent,
-        height: 230.px,
-        padding: Padding.all(0.px),
-        radius: BorderRadius.circular(14.px),
-        overflow: Overflow.hidden,
-        justifyContent: JustifyContent.center,
-        alignItems: AlignItems.center,
-        backgroundColor: AppColors.background292A32,
-      ),
-      css('.map').styles(
-        width: 100.percent,
-        height: 100.percent,
-        radius: BorderRadius.circular(14.px),
-        overflow: Overflow.hidden,
-      ),
-    ]),
-    css.media(MediaQuery.screen(maxWidth: 1000.px), [
-      css('.footer_block', [
-        css('&').styles(
-            flexDirection: FlexDirection.column,
+  static List<StyleRule> get style => [
+        css('.footer_block', [
+          css('&').styles(
+              display: Display.flex,
+              padding:
+                  Padding.symmetric(horizontal: 5.percent, vertical: 50.px),
+              margin: Margin.symmetric(horizontal: 5.percent),
+              radius: BorderRadius.only(
+                  topLeft: Radius.circular(45.px),
+                  topRight: Radius.circular(45.px)),
+              flexDirection: FlexDirection.column,
+              justifyContent: JustifyContent.spaceBetween,
+              backgroundColor: AppColors.primaryColor)
+        ]),
+        css('.footer_header', [
+          css('&').styles(
+            display: Display.flex,
+            margin: Spacing.only(bottom: 20.px),
+            flexDirection: FlexDirection.row,
             justifyContent: JustifyContent.spaceBetween,
-            backgroundColor: AppColors.primaryColor)
-      ]),
-      css('.footer_header', [
-        css('&').styles(
-          flexDirection: FlexDirection.column,
-          gap: Gap.all(20.px),
-          textAlign: TextAlign.center,
-        ),
-      ]),
-      css('.footer_body', [
-        css('&').styles(
-          width: 100.percent,
-          flexDirection: FlexDirection.column,
-          justifyContent: JustifyContent.spaceBetween,
-          alignItems: AlignItems.center,
-        ),
-      ]),
-      css('.footer_content_us', [
-        css('&').styles(
-          width: 100.percent,
-          alignItems: AlignItems.center,
-          textAlign: TextAlign.center,
-        ),
-      ]),
-      css('.footer_map', [
-        css('&').styles(
-          width: 100.percent,
-          height: 200.px,
-          padding: Padding.all(0.px),
-          margin: Spacing.symmetric(vertical: 20.px),
-        ),
-      ]),
-      css('.map').styles(
-        width: 100.percent,
-        height: 100.percent,
-      ),
-    ]),
-    css.media(MediaQuery.screen(maxWidth: 600.px), [
-      css('.footer_map', [
-        css('&').styles(
-          width: 100.percent,
-          height: 180.px,
-          padding: Padding.all(0.px),
-          margin: Spacing.symmetric(vertical: 10.px),
-        ),
-      ]),
-      css('.map').styles(
-        width: 100.percent,
-        height: 100.percent,
-      ),
-    ]),
-  ];
+            alignItems: AlignItems.center,
+          ),
+        ]),
+        css('.footer_body', [
+          css('&').styles(
+            display: Display.flex,
+            flexDirection: FlexDirection.row,
+            justifyContent: JustifyContent.spaceBetween,
+            alignItems: AlignItems.start,
+          ),
+        ]),
+        css('.footer_content_us', [
+          css('&').styles(
+              display: Display.flex,
+              width: 30.percent,
+              height: 100.percent,
+              flexDirection: FlexDirection.column,
+              justifyContent: JustifyContent.spaceBetween,
+              color: Colors.white,
+              fontSize: 18.px,
+              fontWeight: FontWeight.w400)
+        ]),
+        css('.footer_map', [
+          css('&').styles(
+            display: Display.flex,
+            width: 65.percent,
+            height: 230.px,
+            padding: Padding.all(0.px),
+            radius: BorderRadius.circular(14.px),
+            overflow: Overflow.hidden,
+            justifyContent: JustifyContent.center,
+            alignItems: AlignItems.center,
+            backgroundColor: AppColors.background292A32,
+          ),
+          css('.map').styles(
+            width: 100.percent,
+            height: 100.percent,
+            radius: BorderRadius.circular(14.px),
+            overflow: Overflow.hidden,
+          ),
+        ]),
+        css.media(MediaQuery.screen(maxWidth: 1000.px), [
+          css('.footer_block', [
+            css('&').styles(
+                flexDirection: FlexDirection.column,
+                justifyContent: JustifyContent.spaceBetween,
+                backgroundColor: AppColors.primaryColor)
+          ]),
+          css('.footer_header', [
+            css('&').styles(
+              flexDirection: FlexDirection.column,
+              gap: Gap.all(20.px),
+              textAlign: TextAlign.center,
+            ),
+          ]),
+          css('.footer_body', [
+            css('&').styles(
+              width: 100.percent,
+              flexDirection: FlexDirection.column,
+              justifyContent: JustifyContent.spaceBetween,
+              alignItems: AlignItems.center,
+            ),
+          ]),
+          css('.footer_content_us', [
+            css('&').styles(
+              width: 100.percent,
+              alignItems: AlignItems.center,
+              textAlign: TextAlign.center,
+            ),
+          ]),
+          css('.footer_map', [
+            css('&').styles(
+              width: 100.percent,
+              height: 200.px,
+              padding: Padding.all(0.px),
+              margin: Spacing.symmetric(vertical: 20.px),
+            ),
+          ]),
+          css('.map').styles(
+            width: 100.percent,
+            height: 100.percent,
+          ),
+        ]),
+        css.media(MediaQuery.screen(maxWidth: 600.px), [
+          css('.footer_map', [
+            css('&').styles(
+              width: 100.percent,
+              height: 180.px,
+              padding: Padding.all(0.px),
+              margin: Spacing.symmetric(vertical: 10.px),
+            ),
+          ]),
+          css('.map').styles(
+            width: 100.percent,
+            height: 100.percent,
+          ),
+        ]),
+      ];
 }

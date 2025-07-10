@@ -66,6 +66,7 @@ class ItemServices extends StatelessComponent {
             div(
                 styles: Styles(
                     display: Display.flex,
+                    width: 230.px,
                     flexDirection: FlexDirection.row,
                     alignItems: AlignItems.center),
                 [
@@ -99,53 +100,53 @@ class ItemServices extends StatelessComponent {
   }
 
   @css
-  static final styles = [
-    css('.service_content', [
-      css('&').styles(
-          display: Display.flex,
-          width: 45.percent,
-          flexDirection: FlexDirection.column,
-          justifyContent: JustifyContent.spaceBetween),
-    ]),
-    css('.service_word', [
-      css('&').styles(
-        display: Display.flex,
-        width: 230.px,
-        padding: Padding.symmetric(horizontal: 10.px),
-        radius: BorderRadius.circular(8.px),
-        flexWrap: FlexWrap.wrap,
-        textAlign: TextAlign.start,
-      )
-    ]),
-    css.media(MediaQuery.screen(maxWidth: 1254.px), [
-      css('.service_word', [
-        css('&').styles(
-          width: 100.percent,
-        )
-      ]),
-    ]),
-    css.media(MediaQuery.screen(maxWidth: 600.px), [
-      css('.service_content', [
-        css('&').styles(
-          width: 100.percent,
-          alignItems: AlignItems.center,
-        ),
-      ]),
-      css('.service_word', [
-        css('&').styles(
-          width: 100.percent,
-          justifyContent: JustifyContent.center,
-          alignItems: AlignItems.center,
-          textAlign: TextAlign.center,
-        )
-      ]),
-      css('.service_image', [
-        css('&').styles(
-          display: Display.none,
-          width: 0.px,
-          height: 0.px,
-        )
-      ])
-    ]),
-  ];
+  static List<StyleRule> get styles => [
+        css('.service_content', [
+          css('&').styles(
+              display: Display.flex,
+              width: 45.percent,
+              flexDirection: FlexDirection.column,
+              justifyContent: JustifyContent.spaceBetween),
+        ]),
+        css('.service_word', [
+          css('&').styles(
+            display: Display.flex,
+            width: 230.px,
+            padding: Padding.symmetric(horizontal: 10.px),
+            radius: BorderRadius.circular(8.px),
+            flexWrap: FlexWrap.wrap,
+            textAlign: TextAlign.start,
+          )
+        ]),
+        css.media(MediaQuery.screen(maxWidth: 1254.px), [
+          css('.service_word', [
+            css('&').styles(
+              width: 100.percent,
+            )
+          ]),
+        ]),
+        css.media(MediaQuery.screen(maxWidth: 600.px), [
+          css('.service_content', [
+            css('&').styles(
+              width: 100.percent,
+              alignItems: AlignItems.center,
+            ),
+          ]),
+          css('.service_word', [
+            css('&').styles(
+              width: 100.percent,
+              justifyContent: JustifyContent.center,
+              alignItems: AlignItems.center,
+              textAlign: TextAlign.center,
+            )
+          ]),
+          css('.service_image', [
+            css('&').styles(
+              display: Display.none,
+              width: 0.px,
+              height: 0.px,
+            )
+          ])
+        ]),
+      ];
 }
