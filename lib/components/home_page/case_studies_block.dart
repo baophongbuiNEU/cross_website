@@ -71,7 +71,7 @@ class CaseStudiesBlock extends StatelessComponent {
                 ],
               ),
               SizeBoxComponent(width: 15),
-              img(src: Images.learnMoreGreenIcon, width: 18, height: 18),
+              img(src: Images.learnMoreBlueIcon, width: 25, height: 25),
             ],
           ),
           SizeBoxComponent(height: 20),
@@ -85,41 +85,41 @@ class CaseStudiesBlock extends StatelessComponent {
   }
 
   @css
-  static final style = [
-    css('.case_studies_block', [
-      css('&').styles(
-        width: 100.vw,
-        justifyContent: JustifyContent.center,
-        alignItems: AlignItems.center,
-        alignSelf: AlignSelf.center,
-      ),
-    ]),
-    css('.inner_block', [
-      css('&').styles(
-        display: Display.flex,
-        padding: Padding.symmetric(horizontal: 60.px, vertical: 70.px),
-        margin: Spacing.symmetric(horizontal: 5.percent),
-        radius: BorderRadius.circular(45.px),
-        flexDirection: FlexDirection.row,
-        justifyContent: JustifyContent.spaceBetween,
-        backgroundColor: AppColors.textBlack,
-      ),
-    ]),
-    css('.line', [
-      css('&').styles(
-        width: 1.px,
-        margin: Margin.symmetric(horizontal: 64.px),
-        radius: BorderRadius.circular(2.px),
-        backgroundColor: AppColors.white,
-      ),
-    ]),
-    css.media(MediaQuery.screen(maxWidth: 1000.px), [
-      css('.inner_block', [
-        css('&').styles(
-          display: Display.flex,
-          flexDirection: FlexDirection.column,
-        ),
-      ]),
-    ]),
-  ];
+  static List<StyleRule> get style => [
+        css('.case_studies_block', [
+          css('&').styles(
+            maxWidth: 100.percent,
+            justifyContent: JustifyContent.center,
+            alignItems: AlignItems.center,
+            alignSelf: AlignSelf.center,
+          ),
+        ]),
+        css('.inner_block', [
+          css('&').styles(
+            display: Display.flex,
+            padding: Padding.symmetric(horizontal: 60.px, vertical: 70.px),
+            margin: Spacing.symmetric(horizontal: 5.percent),
+            radius: BorderRadius.circular(45.px),
+            flexDirection: FlexDirection.row,
+            justifyContent: JustifyContent.spaceBetween,
+            backgroundColor: AppColors.textBlack,
+          ),
+        ]),
+        css('.line', [
+          css('&').styles(
+            width: 1.px,
+            margin: Margin.symmetric(horizontal: 64.px),
+            radius: BorderRadius.circular(2.px),
+            backgroundColor: AppColors.white,
+          ),
+        ]),
+        css.media(MediaQuery.screen(maxWidth: 1000.px), [
+          css('.inner_block', [
+            css('&').styles(
+              display: Display.flex,
+              flexDirection: FlexDirection.column,
+            ),
+          ]),
+        ]),
+      ];
 }

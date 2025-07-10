@@ -34,7 +34,7 @@ class CustomGrid extends StatelessComponent {
         ),
         css('& > *').styles(
           boxSizing: BoxSizing.borderBox,
-          flex: Flex(grow: 1, shrink: 0, basis: FlexBasis(15.rem)),
+          flex: Flex(grow: 1, shrink: 0, basis: Unit.rem(15)),
         ),
       ]),
     ]),

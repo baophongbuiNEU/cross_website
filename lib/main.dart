@@ -9,7 +9,7 @@ void main() async {
   );
 
   runApp(Document(
-    title: 'my_website',
+    title: 'Cross Website',
     styles: [
       css.import(
           "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"),
@@ -17,12 +17,10 @@ void main() async {
       css('html, body').styles(
         width: 100.percent,
         minHeight: 100.vh,
-        maxWidth: 100.vw,
         padding: Padding.zero,
         margin: Margin.zero,
-        boxSizing: BoxSizing.borderBox,
         fontFamily: const FontFamily.list(
-            [FontFamily('Space Grotesk'), FontFamilies.sansSerif]),
+            [FontFamily('Space Grotesk'), FontFamilies.andaleMono]),
       ),
       css('h1').styles(
         margin: Margin.unset,
@@ -34,6 +32,15 @@ void main() async {
       link(rel: 'manifest', href: 'manifest.json'),
       script(src: "flutter_bootstrap.js", async: true, []),
       link(href: 'images/x_cross.png', rel: 'icon', type: 'image/png'),
+      script(
+          src:
+              "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js",
+          []),
+      script(
+          src:
+              "https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs",
+          attributes: {'type': 'module'},
+          []),
     ],
     body: App(),
   ));

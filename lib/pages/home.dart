@@ -1,5 +1,6 @@
 import 'package:cross_website/components/common/size_box_component.dart';
 import 'package:cross_website/components/common/title_icon_home.dart';
+import 'package:cross_website/components/header.dart';
 import 'package:cross_website/components/home_page/case_studies_block.dart';
 import 'package:cross_website/components/home_page/contact_us_block.dart';
 import 'package:cross_website/components/home_page/cta_block.dart';
@@ -45,53 +46,63 @@ class HomeState extends State<Home> {
     final selectedLang =
         context.watch(LanguageManager.selectedLanguageProvider);
 
-    yield div([
-      HeaderHomePage(),
-      ListLogo(),
-      div(id: 'services', [
-        TitleIconHome(
-          title: LanguageManager.translate('home_service_title', selectedLang),
-          content:
-              LanguageManager.translate('home_service_content', selectedLang),
+    yield div(
+        styles: Styles(
+          raw: {
+            'background': 'var(--gradientBackground)',
+          },
         ),
-        OurService(),
-      ]),
-      CtaBlock(),
-      div(id: 'case-studies', [
-        TitleIconHome(
-          title: LanguageManager.translate(
-              'home_case_studies_title', selectedLang),
-          content: LanguageManager.translate(
-              'home_case_studies_content', selectedLang),
-        ),
-        CaseStudiesBlock(),
-      ]),
-      div(id: 'process', [
-        TitleIconHome(
-          title: LanguageManager.translate('home_process_title', selectedLang),
-          content:
-              LanguageManager.translate('home_process_content', selectedLang),
-        ),
-        ProcessBlock(),
-      ]),
-      div(id: 'careers', [
-        TitleIconHome(
-          title: LanguageManager.translate('home_team_title', selectedLang),
-          content: LanguageManager.translate('home_team_content', selectedLang),
-        ),
-        GroupOfCard(),
-      ]),
-      div(id: 'contact', [
-        TitleIconHome(
-          title:
-              LanguageManager.translate('home_contact_us_title', selectedLang),
-          content: LanguageManager.translate(
-              'home_contact_us_content', selectedLang),
-        ),
-        ContactUsBlock(),
-      ]),
-      SizeBoxComponent(height: 140),
-      FooterBlock(),
-    ]);
+        [
+          Header(),
+          HeaderHomePage(),
+          ListLogo(),
+          div(id: 'services', [
+            TitleIconHome(
+              title:
+                  LanguageManager.translate('home_service_title', selectedLang),
+              content: LanguageManager.translate(
+                  'home_service_content', selectedLang),
+            ),
+            OurService(),
+          ]),
+          CtaBlock(),
+          div(id: 'case-studies', [
+            TitleIconHome(
+              title: LanguageManager.translate(
+                  'home_case_studies_title', selectedLang),
+              content: LanguageManager.translate(
+                  'home_case_studies_content', selectedLang),
+            ),
+            CaseStudiesBlock(),
+          ]),
+          div(id: 'process', [
+            TitleIconHome(
+              title:
+                  LanguageManager.translate('home_process_title', selectedLang),
+              content: LanguageManager.translate(
+                  'home_process_content', selectedLang),
+            ),
+            ProcessBlock(),
+          ]),
+          div(id: 'careers', [
+            TitleIconHome(
+              title: LanguageManager.translate('home_team_title', selectedLang),
+              content:
+                  LanguageManager.translate('home_team_content', selectedLang),
+            ),
+            GroupOfCard(),
+          ]),
+          div(id: 'contact', [
+            TitleIconHome(
+              title: LanguageManager.translate(
+                  'home_contact_us_title', selectedLang),
+              content: LanguageManager.translate(
+                  'home_contact_us_content', selectedLang),
+            ),
+            ContactUsBlock(),
+          ]),
+          SizeBoxComponent(height: 140),
+          FooterBlock(),
+        ]);
   }
 }

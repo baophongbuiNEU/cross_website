@@ -1,12 +1,12 @@
-import 'package:cross_website/components/header.dart';
 import 'package:cross_website/constants/app_colors.dart';
 import 'package:cross_website/language/language_manager.dart';
+import 'package:cross_website/pages/loading_screen.dart';
 import 'package:cross_website/pages/not_found_page.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
-import 'pages/about.dart';
+import 'pages/about_new.dart';
 import 'pages/home.dart';
 
 @client
@@ -47,17 +47,7 @@ class AppState extends State<App> {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     if (_isLoading) {
-      yield div(
-          classes: 'main',
-          styles: Styles(
-            display: Display.flex,
-            height: 100.vh,
-            justifyContent: JustifyContent.center,
-            alignItems: AlignItems.center,
-            backgroundColor: Colors.white,
-          ),
-          // TODO(tung): change to loading indicator / animation
-          [text('Loading...')]);
+      yield LoadingScreen();
     } else if (_hasError) {
       yield div(classes: 'main', [text('Error loading translations')]);
     } else {
@@ -69,7 +59,7 @@ class AppState extends State<App> {
                 path: '/',
                 title: 'Home',
                 builder: (context, state) => div(classes: 'main', [
-                  Header(),
+                  // Header(),
                   const Home(),
                 ]),
               ),
@@ -77,8 +67,8 @@ class AppState extends State<App> {
                 path: '/about',
                 title: 'About',
                 builder: (context, state) => div(classes: 'main', [
-                  Header(),
-                  const About(),
+                  // Header(),
+                  const AboutNew(),
                 ]),
               ),
               Route(
@@ -99,26 +89,26 @@ class AppState extends State<App> {
   }
 
   @css
-  static final styles = [
-    css('.main', [
-      css('&').styles(
-        display: Display.flex,
-        width: 100.percent,
-        maxWidth: 100.vw,
-        boxSizing: BoxSizing.borderBox,
-        overflow: Overflow.hidden,
-        flexDirection: FlexDirection.column,
-        flexWrap: FlexWrap.wrap,
-        justifyContent: JustifyContent.center,
-        backgroundColor: AppColors.backgroundTheme,
-      ),
-      css('section').styles(
-        display: Display.flex,
-        flexDirection: FlexDirection.column,
-        justifyContent: JustifyContent.center,
-        alignItems: AlignItems.center,
-        flex: Flex(grow: 1),
-      ),
-    ]),
-  ];
+  static List<StyleRule> get styles => [
+        css('.main', [
+          css('&').styles(
+            display: Display.flex,
+            width: 100.percent,
+            maxWidth: 100.vw,
+            boxSizing: BoxSizing.borderBox,
+            overflow: Overflow.hidden,
+            flexDirection: FlexDirection.column,
+            flexWrap: FlexWrap.wrap,
+            justifyContent: JustifyContent.center,
+            backgroundColor: AppColors.backgroundTheme,
+          ),
+          css('section').styles(
+            display: Display.flex,
+            flexDirection: FlexDirection.column,
+            justifyContent: JustifyContent.center,
+            alignItems: AlignItems.center,
+            flex: Flex(grow: 1),
+          ),
+        ]),
+      ];
 }
