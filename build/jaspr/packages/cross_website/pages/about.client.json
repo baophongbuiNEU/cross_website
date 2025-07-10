@@ -1,1 +1,1 @@
-{"name":"About","id":"pages/about","import":"package:cross_website/pages/about.dart","params":[]}
+{"name":"About","id":["cross_website","lib/pages/about.dart"],"import":"package:cross_website/pages/about.dart","params":[]}

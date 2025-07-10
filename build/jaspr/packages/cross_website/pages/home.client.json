@@ -1,1 +1,1 @@
-{"name":"Home","id":"pages/home","import":"package:cross_website/pages/home.dart","params":[]}
+{"name":"Home","id":["cross_website","lib/pages/home.dart"],"import":"package:cross_website/pages/home.dart","params":[]}

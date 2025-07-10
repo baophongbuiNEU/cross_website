@@ -1,1 +1,1 @@
-{"name":"App","id":"app","import":"package:cross_website/app.dart","params":[]}
+{"name":"App","id":["cross_website","lib/app.dart"],"import":"package:cross_website/app.dart","params":[]}
