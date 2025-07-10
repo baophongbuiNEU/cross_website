@@ -203,6 +203,7 @@ class HeaderState extends State<Header> {
                           Spacing.symmetric(vertical: 2.px, horizontal: 1.px),
                       alignItems: AlignItems.center,
                       color: AppColors.textBlack,
+                      backgroundColor: AppColors.backgroundTheme,
                     ),
                     attributes: {
                       'value': lang.key,
