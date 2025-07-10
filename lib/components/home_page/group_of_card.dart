@@ -12,45 +12,39 @@ class GroupOfCard extends StatelessComponent {
   List<MemberCard> getListMemberCard(String lang) {
     return [
       MemberCard(
-          name: LanguageManager.translate('team_member1_name', lang),
-          position: LanguageManager.translate('team_member1_position', lang),
-          imagePath: Images.quyenAnh,
-          alt: 'Nguyễn Quyền Anh',
-          content: LanguageManager.translate('team_member1_content', lang),
-          navigateLink: 'https://boxingnguyen.github.io/'),
+        name: LanguageManager.translate('team_member1_name', lang),
+        position: LanguageManager.translate('team_member1_position', lang),
+        imagePath: Images.memberTeam,
+        content: LanguageManager.translate('team_member1_content', lang),
+      ),
       MemberCard(
         name: LanguageManager.translate('team_member2_name', lang),
         position: LanguageManager.translate('team_member2_position', lang),
-        imagePath: Images.vietTran,
-        alt: 'Trần Việt',
+        imagePath: Images.memberTeam,
         content: LanguageManager.translate('team_member2_content', lang),
       ),
       MemberCard(
         name: LanguageManager.translate('team_member3_name', lang),
         position: LanguageManager.translate('team_member3_position', lang),
-        imagePath: Images.quangHuy,
-        alt: 'Phùng Quang Huy',
+        imagePath: Images.memberTeam,
         content: LanguageManager.translate('team_member3_content', lang),
       ),
       MemberCard(
         name: LanguageManager.translate('team_member4_name', lang),
         position: LanguageManager.translate('team_member4_position', lang),
-        imagePath: Images.baoPhong,
-        alt: 'Bùi Bảo Phong',
+        imagePath: Images.memberTeam,
         content: LanguageManager.translate('team_member4_content', lang),
       ),
       MemberCard(
         name: LanguageManager.translate('team_member5_name', lang),
         position: LanguageManager.translate('team_member5_position', lang),
-        imagePath: Images.dangTung,
-        alt: 'Nguyễn Đăng Tùng',
+        imagePath: Images.memberTeam,
         content: LanguageManager.translate('team_member5_content', lang),
       ),
       MemberCard(
         name: LanguageManager.translate('team_member6_name', lang),
         position: LanguageManager.translate('team_member6_position', lang),
-        imagePath: Images.vietHung,
-        alt: 'Lê Việt Hùng',
+        imagePath: Images.memberTeam,
         content: LanguageManager.translate('team_member6_content', lang),
       ),
     ];
@@ -65,7 +59,7 @@ class GroupOfCard extends StatelessComponent {
 
     yield div(
       styles: Styles(
-        maxWidth: 100.percent,
+        width: 100.vw,
       ),
       [
         div(

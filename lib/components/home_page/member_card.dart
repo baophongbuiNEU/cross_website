@@ -7,8 +7,6 @@ class MemberCard extends StatelessComponent {
   final String position;
   final String content;
   final String imagePath;
-  final String alt;
-  final String? navigateLink;
 
   const MemberCard({
     super.key,
@@ -16,44 +14,19 @@ class MemberCard extends StatelessComponent {
     required this.position,
     required this.imagePath,
     required this.content,
-    required this.alt,
-    this.navigateLink,
   });
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield navigateLink != null
-        ? a(
-            href: navigateLink!,
-            target: Target.blank,
-            styles: Styles(
-              color: AppColors.textBlack,
-              textDecoration: TextDecoration.none,
-            ),
-            [
-              div(
-                  styles: Styles(
-                      padding:
-                          Padding.symmetric(horizontal: 35.px, vertical: 40.px),
-                      border: Border(color: AppColors.textBlack, width: 1.px),
-                      radius: BorderRadius.circular(45.px),
-                      shadow: BoxShadow(
-                          offsetX: 0.px,
-                          offsetY: 5.px,
-                          color: AppColors.textBlack),
-                      backgroundColor: AppColors.white),
-                  [_nameAndPosition(), _line(), _content()]),
-            ],
-          )
-        : div(
-            styles: Styles(
-                padding: Padding.symmetric(horizontal: 35.px, vertical: 40.px),
-                border: Border(color: AppColors.textBlack, width: 1.px),
-                radius: BorderRadius.circular(45.px),
-                shadow: BoxShadow(
-                    offsetX: 0.px, offsetY: 5.px, color: AppColors.textBlack),
-                backgroundColor: AppColors.white),
-            [_nameAndPosition(), _line(), _content()]);
+    yield div(
+        styles: Styles(
+            padding: Padding.symmetric(horizontal: 35.px, vertical: 40.px),
+            border: Border(color: AppColors.textBlack, width: 1.px),
+            radius: BorderRadius.circular(45.px),
+            shadow: BoxShadow(
+                offsetX: 0.px, offsetY: 5.px, color: AppColors.textBlack),
+            backgroundColor: AppColors.white),
+        [_nameAndPosition(), _line(), _content()]);
   }
 
   Component _nameAndPosition() {
@@ -63,28 +36,24 @@ class MemberCard extends StatelessComponent {
           flexDirection: FlexDirection.row,
         ),
         [
-          div([
-            img(
-                src: imagePath,
-                width: 130,
-                height: 130,
-                alt: alt,
-                styles: Styles(
-                  border: Border(width: 2.px, color: AppColors.greenPrimary),
-                  radius: BorderRadius.circular(20.px),
-                ))
-          ]),
+          div([img(src: imagePath, width: 100, height: 100)]),
           SizeBoxComponent(width: 20),
           div(
               styles: Styles(
                 display: Display.flex,
                 width: 100.percent,
                 flexDirection: FlexDirection.column,
-                justifyContent: JustifyContent.center,
+                justifyContent: JustifyContent.spaceBetween,
                 alignItems: AlignItems.start,
               ),
               [
-               
+                div(
+                    styles: Styles(
+                      alignSelf: AlignSelf.end,
+                    ),
+                    [
+                      _iconInstagram(),
+                    ]),
                 div(
                     styles: Styles(
                       width: 100.percent,
@@ -109,6 +78,22 @@ class MemberCard extends StatelessComponent {
                     ])
               ]),
         ]);
+  }
+
+  Component _iconInstagram() {
+    return div(
+        styles: Styles(
+            display: Display.flex,
+            width: 34.px,
+            height: 34.px,
+            radius: BorderRadius.circular(30.px),
+            justifyContent: JustifyContent.center,
+            alignItems: AlignItems.center,
+            color: AppColors.greenPrimary,
+            fontSize: 20.px,
+            fontWeight: FontWeight.bold,
+            backgroundColor: AppColors.primaryColor),
+        [Text("in")]);
   }
 
   Component _line() {

@@ -29,7 +29,7 @@ class MenuButton extends StatelessComponent {
   }
 
   @css
-  static List<StyleRule> get styles => [
+  static final List<StyleRule> styles = [
     css('.menu-toggle').styles(
       display: Display.none,
       padding: Padding.all(.7.rem),
