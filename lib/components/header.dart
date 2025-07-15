@@ -125,9 +125,9 @@ class HeaderState extends State<Header> {
         ])
           div(classes: 'nav-item', [
             if (route.path == '/about' || route.path == '/')
-              Link(
-                to: route.path,
-                child: text(route.label),
+              a(
+                href: route.path,
+                [text(route.label)],
               )
             else
               div(

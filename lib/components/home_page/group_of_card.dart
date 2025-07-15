@@ -56,6 +56,20 @@ class GroupOfCard extends StatelessComponent {
     ];
   }
 
+  @css
+  static List<StyleRule> get styles => [
+        css('.member_cards_padding').styles(
+          display: Display.flex,
+          margin: Margin.symmetric(horizontal: 13.percent),
+          flexDirection: FlexDirection.column,
+        ),
+        css.media(MediaQuery.screen(maxWidth: 1400.px), [
+          css('.member_cards_padding').styles(
+            margin: Margin.symmetric(horizontal: 5.percent),
+          ),
+        ]),
+      ];
+
   @override
   Iterable<Component> build(BuildContext context) sync* {
     final selectedLang =
@@ -69,11 +83,7 @@ class GroupOfCard extends StatelessComponent {
       ),
       [
         div(
-          styles: Styles(
-            display: Display.flex,
-            margin: Margin.symmetric(horizontal: 5.percent),
-            flexDirection: FlexDirection.column,
-          ),
+          classes: 'member_cards_padding',
           [
             for (var i = 0; i < members.length / 3; i++)
               CustomGrid(children: [

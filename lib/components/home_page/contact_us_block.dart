@@ -86,7 +86,7 @@ class ContactUsBlockState extends State<ContactUsBlock> {
         });
       }
     } catch (error) {
-      log('Error sending email: \\${error}');
+      log('Error sending email: \\$error');
       setState(() {
         isSubmitting = false;
         successMessage = 'Có lỗi xảy ra. Vui lòng thử lại!';

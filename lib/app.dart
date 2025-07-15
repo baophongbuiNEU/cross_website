@@ -46,46 +46,40 @@ class AppState extends State<App> {
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    if (_isLoading) {
-      yield LoadingScreen();
-    } else if (_hasError) {
-      yield div(classes: 'main', [text('Error loading translations')]);
-    } else {
-      yield ProviderScope(
-        child: div(classes: 'main', [
-          Router(
-            routes: [
-              Route(
-                path: '/',
-                title: 'Home',
-                builder: (context, state) => div(classes: 'main', [
-                  // Header(),
-                  const Home(),
-                ]),
-              ),
-              Route(
-                path: '/about',
-                title: 'About',
-                builder: (context, state) => div(classes: 'main', [
-                  // Header(),
-                  const AboutNew(),
-                ]),
-              ),
-              Route(
-                path: '/:path',
-                builder: (context, state) {
-                  final currentPath = state.path;
-                  if (currentPath != '/' && currentPath != '/about') {
-                    return const NotFoundPage();
-                  }
-                  return div([]);
-                },
-              ),
-            ],
-          ),
-        ]),
-      );
-    }
+    // if (_isLoading) {
+    //   yield LoadingScreen();
+    // }
+
+    yield ProviderScope(
+      child: div(classes: 'main', [
+        Router(
+          routes: [
+            Route(
+              path: '/',
+              title: 'Home',
+              builder: (context, state) =>
+                  _isLoading ? LoadingScreen() : const Home(),
+            ),
+            Route(
+              path: '/about',
+              title: 'About',
+              builder: (context, state) =>
+                  _isLoading ? LoadingScreen() : const AboutNew(),
+            ),
+            // Route(
+            //   path: '/:path',
+            //   builder: (context, state) {
+            //     final currentPath = state.path;
+            //     if (currentPath != '/' && currentPath != '/about') {
+            //       return const NotFoundPage();
+            //     }
+            //     return div([]);
+            //   },
+            // ),
+          ],
+        ),
+      ]),
+    );
   }
 
   @css
